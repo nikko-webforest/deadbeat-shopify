@@ -1,0 +1,50 @@
+{
+	"name": "shopify-boilerplate",
+	"version": "1.0.0",
+	"description": "Basic boilerplate theme for Shopify using Theme Kit.",
+	"main": "src/index.js",
+	"engines": {
+		"node": "12"
+	},
+	"prettier": {
+		"tabWidth": 4,
+		"semi": false,
+		"singleQuote": true
+	},
+	"scripts": {
+		"reload": "livereload . -e update",
+		"webpack": "webpack --watch",
+		"shopify": "theme watch --notify=theme.update",
+		"dev": "concurrently --kill-others -c yellow,cyan,green -n reload,webpack,shopify 'npm run reload' 'npm run webpack' 'npm run shopify'",
+		"build": "NODE_ENV=production webpack",
+		"deploy": "theme deploy"
+	},
+	"author": "50 Fish / John Robson",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/core": "^7.13.10",
+		"@babel/preset-env": "^7.13.12",
+		"babel-loader": "^8.2.2",
+		"concurrently": "^6.0.0",
+		"core-js": "^3.9.1",
+		"css-loader": "^5.1.3",
+		"livereload": "^0.9.3",
+		"mini-css-extract-plugin": "^1.3.9",
+		"node-sass": "^5.0.0",
+		"optimize-css-assets-webpack-plugin": "^5.0.4",
+		"postcss-loader": "^5.2.0",
+		"postcss-preset-env": "^6.7.0",
+		"prettier": "^2.2.1",
+		"sass-loader": "^11.0.1",
+		"terser-webpack-plugin": "^5.1.1",
+		"webpack": "^5.27.2",
+		"webpack-cli": "^4.5.0"
+	},
+	"dependencies": {
+		"@barba/core": "^2.9.7",
+		"fontfaceobserver": "^2.1.0",
+		"jquery": "^3.6.0",
+		"lodash": "^4.17.21",
+		"vue": "^2.6.12"
+	}
+}

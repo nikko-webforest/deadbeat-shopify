@@ -1,2 +1,0 @@
-# deadbeat-shopify
-Website Shopify
