@@ -12,10 +12,22 @@
 
     {{ content_for_header }}
 
+    <!-- Deadbeat Theme | CSS -->
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    <!-- jquery | JS -->
+    <script
+      type="text/javascript"
+      src="{{ 'jquery.js' | asset_url }}"
+      async></script>
+
+    <!-- vue | JS -->
+    <script type="text/javascript" src="{{ 'vue.js' | asset_url }}"></script>
+
   </head>
   <body>
 
-    <div class="db-site">
+    <div id="root" class="db-site">
 
       {% render 'header' %}
 

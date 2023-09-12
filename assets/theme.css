@@ -1,4 +1,144 @@
+/*=================*/
+/*   FONT FAMILY   */
+/*=================*/
+/*** Oswald ***/
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+/*** Quatrrocento ***/
+@import url("https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap");
+/*===============*/
+/*   VARIABLES   */
+/*===============*/
+:root {
+  --primaryFontFamily: "";
+  --secondaryFontFamily: "";
+  --tertiaryFontFamily: "";
+  --blackColor: #000000;
+  --whiteColor: #FFFFFF;
+  --primaryColor: "";
+  --secondaryColor: "";
+  --tertiaryColor: "";
+  --container: "";
+  --hoverTransitionDuration: "";
+  --clickTransitionDuration: "";
+}
+
+/*===============*/
+/*   CSS RESET   */
+/*===============*/
 * {
   margin: 0;
   padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
+*::before, *::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--primaryFontFamily);
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1em;
+  background-color: #F2F2F2;
+  min-width: 380px;
+  width: 100%;
+}
+
+html, body, main, nav, header, footer, aside, section, div {
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, blockquote, b, i, em {
+  line-height: 1em;
+}
+
+a,
+button,
+input[type=submit],
+input[type=button] {
+  text-decoration: none;
+  line-height: 1em;
+  display: block;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: transparent;
+  transition: all var(--hoverTransitionDuration) ease-in-out 0ms;
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style: none inside;
+}
+
+/*=============*/
+/*   CLASSES   */
+/*=============*/
+.db-section {
+  position: relative;
+  width: 100%;
+  padding: 25px;
+}
+
+.db-container {
+  max-width: var(--container);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.db-row {
+  display: flex;
+  width: 100%;
+}
+
+.db-col {
+  width: 100%;
+}
+
+.db-inner-row {
+  display: inline-flex;
+}
+
+.db-inner-col {
+  width: auto;
+}
+
+.db-svg {
+  display: block;
+}
+
+.db-img {
+  display: block;
+}
+.db-img .w-100 {
+  width: 100%;
+}
+.db-img .h-100 {
+  height: 100%;
+}
+.db-img .w-auto {
+  width: auto;
+}
+.db-img .h-auto {
+  height: auto;
+}
+
+/*===============*/
+/*   ANIMATION   */
+/*===============*/
+/*===================*/
+/*   MEDIA QUERIES   */
+/*===================*/
+/*==========*/
+/*   TEST   */
+/*==========*/

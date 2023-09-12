@@ -1,0 +1,36 @@
+/*===============*/
+/*   VARIABLES   */
+/*===============*/
+:root {
+  --primaryFontFamily: '';
+  --secondaryFontFamily: '';
+  --tertiaryFontFamily: '';
+
+  --blackColor: #000000;
+  --whiteColor: #FFFFFF;
+
+  --primaryColor: '';
+  --secondaryColor: '';
+  --tertiaryColor: '';
+
+  --container: '';
+
+  --hoverTransitionDuration: '';
+  --clickTransitionDuration: '';
+}
+
+$primaryFontFamily: var(--primaryFontFamily);
+$secondaryFontFamily: var(--secondaryFontFamily);
+$tertiaryFontFamily: var(--tertiaryFontFamily);
+
+$blackColor: var(--blackColor);
+$whiteColor: var(--whiteColor);
+
+$primaryColor: var(--primaryColor);
+$secondaryColor: var(--secondaryColor);
+$tertiaryColor: var(--tertiaryColor);
+
+$container: var(--container);
+
+$hoverTransitionDuration: var(--hoverTransitionDuration);
+$clickTransitionDuration: var(--clickTransitionDuration);

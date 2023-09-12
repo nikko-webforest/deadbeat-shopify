@@ -1,0 +1,55 @@
+/*=============*/
+/*   CLASSES   */
+/*=============*/
+.db-section {
+  position: relative;
+  width: 100%;
+  padding: 25px;
+}
+
+.db-container {
+  max-width: $container;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.db-row {
+  display: flex;
+  width: 100%;
+}
+
+.db-col {
+  width: 100%;
+}
+
+.db-inner-row {
+  display: inline-flex;
+}
+
+.db-inner-col {
+  width: auto;
+}
+
+.db-svg {
+	display: block;
+}
+
+.db-img {
+  display: block;
+
+	.w-100 {
+    width: 100%;
+  }
+
+  .h-100 {
+    height: 100%;
+  }
+
+  .w-auto {
+    width: auto;
+  }
+
+  .h-auto {
+    height: auto;
+  }
+}
