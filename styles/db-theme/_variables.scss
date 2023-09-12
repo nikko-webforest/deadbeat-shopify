@@ -2,21 +2,21 @@
 /*   VARIABLES   */
 /*===============*/
 :root {
-  --primaryFontFamily: '';
-  --secondaryFontFamily: '';
-  --tertiaryFontFamily: '';
+  --primaryFontFamily: 'Owswald', sans-serif;
+  --secondaryFontFamily: 'Quattrocento', serif;
+  --tertiaryFontFamily: 'Montserrat', sans-serif;
 
   --blackColor: #000000;
   --whiteColor: #FFFFFF;
 
-  --primaryColor: '';
-  --secondaryColor: '';
+  --primaryColor: #AA27B1;
+  --secondaryColor: #95CC0E;
   --tertiaryColor: '';
 
-  --container: '';
+  --container: 1440px;
 
-  --hoverTransitionDuration: '';
-  --clickTransitionDuration: '';
+  --hoverTransitionDuration: 200ms;
+  --clickTransitionDuration: 400ms;
 }
 
 $primaryFontFamily: var(--primaryFontFamily);

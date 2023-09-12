@@ -1,3 +1,7 @@
 /*=============*/
 /*   BUTTONS   */
 /*=============*/
+.db-btn {
+  transition:
+    all $hoverTransitionDuration ease-in-out 0ms;
+}
