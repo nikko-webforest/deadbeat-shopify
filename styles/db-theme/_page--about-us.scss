@@ -1,0 +1,214 @@
+.db-section--about-us-banner {
+  background-image: url('AboutUs__asset-bg-v01.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  padding-top: 109px;
+
+  .db-container {
+    .title-wrap {
+      max-width: 795px;
+
+
+      h1 {
+        text-align: center;
+
+        span {
+          &:nth-child(1) {
+            color: $primaryColor;
+            text-align: center;
+            font-family: $primaryFontFamily;
+            font-size: 88px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 100%;
+            /* 88px */
+            letter-spacing: -3.52px;
+          }
+
+          &:nth-child(2) {
+            color: $secondaryColor;
+            font-family: $primaryFontFamily;
+            font-size: 88px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 100%;
+            letter-spacing: -3.52px;
+          }
+        }
+      }
+
+      h4 {
+        color: #FFF;
+        text-align: center;
+        text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
+        font-family: $primaryFontFamily;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        margin-top: 40px;
+      }
+    }
+
+    .db-row {
+      background-image: url('AboutUs__asset-banner.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      object-fit: cover;
+      height: 634px;
+      border-radius: 30px;
+      border: 10px solid #242031;
+      box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.40);
+      margin-top: 96px;
+
+      .db-col-spacer {
+        padding-top: 49px;
+        padding-left: 92px;
+        padding-right: 85px;
+        padding-bottom: 71px;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        column-gap: 130px;
+
+        .db-col {
+          &:nth-child(1) {
+            max-width: 316px;
+            width: 100%;
+
+            .db-logo-container {
+              max-width: 316px;
+              height: 118px;
+
+              img {
+                display: block;
+                object-fit: cover;
+                width: 100%
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            .db-banner-its-year {
+              color: #FFF;
+              text-align: center;
+              display: inline-flex;
+              font-family: $primaryFontFamily;
+              font-size: 32px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 100%;
+            }
+
+            .db-banner-content-block {
+              display: flex;
+              column-gap: 38px;
+              align-items: center;
+              justify-content: flex-start;
+              margin-top: -15px;
+
+              .db-banner-2069 {
+                text-align: right;
+                text-shadow: 1.674121379852295px 1.674121379852295px 12.55591106414795px rgba(0, 0, 0, 0.15);
+                font-family: $primaryFontFamily;
+                font-size: 250px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 100%;
+                /* 250px */
+                letter-spacing: -10px;
+                color: #FFF;
+                background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.30) 50.74%, rgba(182, 207, 255, 0.10) 72.91%, rgba(181, 210, 255, 0.00) 90.8%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+
+              .db-banner-and {
+                text-align: center;
+                font-family: $primaryFontFamily;
+                font-size: 27px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 100%;
+                color: #fff;
+                width: min-content;
+                background: linear-gradient(180deg, #A9A4E5 0%, rgba(169, 164, 229, 0.00) 109.26%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+
+              }
+
+              .db-banner-rock-the-world {
+                color: rgba(255, 255, 255, 0.80);
+                font-family: $primaryFontFamily;
+                font-size: 64px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 100%;
+                /* 64px */
+                letter-spacing: -1.92px;
+                max-width: 226px;
+              }
+            }
+
+            .db-banner-featured {
+              display: flex;
+              column-gap: 40px;
+              margin-top: 77px;
+              justify-content: flex-end;
+
+              .db-banner-featured-item {
+                display: flex;
+                border-radius: 15px;
+                overflow: hidden;
+
+                .featured-item-content {
+                  background: #2B1830;
+                  padding: 34px 28px 33px 31px;
+
+                  .featured-item-title {
+                    color: #FFF;
+                    font-family: $primaryFontFamily;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 100%;
+                  }
+
+                  .featured-item-description {
+                    color: #CAC7D0;
+                    font-family: $secondaryFontFamily;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 130%;
+                    max-width: 165px;
+                    margin-top: 24px;
+                    /* 20.8px */
+                    letter-spacing: -0.64px;
+                  }
+                }
+
+                .featured-item-image {
+                  width: 113px;
+
+                  img {
+                    display: block;
+                    object-fit: cover;
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
