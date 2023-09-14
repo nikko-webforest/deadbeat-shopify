@@ -1,4 +1,10 @@
 .db-header {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  display: block;
+  width: 100%;
+  
   .db-header-main {
     position: static;
     padding: 30px 20px;
