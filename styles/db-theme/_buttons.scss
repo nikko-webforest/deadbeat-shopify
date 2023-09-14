@@ -2,6 +2,18 @@
 /*   BUTTONS   */
 /*=============*/
 .db-btn {
+  display: block;
+  padding: 12px;
   transition:
     all $hoverTransitionDuration ease-in-out 0ms;
+
+  .db-btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .db-btn-label {}
+
+    .db-btn-icon {}
+  }
 }
