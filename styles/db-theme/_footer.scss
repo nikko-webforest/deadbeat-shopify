@@ -384,9 +384,14 @@
               .db-socials-item {
                 .db-socials-link {
                   display: block;
+                  translate: 0 0;
+                  transition:
+                    translate 200ms ease-in-out 0ms;
 
-                  .db-svg {
+                  .db-svg {}
 
+                  &:hover {
+                    translate: 0 -5px;
                   }
                 }
               }

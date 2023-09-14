@@ -1,0 +1,494 @@
+.db-header {
+  .db-header-main {
+    position: static;
+    padding: 30px 20px;
+
+    .db-container {
+      .db-row {
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+
+        .db-btn--nav-menu {
+          display: block;
+          max-width: 130px;
+          min-width: 130px;
+          width: 100%;
+          height: 65px;
+          cursor: pointer;
+
+          @media only screen and (max-width: 768px) {
+            max-width: 50px;
+            min-width: 50px;
+          }
+
+          .db-btn-wrap {
+            display: flex;
+            justify-content: flex-start;
+
+            @media only screen and (max-width: 768px) {
+              justify-content: center;
+            } 
+
+            .db-btn-icon {
+              .svg-icon-veggie-burger {
+                #path_01,
+                #path_02 {
+                  stroke: $whiteColor;
+                  transition:
+                    stroke $hoverTransitionDuration ease-in-out 0ms;
+                }
+              }
+            }
+          }
+
+          &:hover {
+            .db-btn-wrap {
+              .db-btn-icon {
+                .svg-icon-veggie-burger {
+                  #path_01,
+                  #path_02 {
+                    stroke: $secondaryColor;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .db-site-link {
+          display: block;
+          width: auto;
+          height: 65px;
+
+          .db-site-logo {
+            display: block;
+            width: auto;
+            height: 100%;
+          }
+        }
+
+        .db-btn--account {
+          display: block;
+          max-width: 130px;
+          min-width: 130px;
+          width: 100%;
+
+          @media only screen and (max-width: 768px) {
+            max-width: 50px;
+            min-width: 50px;
+          }
+
+          .db-btn-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+
+            .db-btn-label {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 9px;
+
+              @media only screen and (max-width: 768px) {
+                display: none;
+              }
+
+              .db-svg {
+                display: block;
+              }
+
+              span {
+                color: $whiteColor;
+                font-family: $primaryFontFamily;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 1.1em;
+              }
+            }
+
+            .db-btn-icon {
+              .db-svg {
+                display: block;
+                width: 40px;
+                height: 40px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .db-nav-menu {
+    position: fixed;
+    z-index: 9999;
+    top: -100vh;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background-image: url('DB_Header_Menu_bg-v01-1900x1000.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #09060D;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    padding: 0 20px;
+
+    transition:
+      top 1s ease-in-out 0ms;
+
+    @media only screen and (max-width: 768px) {
+      top: -100%;
+      height: 100%;
+      overflow: auto;
+    }
+  
+    .db-container {
+      position: relative;
+      height: 100%;
+
+      @media only screen and (max-width: 768px) {
+        max-width: 480px;
+      }
+  
+      .db-btn--close-menu {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        display: block;
+        width: 65px;
+        height: 65px;
+
+        @media only screen and (max-width: 768px) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          right: 0;
+          left: unset;
+        }
+  
+        .svg-icon-close {
+          scale: 1.0;
+          transition:
+            scale $hoverTransitionDuration ease-in-out 0ms;
+  
+          #path_01 {
+            fill: #A5A5A5;
+            transition:
+              fill $hoverTransitionDuration ease-in-out 0ms;
+          }
+        }
+  
+        &:hover {
+          .svg-icon-close {
+            scale: 1.1;
+  
+            #path_01 {
+              fill: $secondaryColor;
+            }
+          }
+        }
+      }
+  
+      .db-row {
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        max-width: 1080px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+
+        @media only screen and (max-width: 768px) {
+          position: relative;
+          top: 135px;
+          flex-direction: column;
+          gap: 60px;
+          height: auto;
+          padding: 0 0 50px;
+        }
+  
+        .db-col {
+          &:nth-of-type(1) {
+            max-width: 480px;
+            width: 100%;
+
+            @media only screen and (max-width: 768px) {
+              max-width: 100%;
+            }
+  
+            .db-menu-list {
+              display: flex;
+              flex-direction: column;
+              gap: 40px;
+
+              @media only screen and (max-width: 768px) {
+                gap: 32px;
+              }
+  
+              .db-menu-item {
+                .db-menu-link {
+                  color: $whiteColor;
+                  font-family: $primaryFontFamily;
+                  font-size: 40px;
+                  font-style: normal;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  line-height: 1.1em;
+                  position: relative;
+                  display: block;
+                  opacity: 0;
+                  width: max-content;
+                  transition:
+                    color 200ms ease-in-out 0ms,
+                    opacity 200ms ease-in-out 0ms;
+
+                  @media only screen and (max-width: 1440px) {
+                    font-size: 35px;
+                  }
+
+                  @media only screen and (max-width: 1080px) {
+                    font-size: 30px;
+                  }
+
+                  @media only screen and (max-width: 768px) {
+                    font-size: 32px;
+                  }
+
+                  &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    display: block;
+                    background-color: $whiteColor;
+                    width: 100%;
+                    height: calc(1.1em * 1);
+                    overflow: hidden;
+                    transition:
+                      background-color 200ms ease-in-out 0ms;
+                  }
+  
+                  &:hover {
+                    color: $secondaryColor;
+                  }
+                }
+              }
+            }
+          }
+  
+          &:nth-of-type(2) {
+            max-width: 390px;
+
+            @media only screen and (max-width: 768px) {
+              max-width: 100%;
+            }
+  
+            p {
+              color: $whiteColor;
+              font-family: $primaryFontFamily;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 500;
+              text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
+              line-height: 1.5em;
+              margin: 0 0 70px;
+              opacity: 0;
+              translate: 0 100px;
+              transition:
+                opacity 200ms ease-in-out 0ms,
+                translate 200ms ease-in-out 0ms;
+
+              @media only screen and (max-width: 768px) {
+                margin: 0 0 32px;
+              }
+            }
+  
+            .db-socials-list {
+              display: flex;
+              justify-content: flex-start;
+              align-items: stretch;
+              gap: 24px;
+              margin: 0 0 100px;
+              opacity: 0;
+              translate: 0 100px;
+              transition:
+                opacity 200ms ease-in-out 0ms,
+                translate 200ms ease-in-out 0ms;
+
+              @media only screen and (max-width: 768px) {
+                gap: 16px;
+                margin: 0 0 52px;
+              }
+  
+              .db-socials-item {
+                .db-socials-link {
+                  display: block;
+                  translate: 0 0;
+                  transition:
+                    translate 200ms ease-in-out 0ms;
+
+                  .db-svg {}
+
+                  &:hover {
+                    translate: 0 -5px;
+                  }
+                }
+              }
+            }
+  
+            .db-inner-row {
+              justify-content: flex-start;
+              align-items: center;
+              gap: 23px;
+              opacity: 0;
+              translate: 0 100px;
+              transition:
+                opacity 200ms ease-in-out 0ms,
+                translate 200ms ease-in-out 0ms;
+
+              @media only screen and (max-width: 768px) {
+                margin: 0 0 32px;
+              }
+  
+              .db-menu-link {
+                color: #CAC7D0;
+                font-family: $secondaryFontFamily;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.3em;
+                letter-spacing: -0.64px;
+                display: block;
+  
+                &:hover {
+                  color: $secondaryColor;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.--show {
+      top: 0;
+
+      .db-container {
+        .db-row {
+          .db-col {
+            &:nth-of-type(1) {
+              .db-menu-list {
+                .db-menu-item {
+                  .db-menu-link {
+                    opacity: 1;
+
+                    &::before {
+                      background-color: transparent;
+                    }
+                  }
+
+                  &:nth-child(1) {
+                    .db-menu-link {
+                      transition:
+                        color 200ms ease-in-out 0ms,
+                        opacity 200ms ease-in-out 1.4s;
+
+                      &::before {
+                        transition-delay: 1.6s;
+                      }
+                    }
+                  }
+  
+                  &:nth-child(2) {
+                    .db-menu-link {
+                      transition:
+                        color 200ms ease-in-out 0ms,
+                        opacity 200ms ease-in-out 1.6s;
+
+                      &::before {
+                        transition-delay: 1.8s;
+                      }
+                    }
+                  }
+  
+                  &:nth-child(3) {
+                    .db-menu-link {
+                      transition:
+                        color 200ms ease-in-out 0ms,
+                        opacity 200ms ease-in-out 1.8s;
+
+                      &::before {
+                        transition-delay: 2.0s;
+                      }
+                    }
+                  }
+  
+                  &:nth-child(4) {
+                    .db-menu-link {
+                      transition:
+                        color 200ms ease-in-out 0ms,
+                        opacity 200ms ease-in-out 2.0s;
+
+                      &::before {
+                        transition-delay: 2.2s;
+                      }
+                    }
+                  }
+  
+                  &:nth-child(5) {
+                    .db-menu-link {
+                      transition:
+                        color 200ms ease-in-out 0ms,
+                        opacity 200ms ease-in-out 2.2s;
+
+                      &::before {
+                        transition-delay: 2.4s;
+                      }
+                    }
+                  }
+  
+                  &:nth-child(6) {
+                    .db-menu-link {
+                      transition:
+                        color 200ms ease-in-out 0ms,
+                        opacity 200ms ease-in-out 2.4s;
+
+                      &::before {
+                        transition-delay: 2.6s;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &:nth-of-type(2) {
+              p {
+                opacity: 1;
+                translate: 0 0;
+                transition-delay: 1.4s;
+              }
+
+              .db-socials-list {
+                opacity: 1;
+                translate: 0 0;
+                transition-delay: 1.6s;
+              }
+
+              .db-inner-row {
+                opacity: 1;
+                translate: 0 0;
+                transition-delay: 1.8s;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
