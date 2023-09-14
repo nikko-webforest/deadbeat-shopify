@@ -160,6 +160,385 @@ ul, ol {
 /*==========*/
 /*   TEST   */
 /*==========*/
+.db-header .db-header-main {
+  position: static;
+  padding: 30px 20px;
+}
+.db-header .db-header-main .db-container .db-row {
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.db-header .db-header-main .db-container .db-row .db-btn--nav-menu {
+  display: block;
+  max-width: 130px;
+  min-width: 130px;
+  width: 100%;
+  height: 65px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-header-main .db-container .db-row .db-btn--nav-menu {
+    max-width: 50px;
+    min-width: 50px;
+  }
+}
+.db-header .db-header-main .db-container .db-row .db-btn--nav-menu .db-btn-wrap {
+  display: flex;
+  justify-content: flex-start;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-header-main .db-container .db-row .db-btn--nav-menu .db-btn-wrap {
+    justify-content: center;
+  }
+}
+.db-header .db-header-main .db-container .db-row .db-btn--nav-menu .db-btn-wrap .db-btn-icon .svg-icon-veggie-burger #path_01,
+.db-header .db-header-main .db-container .db-row .db-btn--nav-menu .db-btn-wrap .db-btn-icon .svg-icon-veggie-burger #path_02 {
+  stroke: var(--whiteColor);
+  transition: stroke var(--hoverTransitionDuration) ease-in-out 0ms;
+}
+.db-header .db-header-main .db-container .db-row .db-btn--nav-menu:hover .db-btn-wrap .db-btn-icon .svg-icon-veggie-burger #path_01,
+.db-header .db-header-main .db-container .db-row .db-btn--nav-menu:hover .db-btn-wrap .db-btn-icon .svg-icon-veggie-burger #path_02 {
+  stroke: var(--secondaryColor);
+}
+.db-header .db-header-main .db-container .db-row .db-site-link {
+  display: block;
+  width: auto;
+  height: 65px;
+}
+.db-header .db-header-main .db-container .db-row .db-site-link .db-site-logo {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+.db-header .db-header-main .db-container .db-row .db-btn--account {
+  display: block;
+  max-width: 130px;
+  min-width: 130px;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-header-main .db-container .db-row .db-btn--account {
+    max-width: 50px;
+    min-width: 50px;
+  }
+}
+.db-header .db-header-main .db-container .db-row .db-btn--account .db-btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+.db-header .db-header-main .db-container .db-row .db-btn--account .db-btn-wrap .db-btn-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-header-main .db-container .db-row .db-btn--account .db-btn-wrap .db-btn-label {
+    display: none;
+  }
+}
+.db-header .db-header-main .db-container .db-row .db-btn--account .db-btn-wrap .db-btn-label .db-svg {
+  display: block;
+}
+.db-header .db-header-main .db-container .db-row .db-btn--account .db-btn-wrap .db-btn-label span {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.1em;
+}
+.db-header .db-header-main .db-container .db-row .db-btn--account .db-btn-wrap .db-btn-icon .db-svg {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.db-header .db-nav-menu {
+  position: fixed;
+  z-index: 9999;
+  top: -100vh;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background-image: url("DB_Header_Menu_bg-v01-1900x1000.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #09060D;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  padding: 0 20px;
+  transition: top 1s ease-in-out 0ms;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu {
+    top: -100%;
+    height: 100%;
+    overflow: auto;
+  }
+}
+.db-header .db-nav-menu .db-container {
+  position: relative;
+  height: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container {
+    max-width: 480px;
+  }
+}
+.db-header .db-nav-menu .db-container .db-btn--close-menu {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  display: block;
+  width: 65px;
+  height: 65px;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container .db-btn--close-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    left: unset;
+  }
+}
+.db-header .db-nav-menu .db-container .db-btn--close-menu .svg-icon-close {
+  scale: 1;
+  transition: scale var(--hoverTransitionDuration) ease-in-out 0ms;
+}
+.db-header .db-nav-menu .db-container .db-btn--close-menu .svg-icon-close #path_01 {
+  fill: #A5A5A5;
+  transition: fill var(--hoverTransitionDuration) ease-in-out 0ms;
+}
+.db-header .db-nav-menu .db-container .db-btn--close-menu:hover .svg-icon-close {
+  scale: 1.1;
+}
+.db-header .db-nav-menu .db-container .db-btn--close-menu:hover .svg-icon-close #path_01 {
+  fill: var(--secondaryColor);
+}
+.db-header .db-nav-menu .db-container .db-row {
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  max-width: 1080px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container .db-row {
+    position: relative;
+    top: 135px;
+    flex-direction: column;
+    gap: 60px;
+    height: auto;
+    padding: 0 0 50px;
+  }
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) {
+  max-width: 480px;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) {
+    max-width: 100%;
+  }
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list {
+    gap: 32px;
+  }
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1em;
+  position: relative;
+  display: block;
+  opacity: 0;
+  width: max-content;
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms;
+}
+@media only screen and (max-width: 1440px) {
+  .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link {
+    font-size: 35px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link {
+    font-size: 32px;
+  }
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-color: var(--whiteColor);
+  width: 100%;
+  height: 1.1em;
+  overflow: hidden;
+  transition: background-color 200ms ease-in-out 0ms;
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link:hover {
+  color: var(--secondaryColor);
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) {
+  max-width: 390px;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) {
+    max-width: 100%;
+  }
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) p {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  line-height: 1.5em;
+  margin: 0 0 70px;
+  opacity: 0;
+  translate: 0 100px;
+  transition: opacity 200ms ease-in-out 0ms, translate 200ms ease-in-out 0ms;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) p {
+    margin: 0 0 32px;
+  }
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-socials-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 24px;
+  margin: 0 0 100px;
+  opacity: 0;
+  translate: 0 100px;
+  transition: opacity 200ms ease-in-out 0ms, translate 200ms ease-in-out 0ms;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-socials-list {
+    gap: 16px;
+    margin: 0 0 52px;
+  }
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-socials-list .db-socials-item .db-socials-link {
+  display: block;
+  translate: 0 0;
+  transition: translate 200ms ease-in-out 0ms;
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-socials-list .db-socials-item .db-socials-link:hover {
+  translate: 0 -5px;
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 23px;
+  opacity: 0;
+  translate: 0 100px;
+  transition: opacity 200ms ease-in-out 0ms, translate 200ms ease-in-out 0ms;
+}
+@media only screen and (max-width: 768px) {
+  .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
+    margin: 0 0 32px;
+  }
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .db-menu-link {
+  color: #CAC7D0;
+  font-family: var(--secondaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3em;
+  letter-spacing: -0.64px;
+  display: block;
+}
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .db-menu-link:hover {
+  color: var(--secondaryColor);
+}
+.db-header .db-nav-menu.--show {
+  top: 0;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link {
+  opacity: 1;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link::before {
+  background-color: transparent;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(1) .db-menu-link {
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 1.4s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(1) .db-menu-link::before {
+  transition-delay: 1.6s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(2) .db-menu-link {
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 1.6s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(2) .db-menu-link::before {
+  transition-delay: 1.8s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(3) .db-menu-link {
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 1.8s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(3) .db-menu-link::before {
+  transition-delay: 2s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(4) .db-menu-link {
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(4) .db-menu-link::before {
+  transition-delay: 2.2s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(5) .db-menu-link {
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.2s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(5) .db-menu-link::before {
+  transition-delay: 2.4s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(6) .db-menu-link {
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.4s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(6) .db-menu-link::before {
+  transition-delay: 2.6s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) p {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 1.4s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-socials-list {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 1.6s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 1.8s;
+}
+
 .db-footer {
   background-color: #0B070F;
   padding: 45px 0 0;
@@ -543,6 +922,11 @@ ul, ol {
 }
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(3) .db-socials-list .db-socials-item .db-socials-link {
   display: block;
+  translate: 0 0;
+  transition: translate 200ms ease-in-out 0ms;
+}
+.db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(3) .db-socials-list .db-socials-item .db-socials-link:hover {
+  translate: 0 -5px;
 }
 .db-footer .db-section--primary .db-container .db-copyright {
   color: #CAC7D0;
