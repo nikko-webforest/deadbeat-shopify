@@ -759,7 +759,7 @@ ul, ol {
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
-  height: 1816px;
+  height: 1900px;
   position: relative;
 }
 .db-section--about-us-after-life .db-background-overlay {
@@ -770,14 +770,13 @@ ul, ol {
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
-  height: 1000px;
+  height: 1120px;
   left: 0;
   right: 0;
   z-index: -1;
 }
 .db-section--about-us-after-life .db-container {
   padding-top: 213px;
-  padding-bottom: 650px;
 }
 .db-section--about-us-after-life .db-container .title-wrap h2 {
   color: #FFF;
@@ -790,13 +789,17 @@ ul, ol {
   /* 80px */
   letter-spacing: -3.2px;
 }
-.db-section--about-us-after-life .db-container .db-row:nth-child(2) {
+.db-section--about-us-after-life .db-container .db-row {
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(1) {
+  display: flex;
   column-gap: 70px;
   justify-content: center;
-  margin-top: 70px;
-  margin-bottom: auto;
 }
-.db-section--about-us-after-life .db-container .db-row:nth-child(2) .db-col:nth-child(1) {
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(1) .db-inner-row:nth-child(1) {
   color: #CAC7D0;
   text-align: right;
   font-family: var(--secondaryFontFamily);
@@ -808,7 +811,7 @@ ul, ol {
   letter-spacing: -0.64px;
   max-width: 351px;
 }
-.db-section--about-us-after-life .db-container .db-row:nth-child(2) .db-col:nth-child(2) {
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(1) .db-inner-row:nth-child(2) {
   color: #CAC7D0;
   text-align: center;
   font-family: var(--secondaryFontFamily);
@@ -820,7 +823,7 @@ ul, ol {
   letter-spacing: -0.64px;
   max-width: 460px;
 }
-.db-section--about-us-after-life .db-container .db-row:nth-child(2) .db-col:nth-child(3) {
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(1) .db-inner-row:nth-child(3) {
   color: #CAC7D0;
   font-family: var(--secondaryFontFamily);
   font-size: 16px;
@@ -831,28 +834,30 @@ ul, ol {
   letter-spacing: -0.64px;
   max-width: 350px;
 }
-.db-section--about-us-after-life .db-container .db-row:nth-child(3) .db-the-natives-title {
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) {
+  margin-top: 658px;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title {
   text-align: center;
   margin-inline: auto;
 }
-.db-section--about-us-after-life .db-container .db-row:nth-child(3) .db-the-natives-title h3:nth-child(1) span:nth-child(1) {
-  color: #B1FF29;
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title h3 {
   text-align: center;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title h3:nth-child(1) span {
   font-family: var(--primaryFontFamily);
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
 }
-.db-section--about-us-after-life .db-container .db-row:nth-child(3) .db-the-natives-title h3:nth-child(1) span:nth-child(2) {
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title h3:nth-child(1) span:nth-child(1) {
+  color: #B1FF29;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title h3:nth-child(1) span:nth-child(2) {
   color: #A120D2;
-  font-family: var(--primaryFontFamily);
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
 }
-.db-section--about-us-after-life .db-container .db-row:nth-child(3) .db-the-natives-title h3:nth-child(2) {
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title h3:nth-child(2) {
   color: #FFF;
   text-align: center;
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
@@ -863,6 +868,264 @@ ul, ol {
   line-height: 100%;
   /* 48px */
   text-decoration-line: underline;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper {
+  width: 100%;
+  position: relative;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel {
+  display: grid;
+  grid-auto-columns: 31.25%;
+  grid-template-rows: 367px;
+  column-gap: 40px;
+  padding-top: 90px;
+  overflow-x: hidden;
+  grid-auto-flow: column;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel::-webkit-scrollbar {
+  display: none;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel.no-transition {
+  scroll-behavior: auto;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel.dragging .native-card {
+  cursor: grab;
+  user-select: none;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card {
+  border-radius: 28.669px;
+  border: 1.108px solid rgba(62, 62, 62, 0.4);
+  background: rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s linear;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper {
+  padding-top: 75px;
+  padding-right: 25px;
+  padding-bottom: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  height: 100%;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper::before {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0;
+  top: 0;
+  width: 136px;
+  left: 0;
+  background-image: url("About-Us__asset-native-bg-v01.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+  overflow: hidden;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container {
+  position: absolute;
+  left: -20px;
+  bottom: -15px;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container img {
+  display: block;
+  object-fit: cover;
+  height: 100%;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-profile {
+  display: flex;
+  flex-direction: column;
+  max-width: 213px;
+  row-gap: 19px;
+  position: relative;
+  z-index: 2;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-profile .db-native-name {
+  color: #FFF;
+  font-family: var(--primaryFontFamily);
+  font-size: 33.23px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%; /* 38.215px */
+  letter-spacing: -1.329px;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-profile .db-native-description {
+  color: #CAC7D0;
+  font-family: var(--secondaryFontFamily);
+  font-size: 13.292px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 17.28px */
+  letter-spacing: -0.532px;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider {
+  max-width: 1146px;
+  margin-inline: auto;
+  margin-top: 70px;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 70px;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-prev, .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-next {
+  width: 20px;
+  cursor: pointer;
+  transition: all var(--hoverTransitionDuration) ease-in;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-prev:hover > path, .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-next:hover > path {
+  fill: #AA27B1;
+}
+
+.db-section--about-us-resurrection {
+  background-image: url("About-Us__asset-resurrection-bg-v01.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-size: 100.158% 100%;
+  padding-top: 141px;
+  padding-bottom: 141px;
+}
+.db-section--about-us-resurrection .db-container {
+  max-width: 1240px;
+}
+.db-section--about-us-resurrection .db-container .db-row {
+  column-gap: 127px;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .title-wrap {
+  text-align: center;
+  color: #B522EB;
+  font-family: var(--primaryFontFamily);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 91px;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image {
+  max-width: 518px;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(1) {
+  align-self: flex-start;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(2) {
+  align-self: flex-end;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) h3 {
+  color: #FFF;
+  font-family: var(--primaryFontFamily);
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%; /* 92px */
+  letter-spacing: -3.2px;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-description {
+  color: #FFF;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  font-family: var(--secondaryFontFamily);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  margin-top: 20px;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-content-block {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  row-gap: 30px;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-content-block span {
+  color: #CAC7D0;
+  font-family: var(--secondaryFontFamily);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta {
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  column-gap: 41px;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta .db-btn {
+  display: flex;
+  width: 165px;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 36.364px;
+  border: 1px solid #B1FF29;
+  color: #B1FF29;
+  font-family: var(--tertiaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 16px */
+  letter-spacing: -0.64px;
+  transition: all var(--hoverTransitionDuration) ease-in;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta .db-btn:hover {
+  color: var(--whiteColor);
+  background-color: var(--secondaryColor);
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta a {
+  color: var(--whiteColor);
+  font-family: var(--tertiaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 16px */
+  letter-spacing: -0.64px;
+  display: flex;
+  flex-direction: column;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta a span {
+  margin-bottom: 2px;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta a svg {
+  width: max-content;
+}
+
+.db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h4 {
+  color: #FFF;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  font-family: var(--primaryFontFamily);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+}
+.db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h3 {
+  color: #A120D2;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  font-family: var(--primaryFontFamily);
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 56px */
+  letter-spacing: -2.24px;
 }
 
 .db-header {
