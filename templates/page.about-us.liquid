@@ -68,6 +68,7 @@
 
                 <div class="featured-item-image">
                   <img src="{{ 'About-Us__asset-banner-v02.png' | asset_url }}" alt="">
+                  <img src="{{ 'About-Us__asset-featured-mb.png' | asset_url }}" alt="">
                 </div>
               </div>
 
@@ -84,6 +85,7 @@
 
                 <div class="featured-item-image">
                   <img src="{{ 'About-Us__asset-banner-v02.png' | asset_url }}" alt="">
+                  <img src="{{ 'About-Us__asset-featured-mb.png' | asset_url }}" alt="">
                 </div>
               </div>
 
@@ -140,7 +142,7 @@
             
           </div>
 
-          <div class="wrapper" ref="wrapper" @mouseenter="clearCurTimeout" @mouseleave="autoPlay">
+          <div class="wrapper" ref="wrapper" @mouseenter="clearCurTimeout">
             <ul class="carousel" ref="carousel" @scroll="onInfiniteScroll" @mousedown="onDragStart($event)" @mousemove="onDragging($event)">
 
               <li class="native-card">
@@ -221,11 +223,12 @@
 
         </div>
       </div>
-
     </div>
   </section>
 
-  <section class="db-section db-section--about-us-resurrection">
+  <section class="db-section db-section--spacer"></section>
+
+  {% comment %} <section class="db-section db-section--about-us-resurrection">
     <div class="db-container">
       <div class="db-row">
 
@@ -334,7 +337,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
 </main>
 
 <script>
@@ -383,7 +386,7 @@
       }
      
       document.addEventListener("mouseup", dragStop);
-      this.autoPlay();
+      // this.autoPlay();
     },
     computed:{
     },
