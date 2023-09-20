@@ -1028,12 +1028,17 @@ ul, ol {
   right: 0;
   z-index: -1;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-background-overlay {
+    height: 500px;
+  }
+}
 .db-section--about-us-after-life .db-container {
   padding-top: 213px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .db-section--about-us-after-life .db-container {
-    padding-top: 122px;
+    padding-top: 123px;
   }
 }
 .db-section--about-us-after-life .db-container .title-wrap h2 {
@@ -1071,7 +1076,7 @@ ul, ol {
 @media only screen and (max-width: 1080px) {
   .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(1) {
     flex-wrap: wrap;
-    row-gap: 70px;
+    row-gap: 30px;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -1161,6 +1166,7 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) {
     margin-top: 250px;
+    display: none;
   }
 }
 @media only screen and (max-width: 700px) {
@@ -1171,6 +1177,7 @@ ul, ol {
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title {
   text-align: center;
   margin-inline: auto;
+  margin-bottom: 91px;
 }
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title h3 {
   text-align: center;
@@ -1181,6 +1188,11 @@ ul, ol {
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title h3:nth-child(1) span {
+    font-size: 40px;
+  }
 }
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title h3:nth-child(1) span:nth-child(1) {
   color: #B1FF29;
@@ -1200,16 +1212,25 @@ ul, ol {
   /* 48px */
   text-decoration-line: underline;
 }
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-the-natives-title h3:nth-child(2) {
+    font-size: 40px;
+  }
+}
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper {
   width: 100%;
   position: relative;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper {
+    height: 845px;
+  }
 }
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel {
   display: grid;
   grid-auto-columns: 31.25%;
   grid-template-rows: 367px;
   column-gap: 44px;
-  padding-top: 90px;
   overflow-x: hidden;
   grid-auto-flow: column;
   scroll-snap-type: x mandatory;
@@ -1227,6 +1248,21 @@ ul, ol {
   .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel {
     max-width: 500px;
     grid-auto-columns: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel {
+    width: max-content;
+    margin-inline: auto;
+    grid-auto-flow: row;
+    grid-auto-columns: unset;
+    grid-template-columns: 315px;
+    grid-template-rows: 255px;
+    row-gap: 40px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: unset;
+    scroll-snap-type: y mandatory;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -1254,6 +1290,13 @@ ul, ol {
   background: rgba(0, 0, 0, 0.2);
   transition: transform 0.1s linear;
 }
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card {
+    border-radius: 19.922px;
+    border: 0.77px solid rgba(62, 62, 62, 0.4);
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card:nth-child(3n) .card-wrapper .db-natives-image-container {
   left: 0;
 }
@@ -1266,6 +1309,13 @@ ul, ol {
   align-items: flex-end;
   position: relative;
   height: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper {
+    padding-top: 51px;
+    padding-right: 19px;
+    padding-bottom: 51px;
+  }
 }
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper::before {
   content: "";
@@ -1284,16 +1334,49 @@ ul, ol {
   border-bottom-left-radius: 28px;
   overflow: hidden;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper::before {
+    width: 95px;
+    background-image: url("About-Us__asset-mb-native-bg-v01.png");
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper::before {
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+  }
+}
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container {
   position: absolute;
   left: -20px;
   bottom: -15px;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container {
+    bottom: -10px;
+    left: -15px;
+  }
+}
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container img {
-  display: block;
   width: 100%;
   object-fit: cover;
   height: 100%;
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container img:nth-child(1) {
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container img:nth-child(1) {
+    display: none;
+  }
+}
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container img:nth-child(2) {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container img:nth-child(2) {
+    display: block;
+  }
 }
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-profile {
   display: flex;
@@ -1302,6 +1385,11 @@ ul, ol {
   row-gap: 19px;
   position: relative;
   z-index: 2;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-profile {
+    max-width: 133px;
+  }
 }
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-profile .db-native-name {
   color: #FFF;
@@ -1312,6 +1400,12 @@ ul, ol {
   line-height: 115%; /* 38.215px */
   letter-spacing: -1.329px;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-profile .db-native-name {
+    font-size: 23.091px;
+    letter-spacing: -0.924px;
+  }
+}
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-profile .db-native-description {
   color: #CAC7D0;
   font-family: var(--secondaryFontFamily);
@@ -1321,20 +1415,49 @@ ul, ol {
   line-height: 130%; /* 17.28px */
   letter-spacing: -0.532px;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-profile .db-native-description {
+    font-size: 9.237px;
+    letter-spacing: -0.369px;
+  }
+}
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider {
   max-width: 1146px;
   margin-inline: auto;
   margin-top: 70px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider {
+    margin-top: 40px;
+  }
 }
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons {
   display: flex;
   justify-content: flex-end;
   column-gap: 70px;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons {
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons {
+    justify-content: flex-end;
+    column-gap: 60px;
+    padding-right: 20px;
+  }
+}
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-prev, .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-next {
   width: 20px;
   cursor: pointer;
   transition: all var(--hoverTransitionDuration) ease-in;
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-prev, .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-next {
+    height: 20px;
+    width: 12px;
+  }
 }
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-prev:hover > path, .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-next:hover > path {
   fill: #AA27B1;
@@ -1359,11 +1482,27 @@ ul, ol {
   padding-top: 141px;
   padding-bottom: 141px;
 }
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-resurrection {
+    padding-top: 77px;
+    padding-bottom: 97px;
+  }
+}
 .db-section--about-us-resurrection .db-container {
   max-width: 1240px;
 }
 .db-section--about-us-resurrection .db-container .db-row {
   column-gap: 127px;
+}
+@media only screen and (max-width: 1440px) {
+  .db-section--about-us-resurrection .db-container .db-row {
+    column-gap: 50px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-resurrection .db-container .db-row {
+    flex-direction: column;
+  }
 }
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .title-wrap {
   text-align: center;
@@ -1377,6 +1516,12 @@ ul, ol {
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container {
   margin-top: 30px;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container {
+    max-width: 800px;
+    margin-inline: auto;
+  }
+}
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image {
   max-width: 518px;
 }
@@ -1384,6 +1529,10 @@ ul, ol {
   display: block;
   object-fit: cover;
   width: 100%;
+}
+.db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(1) {
+  max-width: 362px;
+  height: 211px;
 }
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(2) {
   margin-top: 91px;
@@ -1395,13 +1544,46 @@ ul, ol {
   background: #1A1120;
   box-shadow: 4.07796px 4.07796px 8.15591px 0px rgba(181, 34, 235, 0.3), -4.07796px -4.07796px 8.15591px 0px rgba(181, 34, 235, 0.3), 2.03898px 2.03898px 4.07796px 0px rgba(216, 110, 255, 0.6), -2.03898px -2.03898px 4.07796px 0px rgba(216, 110, 255, 0.6);
 }
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(2) {
+    height: 167px;
+    max-width: 362px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(2) {
+    margin-top: 61px;
+  }
+}
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(2) img {
   position: absolute;
-  width: 478px;
+  max-width: 478px;
   height: 263px;
   left: 50%;
   transform: translateX(-50%);
   top: -35px;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(2) img {
+    max-width: 334px;
+    height: 177px;
+    top: -25px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(2) img {
+    object-fit: contain;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) {
+    margin-top: 100px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) {
+    margin-top: 98px;
+  }
 }
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) h3 {
   color: #FFF;
@@ -1411,6 +1593,22 @@ ul, ol {
   font-weight: 700;
   line-height: 115%; /* 92px */
   letter-spacing: -3.2px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) h3 {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) h3 {
+    font-size: 60px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) h3 {
+    text-align: left;
+    font-size: 50px;
+  }
 }
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-description {
   color: #FFF;
@@ -1422,11 +1620,34 @@ ul, ol {
   line-height: 150%;
   margin-top: 20px;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-description {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-description {
+    text-align: left;
+    max-width: 384px;
+  }
+}
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-content-block {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
   row-gap: 20px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-content-block {
+    max-width: 950px;
+    margin-inline: auto;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-content-block {
+    max-width: 384px;
+    margin-inline: unset;
+  }
 }
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-content-block p {
   color: #CAC7D0;
@@ -1442,9 +1663,21 @@ ul, ol {
   align-items: center;
   column-gap: 41px;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta {
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta {
+    margin-top: 50px;
+  }
+}
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta .db-btn {
   display: flex;
-  width: 165px;
+  max-width: 165px;
+  width: 100%;
+  min-width: 150px;
   padding: 16px 32px;
   justify-content: center;
   align-items: center;
@@ -1484,13 +1717,41 @@ ul, ol {
 .db-section--about-us-elevate {
   padding-top: 172px;
   padding-bottom: 217px;
+  background: #150E1F;
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate {
+    padding: 79px 33px 83px 33px;
+  }
 }
 .db-section--about-us-elevate .db-container .db-row {
   column-gap: 176px;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-elevate .db-container .db-row {
+    flex-direction: column;
+    row-gap: 100px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-elevate .db-container .db-row {
+    row-gap: 50px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row {
+    row-gap: 41px;
+  }
+}
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
   max-width: 388px;
   padding-top: 50px;
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
+    padding-top: unset;
+    padding-left: 20px;
+  }
 }
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h4 {
   color: #FFF;
@@ -1500,6 +1761,11 @@ ul, ol {
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h4 {
+    font-size: 40px;
+  }
 }
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h3 {
   color: #A120D2;
@@ -1511,12 +1777,41 @@ ul, ol {
   line-height: 100%; /* 56px */
   letter-spacing: -2.24px;
 }
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h3 {
+    font-size: 50px;
+  }
+}
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
   max-width: 840px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+    align-items: flex-start;
+    align-self: flex-start;
+  }
 }
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-image-container {
   max-width: 408px;
   width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-image-container {
+    max-width: 350px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-image-container {
+    max-width: 322px;
+  }
 }
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-image-container img {
   display: block;
@@ -1526,6 +1821,11 @@ ul, ol {
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description {
   margin-top: 40px;
 }
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description {
+    max-width: 373px;
+  }
+}
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description p {
   color: #CAC7D0;
   font-family: var(--primaryFontFamily);
@@ -1534,8 +1834,30 @@ ul, ol {
   font-weight: 500;
   line-height: 130%;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description p {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description p {
+    font-size: 24px;
+  }
+}
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us {
   margin-top: 90px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us {
+    margin-top: 65px;
+  }
 }
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .connect-with-us {
   color: #CAC7D0;
@@ -1545,6 +1867,12 @@ ul, ol {
   font-weight: 400;
   line-height: 150%;
 }
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .connect-with-us {
+    text-align: center;
+    font-size: 16px;
+  }
+}
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .db-elevate-website {
   margin-top: 32px;
   display: inline-flex;
@@ -1553,6 +1881,11 @@ ul, ol {
   border-radius: 5px;
   border: 1.5px solid #AA27B1;
   align-items: center;
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .db-elevate-website {
+    margin-top: 10px;
+  }
 }
 .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .db-elevate-website span {
   color: #A120D2;
@@ -1569,6 +1902,238 @@ ul, ol {
   font-style: normal;
   font-weight: 700;
   line-height: 14px;
+}
+
+.db-section--about-us-subscribe {
+  background: #150E1F;
+  padding-bottom: 216px;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-subscribe {
+    padding-bottom: 103px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-subscribe {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row {
+  position: relative;
+  background-image: url("About-Us__asset-subscribe-v02.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: flex-end;
+  border-radius: 30px;
+  border: 3.058px solid #D86FFF;
+  box-shadow: 4.07796px 4.07796px 8.15591px 0px rgba(181, 34, 235, 0.3), -4.07796px -4.07796px 8.15591px 0px rgba(181, 34, 235, 0.3), 2.03898px 2.03898px 4.07796px 0px rgba(216, 110, 255, 0.6), -2.03898px -2.03898px 4.07796px 0px rgba(216, 110, 255, 0.6);
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-subscribe .db-container .db-row {
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-subscribe .db-container .db-row {
+    flex-direction: column-reverse;
+    background-position: left 50%;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-subscribe .db-container .db-row {
+    background-image: url("About-Us__asset-mb-subscribe-v02.png");
+    background-position: left;
+    border-radius: 22.517px;
+    border: 2.296px solid #D86FFF;
+    box-shadow: 3.06071px 3.06071px 6.12143px 0px rgba(181, 34, 235, 0.3), -3.06071px -3.06071px 6.12143px 0px rgba(181, 34, 235, 0.3), 1.53036px 1.53036px 3.06071px 0px rgba(216, 110, 255, 0.6), -1.53036px -1.53036px 3.06071px 0px rgba(216, 110, 255, 0.6);
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(1) {
+  max-width: 817px;
+  position: absolute;
+  top: -100px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(1) {
+    position: static;
+    max-width: unset;
+    width: 100%;
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(1) img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(1) img:nth-child(1) {
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(1) img:nth-child(1) {
+    display: none;
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(1) img:nth-child(2) {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(1) img:nth-child(2) {
+    display: block;
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) {
+  width: max-content;
+  padding: 77px 109px 78px 26px;
+  position: relative;
+  z-index: 3;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) {
+    padding-left: unset;
+    padding-right: unset;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) {
+    width: 100%;
+    max-width: 611px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) {
+    padding: 36px 25px 40px 25px;
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: linear-gradient(-90deg, #08050C 0%, rgba(8, 5, 12, 0) 100%);
+  z-index: -1;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2)::before {
+    display: none;
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) .subscribe-title h4 {
+  color: #FFF;
+  font-family: var(--primaryFontFamily);
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 56px */
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) .subscribe-title h4 {
+    font-size: 45px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) .subscribe-title h4 {
+    font-size: 28px;
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) .subscribe-title .subscribe-benefit {
+  margin-top: 24px;
+  color: #FFF;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  font-family: var(--secondaryFontFamily);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 18px */
+  letter-spacing: -0.36px;
+  width: max-content;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) .subscribe-title .subscribe-benefit {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) .subscribe-title .subscribe-benefit {
+    font-size: 17px;
+    letter-spacing: -0.345px;
+    max-width: 283px;
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) form {
+  margin-top: 64px;
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) form svg {
+  width: 100%;
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) form .form-control {
+  display: flex;
+  justify-content: space-between;
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) form .form-control input[type=email] {
+  background: transparent;
+  flex: 1;
+  outline: none;
+  color: rgba(202, 199, 208, 0.6);
+  font-family: var(--secondaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 16px */
+  letter-spacing: -0.64px;
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) form .form-control input[type=email]::placeholder {
+  color: rgba(202, 199, 208, 0.6);
+  font-family: var(--secondaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 16px */
+  letter-spacing: -0.64px;
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) form .form-control input[type=email] {
+    letter-spacing: -0.537px;
+    font-size: 13px;
+  }
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) form .form-control input[type=email]::placeholder {
+    letter-spacing: -0.537px;
+    font-size: 13px;
+  }
+}
+.db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) form .form-control button {
+  color: #B1FF29;
+  font-family: var(--tertiaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 16px */
+  letter-spacing: -0.64px;
+  margin-right: 20px;
+}
+@media only screen and (max-width: 480px) {
+  .db-section--about-us-subscribe .db-container .db-row .db-col:nth-child(2) form .form-control button {
+    margin-right: unset;
+    letter-spacing: -0.581px;
+    font-size: 14px;
+  }
 }
 
 .db-header {
