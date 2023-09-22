@@ -28,7 +28,9 @@
               <div class="db-form-group">
                 <input class="db-form-input"
                   type="email"
-                  placeholder="">
+                  placeholder=""
+                  autocorrect="off"
+                  autocapitalize="off">
                 <button class="db-btn--form-submit db-btn"
                   type="button">
                   SUBSCRIBE
@@ -70,7 +72,7 @@
             </p>
           </div>
           <p class="db-copyright">
-            &copy; 2023 Deadbeat - All rights reserved
+            &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
           </p>
         </div>
         <div class="db-col">
@@ -104,7 +106,7 @@
         </div>
       </div>
       <p class="db-copyright">
-        &copy; 2023 Deadbeat - All rights reserved
+        &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
       </p>
     </div>
   </section>
