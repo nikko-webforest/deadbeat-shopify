@@ -154,11 +154,12 @@
     @media only screen and (max-width: 768px) {
       // top: -100%;
       // height: 100%;
-      overflow: auto;
+      overflow: hidden auto;
     }
   
     .db-container {
       position: relative;
+      min-width: 380px;
       height: 100%;
 
       @media only screen and (max-width: 768px) {
@@ -505,18 +506,30 @@
                 opacity: 1;
                 translate: 0 0;
                 transition-delay: 1.4s;
+
+                @media only screen and (max-width: 768px) {
+                  transition-delay: 2.8s;
+                }
               }
 
               .db-socials-list {
                 opacity: 1;
                 translate: 0 0;
                 transition-delay: 1.6s;
+
+                @media only screen and (max-width: 768px) {
+                  transition-delay: 3.0s;
+                }
               }
 
               .db-inner-row {
                 opacity: 1;
                 translate: 0 0;
                 transition-delay: 1.8s;
+
+                @media only screen and (max-width: 768px) {
+                  transition-delay: 3.2s;
+                }
               }
             }
           }

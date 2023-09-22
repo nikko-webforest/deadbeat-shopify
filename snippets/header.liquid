@@ -191,6 +191,12 @@
     methods: {
       toggleMenu() {
         this.header.showMenu = !this.header.showMenu;
+        if (this.header.showMenu) {
+          document.querySelector('body').style.overflowY = 'hidden';
+        }
+        else {
+          document.querySelector('body').style.overflowY = 'auto';
+        }
       },
     }
   };
