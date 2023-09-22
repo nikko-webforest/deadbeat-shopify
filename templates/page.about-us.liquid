@@ -142,9 +142,26 @@
           </div>
 
           <div class="wrapper" ref="wrapper" @mouseenter="clearCurTimeout">
-            <ul class="carousel" ref="carousel" @scroll="onInfiniteScroll" @mousedown="onDragStart($event)" @mousemove="onDragging($event)">
+            <ul class="carousel" ref="carousel" @scroll="onInfiniteScroll">
 
-              <li class="native-card">
+              <li class="native-card" :class="nativeProperty(character.property)" v-for="character in data.listOfCharacters">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                   <div class="db-natives-image">
+                    <img :src="character.imageDS" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                  </div>
+                  </div>
+                  <div class="db-natives-profile">
+                    <div class="db-native-name" v-text="character.name">       
+                    </div>
+
+                    <div class="db-native-description" v-text="character.description">
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              {% comment %} <li class="native-card firstNative">
                 <div class="card-wrapper">
                   <div class="db-natives-image-container">
                    <div class="db-natives-image">
@@ -154,8 +171,8 @@
                   </div>
 
                   <div class="db-natives-profile">
-                    <div class="db-native-name">
-                      EVILIA GRIMSHAW
+                    <div class="db-native-name" >
+                      EVILIA GRIMSHAW     
                     </div>
 
                     <div class="db-native-description">
@@ -164,8 +181,7 @@
                   </div>
                 </div>
               </li>
-
-              <li class="native-card">
+               <li class="native-card secondNative">
                 <div class="card-wrapper">
                   <div class="db-natives-image-container">
                   <div class="db-natives-image">
@@ -187,7 +203,7 @@
                 
               </li>
 
-              <li class="native-card">
+              <li class="native-card thirdNative">
                 <div class="card-wrapper">
                   <div class="db-natives-image-container">
                     <div class="db-natives-image">
@@ -206,11 +222,11 @@
                     </div>
                   </div>
                 </div> 
-              </li>
+              </li> {% endcomment %}
             </ul>
           </div>
 
-          <div class="db-buttons-slider">
+          <div class="db-buttons-slider" v-if="data.listOfCharacters.length === 3 ? false : true">
             <div class="buttons" ref="buttons">
 
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none" class="svg-icon-prev db-svg" id="left" @click="onChangeSlider('left')" >
@@ -248,34 +264,32 @@
             
         </div>
 
-        <div class="wrapper" ref="secondaryWrapper">
-          <ul class="carousel" ref="secondaryCarousel">
-            <li class="native-card">
+        <div class="slider">
+          <ul class="slider-container" ref="sliderContainer">
+            <li class="slide" v-for="(list, index) in loopCharacterList()" :class="selectActive(index)">
+              <div class="native-card" :class="nativeProperty(character.property)" v-for="character in list">
                 <div class="card-wrapper">
                   <div class="db-natives-image-container">
                    <div class="db-natives-image">
-                    <img src="{{ 'About-Us__asset-natives-v01.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                    <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                    <img :src="character.imageMB" alt="" draggable="true" @dragstart="onPreventDrag($event)">
                   </div>
                   </div>
 
                   <div class="db-natives-profile">
-                    <div class="db-native-name">
-                      EVILIA GRIMSHAW
+                    <div class="db-native-name" v-text="character.name">
+                      
                     </div>
 
-                    <div class="db-native-description">
-                      Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.
+                    <div class="db-native-description" v-text="character.description">
                     </div>
                   </div>
                 </div>
-            </li>
+              </div>
 
-            <li class="native-card">
+              {% comment %} <div class="native-card secondNative">
                 <div class="card-wrapper">
                   <div class="db-natives-image-container">
                   <div class="db-natives-image">
-                    <img src="{{ 'About-Us__asset-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
                     <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
                   </div>
                   </div>
@@ -291,13 +305,12 @@
                   </div>
                 </div>
                 
-            </li>
+              </div>
 
-            <li class="native-card">
+              <div class="native-card thirdNative">
                 <div class="card-wrapper">
                   <div class="db-natives-image-container">
                     <div class="db-natives-image">
-                      <img src="{{ 'About-Us__asset-natives-v03.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
                       <img src="{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
                     </div>
                   </div>
@@ -312,11 +325,202 @@
                     </div>
                   </div>
                 </div> 
+              </div> {% endcomment %}
             </li>
+
+            {% comment %} <li class="slide active" >
+              <div class="native-card firstNative">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                   <div class="db-natives-image">
+                    <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                  </div>
+                  </div>
+
+                  <div class="db-natives-profile">
+                    <div class="db-native-name">
+                      EVILIA GRIMSHAW
+                    </div>
+
+                    <div class="db-native-description">
+                      Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="native-card secondNative">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                  <div class="db-natives-image">
+                    <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                  </div>
+                  </div>
+
+                  <div class="db-natives-profile">
+                    <div class="db-native-name">
+                      CHAZ NITELY
+                    </div>
+
+                    <div class="db-native-description">
+                      Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="native-card thirdNative">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                    <div class="db-natives-image">
+                      <img src="{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                    </div>
+                  </div>
+
+                  <div class="db-natives-profile">
+                    <div class="db-native-name">
+                      HARMONY BRIGGS
+                    </div>
+
+                    <div class="db-native-description">
+                      The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </li>
+
+            <li class="slide next">
+              <div class="native-card firstNative">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                   <div class="db-natives-image">
+                    <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                  </div>
+                  </div>
+
+                  <div class="db-natives-profile">
+                    <div class="db-native-name">
+                      EVILIA GRIMSHAW
+                    </div>
+
+                    <div class="db-native-description">
+                      Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="native-card secondNative">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                  <div class="db-natives-image">
+                    <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                  </div>
+                  </div>
+
+                  <div class="db-natives-profile">
+                    <div class="db-native-name">
+                      CHAZ NITELY
+                    </div>
+
+                    <div class="db-native-description">
+                      Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="native-card thirdNative">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                    <div class="db-natives-image">
+                      <img src="{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                    </div>
+                  </div>
+
+                  <div class="db-natives-profile">
+                    <div class="db-native-name">
+                      HARMONY BRIGGS
+                    </div>
+
+                    <div class="db-native-description">
+                      The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </li>
+
+            <li class="slide last">
+              <div class="native-card firstNative">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                   <div class="db-natives-image">
+                    <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                  </div>
+                  </div>
+
+                  <div class="db-natives-profile">
+                    <div class="db-native-name">
+                      EVILIA GRIMSHAW
+                    </div>
+
+                    <div class="db-native-description">
+                      Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="native-card secondNative">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                  <div class="db-natives-image">
+                    <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                  </div>
+                  </div>
+
+                  <div class="db-natives-profile">
+                    <div class="db-native-name">
+                      CHAZ NITELY
+                    </div>
+
+                    <div class="db-native-description">
+                      Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="native-card thirdNative">
+                <div class="card-wrapper">
+                  <div class="db-natives-image-container">
+                    <div class="db-natives-image">
+                      <img src="{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
+                    </div>
+                  </div>
+
+                  <div class="db-natives-profile">
+                    <div class="db-native-name">
+                      HARMONY BRIGGS
+                    </div>
+
+                    <div class="db-native-description">
+                      The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </li>  {% endcomment %}
+
           </ul>
         </div>
 
-        <div class="db-buttons-slider">
+        <div class="db-buttons-slider" v-if="data.listOfCharacters.length === 3 ? false : true">
             <div class="buttons" ref="buttons">
 
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none" class="svg-icon-prev db-svg" id="left" @click="onChangeMbSlider('left')" >
@@ -334,7 +538,7 @@
 
   <section class="db-section db-section--spacer"></section>
 
-  {% comment %} <section class="db-section db-section--about-us-resurrection">
+  <section class="db-section db-section--about-us-resurrection">
     <div class="db-container">
       <div class="db-row">
 
@@ -479,29 +683,108 @@
         </div>
       </div>
     </div>
-  </section> {% endcomment %}
+  </section>
 
 </main>
 
 <script>
+
+  const activateSlider = (container, type) => {
+    const active = container.querySelector('.active');
+		const last = container.querySelector('.last');
+    const children = [...container.children];
+		let next = active.nextElementSibling;
+			
+		if (!next) {
+			next = container.firstElementChild;
+		}
+
+		active.classList.remove(['active']);
+		last.classList.remove(['last']);
+		next.classList.remove(['next']);
+
+		if (type === 'prev') {
+			active.classList.add('next');
+			last.classList.add('active');
+			next = last.previousElementSibling;
+
+			if (!next) {
+				next = container.lastElementChild;
+			}
+
+			next.classList.remove(['next']);
+			next.classList.add('last');
+			return;
+		}
+
+    if (children.length === 2) {
+
+      console.log("In");
+      active.classList.add('last');
+      next.classList.add('active');
+      return
+    }
+
+    active.classList.add('last');
+    next.classList.add('active');
+    last.classList.add('next');
+  }
+
   const DB_SF_Page_About_Us_Options = {
     name: 'DB SF Page About Us Options',
     data() {
       return {
         inActiveButton: 'right',
+        data:{
+          listOfCharacters:[
+            {
+              name: 'EVILIA GRIMSHAW',
+              description: 'Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.',
+              imageDS: "{{ 'About-Us__asset-natives-v01.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}",
+              property: 'firstNative'
+            },
+            {
+              name: 'CHAZ NITELY',
+              description: 'Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.',
+              imageDS: "{{ 'About-Us__asset-natives-v02.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}",
+              property: 'secondNative'
+            },
+            {
+              name: 'HARMONY BRIGGS',
+              description: 'The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.',
+              imageDS: "{{ 'About-Us__asset-natives-v03.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}",
+              property: 'thirdNative'
+            },
+            {
+              name: 'HARMONY BRIGGS',
+              description: 'The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.',
+              imageDS: "{{ 'About-Us__asset-natives-v03.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}",
+              property: 'thirdNative'
+            },
+          ]
+        },
         settingSlider: {
           firstCardWidth:null,
           isDragging: false,
           isAutoPlay: true,
           startX:null,
           startScrollLeft:null,
-          sliderX1440:false,
-          sliderX1080:false,
-          sliderX768:false,
         },
         timeoutId:null,
         isMobile: false,
+        sliderX1440: false,
+        sliderX1080: false,
+        sliderX768: false,
+        sliderXMobile: false,
+        isChanged: false,
       }
+    },
+    computed: {
+      
     },
     created() {
 
@@ -510,63 +793,52 @@
       } else{
         this.isMobile = false
       }
+
+      this.onLoadAnimation();
     },
     mounted() {
-      console.log('HELLO WORLD MARCO YOU ARE IN VUE');
+      
       const wrapper = this.$refs.wrapper;
-      const carousel = this.$refs.carousel;
-      const secondaryWrapper = this.$refs.secondaryWrapper;
-      const secondaryCarousel = this.$refs.secondaryCarousel;
-      let carouselChildren;
-      let secondaryCarouselChildren;
-      let cardPerView;
 
-      const arrowBtns = this.$refs.buttons.querySelectorAll("svg");
-      
-      if (window.innerWidth <= 768) {
-        secondaryCarouselChildren = [...secondaryCarousel.children];
-      } else {
+      if (window.innerWidth > 768) {
+        const carousel = this.$refs.carousel;
+        
+        let carouselChildren;
+        let cardPerView;
+
+        console.log(window.innerWidth);
         carouselChildrens = [...carousel.children];
+        // Width
+        this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
+        // Width
+        cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
+        
+
+        carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+          carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+        });
+
+        carouselChildrens.slice(0, cardPerView).forEach(card => {
+          carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+        });
+
+        // Width
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.offsetWidth + 44;
+        carousel.classList.remove("no-transition");
+        
       }
       
-
-      console.log(window.innerWidth);
-
-      const debounce = (func, delay) => {
-        let timeoutId;
-        return function (...args) {
-          clearTimeout(timeoutId);
-
-          timeoutId = setTimeout(() => {
-            func.apply(this, args);
-          }, delay);
-        };
-      }
 
       // change pani
       const handleWindowResize = () => {
       
         console.log(`I am in`)
-        if (window.innerWidth > 1441) {
+
+        if (window.innerWidth >= 1440) {
           const carousel = this.$refs.carousel;
-          const children = carousel.children;
-          const totalChildren = children.length;
-          let cardView = null;
-          console.log(`I am in the greater window`);
-          
-          
-          this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
-
-          carousel.classList.add("no-transition");
-          carousel.scrollLeft = carousel.offsetWidth + 44;
-          carousel.classList.remove("no-transition");
-
-        }
-
-        if (window.innerWidth >= 1439) {
-          const carousel = this.$refs.carousel;
-          const children = carousel.children;
-          const totalChildren = children.length;
+          console.log(carousel);
+          const carouselChildrens = [...carousel.children];
           let cardView = null;
           console.log(`I am in the 1440px window`);
           
@@ -577,7 +849,14 @@
           cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
           
           if (!this.sliderX1440) {
-            
+            this.sliderX1440 = true;
+            carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+              carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+            });
+
+            carouselChildrens.slice(0, cardPerView).forEach(card => {
+                carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+            });
           }
 
           carousel.classList.add("no-transition");
@@ -585,144 +864,196 @@
           carousel.classList.remove("no-transition");
 
           
-        }
+        } 
 
-        if (window.innerWidth >= 1079) {
+        if (window.innerWidth >= 1080) {
           console.log(`I am in the 1080px window`);
-          this.isMobile = false;
           const carousel = this.$refs.carousel;
-          const children = carousel.children;
-          const totalChildren = children.length;
+          const carouselChildrens = [...carousel.children];
+          let cardPerView = null;
 
           
           this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
 
-          carousel.classList.add("no-transition");
-          carousel.scrollLeft = carousel.offsetWidth + 44;
-          carousel.classList.remove("no-transition");
+          cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
+
+          if (!this.sliderX1080) {
+            this.sliderX1080 = true;
+
+            carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+              carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+            });
+
+            carouselChildrens.slice(0, cardPerView).forEach(card => {
+              carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+            });
+
+            carousel.classList.add("no-transition");
+            carousel.scrollLeft = carousel.offsetWidth + 44;
+            carousel.classList.remove("no-transition");
+          }
+          
+          
         }
 
-        
         if (window.innerWidth > 768) {
           console.log(`I am in the 768px window`);
           this.isMobile = false;
-          const carousel = this.$refs.carousel;
-          const children = carousel.children;
-          const totalChildren = children.length;
-
           
+          let carousel = this.$refs.carousel;
+          const carouselChildrens = [...carousel.children];
+          let cardPerView = null;
+
+            
           this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
+
+          cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
+
+          if (!this.sliderX768) {
+            this.sliderX768 = true;
+            this.sliderXMobile = false;
+
+            carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+              carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+            });
+
+            carouselChildrens.slice(0, cardPerView).forEach(card => {
+              carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+            });
+          }
 
           carousel.classList.add("no-transition");
           carousel.scrollLeft = carousel.offsetWidth + 44;
           carousel.classList.remove("no-transition");
-        }
-
-        if (window.innerWidth <= 768) {
-          console.log(`I am in the lower window`);
-          this.isMobile = true;
-          const carousel = this.$refs.secondaryCarousel;
-          const children = carousel.children;
-          const totalChildren = children.length;
           
 
-          this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetHeight + 40;
+        }
 
-          carousel.classList.add("no-transition");
-          carousel.scrollTop = carousel.offsetHeight + 40;
-          carousel.classList.remove("no-transition");
+        if (window.innerWidth <= 768 ) {
+          console.log(`I am in the lower window`);
+          this.isMobile = true;
+          //this.sliderXMobile = true;
+          this.sliderX1440 = false;
+          this.sliderX768 = false;
+          this.sliderX1080 = false;
+          this.isChanged = true;    
         }
         
         
       } 
+      const debounce = (func, delay) => {
+        let timeoutId;
+        return function (...args) {
+          clearTimeout(timeoutId);
 
-      if (window.innerWidth <= 768) {
-        // Height
-        
-        this.settingSlider.firstCardWidth = secondaryCarousel.querySelector(".native-card").offsetHeight + 40;
-        console.log(this.settingSlider.firstCardWidth);
-      } else {
-        // Width
-        
-        this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
+          timeoutId = setTimeout(() => {
+            func.apply(this, args);
+          }, delay);
+        };
       }
-
-      // mao ni sya ma change
-      // this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
-
-      if (window.innerWidth <= 768) {
-        // Height
-        cardPerView = Math.round(secondaryCarousel.offsetHeight / this.settingSlider.firstCardWidth);
-        console.log(cardPerView);
-      } else {
-        // Width
-        cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
-      }
-      
-      // mao ni sya ma change
-      // cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
-      
-      if (window.innerWidth <= 768) {
-
-        secondaryCarouselChildren.slice(-cardPerView).reverse().forEach(card => {
-          secondaryCarousel.insertAdjacentHTML("afterbegin", card.outerHTML);
-        });
-
-        secondaryCarouselChildren.slice(0, cardPerView).forEach(card => {
-            secondaryCarousel.insertAdjacentHTML("beforeend", card.outerHTML);
-        });
-
-      } else {
-
-        carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-          carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
-        });
-
-        carouselChildrens.slice(0, cardPerView).forEach(card => {
-            carousel.insertAdjacentHTML("beforeend", card.outerHTML);
-        });
-
-      }
-
-      
-      if (window.innerWidth <= 768) {
-        // Height
-          secondaryCarousel.classList.add("no-transition");
-          secondaryCarousel.scrollTop = secondaryCarousel.offsetHeight + 40;
-          secondaryCarousel.classList.remove("no-transition");
-        } else {
-          // Width
-          carousel.classList.add("no-transition");
-          carousel.scrollLeft = carousel.offsetWidth + 44;
-          carousel.classList.remove("no-transition");
-      }
-
-
-      const dragStop = () => {
-        if (window.innerWidth <= 768) {
-          return;
-        }
-
-        this.settingSlider.isDragging = false;
-        carousel.classList.remove("dragging");
-      }
-
-      const debouncedResizeHandler = debounce(handleWindowResize, 300);
-      document.addEventListener("mouseup", dragStop);
-      window.addEventListener('resize', handleWindowResize);
-      // this.autoPlay();
-    },
-    computed:{
+      const debouncedResizeHandler = debounce(handleWindowResize, 100);
+      window.addEventListener('resize', debouncedResizeHandler);
+      wrapper.addEventListener("mouseenter", () => clearTimeout(this.timeoutId));
+      wrapper.addEventListener("mouseleave", this.autoPlay);
+      this.autoPlay();
     },
     methods:{
+       onLoadAnimation() {
+        console.log('onLoadAnimation');
+        setTimeout(() => {
+          // document.querySelector('.db-site-loader').classList.remove('--show');
+          // document.querySelector('.db-section--banner').classList.add('--animate-now');
+          document.querySelector('.db-header').classList.add('--animate-now');
+        }, 3000);
+      },
+      loopCharacterList() {
+					let convertMembers = [...this.data.listOfCharacters];
+					let members = [];
+
+					for (person of convertMembers) {
+						let nonReactiveCopy1 = Object.assign({}, person);
+						let nonReactiveCopy2 = { ...nonReactiveCopy1 };
+						let nonReactiveCopy3 = JSON.parse(JSON.stringify(nonReactiveCopy2));
+						members.push(nonReactiveCopy3);
+					}
+
+					let position = {
+						next: true,
+						active: false,
+						last: false,
+					}
+
+          const result = [];
+          // Loop through the original array and create inner arrays
+          for (let i = 0; i < members.length; i += 3) {
+            const innerArray = members.slice(i, i + 3);
+            result.push(innerArray);
+          }
+          
+
+					return result;
+			},
+      selectActive(index) {
+        let slideIndex = 0;
+        console.log(index);
+        let position = {
+						next: true,
+						active: false,
+						last: false,
+				}
+
+        if (index === 0) {
+          console.log(`I am here`);
+          position = {
+            ...position,
+            next: false,
+						active: true
+          }
+
+          return position
+        }
+
+        if(index === this.loopCharacterList().length - 1) {
+
+          position = {
+            ...position,
+            next: false,
+						last: true
+          }
+
+          return position
+        }
+				
+        console.log(`I am out`)
+        return position;
+      },
+      nativeProperty(property) {
+        console.log(property);
+
+        if (property === 'firstNative') {
+          return {
+            'firstNative': true
+          }
+        }
+
+        if (property === 'secondNative') {
+          return {
+            'secondNative': true
+          }
+        }
+
+        if (property === 'thirdNative') {
+          return {
+            'thirdNative': true
+          }
+        }
+      },
       onChangeSlider(arrow) {
         const carousel = this.$refs.carousel;
         if (arrow === 'right') {
           this.inActiveButton = 'right';
             // Width
           carousel.scrollLeft = carousel.scrollLeft + this.settingSlider.firstCardWidth;
-
-          // carousel.scrollLeft = carousel.scrollLeft + this.settingSlider.firstCardWidth;
 
         }
 
@@ -731,86 +1062,48 @@
             // Width
           carousel.scrollLeft = carousel.scrollLeft - this.settingSlider.firstCardWidth;
         }
-          
-          // carousel.scrollLeft = carousel.scrollLeft - this.settingSlider.firstCardWidth;
         
       },
-      onChangeMbSlider(arrow) {
-        const secondaryCarousel = this.$refs.secondaryCarousel;
-        if (arrow === 'right') {
-          this.inActiveButton = 'right';      
-            // Height
-          secondaryCarousel.scrollTop = secondaryCarousel.scrollTop + this.settingSlider.firstCardWidth;
-          
+      onChangeMbSlider(type) {
+        const sliderContainer = this.$refs.sliderContainer;
 
-          // carousel.scrollLeft = carousel.scrollLeft + this.settingSlider.firstCardWidth;
-
-        } 
-        
-        if (arrow === 'left') {
+        if (type === 'left') {
           this.inActiveButton = 'left';
-            // Height
-          secondaryCarousel.scrollTop = secondaryCarousel.scrollTop - this.settingSlider.firstCardWidth;
-          
-          // carousel.scrollLeft = carousel.scrollLeft - this.settingSlider.firstCardWidth;
+          activateSlider(sliderContainer, 'prev');
+        }
+
+        if (type === 'right') {
+          this.inActiveButton = 'right';
+          activateSlider(sliderContainer, 'next');
         }
       },
       onInfiniteScroll() {
         const carousel = this.$refs.carousel;
-        const secondaryCarousel = this.$refs.secondaryCarousel;
-        // If the carousel is at the beginning, scroll to the end
-
-        if (window.innerWidth <= 768) {
-          // Height
-          if(secondaryCarousel.scrollTop === 0) {
-            secondaryCarousel.classList.add("no-transition");
-            secondaryCarousel.scrollTop = secondaryCarousel.scrollHeight - (2 * secondaryCarousel.offsetHeight + 44);
-            secondaryCarousel.classList.remove("no-transition");
-          }
-            // If the carousel is at the end, scroll to the beginning
-          else if(Math.ceil(secondaryCarousel.scrollTop) === secondaryCarousel.scrollHeight - secondaryCarousel.offsetHeight) {
-            secondaryCarousel.classList.add("no-transition");
-            secondaryCarousel.scrollTop = secondaryCarousel.offsetHeight + 44;
-            secondaryCarousel.classList.remove("no-transition");
-          }
-
-        } else {
-
-          // Width
-          if(carousel.scrollLeft === 0) {
+        
+        // Width
+        
+        if(carousel.scrollLeft === 0) {
             carousel.classList.add("no-transition");
-            carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth) + 40;
+            console.log(carousel.offsetWidth);
+            console.log(carousel.offsetWidth * 2);
+            console.log(carousel.scrollWidth);
+
+            carousel.scrollLeft = 0;
+
+            console.log(carousel.scrollLeft);
             carousel.classList.remove("no-transition");
-          }
-            // If the carousel is at the end, scroll to the beginning
-          else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
-            
-            carousel.classList.add("no-transition");
-            carousel.scrollLeft = carousel.offsetWidth + 40;
-            carousel.classList.remove("no-transition");
-          }
+            console.log(`Ending`);
         }
+            // If the carousel is at the end, scroll to the beginning
+        else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+            
+          carousel.classList.add("no-transition");
+          carousel.scrollLeft = carousel.offsetWidth + 44;
+          carousel.classList.remove("no-transition");
+        }
+        
 
         // Clear existing timeout & start autoplay if mouse is not hovering over carousel
-      },
-      onDragStart(event) {
-        const carousel = this.$refs.carousel;
-
-        this.settingSlider.isDragging = true;
-        carousel.classList.add("dragging");
-          // Records the initial cursor and scroll position of the carousel
-        console.log(event.pageX)
-        this.settingSlider.startX = event.pageX;
-        this.settingSlider.startScrollLeft = carousel.scrollLeft;
-      },
-      onDragging(event) {
-        const carousel = this.$refs.carousel;
-        // if isDragging is false return from here
-        if (!this.settingSlider.isDragging) {
-          return;
-        }
-        // Updates the scroll position of the carousel based on the cursor movement
-        carousel.scrollLeft = this.settingSlider.startScrollLeft - (event.pageX - this.settingSlider.startX);
       },
       clearCurTimeout() {
         clearTimeout(this.timeoutId);
