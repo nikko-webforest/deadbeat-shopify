@@ -1139,24 +1139,21 @@ ul, ol {
   }
 }
 .db-page--about-us .db-section--about-us-after-life {
-  background-image: url("About-Us__asset-bg-v02.png");
+  background-image: url("About-Us__asset-ds-bg-v02.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  height: 1900px;
   padding-bottom: 0px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us-after-life {
-    background-image: url("About-Us__asset-mb-bg-v02.jpg");
-    height: 1335px;
     background-size: cover;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-after-life {
-    height: 1563px;
+    height: 1200px;
     padding-bottom: unset;
   }
 }
@@ -1308,12 +1305,11 @@ ul, ol {
   }
 }
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) {
-  margin-top: 658px;
+  margin-top: 800px;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) {
-    background-color: #0F051B;
-    margin-top: 420px;
+    margin-top: 700px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -1618,6 +1614,10 @@ ul, ol {
 }
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-prev:hover > path, .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-next:hover > path {
   fill: #AA27B1;
+}
+.db-page--about-us .db-section--spacer {
+  background-color: #0F051B;
+  height: 200px;
 }
 .db-page--about-us .db-section--about-us-mb-slider {
   background: #0F051B;

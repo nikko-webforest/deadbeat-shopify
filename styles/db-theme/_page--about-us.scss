@@ -463,23 +463,23 @@
   }
 
   .db-section--about-us-after-life {
-    background-image: url('About-Us__asset-bg-v02.png');
+    background-image: url('About-Us__asset-ds-bg-v02.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 1900px;
+    // height: 1900px;
     padding-bottom: 0px;
     // height: 1816px;
 
     @media only screen and (max-width: 768px) {
-      background-image: url('About-Us__asset-mb-bg-v02.jpg');
-      height: 1335px;
+      // background-image: url('About-Us__asset-mb-bg-v02.jpg');
+      // height: 1335px;
       background-size: cover;
     }
 
     @media only screen and (max-width: 480px) {
-      height: 1563px;
+      height: 1200px;
       padding-bottom: unset;
     }
 
@@ -634,11 +634,11 @@
           }
 
           &:nth-child(2) {
-            margin-top: 658px;
-
+            // margin-top: 658px;
+            margin-top: 800px;
             @media only screen and (max-width: 1080px) {
-              background-color: #0F051B;
-              margin-top: 420px;
+              // background-color: #0F051B;
+              margin-top: 700px;
             }
 
             @media only screen and (max-width: 768px) {
@@ -974,6 +974,10 @@
     }
   }
 
+  .db-section--spacer {
+    background-color: #0F051B;
+    height: 200px;
+  }
   .db-section--about-us-mb-slider {
     background: #0F051B;
     padding-top: 130px;
