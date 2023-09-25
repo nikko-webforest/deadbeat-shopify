@@ -53,7 +53,7 @@ body {
   font-style: normal;
   font-size: 14px;
   line-height: 1em;
-  background-color: #0E0914;
+  background-color: #150E1F;
   min-width: 380px;
   width: 100%;
   overflow-x: hidden;
@@ -260,7 +260,6 @@ ul, ol {
 /*   FOOTER   */
 /*============*/
 .db-footer {
-  background-color: #0B070F;
   padding: 45px 0 0;
 }
 .db-footer .db-section--newsletter {
@@ -473,6 +472,50 @@ ul, ol {
 .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter #mce-responses #mce-success-response {
   color: var(--secondaryColor);
 }
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-contact-list .db-contact-item {
+  max-width: 260px;
+  min-width: 260px;
+  width: 100%;
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-contact-list .db-contact-item .db-contact-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #AA27B1;
+  border-radius: 5px;
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-contact-list .db-contact-item .db-contact-link .db-contact-label {
+  color: #A120D2;
+  font-family: var(--primaryFontFamily);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.1em;
+  display: block;
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-contact-list .db-contact-item .db-contact-link .db-contact-value {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.1em;
+  display: block;
+  transition: color var(--hoverTransitionDuration) ease-in-out 0ms;
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-contact-list .db-contact-item .db-contact-link:hover .db-contact-value {
+  color: var(--secondaryColor);
+}
 .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(2) {
   position: relative;
   z-index: 1;
@@ -494,6 +537,7 @@ ul, ol {
   }
 }
 .db-footer .db-section--primary {
+  background-color: #09050F;
   padding: 30px 20px 63px;
 }
 @media only screen and (max-width: 768px) {
@@ -1145,7 +1189,7 @@ ul, ol {
   background-size: cover;
   position: relative;
   height: 1900px;
-  padding-bottom: 0px;
+  padding: 0 20px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us-after-life {
@@ -3056,6 +3100,7 @@ ul, ol {
   width: 100%;
   height: 100vh;
   padding: 0 20px;
+  overflow: hidden;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--home .db-section--banner {
