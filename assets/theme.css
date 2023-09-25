@@ -679,7 +679,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-section--about-us-banner {
-    padding-top: 100px;
+    padding-top: 160px;
   }
 }
 .db-section--about-us-banner .db-container .title-wrap {
@@ -776,6 +776,7 @@ ul, ol {
   .db-section--about-us-banner .db-container .db-row:nth-child(2) {
     border-radius: 15px;
     border: 8px solid #242031;
+    margin-top: 74px;
   }
 }
 .db-section--about-us-banner .db-container .db-row:nth-child(2) .db-col-spacer {
@@ -1430,6 +1431,7 @@ ul, ol {
   border: 1.108px solid rgba(62, 62, 62, 0.4);
   background: rgba(0, 0, 0, 0.2);
   transition: transform 0.1s linear;
+  scroll-snap-align: start;
 }
 @media only screen and (max-width: 480px) {
   .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card {
@@ -1556,6 +1558,17 @@ ul, ol {
     letter-spacing: -0.369px;
   }
 }
+.db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .no-character-found {
+  color: #FFF;
+  text-align: center;
+  font-family: var(--primaryFontFamily);
+  font-size: 70px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -3.2px;
+  margin-top: 100px;
+}
 .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider {
   max-width: 1146px;
   margin-inline: auto;
@@ -1679,7 +1692,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-section--about-us-mb-slider .db-container .db-row .slider {
-    margin-top: 100px;
+    margin-top: 62px;
   }
 }
 .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container {
@@ -1724,7 +1737,7 @@ ul, ol {
   }
 }
 .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card.firstNative .card-wrapper .db-natives-image-container {
-  left: -20px;
+  left: -10px;
   bottom: -11px;
 }
 .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card.secondNative .card-wrapper .db-natives-image-container {
@@ -1732,7 +1745,7 @@ ul, ol {
   bottom: -11px;
 }
 .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card.thirdNative .card-wrapper .db-natives-image-container {
-  left: 0;
+  left: 10px;
   bottom: -11px;
 }
 .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card .card-wrapper {
@@ -1887,17 +1900,6 @@ ul, ol {
   fill: #AA27B1;
 }
 
-.db-section--spacer {
-  background-color: #0F051B;
-  height: 200px;
-  width: 100%;
-}
-@media only screen and (max-width: 1080px) {
-  .db-section--spacer {
-    height: 50px;
-  }
-}
-
 .db-section--about-us-resurrection {
   background-image: url("About-Us__asset-resurrection-bg-v01.png");
   background-position: 0px 0px;
@@ -1955,8 +1957,13 @@ ul, ol {
   width: 100%;
 }
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(1) {
-  max-width: 362px;
-  height: 211px;
+  max-width: 518px;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(1) {
+    max-width: 362px;
+  }
 }
 .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(2) {
   margin-top: 91px;
@@ -1972,6 +1979,7 @@ ul, ol {
   .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .db-cards-image-container .db-cards-image:nth-child(2) {
     height: 167px;
     max-width: 362px;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 480px) {

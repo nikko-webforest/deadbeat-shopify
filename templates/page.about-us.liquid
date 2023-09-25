@@ -67,8 +67,8 @@
                 </div>
 
                 <div class="featured-item-image">
-                  <img src="{{ 'About-Us__asset-banner-v02.png' | asset_url }}" alt="">
-                  <img src="{{ 'About-Us__asset-featured-mb.png' | asset_url }}" alt="">
+                  <img src="{{ 'About-Us__asset-featured-ds-v02.png' | asset_url }}" alt="">
+                  <img src="{{ 'About-Us__asset-featured-mb-v02.png' | asset_url }}" alt="">
                 </div>
               </div>
 
@@ -84,8 +84,8 @@
                 </div>
 
                 <div class="featured-item-image">
-                  <img src="{{ 'About-Us__asset-banner-v02.png' | asset_url }}" alt="">
-                  <img src="{{ 'About-Us__asset-featured-mb.png' | asset_url }}" alt="">
+                  <img src="{{ 'About-Us__asset-featured-ds-v02.png' | asset_url }}" alt="">
+                  <img src="{{ 'About-Us__asset-featured-mb-v02.png' | asset_url }}" alt="">
                 </div>
               </div>
 
@@ -142,7 +142,7 @@
           </div>
 
           <div class="wrapper" ref="wrapper" @mouseenter="clearCurTimeout">
-            <ul class="carousel" ref="carousel" @scroll="onInfiniteScroll">
+            <ul class="carousel" ref="carousel" @scroll="onInfiniteScroll" v-if="data.listOfCharacters.length === 0 ? false : true">
 
               <li class="native-card" :class="nativeProperty(character.property)" v-for="character in data.listOfCharacters">
                 <div class="card-wrapper">
@@ -224,9 +224,12 @@
                 </div> 
               </li> {% endcomment %}
             </ul>
+            <div class="no-character-found" v-else>
+              No Character Found Yet.
+            </div>
           </div>
 
-          <div class="db-buttons-slider" v-if="data.listOfCharacters.length === 3 ? false : true">
+          <div class="db-buttons-slider" v-if="appearButton">
             <div class="buttons" ref="buttons">
 
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none" class="svg-icon-prev db-svg" id="left" @click="onChangeSlider('left')" >
@@ -536,8 +539,6 @@
     </div>
   </section>
 
-  <section class="db-section db-section--spacer"></section>
-
   <section class="db-section db-section--about-us-resurrection">
     <div class="db-container">
       <div class="db-row">
@@ -737,11 +738,12 @@
         inActiveButton: 'right',
         data:{
           listOfCharacters:[
+            
             {
               name: 'EVILIA GRIMSHAW',
               description: 'Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.',
               imageDS: "{{ 'About-Us__asset-natives-v01.png' | asset_url }}",
-              imageMB: "{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v01.png' | asset_url }}",
               property: 'firstNative'
             },
             {
@@ -758,13 +760,7 @@
               imageMB: "{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}",
               property: 'thirdNative'
             },
-            {
-              name: 'HARMONY BRIGGS',
-              description: 'The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.',
-              imageDS: "{{ 'About-Us__asset-natives-v03.png' | asset_url }}",
-              imageMB: "{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}",
-              property: 'thirdNative'
-            },
+            
           ]
         },
         settingSlider: {
@@ -779,12 +775,22 @@
         sliderX1440: false,
         sliderX1080: false,
         sliderX768: false,
-        sliderXMobile: false,
-        isChanged: false,
+        isRender: false,
+        windowSize: window.innerWidth,
       }
     },
     computed: {
-      
+      appearButton() {
+          if (this.windowSize >= 1440 && this.data.listOfCharacters.length <= 3) {
+            return false;
+          } else if (this.windowSize >= 1080 && this.data.listOfCharacters.length <= 2) {
+            return false;
+          } else if (this.windowSize >= 768 && this.data.listOfCharacters.length === 1) {
+            return false;
+          } else {
+            return true;
+          }
+      },
     },
     created() {
 
@@ -800,147 +806,94 @@
       
       const wrapper = this.$refs.wrapper;
 
-      if (window.innerWidth > 768) {
-        const carousel = this.$refs.carousel;
-        
-        let carouselChildren;
-        let cardPerView;
-
-        console.log(window.innerWidth);
-        carouselChildrens = [...carousel.children];
-        // Width
-        this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
-        // Width
-        cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
-        
-
-        carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-          carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
-        });
-
-        carouselChildrens.slice(0, cardPerView).forEach(card => {
-          carousel.insertAdjacentHTML("beforeend", card.outerHTML);
-        });
-
-        // Width
-        carousel.classList.add("no-transition");
-        carousel.scrollLeft = carousel.offsetWidth + 44;
-        carousel.classList.remove("no-transition");
-        
+      if (window.innerWidth > 768 && this.data.listOfCharacters.length > 0) {
+        this.infiniteCards();
       }
       
-
-      // change pani
+      // Window Resize
       const handleWindowResize = () => {
-      
-        console.log(`I am in`)
 
-        if (window.innerWidth >= 1440) {
-          const carousel = this.$refs.carousel;
-          console.log(carousel);
-          const carouselChildrens = [...carousel.children];
-          let cardView = null;
+        if (window.innerWidth >= 1440 && this.data.listOfCharacters.length > 0 && !this.sliderX1440) {
           console.log(`I am in the 1440px window`);
-          
-
-          
-          this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
-
-          cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
-          
-          if (!this.sliderX1440) {
-            this.sliderX1440 = true;
-            carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-              carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
-            });
-
-            carouselChildrens.slice(0, cardPerView).forEach(card => {
-                carousel.insertAdjacentHTML("beforeend", card.outerHTML);
-            });
-          }
-
-          carousel.classList.add("no-transition");
-          carousel.scrollLeft = carousel.offsetWidth + 44;
-          carousel.classList.remove("no-transition");
-
-          
-        } 
-
-        if (window.innerWidth >= 1080) {
-          console.log(`I am in the 1080px window`);
-          const carousel = this.$refs.carousel;
-          const carouselChildrens = [...carousel.children];
-          let cardPerView = null;
-
-          
-          this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
-
-          cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
-
-          if (!this.sliderX1080) {
-            this.sliderX1080 = true;
-
-            carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-              carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
-            });
-
-            carouselChildrens.slice(0, cardPerView).forEach(card => {
-              carousel.insertAdjacentHTML("beforeend", card.outerHTML);
-            });
-
-            carousel.classList.add("no-transition");
-            carousel.scrollLeft = carousel.offsetWidth + 44;
-            carousel.classList.remove("no-transition");
-          }
-          
-          
-        }
-
-        if (window.innerWidth > 768) {
-          console.log(`I am in the 768px window`);
+          this.windowSize = window.innerWidth;
           this.isMobile = false;
-          
-          let carousel = this.$refs.carousel;
-          const carouselChildrens = [...carousel.children];
-          let cardPerView = null;
+          this.sliderX1440 = true;
 
-            
-          this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth + 44;
-
-          cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
-
-          if (!this.sliderX768) {
-            this.sliderX768 = true;
-            this.sliderXMobile = false;
-
-            carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-              carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+          if (this.isRender) {
+            this.$nextTick(() => {
+              // This code will run after the component has re-rendered.
+              this.infiniteCards();
+              this.isRender = false;
             });
-
-            carouselChildrens.slice(0, cardPerView).forEach(card => {
-              carousel.insertAdjacentHTML("beforeend", card.outerHTML);
-            });
+          } else {
+            this.infiniteCards();
           }
 
-          carousel.classList.add("no-transition");
-          carousel.scrollLeft = carousel.offsetWidth + 44;
-          carousel.classList.remove("no-transition");
-          
+        } else if (window.innerWidth >= 1080 && this.data.listOfCharacters.length > 0 && !this.sliderX1080) {
+          console.log(`I am in the 1080px window`);
+          this.windowSize = window.innerWidth;
+          this.isMobile = false;
+          this.sliderX1080 = true;
 
+          if (this.isRender) {
+            this.$nextTick(() => {
+              // This code will run after the component has re-rendered.
+              this.infiniteCards();
+              this.isRender = false;
+            });
+          } else {
+            this.infiniteCards();
+          }
+
+        } else if (window.innerWidth > 768 && this.data.listOfCharacters.length > 0 && !this.sliderX768) {
+          console.log(`I am in the 768px window`);
+          this.windowSize = window.innerWidth;
+          this.isMobile = false;
+          this.sliderX768 = true;
+
+          if (this.isRender) {
+            this.$nextTick(() => {
+              // This code will run after the component has re-rendered.
+              this.infiniteCards();
+              this.isRender = false;
+            });
+          } else {
+            this.infiniteCards();
+          }
+
+          //this.isMobile = false;
+          //let carousel = this.$refs.carousel;
+          //const carouselChildrens = [...carousel.children];
+          //let cardPerView = null;
+
+              
+          //this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth;
+
+          //cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
+
+          /*
+          if (!this.sliderX768) {
+              console.log(`I am in 768 duplicate`);
+              this.sliderX768 = true;
+
+              this.infiniteCards();
+          }
+          */
+
+            //carousel.classList.add("no-transition");
+            //carousel.scrollLeft = carousel.offsetWidth;
+            //carousel.classList.remove("no-transition");
         }
 
-        if (window.innerWidth <= 768 ) {
-          console.log(`I am in the lower window`);
-          this.isMobile = true;
-          //this.sliderXMobile = true;
-          this.sliderX1440 = false;
-          this.sliderX768 = false;
-          this.sliderX1080 = false;
-          this.isChanged = true;    
+        if (window.innerWidth <= 768) {
+            console.log(`I am in the lower window`);
+            this.isMobile = true;
+            this.sliderX1440 = false;
+            this.sliderX768 = false;
+            this.sliderX1080 = false; 
+            this.isRender = true;   
         }
-        
-        
-      } 
+      }
       const debounce = (func, delay) => {
         let timeoutId;
         return function (...args) {
@@ -953,12 +906,30 @@
       }
       const debouncedResizeHandler = debounce(handleWindowResize, 100);
       window.addEventListener('resize', debouncedResizeHandler);
-      wrapper.addEventListener("mouseenter", () => clearTimeout(this.timeoutId));
-      wrapper.addEventListener("mouseleave", this.autoPlay);
-      this.autoPlay();
     },
     methods:{
-       onLoadAnimation() {
+      infiniteCards() {
+        const carousel = this.$refs.carousel;
+        const carouselChildrens = [...carousel.children];
+        let cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
+
+        this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth;
+
+
+        carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+          carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+        });
+
+        carouselChildrens.slice(0, cardPerView).forEach(card => {
+          carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+        });
+        
+        
+        carousel.classList.add("no-transition");
+        carousel.scrollLeft = carousel.offsetWidth;
+        carousel.classList.remove("no-transition");
+      },
+      onLoadAnimation() {
         console.log('onLoadAnimation');
         setTimeout(() => {
           document.querySelector('.db-site-loader').classList.remove('--show');
@@ -1003,7 +974,6 @@
 				}
 
         if (index === 0) {
-          console.log(`I am here`);
           position = {
             ...position,
             next: false,
@@ -1024,11 +994,9 @@
           return position
         }
 				
-        console.log(`I am out`)
         return position;
       },
       nativeProperty(property) {
-        console.log(property);
 
         if (property === 'firstNative') {
           return {
@@ -1084,21 +1052,13 @@
         
         if(carousel.scrollLeft === 0) {
             carousel.classList.add("no-transition");
-            console.log(carousel.offsetWidth);
-            console.log(carousel.offsetWidth * 2);
-            console.log(carousel.scrollWidth);
-
-            carousel.scrollLeft = 0;
-
-            console.log(carousel.scrollLeft);
+            carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
             carousel.classList.remove("no-transition");
             console.log(`Ending`);
-        }
-            // If the carousel is at the end, scroll to the beginning
-        else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
-            
+        } else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+          console.log('very ending');
           carousel.classList.add("no-transition");
-          carousel.scrollLeft = carousel.offsetWidth + 44;
+          carousel.scrollLeft = carousel.offsetWidth;
           carousel.classList.remove("no-transition");
         }
         
