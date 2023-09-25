@@ -256,6 +256,9 @@ ul, ol {
 /*==========*/
 /*   TEST   */
 /*==========*/
+/*============*/
+/*   FOOTER   */
+/*============*/
 .db-footer {
   background-color: #0B070F;
   padding: 45px 0 0;
@@ -363,35 +366,39 @@ ul, ol {
   }
 }
 .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter {
+  max-width: 500px;
   width: 100%;
+}
+@media only screen and (max-width: 1080px) {
+  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter {
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter {
+    min-width: unset;
+    margin: 0 auto 16px;
+  }
 }
 .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap {
   width: 100%;
 }
 .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group {
   position: relative;
-  max-width: 500px;
-  min-width: 500px;
   width: 100%;
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group:nth-of-type(1) {
+  display: none;
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group:nth-of-type(2) {
   height: 60px;
 }
-@media only screen and (max-width: 1080px) {
-  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group {
-    margin: 0 auto;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group {
-    min-width: unset;
-    margin: 0 auto 16px;
-  }
-}
 @media only screen and (max-width: 480px) {
-  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group {
+  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group:nth-of-type(2) {
     height: auto;
   }
 }
-.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group .db-form-input {
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group:nth-of-type(2) .db-form-input {
   color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 16px;
@@ -405,12 +412,12 @@ ul, ol {
   border-radius: 60px;
 }
 @media only screen and (max-width: 480px) {
-  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group .db-form-input {
+  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group:nth-of-type(2) .db-form-input {
     height: 37px;
     margin: 0 auto 8px;
   }
 }
-.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group .db-btn--form-submit {
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group:nth-of-type(2) .db-btn--form-submit {
   color: var(--secondaryColor);
   font-family: var(--tertiaryFontFamily);
   font-size: 16px;
@@ -432,7 +439,7 @@ ul, ol {
   border-radius: 50px;
 }
 @media only screen and (max-width: 480px) {
-  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group .db-btn--form-submit {
+  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group:nth-of-type(2) .db-btn--form-submit {
     color: var(--whiteColor);
     font-size: 14px;
     position: static;
@@ -442,14 +449,29 @@ ul, ol {
     padding: 12px;
   }
 }
-.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group .db-btn--form-submit:hover {
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group:nth-of-type(2) .db-btn--form-submit:hover {
   color: var(--whiteColor);
   background-color: var(--secondaryColor);
 }
 @media only screen and (max-width: 480px) {
-  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group .db-btn--form-submit:hover {
+  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter .db-form-wrap .db-form-group:nth-of-type(2) .db-btn--form-submit:hover {
     background-color: #75A10A;
   }
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter #mce-responses #mce-error-response,
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter #mce-responses #mce-success-response {
+  font-family: var(--primaryFontFamily);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.25em;
+  padding: 10px 0;
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter #mce-responses #mce-error-response {
+  color: #FF2020;
+}
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-form--newsletter #mce-responses #mce-success-response {
+  color: var(--secondaryColor);
 }
 .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(2) {
   position: relative;
@@ -1602,6 +1624,9 @@ ul, ol {
   line-height: 14px;
 }
 
+/*============*/
+/*   HEADER   */
+/*============*/
 .db-header {
   position: absolute;
   z-index: 9999;
