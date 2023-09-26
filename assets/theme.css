@@ -1153,7 +1153,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-after-life {
-    height: 1200px;
+    height: 1000px;
     padding-bottom: unset;
   }
 }
@@ -1305,11 +1305,11 @@ ul, ol {
   }
 }
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) {
-  margin-top: 800px;
+  margin-top: 1200px;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) {
-    margin-top: 700px;
+    margin-top: 800px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -1616,11 +1616,11 @@ ul, ol {
   fill: #AA27B1;
 }
 .db-page--about-us .db-section--spacer {
-  background-color: #0F051B;
+  background-color: #0E051A;
   height: 200px;
 }
 .db-page--about-us .db-section--about-us-mb-slider {
-  background: #0F051B;
+  background: #0E051A;
   padding-top: 130px;
   display: none;
 }

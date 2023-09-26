@@ -235,7 +235,7 @@
               No Character Found Yet.
             </div>
           </div>
-          <div class="db-buttons-slider">
+          <div class="db-buttons-slider" v-if="appearButton">
             <div class="buttons" ref="buttons">
               <svg class="svg-icon-prev db-svg"
                 id="left"
@@ -357,170 +357,6 @@
                 </div>
               {% endcomment %}
             </li>
-            {% comment %}
-              <li class="slide active">
-                <div class="native-card firstNative">
-                  <div class="card-wrapper">
-                    <div class="db-natives-image-container">
-                      <div class="db-natives-image">
-                        <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                      </div>
-                    </div>
-                    <div class="db-natives-profile">
-                      <div class="db-native-name">
-                        EVILIA GRIMSHAW
-                      </div>
-                      <div class="db-native-description">
-                        Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="native-card secondNative">
-                  <div class="card-wrapper">
-                    <div class="db-natives-image-container">
-                      <div class="db-natives-image">
-                        <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                      </div>
-                    </div>
-                    <div class="db-natives-profile">
-                      <div class="db-native-name">
-                        CHAZ NITELY
-                      </div>
-                      <div class="db-native-description">
-                        Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="native-card thirdNative">
-                  <div class="card-wrapper">
-                    <div class="db-natives-image-container">
-                      <div class="db-natives-image">
-                        <img src="{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                      </div>
-                    </div>
-                    <div class="db-natives-profile">
-                      <div class="db-native-name">
-                        HARMONY BRIGGS
-                      </div>
-                      <div class="db-native-description">
-                        The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.
-                      </div>
-                    </div>
-                  </div> 
-                </div>
-              </li>
-              <li class="slide next">
-                <div class="native-card firstNative">
-                  <div class="card-wrapper">
-                      <div class="db-natives-image-container">
-                      <div class="db-natives-image">
-                        <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                      </div>
-                    </div>
-                    <div class="db-natives-profile">
-                      <div class="db-native-name">
-                        EVILIA GRIMSHAW
-                      </div>
-                      <div class="db-native-description">
-                        Soul-sucking’ station programmer. Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="native-card secondNative">
-                  <div class="card-wrapper">
-                    <div class="db-natives-image-container">
-                      <div class="db-natives-image">
-                        <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                      </div>
-                    </div>
-                    <div class="db-natives-profile">
-                      <div class="db-native-name">
-                        CHAZ NITELY
-                      </div>
-                      <div class="db-native-description">
-                        Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.
-                      </div>
-                    </div>
-                  </div>
-                  
-                </div>
-                <div class="native-card thirdNative">
-                  <div class="card-wrapper">
-                    <div class="db-natives-image-container">
-                      <div class="db-natives-image">
-                        <img src="{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                      </div>
-                    </div>
-                    <div class="db-natives-profile">
-                      <div class="db-native-name">
-                        HARMONY BRIGGS
-                      </div>
-                      <div class="db-native-description">
-                        The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.
-                      </div>
-                    </div>
-                  </div> 
-                </div>
-              </li>
-              <li class="slide last">
-                <div class="native-card firstNative">
-                  <div class="card-wrapper">
-                    <div class="db-natives-image-container">
-                      <div class="db-natives-image">
-                        <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                      </div>
-                    </div>
-                    <div class="db-natives-profile">
-                      <div class="db-native-name">
-                        EVILIA GRIMSHAW
-                      </div>
-                      <div class="db-native-description">
-                        Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="native-card secondNative">
-                  <div class="card-wrapper">
-                    <div class="db-natives-image-container">
-                      <div class="db-natives-image">
-                        <img src="{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                      </div>
-                    </div>
-                    <div class="db-natives-profile">
-                      <div class="db-native-name">
-                        CHAZ NITELY
-                      </div>
-                      <div class="db-native-description">
-                        Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="native-card thirdNative">
-                  <div class="card-wrapper">
-                    <div class="db-natives-image-container">
-                      <div class="db-natives-image">
-                        <img src="{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}" alt="" draggable="true" @dragstart="onPreventDrag($event)">
-                      </div>
-                    </div>
-
-                    <div class="db-natives-profile">
-                      <div class="db-native-name">
-                        HARMONY BRIGGS
-                      </div>
-
-                      <div class="db-native-description">
-                        The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.
-                      </div>
-                    </div>
-                  </div> 
-                </div>
-              </li>
-            {% endcomment %}
           </ul>
         </div>
         <div class="db-buttons-slider" v-if="data.listOfCharacters.length === 3 ? false : true">
@@ -844,6 +680,9 @@
       }
       this.onLoadAnimation();
     },
+    updated() {
+      console.log("I am in Updated")
+    },
     mounted() {
       const wrapper = this.$refs.wrapper;
 
@@ -859,6 +698,7 @@
           this.isMobile = false;
           this.sliderX1440 = true;
 
+          
           if (this.isRender) {
             this.$nextTick(() => {
               // This code will run after the component has re-rendered.
@@ -868,6 +708,7 @@
           } else {
             this.infiniteCards();
           }
+          
 
         } else if (window.innerWidth >= 1080 && this.data.listOfCharacters.length > 0 && !this.sliderX1080) {
           console.log(`I am in the 1080px window`);
@@ -875,6 +716,7 @@
           this.isMobile = false;
           this.sliderX1080 = true;
 
+          
           if (this.isRender) {
             this.$nextTick(() => {
               // This code will run after the component has re-rendered.
@@ -884,12 +726,14 @@
           } else {
             this.infiniteCards();
           }
+          
         } else if (window.innerWidth > 768 && this.data.listOfCharacters.length > 0 && !this.sliderX768) {
           console.log(`I am in the 768px window`);
           this.windowSize = window.innerWidth;
           this.isMobile = false;
           this.sliderX768 = true;
 
+          
           if (this.isRender) {
             this.$nextTick(() => {
               // This code will run after the component has re-rendered.
@@ -899,6 +743,7 @@
           } else {
             this.infiniteCards();
           }
+          
 
           //this.isMobile = false;
           //let carousel = this.$refs.carousel;
@@ -955,7 +800,6 @@
           document.querySelector('.db-header').classList.add('--animate-now');
         }, 3000);
       },
-
       infiniteCards() {
         const carousel = this.$refs.carousel;
         const carouselChildrens = [...carousel.children];
@@ -1006,7 +850,6 @@
 			},
       selectActive(index) {
         let slideIndex = 0;
-        console.log(index);
         let position = {
           next: true,
           active: false,
