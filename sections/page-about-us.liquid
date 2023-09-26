@@ -145,8 +145,8 @@
               Main Characters
             </h3>
           </div>
-          <div class="wrapper" ref="wrapper" @mouseenter="clearCurTimeout">
-            <ul class="carousel" ref="carousel" @scroll="onInfiniteScroll" v-if="data.listOfCharacters.length === 0 ? false : true">
+          <div class="wrapper" ref="wrapper">
+            <ul class="carousel" ref="carousel" @scroll="onInfiniteScroll" v-if="data.listOfCharacters.length === 0 ? false : true" @mousedown="dragStart">
               <li class="native-card" :class="nativeProperty(character.property)" v-for="character in data.listOfCharacters">
                 <div class="card-wrapper">
                   <div class="db-natives-image-container">
@@ -236,7 +236,7 @@
           </div>
           <div class="db-buttons-slider" v-if="appearButton">
             <div class="buttons" ref="buttons">
-              <svg class="svg-icon-prev db-svg"
+              <svg v-if="isLeft" class="svg-icon-prev db-svg"
                 id="left"
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"
@@ -250,7 +250,7 @@
                   :style="{fillOpacity: inActiveButton !== 'left' ? 0.4 : ''}">
                 </path>
               </svg>
-              <svg class="svg-icon-next db-svg"
+              <svg v-if="isRight" class="svg-icon-next db-svg"
                 id="right"
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"
@@ -271,7 +271,7 @@
     </div>
   </section>
 
-  
+ 
   <section class="db-section db-section--about-us-mb-slider"
     v-if="isMobile">
     <div class="db-container">
@@ -653,22 +653,46 @@
               imageMB: "{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}",
               property: 'thirdNative'
             },
+            {
+              name: 'EVILIA GRIMSHAW',
+              description: 'Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.',
+              imageDS: "{{ 'About-Us__asset-natives-v01.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v01.png' | asset_url }}",
+              property: 'firstNative'
+            },
+            {
+              name: 'CHAZ NITELY',
+              description: 'Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.',
+              imageDS: "{{ 'About-Us__asset-natives-v02.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}",
+              property: 'secondNative'
+            },
+            {
+              name: 'HARMONY BRIGGS',
+              description: 'The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.',
+              imageDS: "{{ 'About-Us__asset-natives-v03.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}",
+              property: 'thirdNative'
+            },
           ]
         },
         settingSlider: {
           firstCardWidth:null,
+          isDragStart: false,
+          prevPageX: null,
+          prevScrollLeft: null,
           isDragging: false,
+          positionDiff:null,
           isAutoPlay: true,
           startX:null,
           startScrollLeft:null,
         },
         timeoutId:null,
         isMobile: false,
-        sliderX1440: false,
-        sliderX1080: false,
-        sliderX768: false,
-        isRender: false,
         windowSize: window.innerWidth,
+        // addition
+        isRight: true,
+        isLeft: false,
       }
     },
     created() {
@@ -681,100 +705,25 @@
     },
     mounted() {
       const wrapper = this.$refs.wrapper;
-      
-      if (window.innerWidth > 768 && this.data.listOfCharacters.length > 0) {
-        // this.infiniteCards();
-      }
 
       // Window Resize
+      
       const handleWindowResize = () => {
-        
-        if (window.innerWidth >= 1440 && this.data.listOfCharacters.length > 0 && !this.sliderX1440) {
-          console.log(`I am in the 1440px window`);
-          this.windowSize = window.innerWidth;
+
+        if (window.innerWidth > 768) {
+          console.log(`Window Size`);
           this.isMobile = false;
-          this.sliderX1440 = true;
-
-          
-          if (this.isRender) {
-            this.$nextTick(() => {
-              // This code will run after the component has re-rendered.
-              this.infiniteCards();
-              this.isRender = false;
-            });
-          } else {
-            this.infiniteCards();
-          }
-          
-
-        } else if (window.innerWidth >= 1080 && window.innerWidth < 1440 && this.data.listOfCharacters.length > 0 && !this.sliderX1080) {
-          console.log(`I am in the 1080px window`);
           this.windowSize = window.innerWidth;
-          this.isMobile = false;
-          this.sliderX1080 = true;
-
-          
-          if (this.isRender) {
-            this.$nextTick(() => {
-              // This code will run after the component has re-rendered.
-              this.infiniteCards();
-              this.isRender = false;
-            });
-          } else {
-            this.infiniteCards();
-          }
-          
-        } else if (window.innerWidth > 768 && window.innerWidth < 1080 && this.data.listOfCharacters.length > 0 && !this.sliderX768) {
-          console.log(`I am in the 768px window`);
-          this.windowSize = window.innerWidth;
-          this.isMobile = false;
-          this.sliderX768 = true;
-
-          
-          if (this.isRender) {
-            this.$nextTick(() => {
-              // This code will run after the component has re-rendered.
-              this.infiniteCards();
-              this.isRender = false;
-            });
-          } else {
-            this.infiniteCards();
-          }
-          
-
-          //this.isMobile = false;
-          //let carousel = this.$refs.carousel;
-          //const carouselChildrens = [...carousel.children];
-          //let cardPerView = null;
-
-              
-          //this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth;
-
-          //cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
-
-          /*
-          if (!this.sliderX768) {
-              console.log(`I am in 768 duplicate`);
-              this.sliderX768 = true;
-
-              this.infiniteCards();
-          }
-          */
-
-            //carousel.classList.add("no-transition");
-            //carousel.scrollLeft = carousel.offsetWidth;
-            //carousel.classList.remove("no-transition");
+          this.isLeft = false;
+          this.isRight = true;
         }
 
         if (window.innerWidth <= 768) {
           console.log(`I am in the lower window`);
-          this.isMobile = true;
-          this.sliderX1440 = false;
-          this.sliderX768 = false;
-          this.sliderX1080 = false; 
-          this.isRender = true;   
+          this.isMobile = true; 
         }
       }
+
       const debounce = (func, delay) => {
         let timeoutId;
         return function (...args) {
@@ -787,8 +736,39 @@
       }
       const debouncedResizeHandler = debounce(handleWindowResize, 100);
       window.addEventListener('resize', debouncedResizeHandler);
+      document.addEventListener("mousemove", this.dragging);
+      document.addEventListener("mouseup", this.dragstop);
     },
     methods: {
+      dragStart(e) {
+        const carousel = this.$refs.carousel;
+        this.settingSlider.isDragStart = true;
+        this.settingSlider.prevPageX = e.pageX || e.touches[0].pageX;
+        this.settingSlider.prevScrollLeft = carousel.scrollLeft;
+      },
+      dragging(e) {
+        if (!this.settingSlider.isDragStart) {
+          return;
+        }
+
+        e.preventDefault();
+        const carousel = this.$refs.carousel;
+        this.settingSlider.isDragging = true;
+        carousel.classList.add("dragging");
+        this.settingSlider.positionDiff = (e.pageX || e.touches[0].pageX) - this.settingSlider.prevPageX;
+
+        carousel.scrollLeft = this.settingSlider.prevScrollLeft - this.settingSlider.positionDiff;
+      },
+      dragstop() {
+        const carousel = this.$refs.carousel;
+        this.settingSlider.isDragStart = false;
+        carousel.classList.remove("dragging");
+        if (!this.settingSlider.isDragging) {
+          return
+        }
+        this.settingSlider.isDragging = false;
+        
+      },
       onLoadAnimation() {
         console.log('onLoadAnimation');
         setTimeout(() => {
@@ -796,27 +776,6 @@
           // document.querySelector('.db-section--banner').classList.add('--animate-now');
           document.querySelector('.db-header').classList.add('--animate-now');
         }, 3000);
-      },
-      infiniteCards() {
-        const carousel = this.$refs.carousel;
-        const carouselChildrens = [...carousel.children];
-        let cardPerView = Math.round(carousel.offsetWidth / this.settingSlider.firstCardWidth);
-
-        this.settingSlider.firstCardWidth = carousel.querySelector(".native-card").offsetWidth;
-
-
-        carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-          carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
-        });
-
-        carouselChildrens.slice(0, cardPerView).forEach(card => {
-          carousel.insertAdjacentHTML("beforeend", card.outerHTML);
-        });
-        
-        
-        carousel.classList.add("no-transition");
-        carousel.scrollLeft = carousel.offsetWidth;
-        carousel.classList.remove("no-transition");
       },
       loopCharacterList() {
         let convertMembers = [...this.data.listOfCharacters];
@@ -897,16 +856,22 @@
       },
       onChangeSlider(arrow) {
         const carousel = this.$refs.carousel;
+
+        const firstImgWidth = carousel.querySelectorAll(".native-card")[0].clientWidth + 44;
+
         if (arrow === 'right') {
           this.inActiveButton = 'right';
+
           // Width
-          carousel.scrollLeft = carousel.scrollLeft + this.settingSlider.firstCardWidth;
+          carousel.scrollLeft = carousel.scrollLeft + firstImgWidth;
+
         }
 
         if (arrow === 'left') {
           this.inActiveButton = 'left';
+
           // Width
-          carousel.scrollLeft = carousel.scrollLeft - this.settingSlider.firstCardWidth;
+          carousel.scrollLeft = carousel.scrollLeft - firstImgWidth;
         }
       },
       onChangeMbSlider(type) {
@@ -925,33 +890,12 @@
       onInfiniteScroll() {
         const carousel = this.$refs.carousel;
         
-        // Width
-        if (carousel.scrollLeft === 0) {
-          carousel.classList.add("no-transition");
-          carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
-          carousel.classList.remove("no-transition");
-          console.log(`Ending`);
-        }
-        else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
-          console.log('very ending');
-          carousel.classList.add("no-transition");
-          carousel.scrollLeft = carousel.offsetWidth;
-          carousel.classList.remove("no-transition");
-        }
+        let scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+        
+        this.isLeft = carousel.scrollLeft == 0 ? false : true;
+        this.isRight = carousel.scrollLeft == scrollWidth ? false : true;
         
         // Clear existing timeout & start autoplay if mouse is not hovering over carousel
-      },
-      clearCurTimeout() {
-        clearTimeout(this.timeoutId);
-      },
-      autoPlay() {
-        const carousel = this.$refs.carousel;
-        if (window.innerWidth < 800 || !this.settingSlider.isAutoPlay) return;
-
-        // if window is smaller than 800 or isAutoPlay is false
-        // Autoplay the carousel after every 2500 ms
-
-        this.timeoutId = setTimeout(() => carousel.scrollLeft += this.settingSlider.firstCardWidth, 2500);
       },
       onPreventDrag(event) {
         event.preventDefault();

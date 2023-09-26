@@ -686,24 +686,29 @@
               }
 
               .carousel {
-                display: grid;
-                grid-auto-columns: calc((100% / 3.2));
-                // grid-template-rows: 367px;
-                grid-template-rows: 355px;
-                column-gap: 44px;
-                padding-top: 91px;
-                overflow-x: hidden;
-                grid-auto-flow: column;
-                scroll-snap-type: x mandatory;
-                scroll-behavior: smooth;
-                scrollbar-width: none;
-
-                // Addition
-                // scroll-behavior: smooth;
-                // scrollbar-width: none;
+                // display: grid;
+                // grid-auto-columns: calc((100% / 3.2));
+                // // grid-template-rows: 367px;
+                // grid-template-rows: 355px;
+                // column-gap: 44px;
                 // padding-top: 91px;
                 // overflow-x: hidden;
-                // display: flex;
+                // grid-auto-flow: column;
+                // scroll-snap-type: x mandatory;
+                // scroll-behavior: smooth;
+                // scrollbar-width: none;
+
+                // Addition
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+                padding-top: 91px;
+                overflow-x: hidden;
+                display: grid;
+                grid-auto-flow: column;
+                grid-auto-columns: calc((100% / 3.2));
+                grid-template-rows: 355px;
+                column-gap: 44px;
+                scroll-snap-type: x mandatory;
 
                 @media only screen and (max-width: 1440px) {
                   max-width: 1000px;
@@ -754,20 +759,18 @@
 
                 
                 .native-card {
-                  background: rgba(0, 0, 0, 0.20);
-                  scroll-snap-align: start;
-                  border: 1.108px solid rgba(62, 62, 62, 0.40);
-                  border-radius: 28.669px;
-                  transition: transform 0.1s linear;
-
-                  // addition
                   // background: rgba(0, 0, 0, 0.20);
+                  // scroll-snap-align: start;
                   // border: 1.108px solid rgba(62, 62, 62, 0.40);
                   // border-radius: 28.669px;
                   // transition: transform 0.1s linear;
-                  // max-width: 450px;
-                  // width: 100%;
-                  // margin-left: 44px;
+
+                  // addition
+                  background: rgba(0, 0, 0, 0.20);
+                  border: 1.108px solid rgba(62, 62, 62, 0.40);
+                  border-radius: 28.669px;
+                  scroll-snap-align: start;
+                  transition: transform 0.1s linear;
 
                   @media only screen and (max-width: 480px) {
                     background: rgba(0, 0, 0, 0.20);
@@ -778,34 +781,62 @@
 
                   &.firstNative {
                     .card-wrapper {
+                      padding-top: 75px;
+                    padding-right: 25px;
+                    padding-bottom: 76px;
                       .db-natives-image-container {
                         width: 221.359px;
                         height: 379.754px;
                         left: -10px;
                         bottom: -15px;
                       }
+
+                      .db-natives-profile {
+                        max-width: 192px;
+                        width: 100%;
+                        min-width: 192px;
+                      }
                     }
                   }
 
                   &.secondNative {
                     .card-wrapper {
+                      padding-top: 86px;
+                      padding-bottom: 86px;
+                      padding-right: 44px;
                       .db-natives-image-container {
                         width: 286.889px;
                         height: 397.657px;
                         left: -15px;
                         bottom: -15px;
                       }
+
+                      .db-natives-profile {
+                        max-width: 175px;
+                        width: 100%;
+                        min-width: 175px;
+                      }
                     }
                   }
 
                   &.thirdNative {
                     .card-wrapper {
+                      padding-top: 77px;
+                      padding-bottom: 77px;
+                      padding-right: 52px;
                       .db-natives-image-container {
                         width: 183.245px;
                         height: 392.548px;
                         left: 15px;
                         bottom: -15px;
                       }
+
+                      .db-natives-profile {
+                        max-width: 158px;
+                        width: 100%;
+                        min-width: 158px;
+                      }
+
                     }
                   }
                   .card-wrapper {
@@ -814,9 +845,7 @@
                     flex-direction: column;
                     align-items: flex-end;
                     height: 100%;
-                    padding-top: 75px;
-                    padding-right: 25px;
-                    padding-bottom: 76px;
+                    
 
                     @media only screen and (max-width: 768px) {
                       padding-top: 51px;
@@ -948,7 +977,7 @@
                 justify-content: flex-end;
                 column-gap: 70px;
 
-                @media only screen and (max-width: 1080px) {
+                @media only screen and (max-width: 1440px) {
                   justify-content: center;
                 }
 
