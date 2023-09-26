@@ -108,8 +108,7 @@
           <div class="db-inner-row">
             <div class="db-inner-col">
               <div class="db-widget-container"
-                ref="widgetContainer"
-                v-on:scroll="handleScroll($event)">
+                ref="widgetContainer">
                 <div class="db-widget-row">
                   <div class="db-widget-col">
                     <div class="db-widget-list">
@@ -254,9 +253,6 @@
         let self = this;
         let scrollTop = widgetContainer.scrollTop;
         widgetContainer.scrollTop = scrollTop + 100;
-      },
-      handleScroll($event) {
-        console.log('handleScroll =', $event);
       },
     }
   };

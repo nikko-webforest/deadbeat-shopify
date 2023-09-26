@@ -512,6 +512,18 @@
                       }
                     }
                   }
+
+                  &:nth-child(8) {
+                    .db-menu-link {
+                      transition:
+                        color 200ms ease-in-out 0ms,
+                        opacity 200ms ease-in-out 3.2s;
+
+                      &::before {
+                        transition-delay: 3.4s;
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -523,7 +535,7 @@
                 transition-delay: 1.4s;
 
                 @media only screen and (max-width: 768px) {
-                  transition-delay: 2.8s;
+                  transition-delay: 3.6s;
                 }
               }
 
@@ -533,7 +545,7 @@
                 transition-delay: 1.6s;
 
                 @media only screen and (max-width: 768px) {
-                  transition-delay: 3.2s;
+                  transition-delay: 3.8s;
                 }
               }
 
@@ -543,7 +555,7 @@
                 transition-delay: 1.8s;
 
                 @media only screen and (max-width: 768px) {
-                  transition-delay: 3.4s;
+                  transition-delay: 4.0s;
                 }
               }
             }

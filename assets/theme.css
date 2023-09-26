@@ -204,6 +204,17 @@ ul, ol {
     opacity: 0;
   }
 }
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @keyframes zoom-in {
   from {
     scale: 1;
@@ -218,6 +229,22 @@ ul, ol {
   }
   to {
     scale: 1;
+  }
+}
+@keyframes slide-up {
+  from {
+    translate: 0 200px;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+@keyframes slide-down {
+  from {
+    translate: 0 -200px;
+  }
+  to {
+    translate: 0 0;
   }
 }
 @keyframes running-text {
@@ -1122,6 +1149,12 @@ ul, ol {
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(7) .db-menu-link::before {
   transition-delay: 3s;
 }
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(8) .db-menu-link {
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 3.2s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(8) .db-menu-link::before {
+  transition-delay: 3.4s;
+}
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) p {
   opacity: 1;
   translate: 0 0;
@@ -1129,7 +1162,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) p {
-    transition-delay: 2.8s;
+    transition-delay: 3.6s;
   }
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-socials-list {
@@ -1139,7 +1172,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-socials-list {
-    transition-delay: 3.2s;
+    transition-delay: 3.8s;
   }
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
@@ -1149,7 +1182,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
-    transition-delay: 3.4s;
+    transition-delay: 4s;
   }
 }
 .db-header.--animate-now {
@@ -1956,11 +1989,6 @@ ul, ol {
   overflow: hidden;
   cursor: grab;
 }
-@media only screen and (max-width: 768px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container {
-    pointer-events: none;
-  }
-}
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row {
   display: flex;
   justify-content: space-between;
@@ -2096,6 +2124,17 @@ ul, ol {
   fill: var(--secondaryColor);
   fill-opacity: 1;
 }
+.db-page--home .db-section--banner::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: display 0ms ease-in-out 0ms;
+}
 .db-page--home .db-section--banner.--animate-now .db-container {
   opacity: 1;
   scale: 1;
@@ -2142,6 +2181,11 @@ ul, ol {
 .db-page--home .db-section--banner.--animate-now .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-of-type(2) .db-widget-list .db-widget-item:nth-of-type(6) {
   animation-delay: 1300ms, 1300ms;
 }
+.db-page--home .db-section--banner.--animate-now::after {
+  display: none;
+  transition: display 0ms ease-in-out 2000ms;
+}
+
 .db-page--about-us .db-section--about-us-banner {
   background-image: url("About-Us__asset-bg-v01.png");
   background-position: center;
@@ -4085,4 +4129,172 @@ ul, ol {
 }
 .db-page--about-us .db-section--about-us-subscribe .db-container .db-row .db-col:nth-of-type(2) .db-form--newsletter #mce-responses #mce-error-response {
   color: #FF2020;
+}
+
+.db-page--roadmap .db-section--main-roadmap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.db-page--roadmap .db-section--main-roadmap .db-bg-container {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 700ms cubic-bezier(0.86, 0, 0.07, 1) 0s, scale 700ms cubic-bezier(0.86, 0, 0.07, 1) 0s;
+}
+.db-page--roadmap .db-section--main-roadmap .db-bg-container .db-bg-video {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  object-position: center;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.db-page--roadmap .db-section--main-roadmap .db-bg-container .db-bg-thumbnail {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: block;
+  background-image: url("DB_Roadmap_bg-v01-1900x1072.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.db-page--roadmap .db-section--main-roadmap .db-bg-container .db-bg-thumbnail h1 {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1em;
+  letter-spacing: -3.2px;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.db-page--roadmap .db-section--main-roadmap .db-bg-container::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background: linear-gradient(0deg, #0E0914 0%, rgba(14, 9, 20, 0) 100%);
+  opacity: 0;
+  width: 100%;
+  height: 200px;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 100px 0 0;
+  opacity: 0;
+  translate: 0 200px;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row {
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 90px;
+  height: 100%;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(1) {
+  max-width: 520px;
+  width: 100%;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(1) h2 {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.1em;
+  text-shadow: 1.7687277794px 1.7687277794px 13.2654590607px rgba(0, 0, 0, 0.15);
+  letter-spacing: -1.92px;
+  margin: 0 0 24px;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(1) p {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  line-height: 1.5em;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2), .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) {
+  max-width: 300px;
+  width: 100%;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) p, .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) p {
+  color: rgba(202, 199, 208, 0.4);
+  font-family: var(--secondaryFontFamily);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5em;
+  margin: 0 0 21px;
+  padding: 0 0 7px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--email-us,
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--talent-network, .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--email-us,
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--talent-network {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--email-us span,
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--talent-network span, .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--email-us span,
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--talent-network span {
+  color: var(--whiteColor);
+  font-family: var(--tertiaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1em;
+  letter-spacing: -0.64px;
+  display: block;
+  width: max-content;
+  padding: 0 0 4px;
+  border-bottom: 1px solid var(--whiteColor);
+  transition: color var(--hoverTransitionDuration) ease-in-out, border var(--hoverTransitionDuration) ease-in-out;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--email-us .svg-icon-envelope,
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--talent-network .svg-icon-envelope, .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--email-us .svg-icon-envelope,
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--talent-network .svg-icon-envelope {
+  display: block;
+}
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--email-us:hover span,
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--talent-network:hover span, .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--email-us:hover span,
+.db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--talent-network:hover span {
+  color: var(--secondaryColor);
+  border-color: var(--secondaryColor);
+}
+.db-page--roadmap .db-section--main-roadmap.--animate-now .db-bg-container .db-bg-video {
+  animation: fade-in 200ms forwards cubic-bezier(0.86, 0, 0.07, 1) 2000ms;
+}
+.db-page--roadmap .db-section--main-roadmap.--animate-now .db-bg-container .db-bg-thumbnail {
+  animation: fade-in-out 2000ms forwards cubic-bezier(0.86, 0, 0.07, 1) 500ms;
+}
+.db-page--roadmap .db-section--main-roadmap.--animate-now .db-bg-container::after {
+  animation: fade-in 200ms forwards cubic-bezier(0.86, 0, 0.07, 1) 2500ms;
+}
+.db-page--roadmap .db-section--main-roadmap.--animate-now .db-container {
+  animation: slide-up 200ms forwards cubic-bezier(0.86, 0, 0.07, 1) 2500ms, fade-in 200ms forwards cubic-bezier(0.86, 0, 0.07, 1) 2500ms;
 }
