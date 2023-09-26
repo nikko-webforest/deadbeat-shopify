@@ -685,13 +685,14 @@
     },
     mounted() {
       const wrapper = this.$refs.wrapper;
-
+      
       if (window.innerWidth > 768 && this.data.listOfCharacters.length > 0) {
         this.infiniteCards();
       }
 
       // Window Resize
       const handleWindowResize = () => {
+        
         if (window.innerWidth >= 1440 && this.data.listOfCharacters.length > 0 && !this.sliderX1440) {
           console.log(`I am in the 1440px window`);
           this.windowSize = window.innerWidth;
@@ -710,7 +711,7 @@
           }
           
 
-        } else if (window.innerWidth >= 1080 && this.data.listOfCharacters.length > 0 && !this.sliderX1080) {
+        } else if (window.innerWidth >= 1080 && window.innerWidth < 1440 && this.data.listOfCharacters.length > 0 && !this.sliderX1080) {
           console.log(`I am in the 1080px window`);
           this.windowSize = window.innerWidth;
           this.isMobile = false;
@@ -727,7 +728,7 @@
             this.infiniteCards();
           }
           
-        } else if (window.innerWidth > 768 && this.data.listOfCharacters.length > 0 && !this.sliderX768) {
+        } else if (window.innerWidth > 768 && window.innerWidth < 1080 && this.data.listOfCharacters.length > 0 && !this.sliderX768) {
           console.log(`I am in the 768px window`);
           this.windowSize = window.innerWidth;
           this.isMobile = false;
