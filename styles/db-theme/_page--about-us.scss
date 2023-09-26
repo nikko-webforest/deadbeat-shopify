@@ -483,27 +483,6 @@
       padding-bottom: unset;
     }
 
-    .db-background-overlay {
-      position: absolute;
-      z-index: -1;
-      left: 0;
-      right: 0;
-      background-image:
-        url('About-Us__asset-bg-v03.png'),
-        linear-gradient(180deg, #0E0712 0%, #402C50 100%);
-      background-blend-mode: color-dodge;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      display: block;
-      height: 1120px;
-
-      @media only screen and (max-width: 768px) {
-        // height: 500px;
-        display: none;
-      }
-    }
-
     .db-container {
       padding-top: 213px;
 
@@ -709,7 +688,8 @@
               .carousel {
                 display: grid;
                 grid-auto-columns: calc((100% / 3.2));
-                grid-template-rows: 367px;
+                // grid-template-rows: 367px;
+                grid-template-rows: 355px;
                 column-gap: 44px;
                 padding-top: 91px;
                 overflow-x: hidden;
@@ -717,6 +697,13 @@
                 scroll-snap-type: x mandatory;
                 scroll-behavior: smooth;
                 scrollbar-width: none;
+
+                // Addition
+                // scroll-behavior: smooth;
+                // scrollbar-width: none;
+                // padding-top: 91px;
+                // overflow-x: hidden;
+                // display: flex;
 
                 @media only screen and (max-width: 1440px) {
                   max-width: 1000px;
@@ -773,6 +760,15 @@
                   border-radius: 28.669px;
                   transition: transform 0.1s linear;
 
+                  // addition
+                  // background: rgba(0, 0, 0, 0.20);
+                  // border: 1.108px solid rgba(62, 62, 62, 0.40);
+                  // border-radius: 28.669px;
+                  // transition: transform 0.1s linear;
+                  // max-width: 450px;
+                  // width: 100%;
+                  // margin-left: 44px;
+
                   @media only screen and (max-width: 480px) {
                     background: rgba(0, 0, 0, 0.20);
                     border: 0.77px solid rgba(62, 62, 62, 0.40);
@@ -783,7 +779,9 @@
                   &.firstNative {
                     .card-wrapper {
                       .db-natives-image-container {
-                        left: -20px;
+                        width: 221.359px;
+                        height: 379.754px;
+                        left: -10px;
                         bottom: -15px;
                       }
                     }
@@ -792,7 +790,9 @@
                   &.secondNative {
                     .card-wrapper {
                       .db-natives-image-container {
-                        left: -20px;
+                        width: 286.889px;
+                        height: 397.657px;
+                        left: -15px;
                         bottom: -15px;
                       }
                     }
@@ -801,7 +801,9 @@
                   &.thirdNative {
                     .card-wrapper {
                       .db-natives-image-container {
-                        left: 5px;
+                        width: 183.245px;
+                        height: 392.548px;
+                        left: 15px;
                         bottom: -15px;
                       }
                     }
@@ -852,20 +854,25 @@
 
                     .db-natives-image-container {
                       position: absolute;
-                      left: -20px;
-                      bottom: -15px;
+                      // left: -20px;
+                      // bottom: -15px;
 
-                      @media only screen and (max-width: 768px) {
-                        bottom: -10px;
-                        left: -15px;
-                      }
+                      // @media only screen and (max-width: 768px) {
+                      //   bottom: -10px;
+                      //   left: -15px;
+                      // }
 
-                      img {
-                        display: block;
-                        object-fit: cover;
+                      .db-natives-image {
                         width: 100%;
                         height: 100%;
-                      }             
+                        img {
+                          display: block;
+                          object-fit: cover;
+                          width: 100%;
+                          height: 100%;
+                        }
+                      }
+                                   
                     }
 
                     .db-natives-profile {
@@ -1110,6 +1117,8 @@
                 &.firstNative {
                   .card-wrapper {
                     .db-natives-image-container {
+                      width: 168px;
+                      height: 274px;
                       left: -10px;
                       bottom: -11px;
                     }
@@ -1119,7 +1128,10 @@
                 &.secondNative {
                   .card-wrapper {
                     .db-natives-image-container {
-                      left: -20px;
+                      width: 213px;
+                      height: 288px;
+
+                      left: -15px;
                       bottom: -11px;
                     }
                   }
@@ -1179,19 +1191,24 @@
 
                   .db-natives-image-container {
                     position: absolute;
-                    left: -20px;
-                    bottom: -15px;
+                    // left: -20px;
+                    // bottom: -15px;
 
-                    @media only screen and (max-width: 768px) {
-                      bottom: -10px;
-                      left: -15px;
+                    // @media only screen and (max-width: 768px) {
+                    //   bottom: -10px;
+                    //   left: -15px;
+                    // }
+                    .db-natives-image {
+                      height: 100%;
+                      width: 100%;
+
+                      img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                      }
                     }
                     
-                    img {
-                      object-fit: cover;
-                      width: 100%;
-                      height: 100%;
-                    }
                   }
 
                   .db-natives-profile {

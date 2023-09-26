@@ -1183,43 +1183,22 @@ ul, ol {
   }
 }
 .db-page--about-us .db-section--about-us-after-life {
-  background-image: url("About-Us__asset-bg-v02.png");
+  background-image: url("About-Us__asset-ds-bg-v02.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  height: 1900px;
-  padding: 0 20px;
+  padding-bottom: 0px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us-after-life {
-    background-image: url("About-Us__asset-mb-bg-v02.jpg");
-    height: 1335px;
     background-size: cover;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-after-life {
-    height: 1563px;
+    height: 1000px;
     padding-bottom: unset;
-  }
-}
-.db-page--about-us .db-section--about-us-after-life .db-background-overlay {
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  right: 0;
-  background-image: url("About-Us__asset-bg-v03.png"), linear-gradient(180deg, #0E0712 0%, #402C50 100%);
-  background-blend-mode: color-dodge;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: block;
-  height: 1120px;
-}
-@media only screen and (max-width: 768px) {
-  .db-page--about-us .db-section--about-us-after-life .db-background-overlay {
-    display: none;
   }
 }
 .db-page--about-us .db-section--about-us-after-life .db-container {
@@ -1352,12 +1331,11 @@ ul, ol {
   }
 }
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) {
-  margin-top: 658px;
+  margin-top: 1200px;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) {
-    background-color: #0F051B;
-    margin-top: 420px;
+    margin-top: 800px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -1423,7 +1401,7 @@ ul, ol {
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel {
   display: grid;
   grid-auto-columns: 31.25%;
-  grid-template-rows: 367px;
+  grid-template-rows: 355px;
   column-gap: 44px;
   padding-top: 91px;
   overflow-x: hidden;
@@ -1494,15 +1472,21 @@ ul, ol {
   }
 }
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card.firstNative .card-wrapper .db-natives-image-container {
-  left: -20px;
+  width: 221.359px;
+  height: 379.754px;
+  left: -10px;
   bottom: -15px;
 }
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card.secondNative .card-wrapper .db-natives-image-container {
-  left: -20px;
+  width: 286.889px;
+  height: 397.657px;
+  left: -15px;
   bottom: -15px;
 }
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card.thirdNative .card-wrapper .db-natives-image-container {
-  left: 5px;
+  width: 183.245px;
+  height: 392.548px;
+  left: 15px;
   bottom: -15px;
 }
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper {
@@ -1553,16 +1537,12 @@ ul, ol {
 }
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container {
   position: absolute;
-  left: -20px;
-  bottom: -15px;
 }
-@media only screen and (max-width: 768px) {
-  .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container {
-    bottom: -10px;
-    left: -15px;
-  }
+.db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container .db-natives-image {
+  width: 100%;
+  height: 100%;
 }
-.db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container img {
+.db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .wrapper .carousel .native-card .card-wrapper .db-natives-image-container .db-natives-image img {
   display: block;
   object-fit: cover;
   width: 100%;
@@ -1663,8 +1643,12 @@ ul, ol {
 .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-prev:hover > path, .db-page--about-us .db-section--about-us-after-life .db-container .db-row .db-col:nth-child(2) .db-buttons-slider .buttons .svg-icon-next:hover > path {
   fill: #AA27B1;
 }
+.db-page--about-us .db-section--spacer {
+  background-color: #0E051A;
+  height: 200px;
+}
 .db-page--about-us .db-section--about-us-mb-slider {
-  background: #0F051B;
+  background: #0E051A;
   padding-top: 130px;
   display: none;
 }
@@ -1787,11 +1771,15 @@ ul, ol {
   }
 }
 .db-page--about-us .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card.firstNative .card-wrapper .db-natives-image-container {
+  width: 168px;
+  height: 274px;
   left: -10px;
   bottom: -11px;
 }
 .db-page--about-us .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card.secondNative .card-wrapper .db-natives-image-container {
-  left: -20px;
+  width: 213px;
+  height: 288px;
+  left: -15px;
   bottom: -11px;
 }
 .db-page--about-us .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card.thirdNative .card-wrapper .db-natives-image-container {
@@ -1845,16 +1833,12 @@ ul, ol {
 }
 .db-page--about-us .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card .card-wrapper .db-natives-image-container {
   position: absolute;
-  left: -20px;
-  bottom: -15px;
 }
-@media only screen and (max-width: 768px) {
-  .db-page--about-us .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card .card-wrapper .db-natives-image-container {
-    bottom: -10px;
-    left: -15px;
-  }
+.db-page--about-us .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card .card-wrapper .db-natives-image-container .db-natives-image {
+  height: 100%;
+  width: 100%;
 }
-.db-page--about-us .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card .card-wrapper .db-natives-image-container img {
+.db-page--about-us .db-section--about-us-mb-slider .db-container .db-row .slider .slider-container .slide .native-card .card-wrapper .db-natives-image-container .db-natives-image img {
   object-fit: cover;
   width: 100%;
   height: 100%;

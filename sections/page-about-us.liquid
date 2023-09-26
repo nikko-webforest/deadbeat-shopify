@@ -112,7 +112,6 @@
   </section>
 
   <section class="db-section db-section--about-us-after-life">
-    <div class="db-background-overlay"></div>
     <div class="db-container">  
       <div class="title-wrap">
         <h2>
@@ -680,14 +679,11 @@
       }
       this.onLoadAnimation();
     },
-    updated() {
-      console.log("I am in Updated")
-    },
     mounted() {
       const wrapper = this.$refs.wrapper;
       
       if (window.innerWidth > 768 && this.data.listOfCharacters.length > 0) {
-        this.infiniteCards();
+        // this.infiniteCards();
       }
 
       // Window Resize
