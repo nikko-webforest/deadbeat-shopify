@@ -2,7 +2,6 @@
 /*   FOOTER   */
 /*============*/
 .db-footer {
-  background-color: #0B070F;
   padding: 45px 0 0;
 
   .db-section--newsletter {
@@ -218,6 +217,59 @@
                 }
               }
             }
+
+            .db-contact-list {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 16px;
+
+              .db-contact-item {
+                max-width: 260px;
+                min-width: 260px;
+                width: 100%;
+
+                .db-contact-link {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 10px;
+                  width: 100%;
+                  padding: 16px;
+                  border: 2px solid #AA27B1;
+                  border-radius: 5px;
+
+                  .db-contact-label {
+                    color: #A120D2;
+                    font-family: $primaryFontFamily;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 1.1em;
+                    display: block;
+                  }
+
+                  .db-contact-value {
+                    color: $whiteColor;
+                    font-family: $primaryFontFamily;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 1.1em;
+                    display: block;
+                    transition:
+                      color $hoverTransitionDuration ease-in-out 0ms;
+                  }
+
+                  &:hover {
+                    .db-contact-value {
+                      color: $secondaryColor;
+                    }
+                  }
+                }
+              }
+            }
           }
 
           &:nth-of-type(2) {
@@ -246,6 +298,7 @@
   }
 
   .db-section--primary {
+    background-color: #09050F;
     padding: 30px 20px 63px;
 
     .db-container {
