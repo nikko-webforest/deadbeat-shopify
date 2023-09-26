@@ -1116,6 +1116,12 @@ ul, ol {
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(6) .db-menu-link::before {
   transition-delay: 2.6s;
 }
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(7) .db-menu-link {
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.8s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(7) .db-menu-link::before {
+  transition-delay: 3s;
+}
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) p {
   opacity: 1;
   translate: 0 0;
@@ -1133,7 +1139,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-socials-list {
-    transition-delay: 3s;
+    transition-delay: 3.2s;
   }
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
@@ -1143,7 +1149,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
-    transition-delay: 3.2s;
+    transition-delay: 3.4s;
   }
 }
 .db-header.--animate-now {

@@ -500,6 +500,18 @@
                       }
                     }
                   }
+
+                  &:nth-child(7) {
+                    .db-menu-link {
+                      transition:
+                        color 200ms ease-in-out 0ms,
+                        opacity 200ms ease-in-out 2.8s;
+
+                      &::before {
+                        transition-delay: 3.0s;
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -521,7 +533,7 @@
                 transition-delay: 1.6s;
 
                 @media only screen and (max-width: 768px) {
-                  transition-delay: 3.0s;
+                  transition-delay: 3.2s;
                 }
               }
 
@@ -531,7 +543,7 @@
                 transition-delay: 1.8s;
 
                 @media only screen and (max-width: 768px) {
-                  transition-delay: 3.2s;
+                  transition-delay: 3.4s;
                 }
               }
             }
