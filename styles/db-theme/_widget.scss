@@ -340,7 +340,7 @@
   &.--roadmap {
     .db-widget-box {
       display: block;
-      background-image: url('DB_Widget05_bg-v01-814x392.jpg');
+      background-image: url('DB_Widget05_bg-v01-860x480.jpg');
       background-position: center;
       background-repeat: no-repeat;
       background-color: transparent;
@@ -369,15 +369,29 @@
       }
 
       h5 {
+        // font-family: $primaryFontFamily;
+        // font-size: 88px;
+        // font-style: normal;
+        // font-weight: 600;
+        // text-align: center;
+        // text-shadow: 1.674121379852295px 1.674121379852295px 12.55591106414795px rgba(0, 0, 0, 0.15);
+        // line-height: 1em;
+        // letter-spacing: -3.52px;
+        position: relative;
+        z-index: 10;
+        text-align: right;
+        text-shadow: 1.7687276601791382px 1.7687276601791382px 13.265458106994629px rgba(0, 0, 0, 0.15);
         font-family: $primaryFontFamily;
-        font-size: 88px;
+        font-size: 92.973px;
         font-style: normal;
         font-weight: 600;
-        text-align: center;
-        text-shadow: 1.674121379852295px 1.674121379852295px 12.55591106414795px rgba(0, 0, 0, 0.15);
-        line-height: 1em;
-        letter-spacing: -3.52px;
+        line-height: 100%; /* 92.973px */
+        letter-spacing: -3.719px;
         display: block;
+        // background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.30) 57.21%, rgba(181, 210, 255, 0.00) 89.93%);
+        // background-clip: text;
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
         background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.30) 57.21%, rgba(181, 210, 255, 0.00) 89.93%);
         background-clip: text;
         -webkit-background-clip: text;
