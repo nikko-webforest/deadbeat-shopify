@@ -542,71 +542,22 @@
 
             .db-inner-row {
               &:nth-child(1) {
-                color: #CAC7D0;
-                text-align: right;
-                font-family: $secondaryFontFamily;
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 1.5em;
-                letter-spacing: -0.64px;
-                max-width: 351px;
-
-                @media only screen and (max-width: 1080px) {
-                  text-align: center;
-                  order: 2;
-                }
-
-                @media only screen and (max-width: 480px) {
-                  text-align: left;
-                  order: 0;
-                  max-width: 350px;
-                  min-width: 350px;
-                  width: 100%;
-                }
-
-                
-              }
-              
-              &:nth-child(2) {
-                color: #CAC7D0;
+                color: #FFF;
                 text-align: center;
-                font-family: $secondaryFontFamily;
-                font-size: 16px;
+                font-family: $primaryFontFamily;
+                font-size: 32px;
                 font-style: normal;
-                font-weight: 400;
-                line-height: 1.5em;
-                letter-spacing: -0.64px;
-                max-width: 460px;
+                font-weight: 500;
+                line-height: 150%;
+                max-width: 866px;
 
-                @media only screen and (max-width: 480px) {
-                  max-width: 350px;
-                  min-width: 350px;
-                  width: 100%;
-                  text-align: left;
-                }
-                
-              }
-
-              &:nth-child(3) {
-                color: #CAC7D0;
-                font-family: $secondaryFontFamily;
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 1.5em;
-                letter-spacing: -0.64px;
-                max-width: 350px;
-
-                @media only screen and (max-width: 1080px) {
-                  text-align: center;
+                @media only screen and (max-width: 768px) {
+                  font-size: 20px;
+                  max-width: 500px;
                 }
 
                 @media only screen and (max-width: 480px) {
-                  text-align: left;
-                  max-width: 350px;
-                  min-width: 350px;
-                  width: 100%;
+                  font-size: 16px;
                 }
               }
             }
