@@ -1,4 +1,557 @@
 .db-page--about-us {
+
+  .db-section--about-us-banner-after-life-faction {
+    position: relative;
+    background-color: #0E051A;
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1573px;
+      background-image: url('About-Us__asset-bg-v01.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      height: 1990px;
+      background-image: url('About-Us__asset-ds-bg-v02.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      top: 900px;
+    }
+
+    .about-us--banner {
+      padding-top: 256px;
+      position: relative;
+      z-index: 3;
+      .db-container {
+        &:nth-child(1) {
+          .title-wrap {
+            max-width: 795px;
+            margin-inline: auto;
+
+            h1 {
+              text-align: center;
+
+              @media only screen and (max-width: 480px) {
+                display: flex;
+                justify-content: center;
+                column-gap: 10px;
+                flex-wrap: wrap;
+                row-gap: 10px;
+              }
+
+              span {
+                font-family: $primaryFontFamily;
+                font-size: 88px;
+                font-style: normal;
+                font-weight: 700;
+                text-align: center;
+                line-height: 1.1em;
+                letter-spacing: -3.52px;
+
+                @media only screen and (max-width: 768px) {
+                  font-size: 60px;
+                }
+
+                @media only screen and (max-width: 480px) {
+                  font-size: 50px;
+                  letter-spacing: -2px;
+                }
+
+                &:nth-child(1) {
+                  color: $secondaryColor;
+                }
+                
+                &:nth-child(2) {
+                  color: $primaryColor;
+                }
+              }
+            }
+
+            h4 {
+              color: $whiteColor;
+              font-family: $primaryFontFamily;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 500;
+              text-align: center;
+              text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
+              line-height: 1.5em;
+              margin-top: 40px;
+
+              @media only screen and (max-width: 768px) {
+                font-size: 20px;
+                max-width: 500px;
+                margin-inline: auto;
+              }
+
+              @media only screen and (max-width: 480px) {
+                font-size: 16px;
+                margin-top: 19px;
+                max-width: 375px;
+                width: 100%;
+                min-width: 310px;
+              }
+            }
+          }
+
+          .db-row {
+
+            &:nth-child(2) {
+              position: relative;
+              background-image: url('About-Us__asset-banner.jpg');
+              background-position: left;
+              background-repeat: no-repeat;
+              background-size: cover;
+              box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.40);
+              object-fit: cover;
+              margin-top: 96px;
+              border-radius: 30px;
+              border: 10px solid #242031;
+              .db-col-spacer {
+                display: flex;
+                align-items: flex-start;
+                column-gap: 130px;
+                width: 100%;
+                padding-top: 49px;
+                padding-left: 92px;
+                padding-right: 85px;
+                padding-bottom: 71px;
+                .db-col {
+                  &:nth-child(1) {
+                    max-width: 316px;
+                    width: 100%;
+
+                    .db-logo-container {
+                      max-width: 316px;
+                      min-width: 230px;
+                      width: 100%;
+
+                      img {
+                        display: block;
+                        object-fit: cover;
+                        width: 100%;
+                      }
+                    }
+                  }
+
+                  &:nth-child(2) {
+                    position: relative;
+                    z-index: 5;
+                    
+                    @media only screen and (max-width: 768px) {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      row-gap: 20px;
+                      margin-top: 54px;
+                    }
+                    
+                    @media only screen and (max-width: 480px) {
+                      row-gap: 14px;
+                    }
+
+                    .db-banner-its-year {
+                      color: $whiteColor;
+                      font-family: $primaryFontFamily;
+                      font-size: 32px;
+                      font-style: normal;
+                      font-weight: 700;
+                      text-align: center;
+                      line-height: 1.1em;
+                      display: inline-flex;
+
+                      @media only screen and (max-width: 480px) {
+                        align-self: flex-start;
+                      }
+                    }
+
+                    .db-banner-content-block {
+                      display: flex;
+                      column-gap: 38px;
+                      align-items: center;
+                      justify-content: flex-start;
+                      margin-top: -15px;
+
+                      @media only screen and (max-width: 1440px) {
+                        flex-wrap: wrap;
+                        column-gap: 28px;
+                      }
+
+                      @media only screen and (max-width: 768px) {
+                        justify-content: center;
+                        row-gap: 35px;
+                        column-gap: 38px;
+                        margin-top: 0px;
+                      }
+
+                      .db-banner-2069 {
+                        text-align: right;
+                        text-shadow: 1.674121379852295px 1.674121379852295px 12.55591106414795px rgba(0, 0, 0, 0.15);
+                        font-family: $primaryFontFamily;
+                        font-size: 250px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 1.1em;
+                        letter-spacing: -10px;
+                        color: $whiteColor;
+                        background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.30) 50.74%, rgba(182, 207, 255, 0.10) 72.91%, rgba(181, 210, 255, 0.00) 90.8%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+
+                        @media only screen and (max-width: 1440px) {
+                          font-size: 200px;
+                        }
+
+                        @media only screen and (max-width: 1080px) {
+                          font-size: 160px;
+                        }
+
+                        @media only screen and (max-width: 768px) {
+                          font-size: 157px;
+                        }
+                      }
+
+                      .db-banner-and {
+                        text-align: center;
+                        font-family: $primaryFontFamily;
+                        font-size: 27px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 100%;
+                        color: $whiteColor;
+                        width: min-content;
+                        background: linear-gradient(180deg, #A9A4E5 0%, rgba(169, 164, 229, 0.00) 109.26%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                      }
+
+                      .db-banner-rock-the-world {
+                        color: rgba(255, 255, 255, 0.80);
+                        font-family: $primaryFontFamily;
+                        font-size: 64px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 1.1em;
+                        letter-spacing: -1.92px;
+                        max-width: 226px;
+                        min-width: 226px;
+
+                        @media only screen and (max-width: 1440px) {
+                          font-size: 50px;
+                        }
+
+                        @media only screen and (max-width: 768px) {
+                          max-width: 226px;
+                          font-size: 64px;
+                        }
+                      }
+                    }
+
+                    .db-banner-featured {
+                      display: flex;
+                      justify-content: flex-end;
+                      column-gap: 40px;
+                      margin-top: 77px;
+                      
+                      @media only screen and (max-width: 1180px) {
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        row-gap: 40px;
+                      }
+                      
+                      @media only screen and (max-width: 480px) {
+                        row-gap: 23px;
+                        margin-top: 81px;
+                      }
+
+                      .db-banner-featured-item {
+                        display: flex;
+                        border-radius: 15px;
+                        overflow: hidden;
+                        
+                        .featured-item-content {
+                          background: #2B1830;
+                          padding: 34px 28px 33px 31px;
+
+                          @media only screen and (max-width: 480px) {
+                            padding: 13px 16px;
+                          }
+
+                          .featured-item-title {
+                            color: $whiteColor;
+                            font-family: $primaryFontFamily;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 1.1em;
+
+                            @media only screen and (max-width: 480px) {
+                              font-size: 17px;  
+                              max-width: 194px;
+                            }
+                          }
+
+                          .featured-item-description {
+                            color: #CAC7D0;
+                            font-family: $secondaryFontFamily;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 1.3em;
+                            letter-spacing: -0.64px;
+                            max-width: 165px;
+                            margin-top: 24px;
+
+                            @media only screen and (max-width: 480px) {
+                              font-size: 11px;
+                              max-width: 152px;
+                            }
+                          }
+                        }
+
+                        .featured-item-image {
+                          max-width: 113px;
+                          min-width: 113px;
+                          width: 100%;
+
+                          @media only screen and (max-width: 480px) {
+                            max-width: 127px;
+                            min-width: 127px;
+                            width: 100%;
+                            height: 128px;
+                          }
+
+                          img {        
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+
+                            &:nth-child(1) {
+                              display: block;
+
+                              @media only screen and (max-width: 480px) {
+                                display: none;
+                              }
+                            }
+
+                            &:nth-child(2) {
+                              display: none;
+
+                              @media only screen and (max-width: 480px) {
+                                display: block;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            
+          }
+        }
+      }
+    }
+
+    .about-us--after-life {
+      padding-top: 250px;
+      position: relative;
+      z-index: 3;
+      .db-container {
+        .db-row {
+          display: flex;
+          justify-content: center;
+          &:nth-child(1) {
+            h2 {
+              color: $whiteColor;
+              text-align: center;
+              font-family: $primaryFontFamily;
+              font-size: 80px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 1.1em;
+              letter-spacing: -3.2px;
+
+              
+              @media only screen and (max-width: 768px) {
+                font-size: 60px;
+                letter-spacing: -2px;
+              }
+
+              
+              @media only screen and (max-width: 480px) {
+                font-size: 50px;
+                letter-spacing: -2px;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            margin-top: 70px;
+            .db-col {
+              &:nth-child(1) {
+                color: #FFF;
+                text-align: center;
+                font-family: $primaryFontFamily;
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 150%;
+                max-width: 866px;
+
+                @media only screen and (max-width: 768px) {
+                  font-size: 20px;
+                  max-width: 500px;
+                }
+
+                @media only screen and (max-width: 480px) {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .about-us--faction {
+      margin-top: 750px;
+      padding-bottom: 200px;
+      position: relative;
+      z-index: 3;
+      .db-container {
+        .db-row {
+          column-gap: 150px;
+          &:nth-child(1) {
+            .db-col {
+              &:nth-child(1) {
+                width: max-content;
+                h3 {
+                  span {
+                    &:nth-child(1) {
+                      color: #A120D2;
+                      text-align: center;
+                      font-family: $primaryFontFamily;
+                      font-size: 64px;
+                      font-style: normal;
+                      font-weight: 700;
+                      line-height: 100%;
+                    }
+
+                    &:nth-child(2) {
+                      color: #B1FF29;
+                      font-family: $primaryFontFamily;
+                      font-size: 64px;
+                      font-style: normal;
+                      font-weight: 700;
+                      line-height: 100%;
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(2) {
+                color: #FFF;
+                text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
+                font-family: $primaryFontFamily;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 150%;
+                max-width: 522px;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            .db-col {
+              &:nth-child(1) {
+
+                .db-inner-row {
+                  &:nth-child(1) {
+                    flex-direction: column;
+                    row-gap: 19px;
+                    .db-inner-col {
+                      &:nth-child(1) {
+                        color: #FFF;
+                        font-family: $primaryFontFamily;
+                        font-size: 56px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 115%; /* 64.4px */
+                        letter-spacing: -2.24px;
+                      }
+
+                      &:nth-child(2) {
+                        color: #FFF;
+                        text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
+                        font-family: $tertiaryFontFamily;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 150%;
+                      }
+                    }
+                  }
+
+                  &:nth-child(2) {
+                    margin-top: 40px;
+                    .db-inner-col {
+                      &:nth-child(1) {
+                        color: #CAC7D0;
+                        font-family: $tertiaryFontFamily;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 150%; 
+                      }
+                    }
+                  }
+
+                  &:nth-child(3) {
+                    margin-top: 93px;
+                    .db-inner-col {
+                      &:nth-child(1) {
+                        display: flex;
+                        column-gap: 70px;
+                        justify-content: flex-start;
+                      }
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(2) {
+                // For Slider
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .db-section--about-us-banner {
     background-image: url('About-Us__asset-bg-v01.png');
     background-position: center;
@@ -7,11 +560,13 @@
     object-fit: cover;
     padding-top: 256px;
 
+    // w
     @media only screen and (max-width: 768px) {
       padding-top: 150px;
       background-image: url('About-Us__asset-mb-bg-v01.jpg');
     }
 
+    // w
     @media only screen and (max-width: 480px) {
       padding-top: 160px;
     }
@@ -100,6 +655,7 @@
           border-radius: 30px;
           border: 10px solid #242031;
           
+          // w
           @media only screen and (max-width: 768px) {
             background-image: url('About-Us__asset-mb-banner.png');
             background-position: bottom;
@@ -107,6 +663,7 @@
             background-size: cover;
           }
 
+          // w
           @media only screen and (max-width: 480px) {
             margin-top: 74px;
             border: 8px solid #242031;
@@ -123,10 +680,12 @@
             padding-right: 85px;
             padding-bottom: 71px;
 
+            // w
             @media only screen and (max-width: 1080px) {
               column-gap: 60px;
             }
 
+            // w
             @media only screen and (max-width: 768px) {
               flex-direction: column;
               align-items: center;
@@ -155,6 +714,7 @@
                 position: relative;
                 z-index: 5;
 
+                // w
                 @media only screen and (max-width: 768px) {
                   display: flex;
                   flex-direction: column;
@@ -163,6 +723,7 @@
                   margin-top: 54px;
                 }
 
+                // w
                 @media only screen and (max-width: 480px) {
                   row-gap: 14px;
                 }
@@ -501,11 +1062,13 @@
           line-height: 1.1em;
           letter-spacing: -3.2px;
 
+          
           @media only screen and (max-width: 768px) {
             font-size: 60px;
             letter-spacing: -2px;
           }
 
+          
           @media only screen and (max-width: 480px) {
             font-size: 50px;
             letter-spacing: -2px;
@@ -527,15 +1090,18 @@
 
         .db-col {
           &:nth-child(1) {
+            // wala nani sya
             display: flex;
             justify-content: center;
             column-gap: 70px;
 
+            // wala nani sya
             @media only screen and (max-width: 1080px) {
               flex-wrap: wrap;
               row-gap: 30px;
             }
 
+            // wala nani sya
             @media only screen and (max-width: 480px) {
               row-gap: 34px;
             }
