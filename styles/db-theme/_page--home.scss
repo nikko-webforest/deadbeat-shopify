@@ -232,7 +232,8 @@
               height: 100%;
 
               @media only screen and (max-width: 1440px) {
-                gap: 35px;
+                // gap: 35px;
+                gap: 0px;
               }
 
               > .db-inner-col {
@@ -242,11 +243,20 @@
                   width: 100%;
 
                   .db-widget-container {
+                    // scroll-behavior: smooth;
+                    // width: 100%;
+                    // height: 100%;
+                    // overflow: hidden;
+                    // cursor: grab;
+
                     scroll-behavior: smooth;
                     width: 100%;
                     height: 100%;
                     overflow: hidden;
                     cursor: grab;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
 
                     // .db-widget-row {
                     //   display: flex;
@@ -318,8 +328,39 @@
                     //     }
                     //   }
                     // }
-                    .db-widget-row {
 
+                    .db-widget-row {
+                      .db-widget-col {
+                        .db-widget-list {
+                          width: 100%;
+                          height: 100%;
+                          padding: 20px 10px;
+                          display: flex;
+                          flex-direction: column;
+                          row-gap: 24px;
+
+                          @media only screen and (max-width: 1080px) {
+                            padding-left: 30px;
+                            padding-right: 30px;
+                          }
+                          
+                          .db-widget-item {
+                            opacity: 0;
+                            scale:1.1;
+                            width: 100%;
+                            min-height: 50px;
+                          }
+                        }
+                      }
+
+                      &:nth-child(1) {
+                        max-width: 656px;
+                        width: 100%;
+
+                        @media only screen and (max-width: 1080px) {
+                          max-width: unset;
+                        }
+                      }
                     }
                     
                     &.--dragging {
