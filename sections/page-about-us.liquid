@@ -165,30 +165,29 @@
 
         <div class="db-row">
           <div class="db-col">
-            <div class="db-inner-row">
-                <div class="db-inner-col">
-                  THE KINGS
+            <div class="db-inner-row" v-for="(sample, index) in dataSample" :class="changeProperties(index, curIndex)">
+                <div class="db-faction-content" v-if="index === curIndex">
+                  <div class="db-inner-col" v-text="sample.factionName">
+                    {% comment %} THE KINGS {% endcomment %}
+                  </div>
+
+                  <db class="db-inner-col" v-text="sample.description">
+                    {% comment %} Are the total opposite of their old rivals, preferring to work in guerilla tactics rather than charging right in. They make deals and play politics with the other gangs to get upper hands. They’re sneaky, crafty, and planning. {% endcomment %}
+                  </db>
+                
+                  <div class="db-inner-col" v-text="sample.HQ">
+                    {% comment %} HQ: The Arena - The old football stadium and surrounding area is under the control of The Kings. It is quite possibly the most impenetrable fortress, anyone who controls this has the best staging area for both attacking and defending. The Hearts used to control the stadium area until The Kings got them with a surprise attack, taking it all in a single afternoon. Music plays from the stadium’s sound system with no breaks. This has put it on 92.9’s agenda, the desire to play their radio station through those speakers is a great one.. {% endcomment %}
+                  </div>
                 </div>
-
-                <db class="db-inner-col">
-                  Are the total opposite of their old rivals, preferring to work in guerilla tactics rather than charging right in. They make deals and play politics with the other gangs to get upper hands. They’re sneaky, crafty, and planning.
-                </db>
-              
             </div>
 
             <div class="db-inner-row">
               <div class="db-inner-col">
-                HQ: The Arena - The old football stadium and surrounding area is under the control of The Kings. It is quite possibly the most impenetrable fortress, anyone who controls this has the best staging area for both attacking and defending. The Hearts used to control the stadium area until The Kings got them with a surprise attack, taking it all in a single afternoon. Music plays from the stadium’s sound system with no breaks. This has put it on 92.9’s agenda, the desire to play their radio station through those speakers is a great one..
-              </div>
-            </div>
-
-            <div class="db-inner-row">
-              <div class="db-inner-col">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-prev db-svg" @click="onChangeSlide('prev')" v-if="isLeft">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-prev db-svg" @click="onChangeSlide('prev')">
                   <path d="M0 10C0 10.4969 0.248704 10.9938 0.497409 11.2422L8.70466 19.441C9.45078 20.1863 10.6943 20.1863 11.4404 19.441C12.1865 18.6957 12.1865 17.4534 11.4404 16.7081L4.72539 10L11.4404 3.29193C12.1865 2.54659 12.1865 1.30435 11.4404 0.559006C10.6943 -0.186337 9.45078 -0.186337 8.70466 0.559006L0.746114 8.50932C0.248705 9.00621 0 9.50311 0 10Z" fill="#CAC7D0" :style="{fillOpacity: activeButton !== 'left' ? 0.4 : ''}"/>
                 </svg>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-next db-svg" @click="onChangeSlide('next')" v-if="isRight">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-next db-svg" @click="onChangeSlide('next')">
                   <path d="M12 10C12 10.4969 11.7513 10.9938 11.5026 11.2422L3.29534 19.441C2.54922 20.1863 1.3057 20.1863 0.559586 19.441C-0.186529 18.6957 -0.186529 17.4534 0.559586 16.7081L7.27461 10L0.559586 3.29193C-0.186529 2.54659 -0.186529 1.30435 0.559586 0.559006C1.3057 -0.186337 2.54922 -0.186337 3.29534 0.559006L11.2539 8.50932C11.7513 9.00621 12 9.50311 12 10Z" fill="#CAC7D0" :style="{fillOpacity: activeButton !== 'right' ? 0.4 : ''}"/>
                 </svg>
                 
@@ -198,7 +197,7 @@
 
           <div class="db-col">
             <ul class="card-list" ref="newSliderContainer">
-              <li class="card --first first-faction">
+              <li class="card first-faction --first">
                 <div class="card-wrapper">
                   <div class="faction-img-container">
                     <img src="{{ 'About-Us__asset-faction-v01-319x435.png' | asset_url }}" alt="">
@@ -236,7 +235,7 @@
                
               </li>
 
-              <li class="card --second second-faction">
+              <li class="card second-faction --second">
                 <div class="card-wrapper">
                   <div class="faction-img-container">
                     <img src="{{ 'About-Us__asset-faction-v02-294x401.png' | asset_url }}" alt="">
@@ -262,7 +261,7 @@
                 </div>  
               </li>
 
-              <li class="card --third third-faction">
+              <li class="card third-faction --third">
                 <div class="card-wrapper">
                   <div class="faction-img-container">
                     <img src="{{ 'About-Us__asset-faction-v03-523x713.png' | asset_url }}" alt="">
@@ -865,6 +864,24 @@
       return {
         inActiveButton: 'right',
         activeButton: 'right',
+        curIndex: 0,
+        dataSample: [
+          {
+            factionName: 'THE KINGS',
+            description: 'Are the total opposite of their old rivals, preferring to work in guerilla tactics rather than charging right in. They make deals and play politics with the other gangs to get upper hands. They’re sneaky, crafty, and planning.',
+            HQ: 'HQ: The Arena - The old football stadium and surrounding area is under the control of The Kings. It is quite possibly the most impenetrable fortress, anyone who controls this has the best staging area for both attacking and defending. The Hearts used to control the stadium area until The Kings got them with a surprise attack, taking it all in a single afternoon. Music plays from the stadium’s sound system with no breaks. This has put it on 92.9’s agenda, the desire to play their radio station through those speakers is a great one.'
+          },
+          {
+            factionName: 'BLEEDING HEARTS',
+            description: 'Some folk think the Hearts kicked this whole deadbeat thing off here. The Hearts live by a code of honor, whenever they march into battle they bring their instruments with them. They play loud, hoping to drown out any sort of communication by their enemies.Charging ahead with powerful drums and sick guitars, the Bleeding Hearts.',
+            HQ: 'HQ: The Queen of Hearts - This is the headquarters of The Bleeding Hearts. It was once an underground bar, now, it’s still an underground bar just a lot more violent. Anything and everything the Hearts do is run out of this bar.'
+          },
+          {
+            factionName: 'HONKY TONKIN’ HILLBILLY HORDE',
+            description: 'The Hillbillies never really had an interest in controlling any city, blasting their music as they go muddin’ and fishin’ is more their speed. However, a radical split of members wanting to spread their control to cities have made their way into Old Columbus recently.',
+            HQ: 'HQ: The Farm - On the outskirts of Old Columbus is where the Hillbilly Horde has placed their staging area. The once deserted farmhouse and barn is now thriving with activity. There are many things to take care of on The Farm, none more important than the guarding of the barn, where the gang keeps all of it’s needed supplies for the taking of Old Columbusz.'
+          }
+        ],
         data: {
           listOfCharacters: [
             {
@@ -973,132 +990,96 @@
       window.addEventListener('resize', debouncedResizeHandler);
     },
     methods: {
+      changeProperties(itemIndex, currentIndex) {
+        console.log(itemIndex, currentIndex);
+        if (itemIndex === currentIndex) {
+          console.log(`I am in`)
+          return {
+            changeColor: true
+          }
+        }
+
+        return {
+          changeColor: false
+        }
+      },
       onChangeSlide(type) {
         const sliderContainer = this.$refs.newSliderContainer;
-        
         const first = sliderContainer.querySelector('.--first');
+        const second = sliderContainer.querySelector('.--second');
         const third = sliderContainer.querySelector('.--third');
-        this.isLeft = true;
-        this.isRight = true;
 
-        if (type === 'next') {
-          // Next is second
-          let next = first.nextElementSibling;
-          this.activeButton = 'right'
-
-          // Mao ni sure ka nga lesser and equal 2 items nalang sa slider
-          if (!third) {
-
-            let lastElementSibling = next.nextElementSibling;
-            
-            if (!lastElementSibling) {
-              
-              console.log(`remove right`)
-              // remove next icon
-              this.isRight = false
-            }
-
-            
-            first.classList.remove(['--first']);
-            next.classList.remove(['--second']);
-            first.classList.add('--next');
-            next.classList.add('--first');
-            return;
-          }
-
-          let lastThirdElementSibling = third.nextElementSibling;
-          console.log(lastThirdElementSibling);
-
-          // Mao ni ang 3 items nalang nabilin sa slider
-          if (!lastThirdElementSibling) {
-            
-            first.classList.remove(['--first']);
-            third.classList.remove(['--third']);
-            next.classList.remove(['--second']);
-
-
-            first.classList.add('--next');
-            next.classList.add('--first');
-            third.classList.add('--second');
-            return;
-          }
-
+        
+        if (type === "next") {
+          this.curIndex = this.curIndex + 1;
+          this.activeButton = 'right';
+          let lastElementSibling = third.nextElementSibling;
 
           first.classList.remove(['--first']);
-          next.classList.remove(['--second']);
+          second.classList.remove(['--second']);
           third.classList.remove(['--third']);
-          lastThirdElementSibling.classList.remove(['--hidden'])
-
-          first.classList.add('--next');
-          next.classList.add('--first');
+          lastElementSibling.classList.remove(['--hidden']);
+          
+          first.classList.add('--dissapearFirstElement');
+          second.classList.add('--first');
           third.classList.add('--second');
-          lastThirdElementSibling.classList.add('--third');
-
-        } else if (type === 'prev') {
-          let prev = first.previousElementSibling;
-          let next = first.nextElementSibling;
-          let firstpreviousElementSibling = prev.previousElementSibling;
-          // let lastElementSibling = next.nextElementSibling;
-          this.activeButton = 'left';
-
-
-          if (!firstpreviousElementSibling) {
-            // remove prev icon
-            this.isLeft = false
-          }
-
-          if (!third) {
-
-            if (!next) {
-
-              prev.classList.remove(['--next']);
-              first.classList.remove(['--first']);
-
-              prev.classList.add('--prev');
-              first.classList.add('--second');
-
-              setTimeout(() => {
-                prev.classList.remove(['--prev'])
-                prev.classList.add('--first');
-              }, 1000);
-
-              return;
-            }
-
-            prev.classList.remove(['--next']);
-            first.classList.remove(['--first']);
-            next.classList.remove(['--second']);
-
-            
-            prev.classList.add('--prev');
-            first.classList.add('--second');
-            next.classList.add('--third');
-
-            setTimeout(() => {
-              prev.classList.remove(['--prev'])
-              prev.classList.add('--first');
-            }, 1000);
-
-            return;
-          }
-
-          prev.classList.remove(['--next']);
-          first.classList.remove(['--first']);
-          next.classList.remove(['--second']);
-          third.classList.remove(['--third']);
-
-
-          prev.classList.add('--prev');
-          first.classList.add('--second');
-          next.classList.add('--third');
-          third.classList.add('--hidden');
+          lastElementSibling.classList.add('--appearLastElement');
 
           setTimeout(() => {
-              prev.classList.remove(['--prev'])
-              prev.classList.add('--first');
-            }, 1000);
+            console.log(`Hello World`);
 
+            first.classList.remove(['--dissapearFirstElement']);
+            sliderContainer.appendChild(first);
+            first.classList.add('--hidden');
+            lastElementSibling.classList.remove(['--appearLastElement']);
+            lastElementSibling.classList.add('--third');
+
+            /*
+            setTimeout(() => {
+              first.classList.remove(['--hidden']);
+              first.classList.add('--next');
+              setTimeout(() => {
+
+                first.classList.remove(['--next']);
+                first.classList.add('--third');
+
+              }, 500)
+
+            }, 100);
+            */
+
+          }, 700);
+
+          return;
+
+        } else if (type === 'prev') {
+          this.curIndex = this.curIndex - 1;
+          this.activeButton = 'left';
+          let lastElement = sliderContainer.lastElementChild;
+          console.log(lastElement)
+          first.classList.remove(['--first']);
+          second.classList.remove(['--second']);
+          third.classList.remove(['--third']);
+          lastElement.classList.remove(['--hidden']);
+
+
+          third.classList.add('--dissapearLastElement');
+          first.classList.add('--second');
+          second.classList.add('--third');
+          lastElement.classList.add('--appearFirstElement')
+
+          
+          setTimeout(() => {
+            lastElement.classList.remove(['--appearFirstElement']);
+            sliderContainer.prepend(lastElement);
+            lastElement.classList.add('--first');
+
+            third.classList.remove(['--dissapearLastElement']);
+            third.classList.add('--hidden');
+          }, 700)
+          
         }
+
       },
       dragStart(e) {
         const carousel = this.$refs.carousel;

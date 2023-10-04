@@ -2683,11 +2683,13 @@ ul, ol {
   max-width: 568px;
   padding-top: 53px;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) {
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row {
   flex-direction: column;
-  row-gap: 19px;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) .db-inner-col:nth-child(1) {
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) {
+  opacity: 1;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) .db-faction-content .db-inner-col:nth-child(1) {
   color: #FFF;
   font-family: var(--primaryFontFamily);
   font-size: 56px;
@@ -2695,8 +2697,12 @@ ul, ol {
   font-weight: 700;
   line-height: 115%; /* 64.4px */
   letter-spacing: -2.24px;
+  max-width: 480px;
+  width: 100%;
+  min-width: 480px;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) .db-inner-col:nth-child(2) {
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) .db-faction-content .db-inner-col:nth-child(2) {
+  margin-top: 19px;
   color: #FFF;
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--tertiaryFontFamily);
@@ -2705,10 +2711,8 @@ ul, ol {
   font-weight: 700;
   line-height: 150%;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(2) {
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) .db-faction-content .db-inner-col:nth-child(3) {
   margin-top: 40px;
-}
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(2) .db-inner-col:nth-child(1) {
   color: #CAC7D0;
   font-family: var(--tertiaryFontFamily);
   font-size: 18px;
@@ -2716,23 +2720,34 @@ ul, ol {
   font-weight: 400;
   line-height: 150%;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(3) {
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:last-child {
   margin-top: 60px;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(3) .db-inner-col:nth-child(1) {
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:last-child .db-inner-col:nth-child(1) {
   display: flex;
   column-gap: 70px;
   justify-content: flex-start;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(3) .db-inner-col:nth-child(1) svg {
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:last-child .db-inner-col:nth-child(1) svg {
   cursor: pointer;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(3) .db-inner-col:nth-child(1) .svg-icon-prev, .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(3) .db-inner-col:nth-child(1) .svg-icon-next {
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:last-child .db-inner-col:nth-child(1) .svg-icon-prev, .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:last-child .db-inner-col:nth-child(1) .svg-icon-next {
   transition: all var(--hoverTransitionDuration) ease-in;
   cursor: pointer;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(3) .db-inner-col:nth-child(1) .svg-icon-prev:hover > path, .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(3) .db-inner-col:nth-child(1) .svg-icon-next:hover > path {
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:last-child .db-inner-col:nth-child(1) .svg-icon-prev:hover > path, .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:last-child .db-inner-col:nth-child(1) .svg-icon-next:hover > path {
   fill: #AA27B1;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) {
   max-width: 522px;
@@ -2749,7 +2764,8 @@ ul, ol {
   border-radius: 33.268px;
   overflow: hidden;
   position: absolute;
-  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card .card-wrapper {
   position: relative;
@@ -2770,14 +2786,7 @@ ul, ol {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 403px;
   z-index: -2;
-}
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card .card-wrapper .faction-img-container {
-  max-width: 293px;
-  width: 100%;
-  min-width: 293px;
-  height: 400px;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card .card-wrapper .faction-img-container img {
   display: block;
@@ -2790,7 +2799,7 @@ ul, ol {
   background: #1A1120;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.first-faction .card-wrapper {
-  padding: 44px 49px 92px 50px;
+  padding: 44px 49px 50px 50px;
   row-gap: 42px;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.first-faction .card-wrapper::after {
@@ -2802,6 +2811,9 @@ ul, ol {
   bottom: 0;
   background: linear-gradient(180deg, rgba(24, 15, 30, 0) 0%, #180F1E 39.63%);
   z-index: -1;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.first-faction .card-wrapper svg {
+  height: 51px;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.second-faction {
   border: 1.899px solid #FF6F6F;
@@ -2822,6 +2834,9 @@ ul, ol {
   background: linear-gradient(180deg, rgba(30, 15, 15, 0) 0%, #1E0F0F 39.63%);
   z-index: -1;
 }
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.second-faction .card-wrapper svg {
+  height: 94px;
+}
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.third-faction {
   border: 0.906px solid #6FFF87;
   box-shadow: 20px 20px 30px 0px rgba(0, 0, 0, 0.5);
@@ -2841,96 +2856,241 @@ ul, ol {
   background: linear-gradient(180deg, rgba(15, 30, 18, 0) 0%, #0F1E12 39.63%);
   z-index: -1;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--next {
-  animation: upSlide 0.5s forwards ease-in 0s;
-  top: unset;
-  left: unset;
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.third-faction .card-wrapper svg {
+  height: 83px;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--prev {
-  animation: downSlide 0.5s forwards ease-in 0s;
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement {
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 629px;
+  max-width: 391px;
+  width: 100%;
+  min-width: 391px;
+  animation: dissapearFirstElement 0.5s forwards ease-in 0s;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper::before {
+  height: 403px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper::after {
+  height: 407px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper .faction-img-container {
+  max-width: 293px;
+  width: 100%;
+  min-width: 293px;
+  height: 400px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement {
+  top: 202px;
+  z-index: 1;
+  left: 50%;
+  display: block;
+  height: 513px;
+  max-width: 320px;
+  width: 100%;
+  min-width: 320px;
+  animation: appearLastElement 0.5s forwards ease-in 0s;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper::before {
+  height: 329px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper::after {
+  height: 332px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper .faction-img-container {
+  max-width: 239px;
+  width: 100%;
+  min-width: 239px;
+  height: 326px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement {
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 629px;
+  max-width: 391px;
+  width: 100%;
+  min-width: 391px;
+  display: block;
+  animation: appearFirstElement 0.5s forwards ease-in 0s;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper::before {
+  height: 403px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper::after {
+  height: 407px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper .faction-img-container {
+  max-width: 293px;
+  width: 100%;
+  min-width: 293px;
+  height: 400px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement {
+  top: 202px;
+  left: 50%;
+  transform: translateX(-30%);
+  z-index: 1;
+  height: 513px;
+  max-width: 320px;
+  width: 100%;
+  min-width: 320px;
+  animation: dissapearLastElement 0.5s forwards ease-in 0s;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper::before {
+  height: 329px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper::after {
+  height: 332px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper .faction-img-container {
+  max-width: 239px;
+  width: 100%;
+  min-width: 239px;
+  height: 326px;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first {
   top: 0;
   left: 0;
-  scale: 1;
   z-index: 3;
+  height: 629px;
+  max-width: 391px;
+  width: 100%;
+  min-width: 391px;
   opacity: 1;
-  display: block;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first.second-faction {
+  box-shadow: 19.93284px 19.93284px 29.89927px 0px rgba(0, 0, 0, 0.5), 4.14937px 4.14937px 8.29874px 0px rgba(235, 34, 34, 0.3), -4.14937px -4.14937px 8.29874px 0px rgba(235, 34, 34, 0.3), 2.07469px 2.07469px 4.14937px 0px rgba(255, 110, 110, 0.6), -2.07469px -2.07469px 4.14937px 0px rgba(255, 110, 110, 0.6);
+  border: 3px solid #FF6F6F;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first.third-faction {
+  box-shadow: 22.42445px 22.42445px 33.63668px 0px rgba(0, 0, 0, 0.5), 4.14162px 4.14162px 8.28325px 0px rgba(111, 255, 135, 0.3), -4.14162px -4.14162px 8.28325px 0px rgba(111, 255, 135, 0.3), 2.07081px 2.07081px 4.14162px 0px rgba(111, 255, 135, 0.6), -2.07081px -2.07081px 4.14162px 0px rgba(111, 255, 135, 0.6);
+  border: 3px solid #6FFF87;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper::before {
+  height: 403px;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper::after {
   height: 407px;
 }
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper .faction-img-container {
+  max-width: 293px;
+  width: 100%;
+  min-width: 293px;
+  height: 400px;
+}
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second {
-  top: 70px;
-  left: calc(100% - (50% + 190px));
-  scale: 0.93;
+  top: 99px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
   opacity: 1;
-  display: block;
+  height: 579px;
+  max-width: 360px;
+  width: 100%;
+  min-width: 360px;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper {
-  padding: 40px 45px 50px 45px;
-  row-gap: 27px;
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper::before {
+  height: 371px;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper::after {
-  height: 400px;
+  height: 375px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper .faction-img-container {
+  max-width: 270px;
+  width: 100%;
+  min-width: 270px;
+  height: 368px;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third {
-  top: 145px;
-  right: calc(100% - (50% + 249px));
-  scale: 0.85;
+  top: 202px;
+  left: 50%;
+  transform: translateX(-30%);
   z-index: 1;
   opacity: 1;
-  display: block;
+  height: 513px;
+  max-width: 320px;
+  width: 100%;
+  min-width: 320px;
 }
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper {
-  padding: 36px 40px 39px 41px;
-  row-gap: 28px;
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper::before {
+  height: 329px;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper::after {
-  height: 400px;
+  height: 332px;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper .faction-img-container {
+  max-width: 239px;
+  width: 100%;
+  min-width: 239px;
+  height: 326px;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--hidden {
   opacity: 0;
+  display: none;
   transform: translate(30%, 30%);
 }
-@keyframes upSlide {
+@keyframes appearLastElement {
+  0% {
+    opacity: 0;
+    display: block;
+    transform: translate(30%, 30%);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-30%);
+  }
+}
+@keyframes dissapearFirstElement {
   0% {
     transform: translate(0, 0);
-    scale: 1;
     opacity: 1;
   }
   50% {
-    transform: translate(-30%, -30%);
-    scale: 1.02;
+    transform: translate(-9%, -6%);
     opacity: 0.5;
+  }
+  75% {
+    transform: translate(-18%, -13%);
+    opacity: 0;
   }
   100% {
-    transform: translate(-50%, -50%);
-    scale: 1.05;
     opacity: 0;
+    transform: translate(30%, 30%);
   }
 }
-@keyframes downSlide {
+@keyframes appearFirstElement {
   0% {
     transform: translate(-50%, -50%);
-    scale: 1.05;
     opacity: 0;
-    z-index: 3;
-  }
-  50% {
-    transform: translate(-30%, -30%);
-    scale: 1.02;
-    opacity: 0.5;
+    display: block;
   }
   100% {
     transform: translate(0, 0);
-    scale: 1;
     opacity: 1;
     top: 0;
     left: 0;
-    scale: 1;
     z-index: 3;
+  }
+}
+@keyframes dissapearLastElement {
+  0% {
+    opacity: 1;
+    scale: 1;
+  }
+  75% {
+    opacity: 0.4;
+    scale: 0.97;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    display: none;
   }
 }
 .db-page--about-us .db-section--about-us-banner {
