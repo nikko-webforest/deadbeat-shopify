@@ -110,7 +110,7 @@
               <div class="db-widget-container"
                 ref="widgetContainer">
                 <div class="db-widget-row">
-                  <div class="db-widget-col">
+                  {% comment %} <div class="db-widget-col">
                     <div class="db-widget-list">
                       {% render 'widget--year-2069' %}
                       {% render 'widget--music-player' %}
@@ -125,6 +125,12 @@
                       {% render 'widget--the-beats-currency' %}
                       {% render 'widget--creators' %}
                       {% render 'widget--marketplace' %}
+                    </div>
+                  </div> {% endcomment %}
+                  <div class="db-widget-col">
+                    <div class="db-widget-list">
+                      {% render 'widget--year-2069' %}
+                      {% render 'widget--roadmap' %}
                     </div>
                   </div>
                 </div>

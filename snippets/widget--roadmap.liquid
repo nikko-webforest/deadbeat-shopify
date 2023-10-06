@@ -1,10 +1,16 @@
-<div class="db-widget-item --roadmap">
+<a class="db-widget-item --roadmap"
+  title="Roadmap"
+  href="{{ shop.url }}/pages/roadmap"
+  draggable="false">
   <div class="db-widget-box">
-    <h5>
+    {% comment %} <h5>
       ROADMAP
-    </h5>
+    </h5> {% endcomment %}
+
+    <img src="{{ 'DB_Widget05_Roadmap-v01-1056x237.png' | asset_url }}" alt="">
+
     <p>
       12 Month Roadmap Milestones
     </p>
   </div>
-</div>
+</a>
