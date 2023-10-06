@@ -1,32 +1,197 @@
+
 <div class="db-widget-item --music-player">
-  <div class="db-widget-box">
+  <button @click="authorizeSpotify()"
+    style="color: #FFFFFF;"
+    v-text="'Authorize Spotify'">
+  </button>
+  <div class="db-widget-box"
+    v-if="tracks != null">
     <div class="db-inner-row">
       <div class="db-inner-col">
-        <svg class="svg-icon-play db-svg"
-          width="62"
-          height="62"
-          viewBox="0 0 62 62"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <circle id="circle_01"
-            cx="31"
-            cy="31"
-            r="30"
-            stroke="#B1FF29">
-          </circle>
-          <path id="path_01"
-            d="M41 31C41.0006 31.2612 40.9334 31.5181 40.8047 31.7457C40.6761 31.9733 40.4905 32.1639 40.2659 32.299L26.3491 40.7736C26.1145 40.9166 25.8457 40.9947 25.5706 40.9997C25.2956 41.0048 25.0241 40.9367 24.7843 40.8024C24.5468 40.6702 24.349 40.4775 24.2111 40.2439C24.0733 40.0104 24.0004 39.7445 24 39.4736V22.5264C24.0004 22.2555 24.0733 21.9896 24.2111 21.7561C24.349 21.5225 24.5468 21.3298 24.7843 21.1976C25.0241 21.0633 25.2956 20.9952 25.5706 21.0003C25.8457 21.0053 26.1145 21.0834 26.3491 21.2264L40.2659 29.701C40.4905 29.8361 40.6761 30.0267 40.8047 30.2543C40.9334 30.4819 41.0006 30.7388 41 31Z"
-            fill="#B1FF29">
-          </path>
-        </svg>
+        <button class="db-btn--toggle-play"
+          type="button"
+          @click="spotifyTogglePlay()">
+          <svg class="svg-icon-play db-svg"
+            width="62"
+            height="62"
+            viewBox="0 0 62 62"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle id="circle_01"
+              cx="31"
+              cy="31"
+              r="30"
+              stroke="#B1FF29">
+            </circle>
+            <path id="path_01"
+              d="M41 31C41.0006 31.2612 40.9334 31.5181 40.8047 31.7457C40.6761 31.9733 40.4905 32.1639 40.2659 32.299L26.3491 40.7736C26.1145 40.9166 25.8457 40.9947 25.5706 40.9997C25.2956 41.0048 25.0241 40.9367 24.7843 40.8024C24.5468 40.6702 24.349 40.4775 24.2111 40.2439C24.0733 40.0104 24.0004 39.7445 24 39.4736V22.5264C24.0004 22.2555 24.0733 21.9896 24.2111 21.7561C24.349 21.5225 24.5468 21.3298 24.7843 21.1976C25.0241 21.0633 25.2956 20.9952 25.5706 21.0003C25.8457 21.0053 26.1145 21.0834 26.3491 21.2264L40.2659 29.701C40.4905 29.8361 40.6761 30.0267 40.8047 30.2543C40.9334 30.4819 41.0006 30.7388 41 31Z"
+              fill="#B1FF29">
+            </path>
+          </svg>
+        </button>
       </div>
       <div class="db-inner-col">
-        <span class="music-title">The After, After-Life ( Feat. VampSquad & Wolfden) The After, After-Life ( Feat. VampSquad & Wolfden) The After, After-Life ( Feat. VampSquad & Wolfden)</span>
-        <span class="music-artist">Sherdan V-44, Jutom</span>
+        <span class="music-title"
+          v-text="tracks.items[0].name">
+        </span>
+        <span class="music-artist"
+          v-text="tracks.items[0].artists[0].name">
+        </span>
       </div>
       <div class="db-inner-col">
-        <span class="music-duration">3:11</span>
+        <span class="music-duration"
+          v-text="calculateDuration(tracks.items[0].duration_ms)">
+        </span>
       </div>
     </div>
   </div>
 </div>
+<script>
+  const DB_Widget_Spotify_Player = {
+    name: 'DB Widget Spotify Player',
+    data() {
+      return {
+        CLIENT_ID: 'cd10f71694b44bc7b854830ccef638e1',
+        client_id: 'cd10f71694b44bc7b854830ccef638e1',
+        client_secret: '7fe19d7d0ca84a6cae112941465783b9',
+        REDIRECT_URI: 'http://127.0.0.1:9292/',
+        redirect_uri: 'http://127.0.0.1:9292/',
+        SPOTIFY_AUTHORIZE_URL: 'https://accounts.spotify.com/authorize',
+        spotify_authorize_url: 'https://accounts.spotify.com/authorize',
+
+        spotify_account_url: 'https://accounts.spotify.com',
+
+        spotify_api_v1: 'https://api.spotify.com/v1',
+
+        access_token: '',
+        tracks: null,
+        player: {
+          main: '',
+          play: false,
+        }
+      }
+    },
+    created() {},
+    mounted() {
+      if (this.access_token != undefined) {
+        this.getAccess();
+        setTimeout(() => {
+          this.spotifyPlayer();
+          this.searchRequest();
+        }, 2000);
+      }
+    },
+    methods: {
+      authorizeSpotify() {
+        const queryParams = new URLSearchParams({
+          response_type: 'code',
+          client_id: this.client_id,
+          redirect_uri: this.redirect_uri,
+          scope: 'user-library-read',
+        });
+
+        
+        const authorizationUrl = `${this.spotify_authorize_url}?${queryParams.toString()}`;
+        window.location.href = authorizationUrl;
+      },
+
+      getAccess() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('code')) {
+          const authorizationCode = urlParams.get('code');
+          const base64Credentials = btoa(`${this.client_id}:${this.client_secret}`);
+          const tokenData = new URLSearchParams();
+          tokenData.append('grant_type', 'authorization_code');
+          tokenData.append('code', authorizationCode);
+          tokenData.append('redirect_uri', this.redirect_uri);
+
+          fetch(`${this.spotify_account_url}/api/token`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'Authorization': `Basic ${base64Credentials}`,
+            },
+            body: tokenData
+          })
+          .then(response => response.json())
+          .then(data => {
+            this.access_token = data.access_token;
+            console.log('this.access_token =', this.access_token);
+          })
+          .catch(error => {
+            console.error('Error fetching access token: ', error);
+          });
+        }
+      },
+      async spotifyPlayer() {
+        this.player.main = new Spotify.Player({
+          name: 'Spotify Player',
+          getOAuthToken: cb => {
+            cb(this.access_token);
+          },
+        });
+
+        await this.player.main.connect().then(success => {
+          if (success) {
+            console.log('Connected to Spotify');
+          }
+        });
+      },
+
+      searchRequest() {
+        const songName = 'Flowers';
+        const artistName = 'Miley Cyrus';
+
+        const searchQuery = artistName ? `track:${songName} artist:${artistName}` : `track:${songName}`;
+
+        fetch(`${this.spotify_api_v1}/search?q=${encodeURIComponent(searchQuery)}&type=track`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${this.access_token}`,
+          },
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success Search...', data);
+          this.tracks = data.tracks;
+          const firstTrack = data.tracks.items[1];
+        })
+        .catch(error => {
+          console.error('Failed Search...', error);
+        })
+        .finally(() => {
+          this.spotifySetSongID(this.tracks.items[1].id);
+        });
+      },
+      spotifySetSongID(song_id) {
+        console.log('spotifySetSongID =', song_id);
+        this.player.main.play({ uris: [`spotify:track:${song_id}`] }).then(() => {
+          console.log(`Now Playing: ${song_id}`);
+          this.player.play = true;
+        });
+      },
+      calculateDuration(duration_ms) {
+        var min = Math.floor((duration_ms/1000/60) << 0);
+        var sec = Math.floor((duration_ms/1000) % 60);
+
+        return (min + ':' + sec);
+      },
+      spotifyTogglePlay() {
+        if (this.player.play) {
+          this.player.main.pause().then(() => {
+            console.log('paused');
+            this.player.play = false;
+          });
+        }
+        else {
+          this.player.main.resume().then(() => {
+            console.log('resumed');
+            this.player.play = true;
+          });
+        }
+      }
+    }
+  };
+
+  Vue.createApp(DB_Widget_Spotify_Player).mount('.db-widget-item.--music-player');
+</script>
