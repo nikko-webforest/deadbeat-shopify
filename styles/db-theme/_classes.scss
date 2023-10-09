@@ -101,12 +101,20 @@
 
   .svg-icon-loader {
     display: block;
-    width: 100px;
-    height: 100px;
+    // width: 100px;
+    // height: 100px;
 
-    @media only screen and (max-width: 768px) {
-      width: 60px;
-      height: 60px;
+    #g_01 {
+      #g_02 {
+        transform-origin: center;
+        animation:
+          siteLoaderTilt 1.5s ease-in-out infinite;
+      }
+      #g_08 {
+        transform-origin: center;
+        animation:
+          siteLoaderRotate 400ms ease-in-out infinite;
+      }
     }
   }
 

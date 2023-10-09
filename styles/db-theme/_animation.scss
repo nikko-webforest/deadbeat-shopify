@@ -99,3 +99,36 @@
     transform: translate(-22px,5px) skew(21deg);
   }
 }
+
+@keyframes siteLoaderRotate {
+  2% {
+    rotate: 90deg;
+  }
+  40% {
+    rotate: 145deg;
+  }
+  62% {
+    rotate: 190deg;
+  }
+  80% {
+    rotate: 240deg;
+  }
+  90% {
+    rotate: 360deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+
+@keyframes siteLoaderTilt {
+  0% {
+    rotate: 10deg;
+  }
+  50% {
+    rotate: -10deg;
+  }
+  100% {
+    rotate: 10deg;
+  }
+}

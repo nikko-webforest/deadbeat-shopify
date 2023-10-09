@@ -257,9 +257,11 @@
           &:nth-of-type(1) {
             width: max-content;
 
-            .svg-icon-play {
-              width: 60px;
-              height: 60px;
+            .db-btn--toggle-play {
+              .svg-icon-play {
+                width: 60px;
+                height: 60px;
+              }
             }
           }
 
@@ -278,8 +280,6 @@
               white-space: nowrap;
               display: block;
               margin: 0 0 14px;
-              animation:
-                running-text 15s linear infinite;
             }
 
             .music-artist {
@@ -315,10 +315,23 @@
         }
       }
 
-      &:hover {
-        scale: 1.05;
-        border-color: #D47FF3;
+      &.--is-playing {
+        .db-inner-row {
+          .db-inner-col {
+            &:nth-of-type(2) {
+              .music-title {
+                animation:
+                  running-text 15s linear infinite;
+              }
+            }
+          }
+        }
       }
+
+      // &:hover {
+      //   scale: 1.05;
+      //   border-color: #D47FF3;
+      // }
     }
   }
 
