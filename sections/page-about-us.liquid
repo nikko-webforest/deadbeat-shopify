@@ -191,35 +191,26 @@
   </section>
 
 
-  {% comment %} <section class="db-section db-section--about-us-resurrection">
+  <section class="db-section db-section--about-us-resurrection">
     <div class="db-container">
       <div class="db-row">
-        <div class="db-col">
+        <div class="db-col" ref="undeadSlider">
 
-          <div class="button-container" ref="undeadButton">
-            <div class="button">
-
-              <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" class="db-svg" @click="onChangeUndeadCardSlide">
+          <div class="box active-box">
+            <div class="button-container" ref="undeadButton" :class="activeControls">
+              <div class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" class="db-svg" :class="activeSvg" @click="onChangeUndeadCardSlide">
                 <rect x="0.773809" y="0.773809" width="63.4524" height="63.4524" rx="31.7262" stroke="#AA27B1" stroke-width="1.54762"/>
                 <path d="M37.1426 33.138C37.1426 33.4475 36.9878 33.7571 36.8331 33.9118L31.7259 39.019C31.2616 39.4833 30.4878 39.4833 30.0235 39.019C29.5592 38.5547 29.5592 37.7809 30.0235 37.3166L34.2021 33.138L30.0235 28.9594C29.5592 28.4952 29.5592 27.7214 30.0235 27.2571C30.4878 26.7928 31.2616 26.7928 31.7259 27.2571L36.6783 32.2094C36.9878 32.519 37.1426 32.8285 37.1426 33.138Z" fill="#AA27B1"/>
-              </svg>
-
+                </svg>
+              </div>
             </div>
+
+            <div class="box-wrapper"></div>
           </div>
 
-          <div class="slider-container">
-            <ul class="slider-list" ref="undeadSlider">
-              <li class="card" v-for="(undead, index) in undeadData" :class="loadUndeadCardSliderPosition(index)">
-                <img :src="undead.image_url" alt="">
-              </li>
-            </ul>
-          </div>
-
-          <div class="side-slider-container">
-            <ul class="side-slider-list" ref="sideCardContainer">
-
-              <li class="side-card" v-for="(undead, index) in undeadData" :style="{ 'background-image': 'url(' + undead.image_url + ')' }" :class="loadUndeadSideCardSliderPosition(index)"></li>
-            </ul>
+          <div class="box nonactive-box">
+            <div class="box-wrapper"></div>
           </div>
         </div>
 
@@ -233,6 +224,26 @@
             <br />
             You’ll also gain access to our exclusive music creation and background customization tools. Give your Deadbeat a theme song and write their story EXACTLY the way YOU want!
           </div>
+
+          <div class="undeadSlider" ref="undeadSliderMb">
+            <div class="box active-box">
+              <div class="button-container" ref="undeadButtonMb" :class="activeControls">
+                <div class="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" class="db-svg" :class="activeSvg" @click="onChangeUndeadCardSlideMb">
+                  <rect x="0.773809" y="0.773809" width="63.4524" height="63.4524" rx="31.7262" stroke="#AA27B1" stroke-width="1.54762"/>
+                  <path d="M37.1426 33.138C37.1426 33.4475 36.9878 33.7571 36.8331 33.9118L31.7259 39.019C31.2616 39.4833 30.4878 39.4833 30.0235 39.019C29.5592 38.5547 29.5592 37.7809 30.0235 37.3166L34.2021 33.138L30.0235 28.9594C29.5592 28.4952 29.5592 27.7214 30.0235 27.2571C30.4878 26.7928 31.2616 26.7928 31.7259 27.2571L36.6783 32.2094C36.9878 32.519 37.1426 32.8285 37.1426 33.138Z" fill="#AA27B1"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="box-wrapper"></div>
+            </div>
+
+            <div class="box nonactive-box">
+              <div class="box-wrapper"></div>
+            </div>
+          </div>
+
           <div class="db-resurrection-cta">
             <button class="db-btn">
               BUY NOW
@@ -389,7 +400,7 @@
         </div>
       </div>
     </div>
-  </section> {% endcomment %}
+  </section>
 
 </div>
 <script>
@@ -495,187 +506,69 @@
             },
           ]
         },
-        settingSlider: {
-          firstCardWidth:null,
-          isDragStart: false,
-          prevPageX: null,
-          prevScrollLeft: null,
-          isDragging: false,
-          positionDiff:null,
-          isAutoPlay: true,
-          startX:null,
-          startScrollLeft:null,
-        },
         timeoutId:null,
         isMobile: false,
-        windowSize: window.innerWidth,
-        // addition
-        isRight: true,
-        isLeft: false,
+        isActiveBox: false,
       }
     },
     created() {
-      if (window.innerWidth <= 768) {
-        this.isMobile = true
-      } else {
-        this.isMobile = false
-      }
       this.onLoadAnimation();
+    },
+    computed: {
+      activeControls() {
+        if (!this.isActiveBox) {
+          
+          return {
+            'active-controls': true
+          }
+        }
+
+        return {
+          'nonactive-controls': true
+        }
+      },
+      activeSvg() {
+        if (!this.isActiveBox) {
+          
+          return {
+            'active-svg': true
+          }
+        }
+
+        return {
+          'nonactive-svg': true
+        }
+      },
     },
     mounted() {
 
     },
     methods: {
-      loadUndeadCardSliderPosition(index) {
-        let position = {
-          next: true,
-          active: false,
-          last: false,
-        }
-
-        if (index === 0) {
-          position = {
-            ...position,
-            next: false,
-            active: true
-          }
-
-          return position
-        }
-
-        if (index === this.undeadData.length - 1) {
-          position = {
-            ...position,
-            next: false,
-            last: true
-          }
-
-          if (this.undeadData.length === 2) {
-            position = {
-              ...position,
-              next: true,
-              last: false
-            }
-          }
-
-          return position
-        }
-
-        return position
-      },
-      loadUndeadSideCardSliderPosition(index) {
-        let position = {
-          next: true,
-          active: false,
-          last: false
-        }
-
-        if (index === 0) {
-          position = {
-            ...position,
-            next: false,
-            active: false,
-            last: true
-          }
-
-          if (this.undeadData.length === 2) {
-            position = {
-              ...position,
-              next: true,
-              last: false,
-            }
-          }
-
-          return position
-        }
-
-        if (index === 1) {
-          position = {
-            ...position,
-            next: false,
-            active: true
-          }
-
-          return position;
-        }
-
-        return position;
-      },
       onChangeUndeadCardSlide() {
+        this.isActiveBox = !this.isActiveBox;
         const container = this.$refs.undeadSlider;
-        const undeadButton = this.$refs.undeadButton;
-
-        this.onChangeUndeadSideCardSlide();
-
-        const active = container.querySelector('.active');
-        const last = container.querySelector('.last');
-        let next = active.nextElementSibling;
-
-        if (!next) {
-          next = container.firstElementChild;
-        }
-
-        if (this.undeadData.length === 2) {
-          active.classList.remove(['active']);
-          next.classList.remove(['next']);
-
-          active.classList.add('last');
-          next.classList.add('active');
-
-          setTimeout(() => {
-            active.classList.remove(['last']);
-            active.classList.add('next');
-          }, 600)
-
-          return;
-        }
-        active.classList.remove(['active']);
-        last.classList.remove(['last']);
-        next.classList.remove(['next']);
         
-        undeadButton.classList.add('clicked');
-        active.classList.add('last');
-        next.classList.add('active');
-        last.classList.add('next');
-        
-        setTimeout(() => {
-          undeadButton.classList.remove(['clicked'])
-        }, 300)
+        const active = container.querySelector('.active-box');
+        const notActive = container.querySelector('.nonactive-box');
+
+        active.classList.remove(['active-box']);
+        notActive.classList.remove(['nonactive-box']);
+
+        active.classList.add('nonactive-box');
+        notActive.classList.add('active-box');
       },
-      onChangeUndeadSideCardSlide() {
-        const container = this.$refs.sideCardContainer
-        const active = container.querySelector('.active');
-        const last = container.querySelector('.last');
+      onChangeUndeadCardSlideMb() {
+        this.isActiveBox = !this.isActiveBox;
+        const container = this.$refs.undeadSliderMb;
+        
+        const active = container.querySelector('.active-box');
+        const notActive = container.querySelector('.nonactive-box');
 
-        let next = active.nextElementSibling;
+        active.classList.remove(['active-box']);
+        notActive.classList.remove(['nonactive-box']);
 
-        if (!next) {
-          next = container.firstElementChild;
-        }
-
-        if (this.undeadData.length === 2) {
-          active.classList.remove(['active']);
-          next.classList.remove(['next']);
-
-          active.classList.add('last');
-          next.classList.add('active');
-
-          setTimeout(() => {
-            active.classList.remove(['last']);
-            active.classList.add('next');
-          }, 600);
-
-          return;
-        }
-
-        active.classList.remove(['active']);
-        last.classList.remove(['last']);
-        next.classList.remove(['next']);
-
-        active.classList.add('last');
-        next.classList.add('active');
-        last.classList.add('next');
-
+        active.classList.add('nonactive-box');
+        notActive.classList.add('active-box');
       },
       onChangeContent(type) {
         const container = this.$refs.contentContainer;
@@ -818,19 +711,6 @@
         }, 3000);
       },
     },
-    computed: {
-      appearButton() {
-        if (this.windowSize >= 1440 && this.data.listOfCharacters.length <= 3) {
-          return false;
-        } else if (this.windowSize >= 1080 && this.data.listOfCharacters.length <= 2) {
-          return false;
-        } else if (this.windowSize >= 768 && this.data.listOfCharacters.length === 1) {
-          return false;
-        } else {
-          return true;
-        }
-      },
-    }
   }
 
   Vue.createApp(DB_SF_Page_About_Us_Options).mount('.db-page--about-us');
