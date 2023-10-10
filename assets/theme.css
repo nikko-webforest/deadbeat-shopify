@@ -2300,8 +2300,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction::before {
-    background-image: url("About-Us__asset-mb-bg-v01.png");
-    height: 1573px;
+    display: none;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction::after {
@@ -2326,9 +2325,9 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction::after {
-    background-image: url("About-Us__asset-mb-bg-v02.jpg");
-    height: 643px;
-    top: 1162px;
+    background-image: url("About-Us__asset-mb-bg-v02.png");
+    height: 823px;
+    top: 950px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner {
@@ -2457,19 +2456,24 @@ ul, ol {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
     column-gap: 50px;
     padding-left: 80px;
+    padding-right: 80px;
   }
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
     flex-direction: column;
-    padding-right: 80px;
-    row-gap: 54px;
-    height: auto;
+    align-items: center;
+    row-gap: 20px;
+    height: 750px;
+    padding-right: 34px;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
-    padding: 30px 60px;
+    height: 540px;
+    padding-top: 34px;
+    padding-right: 24px;
+    padding-left: 24px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) {
@@ -2481,10 +2485,26 @@ ul, ol {
     align-self: center;
   }
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) {
+    max-width: 176px;
+  }
+}
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container {
   max-width: 316px;
-  min-width: 240px;
+  min-width: 150px;
   width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container {
+    max-width: 300px;
+    align-self: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container {
+    max-width: 176px;
+  }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container img {
   display: block;
@@ -2501,7 +2521,7 @@ ul, ol {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-banner-its-year {
@@ -2517,8 +2537,8 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-banner-its-year {
-    font-size: 32px;
-    align-self: flex-start;
+    text-align: right;
+    font-size: 14px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-banner-2069 {
@@ -2546,7 +2566,7 @@ ul, ol {
 }
 @media only screen and (max-width: 1080px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-banner-2069 {
-    font-size: 190px;
+    font-size: 230px;
     display: block;
     width: fit-content;
   }
@@ -2558,87 +2578,13 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-banner-2069 {
-    text-shadow: 1.0530763865px 1.0530763865px 7.8980731964px rgba(0, 0, 0, 0.15);
-    font-size: 157.258px;
-    letter-spacing: -6.29px;
+    text-align: right;
+    letter-spacing: -6px;
+    font-size: 150px;
+    margin-top: -10px;
+    text-shadow: 0.9329072833px 0.9329072833px 6.9968047142px rgba(0, 0, 0, 0.15);
     margin-left: unset;
   }
-}
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-content {
-  display: none;
-}
-@media only screen and (max-width: 480px) {
-  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-content {
-    display: flex;
-    column-gap: 39px;
-    margin-top: 35px;
-  }
-}
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-content .db-banner-and-content {
-  text-orientation: upright;
-  writing-mode: vertical-lr;
-  text-align: center;
-  letter-spacing: -13px;
-  font-family: var(--primaryFontFamily);
-  font-size: 27px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  color: var(--whiteColor);
-  background: linear-gradient(180deg, #A9A4E5 0%, rgba(169, 164, 229, 0) 109.26%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-content .db-banner-rock-the-world-content {
-  color: #9A96D2;
-  font-family: var(--primaryFontFamily);
-  font-size: 72px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 100%; /* 72px */
-  letter-spacing: -2.16px;
-  margin-top: 32px;
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-content .db-banner-rock-the-world-content {
-    font-size: 60px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-content .db-banner-rock-the-world-content {
-    max-width: 324px;
-    width: 100%;
-    min-width: 324px;
-    text-align: center;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-content .db-banner-rock-the-world-content {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 50px;
-    letter-spacing: -1.5px;
-    max-width: 226px;
-    min-width: 226px;
-    text-align: left;
-    margin-top: 0px;
-  }
-}
-.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-banner-and {
-  text-orientation: upright;
-  writing-mode: vertical-lr;
-  text-align: center;
-  letter-spacing: -13px;
-  font-family: var(--primaryFontFamily);
-  font-size: 27px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  color: var(--whiteColor);
-  background: linear-gradient(180deg, #A9A4E5 0%, rgba(169, 164, 229, 0) 109.26%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-banner-rock-the-world {
   color: #9A96D2;
@@ -2652,7 +2598,7 @@ ul, ol {
 }
 @media only screen and (max-width: 1080px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-banner-rock-the-world {
-    font-size: 60px;
+    max-width: 400px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -2660,15 +2606,18 @@ ul, ol {
     max-width: 324px;
     width: 100%;
     min-width: 324px;
-    text-align: center;
+    text-align: right;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .db-banner-rock-the-world {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 50px;
-    letter-spacing: -1.5px;
-    display: none;
+    text-align: right;
+    font-size: 32px;
+    margin-top: unset;
+    letter-spacing: -0.96px;
+    max-width: 114px;
+    min-width: 114px;
+    color: #9A96D2;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--after-life {
@@ -2708,8 +2657,8 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--after-life .db-container .db-row:nth-child(1) h2 {
-    font-size: 50px;
-    letter-spacing: -2px;
+    font-size: 49px;
+    letter-spacing: -1.971px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--after-life .db-container .db-row:nth-child(2) {
@@ -2722,7 +2671,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--after-life .db-container .db-row:nth-child(2) {
-    margin-top: 30px;
+    margin-top: 43px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--after-life .db-container .db-row:nth-child(2) .db-col:nth-child(1) {
@@ -2749,7 +2698,8 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--after-life .db-container .db-row:nth-child(2) .db-col:nth-child(1) {
-    font-size: 16px;
+    font-size: 18px;
+    max-width: 337px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction {
@@ -2774,15 +2724,18 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction {
-    height: 1750px;
+    height: 1350px;
+    padding-top: unset;
+    margin-top: 289px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction::before {
   content: "";
   position: absolute;
   display: block;
-  width: 707px;
   height: 966px;
+  max-width: 707px;
+  width: 100%;
   background-image: url("About-Us__asset-faction-bg-v01-1414x1932.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -2797,9 +2750,15 @@ ul, ol {
     top: 200px;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction::before {
-    display: none;
+    display: block;
+    background-image: url("About-Us__asset-faction-mb-bg-v01-860x1182.png");
+    max-width: 433px;
+    transform: translateX(-50%);
+    width: 100%;
+    top: 359px;
+    height: 591px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container {
@@ -2817,6 +2776,7 @@ ul, ol {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(1) {
     flex-direction: column;
     row-gap: 31px;
+    align-items: center;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
@@ -2901,7 +2861,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) {
-    margin-top: 40px;
+    margin-top: 33px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) {
@@ -2939,7 +2899,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) {
-    height: 400px;
+    height: 450px;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -3086,11 +3046,13 @@ ul, ol {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) {
     max-width: 479px;
     min-width: unset;
+    height: 750px;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) {
-    height: 620px;
+    max-width: 300px;
+    height: 473px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list {
@@ -3152,8 +3114,8 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.first-faction .card-wrapper {
-    padding: 32px 35px 67px 35px;
-    row-gap: 31px;
+    padding: 26px 29px 55px 30px;
+    row-gap: 25px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.first-faction .card-wrapper::after {
@@ -3169,6 +3131,11 @@ ul, ol {
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.first-faction .card-wrapper svg {
   height: 51px;
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.first-faction .card-wrapper svg {
+    height: 50px;
+  }
+}
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.second-faction {
   border: 1.899px solid #FF6F6F;
   box-shadow: 20px 20px 30px 0px rgba(0, 0, 0, 0.5);
@@ -3180,8 +3147,8 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.second-faction .card-wrapper {
-    padding: 29px 33px 37px 33px;
-    row-gap: 19px;
+    padding: 24px 27px 30px 27px;
+    row-gap: 16px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.second-faction .card-wrapper::after {
@@ -3197,6 +3164,11 @@ ul, ol {
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.second-faction .card-wrapper svg {
   height: 94px;
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.second-faction .card-wrapper svg {
+    height: 50px;
+  }
+}
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.third-faction {
   border: 0.906px solid #6FFF87;
   box-shadow: 20px 20px 30px 0px rgba(0, 0, 0, 0.5);
@@ -3208,8 +3180,8 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.third-faction .card-wrapper {
-    padding: 26px 17px 29px 17px;
-    row-gap: 20px;
+    padding: 21px 23px 23px 24px;
+    row-gap: 16px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.third-faction .card-wrapper::after {
@@ -3225,6 +3197,43 @@ ul, ol {
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.third-faction .card-wrapper svg {
   height: 83px;
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.third-faction .card-wrapper svg {
+    height: 50px;
+  }
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.fourth-faction {
+  border: 1px solid #6FE2FF;
+  background: #111D20;
+  box-shadow: 18.35249px 18.35249px 27.52874px 0px rgba(0, 0, 0, 0.5);
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.fourth-faction .card-wrapper {
+  padding: 35px 39px 56px 40px;
+  row-gap: 44px;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.fourth-faction .card-wrapper {
+    row-gap: 25px;
+  }
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.fourth-faction .card-wrapper::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(15, 27, 30, 0) 0%, #0F1B1E 39.63%);
+  z-index: -1;
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.fourth-faction .card-wrapper svg {
+  height: 95px;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.fourth-faction .card-wrapper svg {
+    height: 50px;
+  }
+}
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement {
   z-index: 11;
   height: 629px;
@@ -3232,10 +3241,16 @@ ul, ol {
   animation: dissapearFirstElement 600ms forwards ease-in-out 0ms;
   transition: border 600ms ease-in-out 0ms;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement {
+    width: 350px;
+    animation: dissapearFirstElement768 600ms forwards ease-in-out 0ms;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement {
-    width: 288px;
-    height: 463px;
+    width: 234px;
+    height: 377px;
     animation: dissapearFirstElementMb 600ms forwards ease-in-out 0ms;
   }
 }
@@ -3244,7 +3259,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper::before {
-    height: 296px;
+    height: 241px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper::after {
@@ -3252,7 +3267,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper::after {
-    height: 299px;
+    height: 244px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper .faction-img-container {
@@ -3261,11 +3276,23 @@ ul, ol {
   min-width: 293px;
   height: 400px;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper .faction-img-container {
+    max-width: 253px;
+    min-width: 253px;
+    height: 360px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper .faction-img-container {
-    max-width: 215px;
-    min-width: 215px;
-    height: 294px;
+    max-width: 175px;
+    min-width: 175px;
+    height: 240px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearFirstElement .card-wrapper svg {
+    width: 197px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement {
@@ -3276,10 +3303,16 @@ ul, ol {
   animation: appearLastElement 600ms forwards ease-in-out 0ms;
   transition: border 600ms ease-in-out 0ms;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement {
+    width: 279px;
+    animation: appearLastElement768 600ms forwards ease-in-out 0ms;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement {
-    width: 235px;
-    height: 378px;
+    width: 192px;
+    height: 308px;
     animation: appearLastElementMb 600ms forwards ease-in-out 0ms;
   }
 }
@@ -3288,7 +3321,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper::before {
-    height: 242px;
+    height: 197px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper::after {
@@ -3296,7 +3329,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper::after {
-    height: 244px;
+    height: 199px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper .faction-img-container {
@@ -3305,12 +3338,22 @@ ul, ol {
   min-width: 239px;
   height: 326px;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper .faction-img-container {
+    max-width: 198px;
+    min-width: 198px;
+    height: 285px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper .faction-img-container {
-    max-width: 176px;
-    min-width: 176px;
-    height: 240px;
+    max-width: 143px;
+    min-width: 143px;
+    height: 196px;
   }
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearLastElement .card-wrapper svg {
+  display: none;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement {
   z-index: 10;
@@ -3320,10 +3363,16 @@ ul, ol {
   transition: border 600ms ease-in-out 0ms;
   animation: appearFirstElement 600ms forwards ease-in-out 0ms;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement {
+    width: 350px;
+    animation: appearFirstElement768 600ms forwards ease-in-out 0ms;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement {
-    width: 288px;
-    height: 463px;
+    width: 234px;
+    height: 377px;
     animation: appearFirstElementMb 600ms forwards ease-in-out 0ms;
   }
 }
@@ -3332,7 +3381,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper::before {
-    height: 296px;
+    height: 241px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper::after {
@@ -3340,7 +3389,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper::after {
-    height: 299px;
+    height: 244px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper .faction-img-container {
@@ -3349,11 +3398,23 @@ ul, ol {
   min-width: 293px;
   height: 400px;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper .faction-img-container {
+    max-width: 253px;
+    min-width: 253px;
+    height: 360px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper .faction-img-container {
-    max-width: 215px;
-    min-width: 215px;
-    height: 294px;
+    max-width: 175px;
+    min-width: 175px;
+    height: 240px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--appearFirstElement .card-wrapper svg {
+    width: 197px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement {
@@ -3363,10 +3424,16 @@ ul, ol {
   width: 320px;
   animation: dissapearLastElement 600ms forwards ease-in-out 0ms;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement {
+    width: 279px;
+    animation: dissapearLastElement768 600ms forwards ease-in-out 0ms;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement {
-    width: 235px;
-    height: 378px;
+    width: 192px;
+    height: 308px;
     animation: dissapearLastElementMb 600ms forwards ease-in-out 0ms;
   }
 }
@@ -3375,7 +3442,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper::before {
-    height: 242px;
+    height: 197px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper::after {
@@ -3383,7 +3450,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper::after {
-    height: 244px;
+    height: 199px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper .faction-img-container {
@@ -3392,12 +3459,22 @@ ul, ol {
   min-width: 239px;
   height: 326px;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper .faction-img-container {
+    max-width: 198px;
+    min-width: 198px;
+    height: 285px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper .faction-img-container {
-    max-width: 176px;
-    min-width: 176px;
-    height: 240px;
+    max-width: 143px;
+    min-width: 143px;
+    height: 196px;
   }
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--dissapearLastElement .card-wrapper svg {
+  display: none;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first {
   z-index: 10;
@@ -3406,10 +3483,15 @@ ul, ol {
   opacity: 1;
   transform: translate(0, 0);
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first {
+    width: 350px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first {
-    width: 288px;
-    height: 463px;
+    width: 234px;
+    height: 377px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first.first-faction {
@@ -3424,12 +3506,16 @@ ul, ol {
   box-shadow: 22.42445px 22.42445px 33.63668px 0px rgba(0, 0, 0, 0.5), 4.14162px 4.14162px 8.28325px 0px rgba(111, 255, 135, 0.3), -4.14162px -4.14162px 8.28325px 0px rgba(111, 255, 135, 0.3), 2.07081px 2.07081px 4.14162px 0px rgba(111, 255, 135, 0.6), -2.07081px -2.07081px 4.14162px 0px rgba(111, 255, 135, 0.6);
   border: 3px solid #6FFF87;
 }
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first.fourth-faction {
+  border: 3px solid #6FE2FF;
+  box-shadow: 22.42445px 22.42445px 33.63668px 0px rgba(0, 0, 0, 0.5), 4.14162px 4.14162px 8.28325px 0px rgba(34, 195, 235, 0.3), -4.14162px -4.14162px 8.28325px 0px rgba(34, 195, 235, 0.3), 2.07081px 2.07081px 4.14162px 0px rgba(110, 226, 255, 0.6), -2.07081px -2.07081px 4.14162px 0px rgba(110, 226, 255, 0.6);
+}
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper::before {
   height: 403px;
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper::before {
-    height: 296px;
+    height: 241px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper::after {
@@ -3437,7 +3523,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper::after {
-    height: 299px;
+    height: 244px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper .faction-img-container {
@@ -3446,11 +3532,26 @@ ul, ol {
   min-width: 293px;
   height: 400px;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper .faction-img-container {
+    max-width: 253px;
+    min-width: 253px;
+    height: 360px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper .faction-img-container {
-    max-width: 215px;
-    min-width: 215px;
-    height: 294px;
+    max-width: 175px;
+    min-width: 175px;
+    height: 240px;
+  }
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper svg {
+  display: block;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--first .card-wrapper svg {
+    width: 197px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second {
@@ -3461,11 +3562,17 @@ ul, ol {
   transform: translate(78px, 101px);
   opacity: 1;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second {
+    width: 319px;
+    transform: translate(65px, 101px);
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second {
-    width: 265px;
-    height: 426px;
-    transform: translate(84px, 76px);
+    width: 216px;
+    height: 347px;
+    transform: translate(48px, 62px);
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second.first-faction {
@@ -3479,12 +3586,16 @@ ul, ol {
   border: 2px solid #6FFF87;
   box-shadow: 20.5892px 20.5892px 30.8838px 0px rgba(0, 0, 0, 0.5);
 }
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second.fourth-faction {
+  border: 2px solid #6FE2FF;
+  box-shadow: 20.5892px 20.5892px 30.8838px 0px rgba(0, 0, 0, 0.5);
+}
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper::before {
   height: 371px;
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper::before {
-    height: 273px;
+    height: 222px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper::after {
@@ -3492,7 +3603,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper::after {
-    height: 276px;
+    height: 225px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper .faction-img-container {
@@ -3501,12 +3612,22 @@ ul, ol {
   min-width: 270px;
   height: 368px;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper .faction-img-container {
+    max-width: 229px;
+    min-width: 229px;
+    height: 327px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper .faction-img-container {
-    max-width: 198px;
-    min-width: 198px;
-    height: 271px;
+    max-width: 162px;
+    min-width: 162px;
+    height: 220px;
   }
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--second .card-wrapper svg {
+  display: none;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third {
   z-index: 8;
@@ -3515,11 +3636,17 @@ ul, ol {
   width: 320px;
   transform: translate(158px, 201px);
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third {
+    width: 279px;
+    transform: translate(133px, 201px);
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third {
-    width: 235px;
-    height: 378px;
-    transform: translate(150px, 149px);
+    width: 192px;
+    height: 308px;
+    transform: translate(96px, 122px);
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third.first-faction {
@@ -3533,12 +3660,16 @@ ul, ol {
   border: 1px solid #6FFF87;
   box-shadow: 18.35249px 18.35249px 27.52874px 0px rgba(0, 0, 0, 0.5);
 }
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third.fourth-faction {
+  border: 1px solid #6FE2FF;
+  box-shadow: 18.35249px 18.35249px 27.52874px 0px rgba(0, 0, 0, 0.5);
+}
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper::before {
   height: 329px;
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper::before {
-    height: 242px;
+    height: 197px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper::after {
@@ -3546,7 +3677,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper::after {
-    height: 244px;
+    height: 199px;
   }
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper .faction-img-container {
@@ -3555,21 +3686,36 @@ ul, ol {
   min-width: 239px;
   height: 326px;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper .faction-img-container {
+    max-width: 198px;
+    min-width: 198px;
+    height: 285px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper .faction-img-container {
-    max-width: 176px;
-    min-width: 176px;
-    height: 240px;
+    max-width: 143px;
+    min-width: 143px;
+    height: 196px;
   }
+}
+.db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--third .card-wrapper svg {
+  display: none;
 }
 .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--hidden {
   opacity: 0;
   display: none;
   transform: translate(169px, 223px);
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--hidden {
+    transform: translate(140px, 210px);
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-banner-after-life-faction .about-us--faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) .card-list .card.--hidden {
-    transform: translate(161px, 171px);
+    transform: translate(105px, 130px);
   }
 }
 @keyframes appearLastElement {
@@ -3628,44 +3774,99 @@ ul, ol {
     transform: translate(169px, 223px);
   }
 }
-@keyframes appearLastElementMb {
+@keyframes appearLastElement768 {
   from {
     opacity: 0;
     display: block;
-    transform: translate(161px, 171px);
-    width: 235px;
-    height: 378px;
+    transform: translate(140px, 210px);
+    height: 513px;
+    width: 279px;
     z-index: 2;
   }
   to {
     opacity: 1;
     z-index: 2;
-    width: 235px;
-    height: 378px;
-    transform: translate(150px, 149px);
+    height: 513px;
+    width: 279px;
+    transform: translate(133px, 201px);
+  }
+}
+@keyframes dissapearFirstElement768 {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+    height: 629px;
+    width: 350px;
+    z-index: 11;
+  }
+  to {
+    z-index: 11;
+    opacity: 0;
+    width: 350px;
+    height: 629px;
+    transform: translate(-21px, -30px);
+  }
+}
+@keyframes appearFirstElement768 {
+  0% {
+    z-index: 10;
+    opacity: 0;
+    display: block;
+    transform: translate(-21px, -30px);
+  }
+  100% {
+    z-index: 10;
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+@keyframes dissapearLastElement768 {
+  from {
+    opacity: 1;
+    transform: translate(133px, 201px);
+  }
+  to {
+    opacity: 0;
+    transform: translate(140px, 210px);
+  }
+}
+@keyframes appearLastElementMb {
+  from {
+    opacity: 0;
+    transform: translate(105px, 130px);
+    width: 192px;
+    height: 308px;
+    z-index: 2;
+  }
+  to {
+    opacity: 1;
+    z-index: 2;
+    width: 192px;
+    height: 308px;
+    transform: translate(96px, 122px);
   }
 }
 @keyframes dissapearFirstElementMb {
   from {
     opacity: 1;
     transform: translate(0, 0);
-    width: 288px;
-    height: 463px;
+    width: 234px;
+    height: 377px;
     z-index: 11;
   }
   to {
     z-index: 11;
     opacity: 0;
-    width: 288px;
-    height: 463px;
-    transform: translate(-5px, -47px);
+    width: 234px;
+    height: 377px;
+    transform: translate(-20px, -20px);
   }
 }
 @keyframes appearFirstElementMb {
   0% {
     z-index: 10;
     opacity: 0;
-    transform: translate(-5px, -47px);
+    transform: translate(-20px, -20px);
   }
   100% {
     z-index: 10;
@@ -3677,15 +3878,15 @@ ul, ol {
   from {
     opacity: 1;
     z-index: 2;
-    width: 235px;
-    height: 378px;
-    transform: translate(150px, 149px);
+    width: 192px;
+    height: 308px;
+    transform: translate(96px, 122px);
   }
   to {
     opacity: 0;
-    transform: translate(161px, 171px);
-    width: 235px;
-    height: 378px;
+    transform: translate(105px, 130px);
+    width: 192px;
+    height: 308px;
     z-index: 2;
   }
 }
@@ -3701,6 +3902,12 @@ ul, ol {
   .db-page--about-us .db-section--about-us-resurrection {
     padding-top: 66px;
     padding-bottom: 77px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-resurrection {
+    padding-top: 46px;
+    padding-bottom: 67px;
   }
 }
 .db-page--about-us .db-section--about-us-resurrection .db-container {
@@ -3729,6 +3936,11 @@ ul, ol {
   column-gap: 31px;
   justify-content: space-between;
   align-items: center;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) {
+    height: 627px;
+  }
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) {
@@ -3808,10 +4020,11 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) {
-    margin-top: 98px;
+    margin-top: unset;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: unset;
   }
 }
 .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) h3 {
@@ -3871,6 +4084,7 @@ ul, ol {
   margin-inline: auto;
   margin-top: 37px;
   display: none;
+  height: 325px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .undeadSlider {
@@ -3935,6 +4149,7 @@ ul, ol {
   height: 325px;
 }
 .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .undeadSlider .box.active-box .box-wrapper {
+  opacity: 1;
   filter: grayscale(0);
 }
 .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .undeadSlider .box.nonactive-box {
@@ -3943,6 +4158,7 @@ ul, ol {
   height: 304px;
 }
 .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .undeadSlider .box.nonactive-box .box-wrapper {
+  opacity: 0.6;
   filter: grayscale(1);
 }
 .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(2) .db-resurrection-cta {
@@ -4091,6 +4307,12 @@ ul, ol {
     row-gap: 30px;
   }
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us-coming-soon .db-container .db-row {
+    row-gap: 20px;
+    align-items: center;
+  }
+}
 .db-page--about-us .db-section--about-us-coming-soon .db-container .db-row .db-col:nth-child(1) {
   color: #FFF;
   font-family: var(--primaryFontFamily);
@@ -4109,14 +4331,11 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-coming-soon .db-container .db-row .db-col:nth-child(1) {
-    max-width: 391px;
     color: #FFF;
+    text-align: center;
     font-family: var(--primaryFontFamily);
-    font-size: 42px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 115%; /* 48.3px */
-    letter-spacing: -1.68px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
   }
 }
 .db-page--about-us .db-section--about-us-coming-soon .db-container .db-row .db-col:nth-child(2) {
@@ -4136,13 +4355,10 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-coming-soon .db-container .db-row .db-col:nth-child(2) {
-    max-width: 391px;
-    color: #FFF;
+    max-width: 347px;
+    text-align: center;
     font-family: var(--primaryFontFamily);
     font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%;
   }
 }
 .db-page--about-us .db-section--about-us-elevate {
@@ -4152,7 +4368,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-elevate {
-    padding: 79px 33px 83px 33px;
+    padding: 79px 33px 61px 24px;
   }
 }
 .db-page--about-us .db-section--about-us-elevate .db-container .db-row {
@@ -4288,6 +4504,7 @@ ul, ol {
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us {
     margin-top: 65px;
+    width: 100%;
   }
 }
 .db-page--about-us .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .connect-with-us {
@@ -4316,6 +4533,8 @@ ul, ol {
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .db-elevate-website {
     margin-top: 10px;
+    width: 100%;
+    justify-content: center;
   }
 }
 .db-page--about-us .db-section--about-us-elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .db-elevate-website span {
@@ -4345,8 +4564,10 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-subscribe {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-top: 0px;
+    padding-bottom: 79px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 .db-page--about-us .db-section--about-us-subscribe .db-container .db-row {

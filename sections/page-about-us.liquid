@@ -49,16 +49,6 @@
                   2069
               </div>
 
-              <div class="db-content">
-                <div class="db-banner-and-content">
-                  AND
-                </div>
-
-                <div class="db-banner-rock-the-world-content">
-                    Undead rock the world
-                </div>
-              </div>
-
               <div class="db-banner-rock-the-world">
                   Undead rock the world
               </div>
@@ -110,14 +100,14 @@
         <div class="db-row">
           <div class="db-col">
             <div class="db-inner-row" ref="contentContainer">
-                <div class="db-faction-content" v-for="(faction, index) in dataSample" :class="selectPosition(index)">
-                  <div class="db-inner-col" v-text="faction.factionName">
+                <div class="db-faction-content" v-for="(faction, index) in factions" :class="selectPosition(index)">
+                  <div class="db-inner-col" v-text="faction.name">
                   </div>
 
                   <db class="db-inner-col" v-text="faction.description">
                   </db>
                 
-                  <div class="db-inner-col"v-text="faction.HQ"> 
+                  <div class="db-inner-col"v-text="faction.hq"> 
                   </div>
                 </div>
             </div>
@@ -138,7 +128,35 @@
 
           <div class="db-col">
             <ul class="card-list" ref="newSliderContainer">
-              <li class="card first-faction --first">
+
+              <li class="card" v-for="(faction, index) in factions" :class="factionClass(index)">
+                
+                  <div class="card-wrapper">
+                    <div class="faction-img-container">
+                      <img :src="faction.image_url" alt="">
+                    </div>
+
+                    <div class="faction-svg" v-if="index === 0">
+                      {% render 'faction--king' %}
+                    </div>
+
+                    <div class="faction-svg" v-if="index === 1">
+                      {% render 'faction--bleeding-hearts' %}
+                    </div>
+
+                    <div class="faction-svg" v-if="index === 2">
+                      {% render 'faction--honky-tonkin' %}
+                    </div>
+
+                    <div class="faction-svg" v-if="index === 3">
+                      {% render 'faction--the-blues' %}
+                    </div>
+
+                  </div>
+               
+              </li>
+
+              {% comment %} <li class="card first-faction --first">
                 
                   <div class="card-wrapper">
                     <div class="faction-img-container">
@@ -172,23 +190,23 @@
                   </div>
               </li>
 
-              <li class="card second-faction --hidden">
+              <li class="card fourth-faction --hidden">
                 
                   <div class="card-wrapper">
                     <div class="faction-img-container">
-                      <img src="{{ 'About-Us__asset-faction-v02-294x401.png' | asset_url }}" alt="">
+                      <img src="{{ 'About-Us__asset-faction-v04-586x799.png' | asset_url }}" alt="">
                     </div>
 
-                    {% render 'faction--bleeding-hearts' %}
+                    {% render 'faction--the-blues' %}
                   </div>
-              </li>
+              </li> {% endcomment %}
             </ul>
           </div> 
           
         </div>
       </div>
     </div>
-  </section>
+  </section> 
 
 
   <section class="db-section db-section--about-us-resurrection">
@@ -410,6 +428,32 @@
     data() {
       return {
         activeButton: 'right',
+        factions:[
+          {
+            name: 'THE KINGS',
+            image_url: "{{ 'About-Us__asset-faction-v01-319x435.png' | asset_url }}",
+            description: 'Are the total opposite of their old rivals, preferring to work in guerilla tactics rather than charging right in. They make deals and play politics with the other gangs to get upper hands. They’re sneaky, crafty, and planning.',
+            hq: 'HQ: The Arena - The old football stadium and surrounding area is under the control of The Kings. It is quite possibly the most impenetrable fortress, anyone who controls this has the best staging area for both attacking and defending. The Hearts used to control the stadium area until The Kings got them with a surprise attack, taking it all in a single afternoon. Music plays from the stadium’s sound system with no breaks. This has put it on 92.9’s agenda, the desire to play their radio station through those speakers is a great one.'
+          },
+          {
+            name: 'BLEEDING HEARTS',
+            image_url: "{{ 'About-Us__asset-faction-v02-294x401.png' | asset_url }}",
+            description: 'Some folk think the Hearts kicked this whole deadbeat thing off here. The Hearts live by a code of honor, whenever they march into battle they bring their instruments with them. They play loud, hoping to drown out any sort of communication by their enemies.',
+            hq: 'HQ: The Queen of Hearts - This is the headquarters of The Bleeding Hearts. It was once an underground bar, now, it’s still an underground bar just a lot more violent. Anything and everything the Hearts do is run out of this bar.'
+          },
+          {
+            name: 'HONKY TONKIN’ HILLBILLY HORDE',
+            image_url: "{{ 'About-Us__asset-faction-v03-523x713.png' | asset_url }}",
+            description: 'The Hillbillies never really had an interest in controlling any city, blasting their music as they go muddin’ and fishin’ is more their speed. However, a radical split of members wanting to spread their control to cities have made their way into Old Columbus recently.',
+            hq: 'HQ: The Farm - On the outskirts of Old Columbus is where the Hillbilly Horde has placed their staging area. The once deserted farmhouse and barn is now thriving with activity. There are many things to take care of on The Farm, none more important than the guarding of the barn, where the gang keeps all of it’s needed supplies for the taking of Old Columbusz'
+          },
+          {
+            name: 'THE BLUES',
+            image_url: "{{ 'About-Us__asset-faction-v04-586x799.png' | asset_url }}",
+            description: 'The Blues came about in response to an old, almost forgotten enemy, the Reds. After a 3 year slog the Blues came out victorious and had full control over their burrow. The issue is that now they’re in the crosshairs of every other large gang in Old Columbus. This doesn’t scare them though.',
+            hq: 'HQ: The Auditorium - The Blues broke into an old, defunct school and turned it into their headquarters. Always learning and studying, the Blues live their lives by the boy scout motto “Be Prepared”. Classes are dedicated to the study of music and battle strategy. All of the gangs important activities take place here.'
+          },
+        ],
         undeadData: [
           {
             image_url: "{{ 'About-Us__asset-undead-v01-1254x1254.png' | asset_url }}"
@@ -544,6 +588,45 @@
 
     },
     methods: {
+      factionClass(index) {
+
+        if (index === 0) {
+
+         return {
+          'first-faction': true,
+          '--first': true
+         }
+
+        }
+
+        if (index === 1) {
+
+         return {
+          'second-faction': true,
+          '--second': true
+         } 
+
+        }
+
+        if (index === 2) {
+
+         return {
+          'third-faction': true,
+          '--third': true
+         }
+
+        }
+
+        if (index === 3) {
+
+         return {
+          'fourth-faction': true,
+          '--hidden': true
+         }
+
+        }
+
+      },
       onChangeUndeadCardSlide() {
         this.isActiveBox = !this.isActiveBox;
         const container = this.$refs.undeadSlider;
