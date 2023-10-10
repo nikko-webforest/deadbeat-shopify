@@ -5,54 +5,41 @@
     <div class="about-us--banner">
       <div class="db-container">
         <div class="title-wrap">
-
           <h1>
             <span>
               HELL YEAH
             </span>
-
             <span>
               WE ARE
             </span>
           </h1>
-
           <h4>
             Welcome to the world of deadbeat, Deadbeat is a transmedia story centered around a radio station in the year 2069, where the undead rule the world.
           </h4>
-
         </div>
-
         <div class="db-row">
           <div class="db-col-spacer">
             <div class="db-col">
               <div class="db-logo-container">
-
                 <img class="db-img"
                   alt="Deadbeats Logo"
                   title="Deadbeats Logo"
                   src="{{ 'About-Us__asset-DB-logo.png' | asset_url }}"
                   width=""
                   height=""
-                  loading="lazy"
-                />
-
+                  loading="lazy"/>
               </div>
             </div>
-
             <div class="db-col">
-
               <div class="db-banner-its-year">
                 IT’S YEAR
               </div>
-
               <div class="db-banner-2069">
-                  2069
+                2069
               </div>
-
               <div class="db-banner-rock-the-world">
-                  Undead rock the world
+                Undead rock the world
               </div>
-
             </div>
           </div>
         </div>
@@ -66,10 +53,9 @@
             THE AFTER, AFTER LIFE
           </h2>
         </div>
-
         <div class="db-row">
           <div class="db-col">
-              Welcome to BEAT 96.9, a once great independent radio station struggling to stay alive in the world of the undead. This new animated world follows the lives of the stations’ reimagined crew as they manage their post-apocalyptic lives.
+            Welcome to BEAT 96.9, a once great independent radio station struggling to stay alive in the world of the undead. This new animated world follows the lives of the stations’ reimagined crew as they manage their post-apocalyptic lives.
           </div>
         </div>
       </div>
@@ -83,7 +69,6 @@
               <span>
                 CHOOSE YOUR
               </span>
-
               <span>
                 FACTION
               </span>
@@ -100,26 +85,48 @@
         <div class="db-row">
           <div class="db-col">
             <div class="db-inner-row" ref="contentContainer">
-                <div class="db-faction-content" v-for="(faction, index) in factions" :class="selectPosition(index)">
-                  <div class="db-inner-col" v-text="faction.name">
-                  </div>
-
-                  <db class="db-inner-col" v-text="faction.description">
-                  </db>
-                
-                  <div class="db-inner-col"v-text="faction.hq"> 
-                  </div>
+              <div class="db-faction-content"
+                v-for="(faction, index) in factions"
+                :class="selectPosition(index)">
+                <div class="db-inner-col"
+                  v-text="faction.name">
                 </div>
+                <div class="db-inner-col"
+                  v-text="faction.description">
+                </div>
+                <div class="db-inner-col"
+                  v-text="faction.hq"> 
+                </div>
+              </div>
             </div>
-
             <div class="db-inner-row">
               <div class="db-inner-col">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-prev db-svg" @click="onChangeSlide('prev')">
-                  <path d="M0 10C0 10.4969 0.248704 10.9938 0.497409 11.2422L8.70466 19.441C9.45078 20.1863 10.6943 20.1863 11.4404 19.441C12.1865 18.6957 12.1865 17.4534 11.4404 16.7081L4.72539 10L11.4404 3.29193C12.1865 2.54659 12.1865 1.30435 11.4404 0.559006C10.6943 -0.186337 9.45078 -0.186337 8.70466 0.559006L0.746114 8.50932C0.248705 9.00621 0 9.50311 0 10Z" fill="#CAC7D0" :style="{fillOpacity: activeButton !== 'left' ? 0.4 : ''}"/>
+                <svg class="svg-icon-prev db-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="20"
+                  viewBox="0 0 12 20"
+                  fill="none"
+                  @click="onChangeSlide('prev')">
+                  <path id="path_01"
+                    d="M0 10C0 10.4969 0.248704 10.9938 0.497409 11.2422L8.70466 19.441C9.45078 20.1863 10.6943 20.1863 11.4404 19.441C12.1865 18.6957 12.1865 17.4534 11.4404 16.7081L4.72539 10L11.4404 3.29193C12.1865 2.54659 12.1865 1.30435 11.4404 0.559006C10.6943 -0.186337 9.45078 -0.186337 8.70466 0.559006L0.746114 8.50932C0.248705 9.00621 0 9.50311 0 10Z"
+                    fill="#CAC7D0"
+                    :style="{fillOpacity: activeButton !== 'left' ? 0.4 : ''}">
+                  </path>
                 </svg>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-next db-svg" @click="onChangeSlide('next')">
-                  <path d="M12 10C12 10.4969 11.7513 10.9938 11.5026 11.2422L3.29534 19.441C2.54922 20.1863 1.3057 20.1863 0.559586 19.441C-0.186529 18.6957 -0.186529 17.4534 0.559586 16.7081L7.27461 10L0.559586 3.29193C-0.186529 2.54659 -0.186529 1.30435 0.559586 0.559006C1.3057 -0.186337 2.54922 -0.186337 3.29534 0.559006L11.2539 8.50932C11.7513 9.00621 12 9.50311 12 10Z" fill="#CAC7D0" :style="{fillOpacity: activeButton !== 'right' ? 0.4 : ''}"/>
+                <svg class="svg-icon-next db-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="20"
+                  viewBox="0 0 12 20"
+                  fill="none"
+                  @click="onChangeSlide('next')">
+                  <path id="path_01"
+                    d="M12 10C12 10.4969 11.7513 10.9938 11.5026 11.2422L3.29534 19.441C2.54922 20.1863 1.3057 20.1863 0.559586 19.441C-0.186529 18.6957 -0.186529 17.4534 0.559586 16.7081L7.27461 10L0.559586 3.29193C-0.186529 2.54659 -0.186529 1.30435 0.559586 0.559006C1.3057 -0.186337 2.54922 -0.186337 3.29534 0.559006L11.2539 8.50932C11.7513 9.00621 12 9.50311 12 10Z"
+                    fill="#CAC7D0"
+                    :style="{fillOpacity: activeButton !== 'right' ? 0.4 : ''}">
+                  </path>
                 </svg>
                 
               </div>
@@ -128,81 +135,65 @@
 
           <div class="db-col">
             <ul class="card-list" ref="newSliderContainer">
-
-              <li class="card" v-for="(faction, index) in factions" :class="factionClass(index)">
-                
-                  <div class="card-wrapper">
-                    <div class="faction-img-container">
-                      <img :src="faction.image_url" alt="">
-                    </div>
-
-                    <div class="faction-svg" v-if="index === 0">
-                      {% render 'faction--king' %}
-                    </div>
-
-                    <div class="faction-svg" v-if="index === 1">
-                      {% render 'faction--bleeding-hearts' %}
-                    </div>
-
-                    <div class="faction-svg" v-if="index === 2">
-                      {% render 'faction--honky-tonkin' %}
-                    </div>
-
-                    <div class="faction-svg" v-if="index === 3">
-                      {% render 'faction--the-blues' %}
-                    </div>
-
+              <li class="card"
+                v-for="(faction, index) in factions"
+                :class="factionClass(index)">
+                <div class="card-wrapper">
+                  <div class="faction-img-container">
+                    <img :src="faction.image_url" alt="">
                   </div>
-               
+                  <div class="faction-svg" v-if="index === 0">
+                    {% render 'faction--king' %}
+                  </div>
+                  <div class="faction-svg" v-if="index === 1">
+                    {% render 'faction--bleeding-hearts' %}
+                  </div>
+                  <div class="faction-svg" v-if="index === 2">
+                    {% render 'faction--honky-tonkin' %}
+                  </div>
+                  <div class="faction-svg" v-if="index === 3">
+                    {% render 'faction--the-blues' %}
+                  </div>
+                </div>
               </li>
 
-              {% comment %} <li class="card first-faction --first">
-                
+              {% comment %}
+                <li class="card first-faction --first">
                   <div class="card-wrapper">
                     <div class="faction-img-container">
                       <img src="{{ 'About-Us__asset-faction-v01-319x435.png' | asset_url }}" alt="">
                     </div>
-
                     {% render 'faction--king' %}
                   </div>
-               
-              </li>
-
-              <li class="card second-faction --second">
-                
+                </li>
+                <li class="card second-faction --second">
                   <div class="card-wrapper">
                     <div class="faction-img-container">
                       <img src="{{ 'About-Us__asset-faction-v02-294x401.png' | asset_url }}" alt="">
                     </div>
-
                     {% render 'faction--bleeding-hearts' %}
                   </div>
-              </li>
-
-              <li class="card third-faction --third">
-                
+                </li>
+                <li class="card third-faction --third">
                   <div class="card-wrapper">
                     <div class="faction-img-container">
                       <img src="{{ 'About-Us__asset-faction-v03-523x713.png' | asset_url }}" alt="">
                     </div>
-
                     {% render 'faction--honky-tonkin' %}
                   </div>
-              </li>
-
-              <li class="card fourth-faction --hidden">
-                
+                </li>
+                <li class="card fourth-faction --hidden">
                   <div class="card-wrapper">
                     <div class="faction-img-container">
                       <img src="{{ 'About-Us__asset-faction-v04-586x799.png' | asset_url }}" alt="">
                     </div>
-
                     {% render 'faction--the-blues' %}
                   </div>
-              </li> {% endcomment %}
+                </li>
+              {% endcomment %}
+
             </ul>
           </div> 
-          
         </div>
       </div>
     </div>
@@ -212,26 +203,32 @@
   <section class="db-section db-section--about-us-resurrection">
     <div class="db-container">
       <div class="db-row">
-        <div class="db-col" ref="undeadSlider">
-
+        <div class="db-col"
+          ref="undeadSlider">
           <div class="box active-box">
-            <div class="button-container" ref="undeadButton" :class="activeControls">
+            <div class="button-container"
+              ref="undeadButton"
+              :class="activeControls">
               <div class="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" class="db-svg" :class="activeSvg" @click="onChangeUndeadCardSlide">
-                <rect x="0.773809" y="0.773809" width="63.4524" height="63.4524" rx="31.7262" stroke="#AA27B1" stroke-width="1.54762"/>
-                <path d="M37.1426 33.138C37.1426 33.4475 36.9878 33.7571 36.8331 33.9118L31.7259 39.019C31.2616 39.4833 30.4878 39.4833 30.0235 39.019C29.5592 38.5547 29.5592 37.7809 30.0235 37.3166L34.2021 33.138L30.0235 28.9594C29.5592 28.4952 29.5592 27.7214 30.0235 27.2571C30.4878 26.7928 31.2616 26.7928 31.7259 27.2571L36.6783 32.2094C36.9878 32.519 37.1426 32.8285 37.1426 33.138Z" fill="#AA27B1"/>
+                <svg class="db-svg"
+                  :class="activeSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="65"
+                  height="65"
+                  viewBox="0 0 65 65"
+                  fill="none"
+                  @click="onChangeUndeadCardSlide">
+                <rect x="0.773809" y="0.773809" width="63.4524" height="63.4524" rx="31.7262" stroke="#AA27B1" stroke-width="1.54762"></rect>
+                <path d="M37.1426 33.138C37.1426 33.4475 36.9878 33.7571 36.8331 33.9118L31.7259 39.019C31.2616 39.4833 30.4878 39.4833 30.0235 39.019C29.5592 38.5547 29.5592 37.7809 30.0235 37.3166L34.2021 33.138L30.0235 28.9594C29.5592 28.4952 29.5592 27.7214 30.0235 27.2571C30.4878 26.7928 31.2616 26.7928 31.7259 27.2571L36.6783 32.2094C36.9878 32.519 37.1426 32.8285 37.1426 33.138Z" fill="#AA27B1"></path>
                 </svg>
               </div>
             </div>
-
             <div class="box-wrapper"></div>
           </div>
-
           <div class="box nonactive-box">
             <div class="box-wrapper"></div>
           </div>
         </div>
-
         <div class="db-col">
           <h3>
             It’s YOUR Undead!
@@ -242,26 +239,43 @@
             <br />
             You’ll also gain access to our exclusive music creation and background customization tools. Give your Deadbeat a theme song and write their story EXACTLY the way YOU want!
           </div>
-
-          <div class="undeadSlider" ref="undeadSliderMb">
+          <div class="undeadSlider"
+            ref="undeadSliderMb">
             <div class="box active-box">
-              <div class="button-container" ref="undeadButtonMb" :class="activeControls">
+              <div class="button-container"
+                ref="undeadButtonMb"
+                :class="activeControls">
                 <div class="button">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" class="db-svg" :class="activeSvg" @click="onChangeUndeadCardSlideMb">
-                  <rect x="0.773809" y="0.773809" width="63.4524" height="63.4524" rx="31.7262" stroke="#AA27B1" stroke-width="1.54762"/>
-                  <path d="M37.1426 33.138C37.1426 33.4475 36.9878 33.7571 36.8331 33.9118L31.7259 39.019C31.2616 39.4833 30.4878 39.4833 30.0235 39.019C29.5592 38.5547 29.5592 37.7809 30.0235 37.3166L34.2021 33.138L30.0235 28.9594C29.5592 28.4952 29.5592 27.7214 30.0235 27.2571C30.4878 26.7928 31.2616 26.7928 31.7259 27.2571L36.6783 32.2094C36.9878 32.519 37.1426 32.8285 37.1426 33.138Z" fill="#AA27B1"/>
+                  <svg class="db-svg"
+                    :class="activeSvg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="65"
+                    height="65"
+                    viewBox="0 0 65 65"
+                    fill="none"
+                    @click="onChangeUndeadCardSlideMb">
+                  <rect id="rect_01"
+                    x="0.773809"
+                    y="0.773809"
+                    width="63.4524"
+                    height="63.4524"
+                    rx="31.7262"
+                    stroke="#AA27B1"
+                    stroke-width="1.54762">
+                  </rect>
+                  <path id="path_01"
+                    d="M37.1426 33.138C37.1426 33.4475 36.9878 33.7571 36.8331 33.9118L31.7259 39.019C31.2616 39.4833 30.4878 39.4833 30.0235 39.019C29.5592 38.5547 29.5592 37.7809 30.0235 37.3166L34.2021 33.138L30.0235 28.9594C29.5592 28.4952 29.5592 27.7214 30.0235 27.2571C30.4878 26.7928 31.2616 26.7928 31.7259 27.2571L36.6783 32.2094C36.9878 32.519 37.1426 32.8285 37.1426 33.138Z"
+                    fill="#AA27B1">
+                    </path>
                   </svg>
                 </div>
               </div>
-
               <div class="box-wrapper"></div>
             </div>
-
             <div class="box nonactive-box">
               <div class="box-wrapper"></div>
             </div>
           </div>
-
           <div class="db-resurrection-cta">
             <button class="db-btn">
               BUY NOW
@@ -290,9 +304,7 @@
   </section>
 
   <section class="db-section db-section--about-us-coming-soon">
-
     <div class="db-container">
-      
       <div class="db-row">
         <div class="db-col">
           STATION PROGRAMMING
@@ -302,7 +314,6 @@
         </div>
       </div>
     </div>
-
   </section>
 
   <section class="db-section db-section--about-us-elevate">
