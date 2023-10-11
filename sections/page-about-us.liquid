@@ -129,7 +129,7 @@
           <div class="db-col">
             <ul class="card-list" ref="newSliderContainer">
 
-              <li class="card" v-for="(faction, index) in factions" :class="factionClass(index)">
+              <li class="card" v-for="(faction, index) in factions" :class="factionClass(index)" @click="onChangeClickFactionCardSlide($event)">
                 
                   <div class="card-wrapper">
                     <div class="faction-img-container">
@@ -155,51 +155,6 @@
                   </div>
                
               </li>
-
-              {% comment %} <li class="card first-faction --first">
-                
-                  <div class="card-wrapper">
-                    <div class="faction-img-container">
-                      <img src="{{ 'About-Us__asset-faction-v01-319x435.png' | asset_url }}" alt="">
-                    </div>
-
-                    {% render 'faction--king' %}
-                  </div>
-               
-              </li>
-
-              <li class="card second-faction --second">
-                
-                  <div class="card-wrapper">
-                    <div class="faction-img-container">
-                      <img src="{{ 'About-Us__asset-faction-v02-294x401.png' | asset_url }}" alt="">
-                    </div>
-
-                    {% render 'faction--bleeding-hearts' %}
-                  </div>
-              </li>
-
-              <li class="card third-faction --third">
-                
-                  <div class="card-wrapper">
-                    <div class="faction-img-container">
-                      <img src="{{ 'About-Us__asset-faction-v03-523x713.png' | asset_url }}" alt="">
-                    </div>
-
-                    {% render 'faction--honky-tonkin' %}
-                  </div>
-              </li>
-
-              <li class="card fourth-faction --hidden">
-                
-                  <div class="card-wrapper">
-                    <div class="faction-img-container">
-                      <img src="{{ 'About-Us__asset-faction-v04-586x799.png' | asset_url }}" alt="">
-                    </div>
-
-                    {% render 'faction--the-blues' %}
-                  </div>
-              </li> {% endcomment %}
             </ul>
           </div> 
           
@@ -224,11 +179,11 @@
               </div>
             </div>
 
-            <div class="box-wrapper"></div>
+            <div class="box-wrapper" @click="onChangeClickCardSlide($event)"></div>
           </div>
 
           <div class="box nonactive-box">
-            <div class="box-wrapper"></div>
+            <div class="box-wrapper" @click="onChangeClickCardSlide"></div>
           </div>
         </div>
 
@@ -254,10 +209,10 @@
                 </div>
               </div>
 
-              <div class="box-wrapper"></div>
+              <div class="box-wrapper" @click="onChangeClickCardSlideMb($event)"></div>
             </div>
 
-            <div class="box nonactive-box">
+            <div class="box nonactive-box" @click="onChangeClickCardSlideMb($event)">
               <div class="box-wrapper"></div>
             </div>
           </div>
@@ -588,6 +543,30 @@
 
     },
     methods: {
+      onChangeClickCardSlide(event) {
+        const targetElement = event.target;
+
+        const parentElement = targetElement.parentElement;
+
+        if (parentElement.classList.contains('nonactive-box')) {
+          this.onChangeUndeadCardSlide();
+          return;
+        }
+
+        return;
+      },
+      onChangeClickCardSlideMb(event) {
+        const targetElement = event.target;
+
+        const parentElement = targetElement.parentElement;
+
+        if (parentElement.classList.contains('nonactive-box')) {
+          this.onChangeUndeadCardSlideMb();
+          return;
+        }
+
+        return;
+      },
       factionClass(index) {
 
         if (index === 0) {
@@ -719,6 +698,70 @@
 				
         return position;
       },
+      async onChangeClickFactionCardSlide(event) {
+        const sliderContainer = this.$refs.newSliderContainer;
+        const targetElement = event.target;
+        const parentElement = targetElement.parentElement;
+
+        console.log(parentElement.classList.contains('--second'))
+        console.log(parentElement.classList.contains('--third'));
+
+        if (parentElement.classList.contains('--second') || parentElement.classList.contains('--third')) {
+          let curIndex = 1;
+          
+          if (parentElement.classList.contains('--second')) {
+              
+              while(curIndex < 2) {
+                
+                await this.onChangeCardPosition();
+                curIndex = curIndex + 1;
+              }
+          }
+
+          if (parentElement.classList.contains('--third')) {
+            
+            while(curIndex < 3) {
+                
+              await this.onChangeCardPosition();
+              curIndex = curIndex + 1;
+            }
+          }
+        }
+      },
+      async onChangeCardPosition() {
+        return new Promise((resolve, reject) => {
+
+          const sliderContainer = this.$refs.newSliderContainer;
+          const first = sliderContainer.querySelector('.--first');
+          const second = sliderContainer.querySelector('.--second');
+          const third = sliderContainer.querySelector('.--third');
+
+          let lastElementSibling = third.nextElementSibling;
+          this.onChangeContent('next');
+          first.classList.remove(['--first']);
+          second.classList.remove(['--second']);
+          third.classList.remove(['--third']);
+          lastElementSibling.classList.remove(['--hidden']);
+          
+          first.classList.add('--dissapearFirstElement');
+          second.classList.add('--first');
+          third.classList.add('--second');
+          lastElementSibling.classList.add('--appearLastElement');
+
+          setTimeout(() => {
+            first.classList.remove(['--dissapearFirstElement']);
+            sliderContainer.appendChild(first);
+            first.classList.add('--hidden');
+            lastElementSibling.classList.remove(['--appearLastElement']);
+            lastElementSibling.classList.add('--third');
+            resolve();
+          }, 700);
+
+          // setTimeout(() => {
+          //   resolve('Hello Their');
+          // }, 2000)
+        })
+      },
       onChangeSlide(type) {
         const sliderContainer = this.$refs.newSliderContainer;
         const first = sliderContainer.querySelector('.--first');
@@ -727,7 +770,7 @@
 
         
         if (type === "next") {
-          this.curIndex = this.curIndex + 1;
+          // this.curIndex = this.curIndex + 1;
           this.activeButton = 'right';
           let lastElementSibling = third.nextElementSibling;
 
@@ -743,20 +786,17 @@
           lastElementSibling.classList.add('--appearLastElement');
 
           setTimeout(() => {
-            console.log(`Hello World`);
-
             first.classList.remove(['--dissapearFirstElement']);
             sliderContainer.appendChild(first);
             first.classList.add('--hidden');
             lastElementSibling.classList.remove(['--appearLastElement']);
             lastElementSibling.classList.add('--third');
-
           }, 700);
 
           return;
 
         } else if (type === 'prev') {
-          this.curIndex = this.curIndex - 1;
+          // this.curIndex = this.curIndex - 1;
           this.activeButton = 'left';
           let lastElement = sliderContainer.lastElementChild;
           console.log(lastElement)

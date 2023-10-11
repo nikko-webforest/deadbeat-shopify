@@ -3066,6 +3066,7 @@ ul, ol {
   overflow: hidden;
   position: absolute;
   opacity: 0;
+  cursor: pointer;
   top: 0;
   left: 0;
   transition: box-shadow 600ms ease-in-out 0ms, border-color 600ms ease-in-out 0ms, border-width 600ms ease-in-out 0ms, border-style 600ms ease-in-out 0ms, transform 600ms ease-in-out 0ms, opacity 600ms ease-in-out 0ms, width 600ms ease-in-out 0ms, height 600ms ease-in-out 0ms;
@@ -3948,6 +3949,7 @@ ul, ol {
   }
 }
 .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .box {
+  cursor: pointer;
   transition: all 600ms ease-in-out 0ms;
 }
 .db-page--about-us .db-section--about-us-resurrection .db-container .db-row .db-col:nth-child(1) .box:nth-child(1) {

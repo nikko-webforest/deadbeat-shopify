@@ -828,6 +828,7 @@
                     overflow: hidden;
                     position: absolute;
                     opacity: 0;
+                    cursor: pointer;
 
                     @media only screen and (max-width: 480px) {
                       border-radius: 22.486px;        
@@ -1828,9 +1829,8 @@
             }
 
             .box {
-              
+              cursor: pointer;
               transition: all 600ms ease-in-out 0ms;
-
               &:nth-child(1) {
                 
                 position: relative;
