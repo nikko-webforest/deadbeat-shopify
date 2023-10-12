@@ -6,6 +6,11 @@
     height: 100vh;
     overflow: hidden;
 
+    @media only screen and (max-width: 768px) {
+      height: auto;
+      padding: 0;
+    }
+
     .db-bg-container {
       position: absolute;
       z-index: 1;
@@ -15,6 +20,11 @@
       transition:
         opacity 700ms cubic-bezier(0.86, 0, 0.07, 1) 0s,
         scale 700ms cubic-bezier(0.86, 0, 0.07, 1) 0s;
+
+      @media only screen and (max-width: 768px) {
+        position: relative;
+        height: 100vh;
+      }
 
       .db-bg-video {
         position: absolute;
@@ -27,6 +37,22 @@
         height: 100%;
 
         opacity: 0;
+
+        &.--ds-view {
+          display: block;
+
+          @media only screen and (max-width: 768px) {
+            display: none;
+          }
+        }
+
+        &.--mb-view {
+          display: none;
+
+          @media only screen and (max-width: 768px) {
+            display: block;
+          }
+        }
       }
 
       .db-bg-thumbnail {
@@ -98,11 +124,29 @@
       opacity: 0;
       translate: 0 200px;
 
+      @media only screen and (max-width: 768px) {
+        padding: 50px 25px;
+      }
+
       .db-row {
         justify-content: space-between;
         align-items: flex-end;
         gap: 90px;
         height: 100%;
+
+        @media only screen and (max-width: 1440px) {
+          gap: 60px;
+        }
+
+        @media only screen and (max-width: 1080px) {
+          gap: 40px;
+        }
+
+        @media only screen and (max-width: 768px) {
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+        }
 
         .db-col {
           &:nth-of-type(1) {
@@ -147,6 +191,7 @@
               margin: 0 0 21px;
               padding: 0 0 7px;
               border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+              cursor: default;
             }
 
             .db-btn--email-us,
