@@ -138,38 +138,40 @@
             </div>
             <div class="db-inner-col">
               {% render 'socials' %}
-              <button class="db-btn--scroll-up"
-                type="button"
-                @click="widgetScrollUp();">
-                <svg class="svg-icon-arrow-up db-svg"
-                  width="16"
-                  height="44"
-                  viewBox="0 0 16 44"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path id="path_01"
-                    d="M7 43C7 43.5523 7.44772 44 8 44C8.55228 44 9 43.5523 9 43L7 43ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 43L9 1L7 1L7 43L9 43Z"
-                    fill="#CAC7D0"
-                    fill-opacity="0.3">
-                  </path>
-                </svg>
-              </button>
-              <button class="db-btn--scroll-down"
-                type="button"
-                @click="widgetScrollDown();">
-                <svg class="svg-icon-arrow-down db-svg"
-                  width="16"
-                  height="44"
-                  viewBox="0 0 16 44"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path id="path_01"
-                    d="M9 1C9 0.447715 8.55228 -2.41411e-08 8 0C7.44772 2.41411e-08 7 0.447715 7 1L9 1ZM7.2929 43.7071C7.68342 44.0976 8.31658 44.0976 8.70711 43.7071L15.0711 37.3431C15.4616 36.9526 15.4616 36.3195 15.0711 35.9289C14.6805 35.5384 14.0474 35.5384 13.6569 35.9289L8 41.5858L2.34315 35.9289C1.95262 35.5384 1.31946 35.5384 0.928934 35.9289C0.53841 36.3195 0.53841 36.9526 0.928934 37.3431L7.2929 43.7071ZM7 1L7 43L9 43L9 1L7 1Z"
-                    fill="#CAC7D0"
-                    fill-opacity="0.3">
-                  </path>
-                </svg>
-              </button>
+              {% comment %}
+                <button class="db-btn--scroll-up"
+                  type="button"
+                  @click="widgetScrollUp();">
+                  <svg class="svg-icon-arrow-up db-svg"
+                    width="16"
+                    height="44"
+                    viewBox="0 0 16 44"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path id="path_01"
+                      d="M7 43C7 43.5523 7.44772 44 8 44C8.55228 44 9 43.5523 9 43L7 43ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 43L9 1L7 1L7 43L9 43Z"
+                      fill="#CAC7D0"
+                      fill-opacity="0.3">
+                    </path>
+                  </svg>
+                </button>
+                <button class="db-btn--scroll-down"
+                  type="button"
+                  @click="widgetScrollDown();">
+                  <svg class="svg-icon-arrow-down db-svg"
+                    width="16"
+                    height="44"
+                    viewBox="0 0 16 44"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path id="path_01"
+                      d="M9 1C9 0.447715 8.55228 -2.41411e-08 8 0C7.44772 2.41411e-08 7 0.447715 7 1L9 1ZM7.2929 43.7071C7.68342 44.0976 8.31658 44.0976 8.70711 43.7071L15.0711 37.3431C15.4616 36.9526 15.4616 36.3195 15.0711 35.9289C14.6805 35.5384 14.0474 35.5384 13.6569 35.9289L8 41.5858L2.34315 35.9289C1.95262 35.5384 1.31946 35.5384 0.928934 35.9289C0.53841 36.3195 0.53841 36.9526 0.928934 37.3431L7.2929 43.7071ZM7 1L7 43L9 43L9 1L7 1Z"
+                      fill="#CAC7D0"
+                      fill-opacity="0.3">
+                    </path>
+                  </svg>
+                </button>
+              {% endcomment %}
             </div>
           </div>
         </div>

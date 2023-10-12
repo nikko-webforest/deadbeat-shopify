@@ -33,7 +33,7 @@
       background-position: bottom;
       background-repeat: no-repeat;
       background-size: cover;
-      height: 443px;
+      height: 420px;
       padding: 43px 48px 28px 48px;
       scale: 1.0;
       border-radius: 30px;
@@ -459,7 +459,8 @@
       background-size: cover;
       box-shadow: unset;
       width: 100%;
-      padding: 64px 57px 83px 57px;
+      height: 335px;
+      padding: 64px 50px 80px;
       scale: 1.0;
       border: none;
       border-radius: 30px;
@@ -509,6 +510,7 @@
         display: block;
         object-fit: cover;
         width: 100%;
+        margin: 0 auto;
       }
 
       p {
@@ -520,13 +522,13 @@
         // text-align: center;
         // line-height: 1.1em;
 
-        color: #FFF;
+        color: $whiteColor;
         font-family: $primaryFontFamily;
         font-size: 32px;
         font-style: normal;
         text-align: center;
         font-weight: 600;
-        line-height: 100%;
+        line-height: 1.1em;
         margin-top: 46px;
 
         @media only screen and (max-width: 768px) {

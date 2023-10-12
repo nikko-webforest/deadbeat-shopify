@@ -537,6 +537,11 @@ ul, ol {
   align-items: center;
   gap: 16px;
 }
+@media only screen and (max-width: 1080px) {
+  .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-contact-list {
+    justify-content: center;
+  }
+}
 .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-contact-list .db-contact-item {
   max-width: 260px;
   min-width: 260px;
@@ -1175,16 +1180,16 @@ ul, ol {
   transition-delay: 2.6s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(7) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.8s;
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.6s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(7) .db-menu-link::before {
-  transition-delay: 3s;
+  transition-delay: 2.8s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(8) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 3.2s;
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.8s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(8) .db-menu-link::before {
-  transition-delay: 3.4s;
+  transition-delay: 3s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) p {
   opacity: 1;
@@ -1193,7 +1198,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) p {
-    transition-delay: 3.6s;
+    transition-delay: 3.2s;
   }
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-socials-list {
@@ -1203,7 +1208,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-socials-list {
-    transition-delay: 3.8s;
+    transition-delay: 3.4s;
   }
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
@@ -1213,7 +1218,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
-    transition-delay: 4s;
+    transition-delay: 3.6s;
   }
 }
 .db-header.--animate-now {
@@ -1237,7 +1242,7 @@ ul, ol {
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 443px;
+  height: 420px;
   padding: 43px 48px 28px 48px;
   scale: 1;
   border-radius: 30px;
@@ -1511,7 +1516,8 @@ ul, ol {
   background-size: cover;
   box-shadow: unset;
   width: 100%;
-  padding: 64px 57px 83px 57px;
+  height: 335px;
+  padding: 64px 50px 80px;
   scale: 1;
   border: none;
   border-radius: 30px;
@@ -1538,15 +1544,16 @@ ul, ol {
   display: block;
   object-fit: cover;
   width: 100%;
+  margin: 0 auto;
 }
 .db-widget-item.--roadmap .db-widget-box p {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 32px;
   font-style: normal;
   text-align: center;
   font-weight: 600;
-  line-height: 100%;
+  line-height: 1.1em;
   margin-top: 46px;
 }
 @media only screen and (max-width: 768px) {
@@ -1780,7 +1787,7 @@ ul, ol {
 @media only screen and (max-width: 1080px) {
   .db-page--home .db-section--banner {
     height: auto;
-    padding: 0 20px 100px;
+    padding: 0 20px 30px;
   }
 }
 .db-page--home .db-section--banner .db-bg-wrap {
@@ -1805,6 +1812,18 @@ ul, ol {
 @media only screen and (max-width: 480px) {
   .db-page--home .db-section--banner .db-bg-wrap {
     height: 645px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--home .db-section--banner .db-bg-wrap::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    display: block;
+    background-color: rgba(12, 7, 15, 0.6);
+    width: 100%;
+    height: 100%;
   }
 }
 .db-page--home .db-section--banner .db-bg-wrap .db-bg-video {
@@ -2017,7 +2036,9 @@ ul, ol {
   height: 100%;
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) {
+  max-width: 656px;
   width: 100%;
+  margin: 0 auto;
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container {
   scroll-behavior: smooth;
@@ -2032,7 +2053,7 @@ ul, ol {
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col .db-widget-list {
   width: 100%;
   height: 100%;
-  padding: 20px 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   row-gap: 24px;
@@ -4854,6 +4875,12 @@ ul, ol {
   height: 100vh;
   overflow: hidden;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--roadmap .db-section--main-roadmap {
+    height: auto;
+    padding: 0;
+  }
+}
 .db-page--roadmap .db-section--main-roadmap .db-bg-container {
   position: absolute;
   z-index: 1;
@@ -4861,6 +4888,12 @@ ul, ol {
   width: 100%;
   height: 100%;
   transition: opacity 700ms cubic-bezier(0.86, 0, 0.07, 1) 0s, scale 700ms cubic-bezier(0.86, 0, 0.07, 1) 0s;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--roadmap .db-section--main-roadmap .db-bg-container {
+    position: relative;
+    height: 100vh;
+  }
 }
 .db-page--roadmap .db-section--main-roadmap .db-bg-container .db-bg-video {
   position: absolute;
@@ -4872,6 +4905,22 @@ ul, ol {
   width: 100%;
   height: 100%;
   opacity: 0;
+}
+.db-page--roadmap .db-section--main-roadmap .db-bg-container .db-bg-video.--ds-view {
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--roadmap .db-section--main-roadmap .db-bg-container .db-bg-video.--ds-view {
+    display: none;
+  }
+}
+.db-page--roadmap .db-section--main-roadmap .db-bg-container .db-bg-video.--mb-view {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--roadmap .db-section--main-roadmap .db-bg-container .db-bg-video.--mb-view {
+    display: block;
+  }
 }
 .db-page--roadmap .db-section--main-roadmap .db-bg-container .db-bg-thumbnail {
   position: absolute;
@@ -4934,11 +4983,33 @@ ul, ol {
   opacity: 0;
   translate: 0 200px;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--roadmap .db-section--main-roadmap .db-container {
+    padding: 50px 25px;
+  }
+}
 .db-page--roadmap .db-section--main-roadmap .db-container .db-row {
   justify-content: space-between;
   align-items: flex-end;
   gap: 90px;
   height: 100%;
+}
+@media only screen and (max-width: 1440px) {
+  .db-page--roadmap .db-section--main-roadmap .db-container .db-row {
+    gap: 60px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--roadmap .db-section--main-roadmap .db-container .db-row {
+    gap: 40px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--roadmap .db-section--main-roadmap .db-container .db-row {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
 }
 .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(1) {
   max-width: 520px;
@@ -4978,6 +5049,7 @@ ul, ol {
   margin: 0 0 21px;
   padding: 0 0 7px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: default;
 }
 .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--email-us,
 .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--talent-network, .db-page--roadmap .db-section--main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--email-us,
