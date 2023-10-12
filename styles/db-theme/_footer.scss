@@ -225,6 +225,10 @@
               align-items: center;
               gap: 16px;
 
+              @media only screen and (max-width: 1080px) {
+                justify-content: center;
+              }
+
               .db-contact-item {
                 max-width: 260px;
                 min-width: 260px;
