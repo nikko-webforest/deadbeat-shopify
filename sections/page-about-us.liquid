@@ -172,7 +172,7 @@
           <div class="box active-box">
             <div class="button-container" ref="undeadButton" :class="activeControls">
               <div class="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" class="db-svg" :class="activeSvg" @click="onChangeUndeadCardSlide">
+                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" class="db-svg" :class="activeSvg" @click="onChangeUndeadCardSlide" @mousedown="startDrag" @mousemove="handleDrag" @mouseup="endDrag">
                 <rect x="0.773809" y="0.773809" width="63.4524" height="63.4524" rx="31.7262" stroke="#AA27B1" stroke-width="1.54762"/>
                 <path d="M37.1426 33.138C37.1426 33.4475 36.9878 33.7571 36.8331 33.9118L31.7259 39.019C31.2616 39.4833 30.4878 39.4833 30.0235 39.019C29.5592 38.5547 29.5592 37.7809 30.0235 37.3166L34.2021 33.138L30.0235 28.9594C29.5592 28.4952 29.5592 27.7214 30.0235 27.2571C30.4878 26.7928 31.2616 26.7928 31.7259 27.2571L36.6783 32.2094C36.9878 32.519 37.1426 32.8285 37.1426 33.138Z" fill="#AA27B1"/>
                 </svg>
@@ -508,6 +508,11 @@
         timeoutId:null,
         isMobile: false,
         isActiveBox: false,
+        dragging: false,
+        buttonX: 0,
+        buttonY: 0,
+        dragStartX: 0,
+        dragStartY: 0,
       }
     },
     created() {
@@ -543,6 +548,15 @@
 
     },
     methods: {
+      startDrag(event) {
+        console.log(`Start Drag`)
+      },
+      handleDrag(event) {
+        console.log(`Handle Drag`)
+      },
+      endDrag(event) {
+        console.log(`End Drag`)
+      },
       onChangeClickCardSlide(event) {
         const targetElement = event.target;
 
