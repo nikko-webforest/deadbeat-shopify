@@ -1,4 +1,24 @@
 .db-page--home {
+
+  .spotify-player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .spotify-wrapper {
+      h1 {
+        color: white;
+      } 
+    }
+  }
+
   .db-section--banner {
     position: relative;
     width: 100%;

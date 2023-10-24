@@ -1,0 +1,844 @@
+<div class="db-page db-page--explore-oc">
+
+  <section class="db-section db-section--explore-oc-banner-after-life-faction">
+
+    <div class="explore-oc--banner">
+      <div class="db-container">
+        <div class="title-wrap">
+
+          <h1>
+            <span>
+              HELL YEAH
+            </span>
+
+            <span>
+              WE ARE
+            </span>
+          </h1>
+
+          <h4>
+            Welcome to the world of deadbeat, Deadbeat is a transmedia story centered around a radio station in the year 2069, where the undead rule the world.
+          </h4>
+
+        </div>
+
+        <div class="db-row">
+          <div class="db-col-spacer">
+            <div class="db-col">
+              <div class="db-logo-container">
+
+                <img class="db-img"
+                  alt="Deadbeats Logo"
+                  title="Deadbeats Logo"
+                  src="{{ 'About-Us__asset-DB-logo.png' | asset_url }}"
+                  width=""
+                  height=""
+                  loading="lazy"
+                />
+
+              </div>
+            </div>
+
+            <div class="db-col">
+
+              <div class="db-banner-its-year">
+                IT’S YEAR
+              </div>
+
+              <div class="db-banner-2069">
+                  2069
+              </div>
+
+              <div class="db-banner-rock-the-world">
+                  Undead rock the world
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="explore-oc--after-life">
+      <div class="db-container">
+        <div class="db-row">
+          <h2>
+            THE AFTER, AFTER LIFE
+          </h2>
+        </div>
+
+        <div class="db-row">
+          <div class="db-col">
+              Welcome to BEAT 96.9, a once great independent radio station struggling to stay alive in the world of the undead. This new animated world follows the lives of the stations’ reimagined crew as they manage their post-apocalyptic lives.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explore-oc--faction">
+      <div class="db-container">
+        <div class="db-row">
+          <div class="db-col">
+            <h3>
+              <span>
+                CHOOSE YOUR
+              </span>
+
+              <span>
+                FACTION
+              </span>
+            </h3>
+          </div>
+
+          <div class="db-col">
+            The streets of Old Columbus are no longer ruled by a government, rather 7 powerful gangs fight for control of the city. Pick the faction of your choice and begin your journey to rise through the ranks and become known as the most powerful faction in Old Columbus.
+            <br />
+            <br />
+            They are waiting on you to help lead them to victory.
+          </div>
+        </div>
+        <div class="db-row">
+          <div class="db-col">
+            <div class="db-inner-row" ref="contentContainer">
+                <div class="db-faction-content" v-for="(faction, index) in factions" :class="selectPosition(index)">
+                  <div class="db-inner-col" v-text="faction.name">
+                  </div>
+
+                  <db class="db-inner-col" v-text="faction.description">
+                  </db>
+                
+                  <div class="db-inner-col"v-text="faction.hq"> 
+                  </div>
+                </div>
+            </div>
+
+            <div class="db-inner-row">
+              <div class="db-inner-col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-prev db-svg" @click="onChangeSlide('prev')">
+                  <path d="M0 10C0 10.4969 0.248704 10.9938 0.497409 11.2422L8.70466 19.441C9.45078 20.1863 10.6943 20.1863 11.4404 19.441C12.1865 18.6957 12.1865 17.4534 11.4404 16.7081L4.72539 10L11.4404 3.29193C12.1865 2.54659 12.1865 1.30435 11.4404 0.559006C10.6943 -0.186337 9.45078 -0.186337 8.70466 0.559006L0.746114 8.50932C0.248705 9.00621 0 9.50311 0 10Z" fill="#CAC7D0" :style="{fillOpacity: activeButton !== 'left' ? 0.4 : ''}"/>
+                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-next db-svg" @click="onChangeSlide('next')">
+                  <path d="M12 10C12 10.4969 11.7513 10.9938 11.5026 11.2422L3.29534 19.441C2.54922 20.1863 1.3057 20.1863 0.559586 19.441C-0.186529 18.6957 -0.186529 17.4534 0.559586 16.7081L7.27461 10L0.559586 3.29193C-0.186529 2.54659 -0.186529 1.30435 0.559586 0.559006C1.3057 -0.186337 2.54922 -0.186337 3.29534 0.559006L11.2539 8.50932C11.7513 9.00621 12 9.50311 12 10Z" fill="#CAC7D0" :style="{fillOpacity: activeButton !== 'right' ? 0.4 : ''}"/>
+                </svg>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="db-col">
+            <ul class="card-list" ref="newSliderContainer">
+
+              <li class="card" v-for="(faction, index) in factions" :class="factionClass(index)" @click="onChangeClickFactionCardSlide($event)">
+                
+                  <div class="card-wrapper">
+                    <div class="faction-img-container">
+                      <img :src="faction.image_url" alt="">
+                    </div>
+
+                    <div class="faction-svg" v-if="index === 0">
+                      {% render 'faction--king' %}
+                    </div>
+
+                    <div class="faction-svg" v-if="index === 1">
+                      {% render 'faction--bleeding-hearts' %}
+                    </div>
+
+                    <div class="faction-svg" v-if="index === 2">
+                      {% render 'faction--honky-tonkin' %}
+                    </div>
+
+                    <div class="faction-svg" v-if="index === 3">
+                      {% render 'faction--the-blues' %}
+                    </div>
+
+                  </div>
+               
+              </li>
+            </ul>
+          </div> 
+          
+        </div>
+      </div>
+    </div>
+  </section> 
+
+
+  <section class="db-section db-section--explore-oc-resurrection">
+    <div class="db-container">
+      <div class="db-row">
+        <div class="db-col" ref="undeadSlider">
+
+          <div class="box active-box">
+            <div class="button-container" ref="undeadButton" :class="activeControls">
+              <div class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" class="db-svg" :class="activeSvg" @click="onChangeUndeadCardSlide">
+                <rect x="0.773809" y="0.773809" width="63.4524" height="63.4524" rx="31.7262" stroke="#AA27B1" stroke-width="1.54762"/>
+                <path d="M37.1426 33.138C37.1426 33.4475 36.9878 33.7571 36.8331 33.9118L31.7259 39.019C31.2616 39.4833 30.4878 39.4833 30.0235 39.019C29.5592 38.5547 29.5592 37.7809 30.0235 37.3166L34.2021 33.138L30.0235 28.9594C29.5592 28.4952 29.5592 27.7214 30.0235 27.2571C30.4878 26.7928 31.2616 26.7928 31.7259 27.2571L36.6783 32.2094C36.9878 32.519 37.1426 32.8285 37.1426 33.138Z" fill="#AA27B1"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="box-wrapper" @click="onChangeClickCardSlide($event)"></div>
+          </div>
+
+          <div class="box nonactive-box">
+            <div class="box-wrapper" @click="onChangeClickCardSlide"></div>
+          </div>
+        </div>
+
+        <div class="db-col">
+          <h3>
+            It’s YOUR Undead!
+          </h3>
+          <div class="db-resurrection-description">
+            Deadbeats are wavy, expressive, and maybe a little bit vain and they love to show it off. It’s your Deadbeat and they’re completely customizable - BY YOU! Not to mention all of it will be earnable for free by participating in our games, concerts, and more!
+            <br />
+            <br />
+            You’ll also gain access to our exclusive music creation and background customization tools. Give your Deadbeat a theme song and write their story EXACTLY the way YOU want!
+          </div>
+
+          <div class="undeadSlider" ref="undeadSliderMb">
+            <div class="box active-box">
+              <div class="button-container" ref="undeadButtonMb" :class="activeControls">
+                <div class="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none" class="db-svg" :class="activeSvg" @click="onChangeUndeadCardSlideMb">
+                  <rect x="0.773809" y="0.773809" width="63.4524" height="63.4524" rx="31.7262" stroke="#AA27B1" stroke-width="1.54762"/>
+                  <path d="M37.1426 33.138C37.1426 33.4475 36.9878 33.7571 36.8331 33.9118L31.7259 39.019C31.2616 39.4833 30.4878 39.4833 30.0235 39.019C29.5592 38.5547 29.5592 37.7809 30.0235 37.3166L34.2021 33.138L30.0235 28.9594C29.5592 28.4952 29.5592 27.7214 30.0235 27.2571C30.4878 26.7928 31.2616 26.7928 31.7259 27.2571L36.6783 32.2094C36.9878 32.519 37.1426 32.8285 37.1426 33.138Z" fill="#AA27B1"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="box-wrapper" @click="onChangeClickCardSlideMb($event)"></div>
+            </div>
+
+            <div class="box nonactive-box" @click="onChangeClickCardSlideMb($event)">
+              <div class="box-wrapper"></div>
+            </div>
+          </div>
+
+          <div class="db-resurrection-cta">
+            <button class="db-btn">
+              BUY NOW
+            </button>
+            <a href="">
+              <span>
+                VIEW COLLECTIONS
+              </span>
+              <svg class="db-svg"
+                xmlns="http://www.w3.org/2000/svg"
+                width="160"
+                height="2"
+                viewBox="0 0 160 2"
+                fill="none">
+                <path id="path_01"
+                  d="M1 1H159.5"
+                  stroke="white"
+                  stroke-linecap="round">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="db-section db-section--explore-oc-coming-soon">
+
+    <div class="db-container">
+      
+      <div class="db-row">
+        <div class="db-col">
+          STATION PROGRAMMING
+        </div>
+        <div class="db-col">
+          Our antenna is currently stolen. As soon as we get it back from the Party Bringers we’ll be back on the air! Stay tuned, Deadbeats...
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="db-section db-section--explore-oc-elevate">
+    <div class="db-container">
+      <div class="db-row">
+        <div class="db-col">
+          <h4>
+            The Company
+          </h4>
+          <h3>
+            ELEVATE PICTURES
+          </h3>
+        </div>
+        <div class="db-col">
+          <div class="db-image-container">
+            <img class="db-img"
+              alt=""
+              title=""
+              src="{{ 'About-Us__asset-elevate-v01.png' | asset_url }}"
+              width=""
+              height=""
+              loading="lazy"/>
+          </div>
+          <div class="db-elevate-description">
+            <p>
+              Elevate is a transmedia entertainment company chasing simple ideas that can change the world.
+              <br />
+              <br />
+              It means we understand and build ideas that scale across platforms and over time. It means we’re experts in business judo, flipping problems into promise.
+            </p>
+          </div>
+          <div class="db-elevate-connect-with-us">
+            <div class="connect-with-us">
+              Explore the world of Deadbeat! Connect with us.
+            </div>
+            <div class="db-elevate-website">
+              <span>
+                WEBSITE
+              </span>
+              <a href="https://www.elevatepictures.com/">
+                https://www.elevatepictures.com/
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="db-section db-section--explore-oc-subscribe">
+    <div class="db-container">
+      <div class="db-row">
+        <div class="db-col">
+          <img class="db-img"
+            alt=""
+            title=""
+            src="{{ 'About-Us__asset-subscribe-v01.png' | asset_url }}"
+            width=""
+            height=""
+            loading="lazy"/>
+          <img class="db-img"
+            alt=""
+            title=""
+            src="{{ 'About-Us__asset-mb-subscribe-v01.png' | asset_url }}"
+            width=""
+            height=""
+            loading="lazy"/>
+        </div>
+        <div class="db-col">
+          <h4>
+            CREATE THE STORY WORLD
+          </h4>
+          <p>
+            Get updated to our exciting promotions, limited offers, articles and resources.
+          </p>
+          <form class="db-form--newsletter db-form validate"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            method="post"
+            action="https://elevate-m.us21.list-manage.com/subscribe/post?u=c9161b1e17a490930cf29bfcd&amp;id=b779bd68b4&amp;f_id=00fbdce6f0"
+            accept-charset="UTF-8"
+            target="_blank">
+            <div class="db-form-wrap">
+              <div class="db-form-group">
+                <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                  /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                  <input type="text" name="b_c9161b1e17a490930cf29bfcd_b779bd68b4" tabindex="-1" value="">
+                </div>
+              </div>
+              <div class="db-form-group">
+                <input class="db-form-input required email"
+                  id="mce-EMAIL"
+                  type="email"
+                  name="EMAIL"
+                  placeholder="Enter Your Email Address"
+                  required=""
+                  value=""
+                  autocorrect="off"
+                  autocapitalize="off">
+                <button class="db-btn--form-subscribe db-btn"
+                  id="mc-embedded-subscribe"
+                  type="submit"
+                  name="subscribe">
+                  SUBSCRIBE
+                </button>
+              </div>
+            </div>
+            <div id="mce-responses" class="clear foot">
+              <div class="response" id="mce-error-response" style="display: none;"></div>
+              <div class="response" id="mce-success-response" style="display: none;"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script>
+
+  const DB_SF_Page_Explore_OC_Options = {
+    name: 'DB SF Page Explore OC Options',
+    data() {
+      return {
+        activeButton: 'right',
+        factions:[
+          {
+            name: 'THE KINGS',
+            image_url: "{{ 'About-Us__asset-faction-v01-319x435.png' | asset_url }}",
+            description: 'Are the total opposite of their old rivals, preferring to work in guerilla tactics rather than charging right in. They make deals and play politics with the other gangs to get upper hands. They’re sneaky, crafty, and planning.',
+            hq: 'HQ: The Arena - The old football stadium and surrounding area is under the control of The Kings. It is quite possibly the most impenetrable fortress, anyone who controls this has the best staging area for both attacking and defending. The Hearts used to control the stadium area until The Kings got them with a surprise attack, taking it all in a single afternoon. Music plays from the stadium’s sound system with no breaks. This has put it on 92.9’s agenda, the desire to play their radio station through those speakers is a great one.'
+          },
+          {
+            name: 'BLEEDING HEARTS',
+            image_url: "{{ 'About-Us__asset-faction-v02-294x401.png' | asset_url }}",
+            description: 'Some folk think the Hearts kicked this whole deadbeat thing off here. The Hearts live by a code of honor, whenever they march into battle they bring their instruments with them. They play loud, hoping to drown out any sort of communication by their enemies.',
+            hq: 'HQ: The Queen of Hearts - This is the headquarters of The Bleeding Hearts. It was once an underground bar, now, it’s still an underground bar just a lot more violent. Anything and everything the Hearts do is run out of this bar.'
+          },
+          {
+            name: 'HONKY TONKIN’ HILLBILLY HORDE',
+            image_url: "{{ 'About-Us__asset-faction-v03-523x713.png' | asset_url }}",
+            description: 'The Hillbillies never really had an interest in controlling any city, blasting their music as they go muddin’ and fishin’ is more their speed. However, a radical split of members wanting to spread their control to cities have made their way into Old Columbus recently.',
+            hq: 'HQ: The Farm - On the outskirts of Old Columbus is where the Hillbilly Horde has placed their staging area. The once deserted farmhouse and barn is now thriving with activity. There are many things to take care of on The Farm, none more important than the guarding of the barn, where the gang keeps all of it’s needed supplies for the taking of Old Columbusz'
+          },
+          {
+            name: 'THE BLUES',
+            image_url: "{{ 'About-Us__asset-faction-v04-586x799.png' | asset_url }}",
+            description: 'The Blues came about in response to an old, almost forgotten enemy, the Reds. After a 3 year slog the Blues came out victorious and had full control over their burrow. The issue is that now they’re in the crosshairs of every other large gang in Old Columbus. This doesn’t scare them though.',
+            hq: 'HQ: The Auditorium - The Blues broke into an old, defunct school and turned it into their headquarters. Always learning and studying, the Blues live their lives by the boy scout motto “Be Prepared”. Classes are dedicated to the study of music and battle strategy. All of the gangs important activities take place here.'
+          },
+        ],
+        undeadData: [
+          {
+            image_url: "{{ 'About-Us__asset-undead-v01-1254x1254.png' | asset_url }}"
+          },
+          {
+            image_url: "{{ 'About-Us__asset-undead-v02-1254x1254.png' | asset_url }}"
+          },
+          {
+            image_url: "{{ 'About-Us__asset-undead-v01-1254x1254.png' | asset_url }}"
+          },
+          {
+            image_url: "{{ 'About-Us__asset-undead-v02-1254x1254.png' | asset_url }}"
+          },
+        ],
+        dataSample: [
+          {
+            factionName: 'THE KINGS',
+            description: 'Are the total opposite of their old rivals, preferring to work in guerilla tactics rather than charging right in. They make deals and play politics with the other gangs to get upper hands. They’re sneaky, crafty, and planning.',
+            HQ: 'HQ: The Arena - The old football stadium and surrounding area is under the control of The Kings. It is quite possibly the most impenetrable fortress, anyone who controls this has the best staging area for both attacking and defending. The Hearts used to control the stadium area until The Kings got them with a surprise attack, taking it all in a single afternoon. Music plays from the stadium’s sound system with no breaks. This has put it on 92.9’s agenda, the desire to play their radio station through those speakers is a great one.'
+          },
+          {
+            factionName: 'BLEEDING HEARTS',
+            description: 'Some folk think the Hearts kicked this whole deadbeat thing off here. The Hearts live by a code of honor, whenever they march into battle they bring their instruments with them. They play loud, hoping to drown out any sort of communication by their enemies.Charging ahead with powerful drums and sick guitars, the Bleeding Hearts.',
+            HQ: 'HQ: The Queen of Hearts - This is the headquarters of The Bleeding Hearts. It was once an underground bar, now, it’s still an underground bar just a lot more violent. Anything and everything the Hearts do is run out of this bar.'
+          },
+          {
+            factionName: 'HONKY TONKIN’ HILLBILLY HORDE',
+            description: 'The Hillbillies never really had an interest in controlling any city, blasting their music as they go muddin’ and fishin’ is more their speed. However, a radical split of members wanting to spread their control to cities have made their way into Old Columbus recently.',
+            HQ: 'HQ: The Farm - On the outskirts of Old Columbus is where the Hillbilly Horde has placed their staging area. The once deserted farmhouse and barn is now thriving with activity. There are many things to take care of on The Farm, none more important than the guarding of the barn, where the gang keeps all of it’s needed supplies for the taking of Old Columbusz.'
+          },
+          {
+            factionName: 'THE CREEPS',
+            description: 'The Hillbillies never really had an interest in controlling any city, blasting their music as they go muddin’ and fishin’ is more their speed. However, a radical split of members wanting to spread their control to cities have made their way into Old Columbus recently.',
+            HQ: 'HQ: The Farm - On the outskirts of Old Columbus is where the Hillbilly Horde has placed their staging area. The once deserted farmhouse and barn is now thriving with activity. There are many things to take care of on The Farm, none more important than the guarding of the barn, where the gang keeps all of it’s needed supplies for the taking of Old Columbusz.'
+          },
+        ],
+        undeadDataSample:[
+          {
+            image_url: "About-Us__asset-undead-v01-1254x1254.png",
+          },
+          {
+            image_url: "About-Us__asset-undead-v02-1254x1254.png",
+          },
+          {
+            image_url: "About-Us__asset-undead-v01-1254x1254.png",
+          },
+          {
+            image_url: "About-Us__asset-undead-v02-1254x1254.png",
+          },
+        ],
+        data: {
+          listOfCharacters: [
+            {
+              name: 'EVILIA GRIMSHAW',
+              description: 'Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.',
+              imageDS: "{{ 'About-Us__asset-natives-v01.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v01.png' | asset_url }}",
+              property: 'firstNative'
+            },
+            {
+              name: 'CHAZ NITELY',
+              description: 'Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.',
+              imageDS: "{{ 'About-Us__asset-natives-v02.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}",
+              property: 'secondNative'
+            },
+            {
+              name: 'HARMONY BRIGGS',
+              description: 'The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.',
+              imageDS: "{{ 'About-Us__asset-natives-v03.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}",
+              property: 'thirdNative'
+            },
+            {
+              name: 'EVILIA GRIMSHAW',
+              description: 'Soul-sucking’ station programmer.  Known lovingly at the station as Little Miss Evil, Evilia’s sarcasm, bottom-line attitude and biting wit often clashes with Roger’s rebellious spirit creating a constant source of comedic conflict.',
+              imageDS: "{{ 'About-Us__asset-natives-v01.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v01.png' | asset_url }}",
+              property: 'firstNative'
+            },
+            {
+              name: 'CHAZ NITELY',
+              description: 'Late night talk-show host whose topics often center around Apocalypse Conspiracy Theories, Alien Encounters, and Government Cover-ups. Chaz has a huge following as well as a huge ego that barely fits into the rundown studio.',
+              imageDS: "{{ 'About-Us__asset-natives-v02.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v02.png' | asset_url }}",
+              property: 'secondNative'
+            },
+            {
+              name: 'HARMONY BRIGGS',
+              description: 'The new-to-town station programmer. Harmony is a somewhat mysterious and enigmatic figure that’s breathed a new life into the musty radio station as well as Roger.',
+              imageDS: "{{ 'About-Us__asset-natives-v03.png' | asset_url }}",
+              imageMB: "{{ 'About-Us__asset-mb-natives-v03.png' | asset_url }}",
+              property: 'thirdNative'
+            },
+          ]
+        },
+        timeoutId:null,
+        isMobile: false,
+        isActiveBox: false,
+      }
+    },
+    created() {
+      this.onLoadAnimation();
+    },
+    computed: {
+      activeControls() {
+        if (!this.isActiveBox) {
+          
+          return {
+            'active-controls': true
+          }
+        }
+
+        return {
+          'nonactive-controls': true
+        }
+      },
+      activeSvg() {
+        if (!this.isActiveBox) {
+          
+          return {
+            'active-svg': true
+          }
+        }
+
+        return {
+          'nonactive-svg': true
+        }
+      },
+    },
+    mounted() {
+
+    },
+    methods: {
+      onChangeClickCardSlide(event) {
+        const targetElement = event.target;
+
+        const parentElement = targetElement.parentElement;
+
+        if (parentElement.classList.contains('nonactive-box')) {
+          this.onChangeUndeadCardSlide();
+          return;
+        }
+
+        return;
+      },
+      onChangeClickCardSlideMb(event) {
+        const targetElement = event.target;
+
+        const parentElement = targetElement.parentElement;
+
+        if (parentElement.classList.contains('nonactive-box')) {
+          this.onChangeUndeadCardSlideMb();
+          return;
+        }
+
+        return;
+      },
+      factionClass(index) {
+
+        if (index === 0) {
+
+         return {
+          'first-faction': true,
+          '--first': true
+         }
+
+        }
+
+        if (index === 1) {
+
+         return {
+          'second-faction': true,
+          '--second': true
+         } 
+
+        }
+
+        if (index === 2) {
+
+         return {
+          'third-faction': true,
+          '--third': true
+         }
+
+        }
+
+        if (index === 3) {
+
+         return {
+          'fourth-faction': true,
+          '--hidden': true
+         }
+
+        }
+
+      },
+      onChangeUndeadCardSlide() {
+        this.isActiveBox = !this.isActiveBox;
+        const container = this.$refs.undeadSlider;
+        
+        const active = container.querySelector('.active-box');
+        const notActive = container.querySelector('.nonactive-box');
+
+        active.classList.remove(['active-box']);
+        notActive.classList.remove(['nonactive-box']);
+
+        active.classList.add('nonactive-box');
+        notActive.classList.add('active-box');
+      },
+      onChangeUndeadCardSlideMb() {
+        this.isActiveBox = !this.isActiveBox;
+        const container = this.$refs.undeadSliderMb;
+        
+        const active = container.querySelector('.active-box');
+        const notActive = container.querySelector('.nonactive-box');
+
+        active.classList.remove(['active-box']);
+        notActive.classList.remove(['nonactive-box']);
+
+        active.classList.add('nonactive-box');
+        notActive.classList.add('active-box');
+      },
+      onChangeContent(type) {
+        const container = this.$refs.contentContainer;
+        const active = container.querySelector('.active');
+        const last = container.querySelector('.last');
+
+        let next = active.nextElementSibling;
+
+        if (!next) {
+          next = container.firstElementChild;
+        }
+
+        if (type === 'prev') {
+          active.classList.remove(['active']);
+          last.classList.remove(['last']);
+          
+          active.classList.add('next');
+          last.classList.add('active');
+          next = last.previousElementSibling;
+
+          if (!next) {
+            next = container.lastElementChild
+          }
+
+          next.classList.remove(['next']);
+          next.classList.add('last');
+          return
+        }
+
+        active.classList.remove(['active']);
+        last.classList.remove(['last']);
+        next.classList.remove(['next']);
+
+        active.classList.add('last');
+        next.classList.add('active');
+        last.classList.add('next');
+      },
+      selectPosition(index) {
+        let position = {
+          next: true,
+          active: false,
+          last: false,
+				}
+
+        if (index === 0) {
+          position = {
+            ...position,
+            next: false,
+						active: true
+          }
+
+          return position;
+        }
+
+        if (index === this.dataSample.length - 1) {
+
+          position = {
+            ...position,
+            next: false,
+						last: true
+          }
+
+          return position
+        }
+				
+        return position;
+      },
+      async onChangeClickFactionCardSlide(event) {
+        const sliderContainer = this.$refs.newSliderContainer;
+        const targetElement = event.target;
+        const parentElement = targetElement.parentElement;
+
+        console.log(parentElement.classList.contains('--second'))
+        console.log(parentElement.classList.contains('--third'));
+
+        if (parentElement.classList.contains('--second') || parentElement.classList.contains('--third')) {
+          let curIndex = 1;
+          
+          if (parentElement.classList.contains('--second')) {
+              
+              while(curIndex < 2) {
+                
+                await this.onChangeCardPosition();
+                curIndex = curIndex + 1;
+              }
+          }
+
+          if (parentElement.classList.contains('--third')) {
+            
+            while(curIndex < 3) {
+                
+              await this.onChangeCardPosition();
+              curIndex = curIndex + 1;
+            }
+          }
+        }
+      },
+      async onChangeCardPosition() {
+        return new Promise((resolve, reject) => {
+
+          const sliderContainer = this.$refs.newSliderContainer;
+          const first = sliderContainer.querySelector('.--first');
+          const second = sliderContainer.querySelector('.--second');
+          const third = sliderContainer.querySelector('.--third');
+
+          let lastElementSibling = third.nextElementSibling;
+          this.onChangeContent('next');
+          first.classList.remove(['--first']);
+          second.classList.remove(['--second']);
+          third.classList.remove(['--third']);
+          lastElementSibling.classList.remove(['--hidden']);
+          
+          first.classList.add('--dissapearFirstElement');
+          second.classList.add('--first');
+          third.classList.add('--second');
+          lastElementSibling.classList.add('--appearLastElement');
+
+          setTimeout(() => {
+            first.classList.remove(['--dissapearFirstElement']);
+            sliderContainer.appendChild(first);
+            first.classList.add('--hidden');
+            lastElementSibling.classList.remove(['--appearLastElement']);
+            lastElementSibling.classList.add('--third');
+            resolve();
+          }, 700);
+
+          // setTimeout(() => {
+          //   resolve('Hello Their');
+          // }, 2000)
+        })
+      },
+      onChangeSlide(type) {
+        const sliderContainer = this.$refs.newSliderContainer;
+        const first = sliderContainer.querySelector('.--first');
+        const second = sliderContainer.querySelector('.--second');
+        const third = sliderContainer.querySelector('.--third');
+
+        
+        if (type === "next") {
+          // this.curIndex = this.curIndex + 1;
+          this.activeButton = 'right';
+          let lastElementSibling = third.nextElementSibling;
+
+          this.onChangeContent(type);
+          first.classList.remove(['--first']);
+          second.classList.remove(['--second']);
+          third.classList.remove(['--third']);
+          lastElementSibling.classList.remove(['--hidden']);
+          
+          first.classList.add('--dissapearFirstElement');
+          second.classList.add('--first');
+          third.classList.add('--second');
+          lastElementSibling.classList.add('--appearLastElement');
+
+          setTimeout(() => {
+            first.classList.remove(['--dissapearFirstElement']);
+            sliderContainer.appendChild(first);
+            first.classList.add('--hidden');
+            lastElementSibling.classList.remove(['--appearLastElement']);
+            lastElementSibling.classList.add('--third');
+          }, 700);
+
+          return;
+
+        } else if (type === 'prev') {
+          // this.curIndex = this.curIndex - 1;
+          this.activeButton = 'left';
+          let lastElement = sliderContainer.lastElementChild;
+          console.log(lastElement)
+          this.onChangeContent(type);
+          first.classList.remove(['--first']);
+          second.classList.remove(['--second']);
+          third.classList.remove(['--third']);
+          lastElement.classList.remove(['--hidden']);
+
+
+          third.classList.add('--dissapearLastElement');
+          first.classList.add('--second');
+          second.classList.add('--third');
+          lastElement.classList.add('--appearFirstElement')
+
+          
+          setTimeout(() => {
+            lastElement.classList.remove(['--appearFirstElement']);
+            sliderContainer.prepend(lastElement);
+            lastElement.classList.add('--first');
+
+            third.classList.remove(['--dissapearLastElement']);
+            third.classList.add('--hidden');
+          }, 700)
+          
+        }
+
+      },
+      onLoadAnimation() {
+        console.log('onLoadAnimation');
+        setTimeout(() => {
+          document.querySelector('.db-site-loader').classList.remove('--show');
+          // document.querySelector('.db-section--banner').classList.add('--animate-now');
+          document.querySelector('.db-header').classList.add('--animate-now');
+        }, 3000);
+      },
+    },
+  }
+
+  Vue.createApp(DB_SF_Page_Explore_OC_Options).mount('.db-page--explore-oc');
+</script>
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+<script type="text/javascript">
+  (function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);
+</script>

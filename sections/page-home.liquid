@@ -1,5 +1,11 @@
 <div class="db-page db-page--home">
 
+  <div class="spotify-player">
+    <div class="spotify-wrapper">
+      <h1>Hello World</h1>
+    </div>
+  </div>
+
   <section class="db-section db-section--banner">
     <div class="db-bg-wrap">
       <video class="db-bg-video"
@@ -186,6 +192,29 @@
     data() {
       return {
         pageLoader: true,
+        now_playing_endpoint: 'https://api.spotify.com/v1/me/player/currently-playing',
+        token_endpoint:'https://accounts.spotify.com/api/token',
+        client_id: 'c1f92691c7394d5a8e30c022fcd9775b',
+        client_secret: 'd6c324c0b845428c9fea433c6dd6a441',
+        refresh_token: 'AQCzDTuZ2L-wuwTK4ZTzuQ9eJ_NiLMauZO5vCmq2VXpEf2zoyfJ_X_-ATOEbViPi175OK_kZjDFXZLqTZpqCndku5_i-xCZOfmIy0grYkrvnyk7iHon2ajS1QJUarifOsh8',
+        music_player: {
+          albumImageUrl: null,
+          artist: null,
+          isPlaying: null,
+          songUrl: null,
+          title: null,
+          timePlayed: null,
+          timeTotal: null,
+          artistUrl: null
+        },
+        playerState:null,
+        secondsPlayed:0,
+        minutesPlayed:0,
+        secondsTotal: 0,
+        minutesTotal: 0,
+        albumImageUrl: null,
+        title: null,
+        artist: null,
         widgetSettings: {
           scrollValue: 0,
         }
@@ -193,12 +222,89 @@
     },
     created() {
       this.onLoadAnimation();
+      this.getAccessToken().then(data => {
+        const {access_token} = data;
+        this.getNowPlaying(access_token);
+        // setInterval(() => {
+        //   this.getNowPlaying(access_token);
+        // }, 1000);
+      })
     },
     mounted() {
       this.widgetDragScroll();
     },
     updated() {},
+    computed: {
+      settingValue() {
+        
+      }
+    },
     methods: {
+      async getAccessToken() {
+        const combinedString = `${this.client_id}:${this.client_secret}`;
+        const basic = btoa(combinedString);
+
+        const params = {
+          grant_type: 'refresh_token',
+          refresh_token: this.refresh_token
+        }
+
+        const encodedParams = Object.keys(params).map(key => {
+          return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+        });
+
+        const queryString = encodedParams.join('&');
+
+        const response = await fetch(this.token_endpoint, {
+          method:'POST',
+          headers: {
+            Authorization: `Basic ${basic}`,
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: queryString
+        })
+
+        return response.json();
+      },
+      async getNowPlaying(access_token) {
+        try {
+          const response = await fetch(this.now_playing_endpoint, {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            }
+          })
+
+          if (response.status > 400) {
+            throw new Error('Unable to Fetch Song');
+          } else if(response.status === 204) { //The response was fetched but there was no content
+            throw new Error('Currently Not Playing')
+          }
+
+          const song = await response.json()
+          const albumImageUrl = song.item.album.images[0].url;
+          const artist = song.item.artists.map((artist) => artist.name).join(', ');
+          console.log(song);
+          const isPlaying = song.is_playing;
+          const songUrl = song.item.external_urls.spotify;
+          const title = song.item.name;
+          const timePlayed = song.progress_ms;
+          const timeTotal = song.item.duration_ms;
+          const artistUrl = song.item.album.artists[0].external_urls.spotify;
+
+          this.music_player.albumImageUrl = albumImageUrl;
+          this.music_player.artist = artist;
+          this.music_player.songUrl = songUrl;
+          this.music_player.title = title;
+          this.music_player.timePlayed = timePlayed;
+          this.music_player.timeTotal = timeTotal;
+          this.music_player.artistUrl = artistUrl;
+          this.music_player.isPlaying = isPlaying;
+          
+          console.log(this.music_player);
+        } catch (error) {
+          console.log(error);
+        }
+      },
       onLoadAnimation() {
         console.log('onLoadAnimation');
         setTimeout(() => {
@@ -207,7 +313,6 @@
           document.querySelector('.db-header').classList.add('--animate-now');
         }, 3000);
       },
-
       widgetDragScroll() {
         var widgetContainer = this.$refs.widgetContainer;
 
