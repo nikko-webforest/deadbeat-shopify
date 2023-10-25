@@ -1789,7 +1789,74 @@ ul, ol {
   align-items: center;
   justify-content: center;
 }
-.db-page--home .spotify-player .spotify-wrapper h1 {
+.db-page--home .spotify-player .spotify-wrapper .nowPlayingCard {
+  flex-shrink: 0;
+  border-radius: 22px;
+  border: 2px solid #000;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+  align-items: center;
+  width: 300px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.5s ease;
+}
+.db-page--home .spotify-player .spotify-wrapper .nowPlayingCard a {
+  color: aqua;
+  text-decoration: none;
+}
+.db-page--home .spotify-player .spotify-wrapper .nowPlayingCard a:hover {
+  color: white;
+}
+.db-page--home .spotify-player .spotify-wrapper .nowPlayingCard .nowPlayingImage a img {
+  border-radius: 8px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  margin: 10px;
+}
+.db-page--home .spotify-player .spotify-wrapper .nowPlayingCard .nowPlayingImage img {
+  border-radius: 8px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  margin: 10px;
+}
+.db-page--home .spotify-player .spotify-wrapper .nowPlayingCard .nowPlayingDetails {
+  justify-content: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 54%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 54%;
+  height: 100%;
+}
+.db-page--home .spotify-player .spotify-wrapper .nowPlayingCard .nowPlayingDetails .nowPlayingTitle {
+  flex-shrink: 0;
+  color: #000;
+  white-space: nowrap;
+  text-align: left;
+  font-size: 20px;
+  width: 100%;
+}
+.db-page--home .spotify-player .spotify-wrapper .nowPlayingCard .nowPlayingDetails .nowPlayingArtist {
+  text-align: left;
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+.db-page--home .spotify-player .spotify-wrapper .nowPlayingCard .nowPlayingDetails .nowPlayingTime {
+  text-align: left;
   color: white;
 }
 .db-page--home .db-section--banner {

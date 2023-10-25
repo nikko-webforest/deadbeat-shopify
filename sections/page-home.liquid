@@ -1,8 +1,39 @@
 <div class="db-page db-page--home">
 
-  <div class="spotify-player">
+  <div class="spotify-player" @click="login">
     <div class="spotify-wrapper">
-      <h1>Hello World</h1>
+      
+        <div class="nowPlayingCard">
+          
+          <div class='nowPlayingImage'>
+            <a v-if="playerState === 'PLAY' || playerState === 'PAUSE'" :href="music_player.songUrl">
+              <img :src="albumImageUrl" alt="Album" />
+            </a>
+            <img v-else :src="albumImageUrl" alt="">
+          </div>
+
+          <div class="nowPlayingDetails">
+            <div class="nowPlayingTitle" :class="{'playlistName': title && title.length > 15 ? true : false }">
+              <a v-if="playerState === 'PLAY' || playerState === 'PAUSE'" :href="music_player.songUrl" v-text="title">
+              </a>
+              <div v-else class="text" v-text="title"></div>
+            </div>
+            
+            <div class="nowPlayingArtist">
+              <a v-if="playerState === 'PLAY' || playerState === 'PAUSE'" :href="music_player.artistUrl" v-text="artist">
+              </a>
+              <div v-else class="text" v-text="artist"></div>
+            </div>
+
+            <div class="nowPlayingTime" v-text="playingTime()">
+            </div>
+          </div>
+
+          <div class="nowPlayingState">
+
+          </div>
+        </div>
+      
     </div>
   </div>
 
@@ -194,9 +225,16 @@
         pageLoader: true,
         now_playing_endpoint: 'https://api.spotify.com/v1/me/player/currently-playing',
         token_endpoint:'https://accounts.spotify.com/api/token',
-        client_id: 'c1f92691c7394d5a8e30c022fcd9775b',
-        client_secret: 'd6c324c0b845428c9fea433c6dd6a441',
-        refresh_token: 'AQCzDTuZ2L-wuwTK4ZTzuQ9eJ_NiLMauZO5vCmq2VXpEf2zoyfJ_X_-ATOEbViPi175OK_kZjDFXZLqTZpqCndku5_i-xCZOfmIy0grYkrvnyk7iHon2ajS1QJUarifOsh8',
+        client_id: 'cd10f71694b44bc7b854830ccef638e1',
+        client_secret: '7fe19d7d0ca84a6cae112941465783b9',
+        refresh_token: 'AQD1yyl07dj9lsr-TPI4TFbFwfQSGM-hin6vr43wqU4EVU38tsX_EfhlcpibKWYfMjsWZv8MLdrDai5zGvBstfqS_zD3uED2QB0Bh0WzHkdxbaKdfQtL_VwyZ7QTX48SObM',
+        token: {
+          "access_token": "BQAPU40p_dizs04IM6nDtfMDqU5P_bw39CS8DuVRhlDcIDY0ZtNEJhwn-llOYJYC3S9_XZx2T4LztK7ysjLjP2C2kM5j-o_tES8OqIEZZP3FKM97i2Wthc5sgJNDq6k8YydmDHQzbXDif57crxsgMiaJIE0Qa6XcUagBcZLW3HRzHXUkurJp3HrC-_e4UNJFRx18SGmkgPez3-MaWNRmJBjAmMbR",
+          "token_type": "Bearer",
+          "expires_in": 3600,
+          "refresh_token": "AQDBqq2vgPrI0u-VLlsKSaajMGAKxhQOD9jj71cXWGE4NApMs_umyqCHaSDxVxd_vzYNfrALJ8Mb7Zi-pgavFETcoIRu9VRnTVgxLxuNNlqLeSHkyrQIA4zylYuXQ7JPCAo",
+          "scope": "streaming user-read-currently-playing user-read-email user-read-private"
+        },
         music_player: {
           albumImageUrl: null,
           artist: null,
@@ -217,29 +255,136 @@
         artist: null,
         widgetSettings: {
           scrollValue: 0,
-        }
+        },
+        player:null,
       }
     },
     created() {
+      
+
+      // script.onload = () => {
+      //   window.onSpotifyWebPlaybackSDKReady = () => {
+      //     const player = new window.Spotify.Player({
+      //       name: "Web Playback SDK",
+      //       getOAuthToken: cb => {
+      //         cb('BQA1s6jcq-qqd4Ep8O_1BNyI-8ahYCBoor-ceIwnoMlEsTneihKVzS-vIgJRPD9q1i19fraoE0BojCvPEufTKwxjLi3BFPMoLMQAt9jr6ZlmWIGqrWSRDcw-e9sSoHc0a0s4Ll6efnok7yvit10hd2lo-g2zC3hqzYFM6MD7VtAmnEDX9aWMxci2OXZAF53wSQCP42p_9FIKu-1wFnPMlb5te64c');
+      //       },
+      //       volume: 0.5,
+      //     })
+
+      //     this.player = player;
+      //     console.log(player);
+
+      //     player.addListener('ready', ({ device_id }) => {
+      //       console.log('Ready with Device ID', device_id);
+      //     });
+
+      //     player.addListener('not_ready', ({ device_id }) => {
+      //       console.log('Device ID has gone offline', device_id);
+      //     });
+
+      //     player.addListener('autoplay_failed', () => {
+      //       console.log('Autoplay is not allowed by the browser autoplay rules');
+      //     });
+
+      //     player.connect();
+      //   }
+      // }
+
+      const currentUrl = window.location.href;
+      const url = new URL(currentUrl);
+
+      if (url.search) {
+        const params = new URLSearchParams(url.search);
+        
+        if (params.get('code') !== "") {
+          console.log(`Hello World`);
+          const script = document.createElement('script');
+          script.src = "https://sdk.scdn.co/spotify-player.js";
+          script.async = true;
+          document.body.appendChild(script);
+
+          script.onload = () => {
+            window.onSpotifyWebPlaybackSDKReady = () => {
+              const player = new window.Spotify.Player({
+                name: "Web Playback SDK",
+                getOAuthToken: cb => {
+                  cb('BQAYBMTLoT3viRbnhOKWUI0HiymNr8hhJSrIar1t5-Xhh2mgE-hd4oeE6mAMEIRBEF5Zz-oXj01y1gL4jMOBoJMeHsZYLaTUuj648EvWn_Rep_PR2g2aUXLOFk8b9w9Ds8u9v1riAxAZRoYgc5q5Ypp_TSlaXC2gsAA_vVvWfsyndN8mXluTwgUqYbtn4qJM2Ho25vKvfSPGM8FgtVJ7u3tMKnHz');
+                },
+                volume: 0.5,
+              })
+
+              this.player = player;
+              console.log(player);
+
+              player.addListener('ready', ({ device_id }) => {
+                console.log('Ready with Device ID', device_id);
+              });
+
+              player.addListener('not_ready', ({ device_id }) => {
+                console.log('Device ID has gone offline', device_id);
+              });
+
+              player.addListener('autoplay_failed', () => {
+                console.log('Autoplay is not allowed by the browser autoplay rules');
+              });
+
+              player.connect().then(success => {
+                console.log(success);
+              });
+            }
+          }
+        }
+      }
+
       this.onLoadAnimation();
-      this.getAccessToken().then(data => {
-        const {access_token} = data;
-        this.getNowPlaying(access_token);
-        // setInterval(() => {
-        //   this.getNowPlaying(access_token);
-        // }, 1000);
-      })
+      // this.getAccessToken().then(data => {
+      //   const {access_token} = data;
+      //   this.getNowPlaying(access_token);
+      //   // setInterval(() => {
+      //   //   this.getNowPlaying(access_token);
+      //   // }, 1000);
+      // })
     },
     mounted() {
       this.widgetDragScroll();
     },
     updated() {},
     computed: {
-      settingValue() {
-        
+      songUrl() {
+        return this.playerState === 'PLAY' || this.playerState === 'PAUSE' ? this.music_player.songUrl : '';
       }
     },
     methods: {
+      login() {
+        const scope = `
+          streaming
+          user-read-email
+          user-read-private
+          user-read-currently-playing
+        `
+
+        const state = this.generateRandomString(16);
+        console.log(state)
+        console.log(this.client_id);
+        const auth_query_parameters = new URLSearchParams();
+        auth_query_parameters.append('response_type', 'code');
+        auth_query_parameters.append('client_id', this.client_id);
+        auth_query_parameters.append('scope', scope);
+        auth_query_parameters.append('redirect_uri', 'http://127.0.0.1:9292');
+        auth_query_parameters.append('state', state);
+
+        window.location.href = ('https://accounts.spotify.com/authorize/?' + auth_query_parameters.toString());
+      },
+      generateRandomString(length) {
+        var text = '';
+        var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+        for (var i = 0; i < length; i++) {
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+        return text;
+      },
       async getAccessToken() {
         const combinedString = `${this.client_id}:${this.client_secret}`;
         const basic = btoa(combinedString);
@@ -301,9 +446,41 @@
           this.music_player.isPlaying = isPlaying;
           
           console.log(this.music_player);
+          this.settingValue();
         } catch (error) {
           console.log(error);
         }
+      },
+      settingValue() {
+        console.log(`Hello World`);
+        this.playerState = this.music_player.isPlaying ? 'PLAY' : 'PAUSE';
+
+        //Converting the playback duration from seconds to minutes and seconds
+        this.secondsPlayed = Math.floor(this.music_player.timePlayed / 1000);
+
+        this.minutesPlayed = Math.floor(this.secondsPlayed / 60);
+
+        this.secondsPlayed = this.secondsPlayed % 60;
+
+        //Converting the song duration from seconds to minutes and seconds
+
+        this.secondsTotal = Math.floor(this.music_player.timeTotal / 1000);
+
+        this.minutesTotal = Math.floor(this.secondsTotal / 60);
+
+        this.secondsTotal = this.secondsTotal % 60;
+
+        this.albumImageUrl = this.music_player.albumImageUrl;
+
+        this.title = this.music_player.title;
+        
+        this.artist = this.music_player.artist;
+      },
+      pad(n) {
+        return (n < 10) ? ("0" + n) : n;
+      },
+      playingTime() {
+        return `${this.pad(this.minutesPlayed)}:${this.pad(this.secondsPlayed)} / ${this.pad(this.minutesTotal)}:${this.pad(this.secondsTotal)}`
       },
       onLoadAnimation() {
         console.log('onLoadAnimation');

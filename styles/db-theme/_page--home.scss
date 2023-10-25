@@ -13,9 +13,98 @@
     justify-content: center;
 
     .spotify-wrapper {
-      h1 {
-        color: white;
-      } 
+      // a {
+      //   text-decoration: none;
+      //   color: aqua;
+      //   display: block;
+      // }
+
+      .nowPlayingCard {
+        flex-shrink: 0;
+        border-radius: 22px;
+        border: 2px solid #000;
+        box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+        align-items: center;
+        width: 300px;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        transition: all 0.5s ease;
+
+        a {
+          color: aqua;
+          text-decoration: none;
+
+          &:hover {
+            color: white;
+          }
+        }
+
+        .nowPlayingImage {
+          a {
+            img {
+              border-radius: 8px;
+              border: 1px solid black;
+              box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+              transition: all 0.5s ease;
+              width: 60px;
+              height: 60px;
+              flex-shrink: 0;
+              margin: 10px;
+            }
+          }
+
+          img {
+            border-radius: 8px;
+            border: 1px solid black;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            margin: 10px;
+          }
+        }
+
+        .nowPlayingDetails {
+          justify-content: center;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          width: 54%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          width: 54%;
+          height: 100%;
+
+          .nowPlayingTitle {
+
+            
+              flex-shrink: 0;
+              color: #000;
+              white-space: nowrap;
+              text-align: left;
+              font-size: 20px;
+              width: 100%;  
+            
+            
+          }
+
+          .nowPlayingArtist {
+            text-align: left;
+            flex-shrink: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+          }
+
+          .nowPlayingTime {
+            text-align: left;
+            color: white;
+          }
+        }
+      }
     }
   }
 
