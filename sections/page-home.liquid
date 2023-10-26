@@ -1,8 +1,7 @@
 <div class="db-page db-page--home">
 
-  <div class="spotify-player" @click="login">
-    <div class="spotify-wrapper">
-      
+  <div class="spotify-backdrop">
+    {% comment %} <div class="spotify-wrapper" @click="togglePlay">
         <div class="nowPlayingCard">
           
           <div class='nowPlayingImage'>
@@ -33,7 +32,50 @@
 
           </div>
         </div>
-      
+    </div> {% endcomment %}
+
+    <div class="spotify-login" v-if="is_active === false" @click="login2">
+      <div class="spotify-wrap-login">
+        <div class="spotify">
+          <svg xmlns="http://www.w3.org/2000/svg" width="63" height="63" viewBox="0 0 63 63" fill="none" class="db-svg">
+            <circle cx="31.6999" cy="31.6998" r="26.7" fill="black"/>
+            <path d="M50.085 28.035C40.005 22.05 23.1525 21.42 13.545 24.4125C11.97 24.885 10.395 23.94 9.9225 22.5225C9.45 20.9475 10.395 19.3725 11.8125 18.9C22.995 15.5925 41.4225 16.2225 53.0775 23.1525C54.495 23.94 54.9675 25.83 54.18 27.2475C53.3925 28.35 51.5025 28.8225 50.085 28.035ZM49.77 36.855C48.9825 37.9575 47.565 38.43 46.4625 37.6425C37.9575 32.445 25.0425 30.87 15.12 34.02C13.86 34.335 12.4425 33.705 12.1275 32.445C11.8125 31.185 12.4425 29.7675 13.7025 29.4525C25.2 25.9875 39.375 27.72 49.14 33.705C50.085 34.1775 50.5575 35.7525 49.77 36.855ZM45.99 45.5175C45.36 46.4625 44.2575 46.7775 43.3125 46.1475C35.91 41.58 26.6175 40.635 15.5925 43.155C14.49 43.47 13.545 42.6825 13.23 41.7375C12.915 40.635 13.7025 39.69 14.6475 39.375C26.6175 36.6975 37.0125 37.8 45.2025 42.84C46.305 43.3125 46.4625 44.5725 45.99 45.5175ZM31.5 0C27.3634 0 23.2672 0.814772 19.4455 2.39779C15.6237 3.98082 12.1512 6.30109 9.22614 9.22614C3.31874 15.1335 0 23.1457 0 31.5C0 39.8543 3.31874 47.8665 9.22614 53.7739C12.1512 56.6989 15.6237 59.0192 19.4455 60.6022C23.2672 62.1852 27.3634 63 31.5 63C39.8543 63 47.8665 59.6813 53.7739 53.7739C59.6813 47.8665 63 39.8543 63 31.5C63 27.3634 62.1852 23.2672 60.6022 19.4455C59.0192 15.6237 56.6989 12.1512 53.7739 9.22614C50.8488 6.30109 47.3763 3.98082 43.5545 2.39779C39.7328 0.814772 35.6366 0 31.5 0Z" fill="#1ED760"/>
+          </svg>
+        </div>
+
+        <div class="spotify-db">
+          Unleash your DEADBEAT Playlist
+        </div>
+      </div>
+    </div>
+    <div class="spotify-player" v-else>
+      <div class="spotify-music-moving" v-if="is_paused === false" @click="togglePlay">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="spotify-pause" v-else @click="togglePlay">
+        <svg xmlns="http://www.w3.org/2000/svg" width="63" height="63" viewBox="0 0 63 63" fill="none">
+          <circle cx="31.6999" cy="31.6998" r="26.7" fill="black"/>
+          <path d="M50.085 28.035C40.005 22.05 23.1525 21.42 13.545 24.4125C11.97 24.885 10.395 23.94 9.9225 22.5225C9.45 20.9475 10.395 19.3725 11.8125 18.9C22.995 15.5925 41.4225 16.2225 53.0775 23.1525C54.495 23.94 54.9675 25.83 54.18 27.2475C53.3925 28.35 51.5025 28.8225 50.085 28.035ZM49.77 36.855C48.9825 37.9575 47.565 38.43 46.4625 37.6425C37.9575 32.445 25.0425 30.87 15.12 34.02C13.86 34.335 12.4425 33.705 12.1275 32.445C11.8125 31.185 12.4425 29.7675 13.7025 29.4525C25.2 25.9875 39.375 27.72 49.14 33.705C50.085 34.1775 50.5575 35.7525 49.77 36.855ZM45.99 45.5175C45.36 46.4625 44.2575 46.7775 43.3125 46.1475C35.91 41.58 26.6175 40.635 15.5925 43.155C14.49 43.47 13.545 42.6825 13.23 41.7375C12.915 40.635 13.7025 39.69 14.6475 39.375C26.6175 36.6975 37.0125 37.8 45.2025 42.84C46.305 43.3125 46.4625 44.5725 45.99 45.5175ZM31.5 0C27.3634 0 23.2672 0.814772 19.4455 2.39779C15.6237 3.98082 12.1512 6.30109 9.22614 9.22614C3.31874 15.1335 0 23.1457 0 31.5C0 39.8543 3.31874 47.8665 9.22614 53.7739C12.1512 56.6989 15.6237 59.0192 19.4455 60.6022C23.2672 62.1852 27.3634 63 31.5 63C39.8543 63 47.8665 59.6813 53.7739 53.7739C59.6813 47.8665 63 39.8543 63 31.5C63 27.3634 62.1852 23.2672 60.6022 19.4455C59.0192 15.6237 56.6989 12.1512 53.7739 9.22614C50.8488 6.30109 47.3763 3.98082 43.5545 2.39779C39.7328 0.814772 35.6366 0 31.5 0Z" fill="#1ED760"/>
+        </svg>
+      </div>
+
+      <div class="spotify-content">
+        <div class="trackName-container">
+          <div class="marquee">
+            <span v-text="track?.album?.name"></span>
+          </div>
+        </div>
+
+        <div class="artist-container">
+          <div class="artistInfo">
+            <span v-text="track?.artists[0].name"></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -225,15 +267,17 @@
         pageLoader: true,
         now_playing_endpoint: 'https://api.spotify.com/v1/me/player/currently-playing',
         token_endpoint:'https://accounts.spotify.com/api/token',
-        client_id: 'cd10f71694b44bc7b854830ccef638e1',
-        client_secret: '7fe19d7d0ca84a6cae112941465783b9',
-        refresh_token: 'AQD1yyl07dj9lsr-TPI4TFbFwfQSGM-hin6vr43wqU4EVU38tsX_EfhlcpibKWYfMjsWZv8MLdrDai5zGvBstfqS_zD3uED2QB0Bh0WzHkdxbaKdfQtL_VwyZ7QTX48SObM',
+        client_id: 'd73738945439475087703b513466d0d7',
+        client_secret: '0329c2f2504645fcaf84a1059ad5121e',
+        // access_token: 'BQCq1Bdq_V6hsjYtvK2mV-38vNlI_pNuAruO8ZduTaruVwe91exyKtNe6r1odJqG_sDWuz13taVB-TdHF1TmPRCV2thjoWt3fDw9r1tfaoCw8wvBnlFdRGU9dDGCKroPbjEV1G6HQk8s-FBtPwckRtdb36GS2wBlIL7cc6OSgWeEy3XApDtvEmrJvKdcEsxFN1cuKMVcRLP1QinTQOdnhBL_lbILqvtZ',
+        access_token: localStorage.getItem('access_token'),
+        refresh_token: localStorage.getItem('refresh_token'),
         token: {
           "access_token": "BQAPU40p_dizs04IM6nDtfMDqU5P_bw39CS8DuVRhlDcIDY0ZtNEJhwn-llOYJYC3S9_XZx2T4LztK7ysjLjP2C2kM5j-o_tES8OqIEZZP3FKM97i2Wthc5sgJNDq6k8YydmDHQzbXDif57crxsgMiaJIE0Qa6XcUagBcZLW3HRzHXUkurJp3HrC-_e4UNJFRx18SGmkgPez3-MaWNRmJBjAmMbR",
           "token_type": "Bearer",
           "expires_in": 3600,
           "refresh_token": "AQDBqq2vgPrI0u-VLlsKSaajMGAKxhQOD9jj71cXWGE4NApMs_umyqCHaSDxVxd_vzYNfrALJ8Mb7Zi-pgavFETcoIRu9VRnTVgxLxuNNlqLeSHkyrQIA4zylYuXQ7JPCAo",
-          "scope": "streaming user-read-currently-playing user-read-email user-read-private"
+          "scope": "streaming user-read-email user-read-private user-modify-playback-state"
         },
         music_player: {
           albumImageUrl: null,
@@ -257,94 +301,73 @@
           scrollValue: 0,
         },
         player:null,
+        device: null,
+        is_paused: true,
+        is_active: false,
+        track: null,
+        playlist: [],
       }
     },
     created() {
-      
 
-      // script.onload = () => {
-      //   window.onSpotifyWebPlaybackSDKReady = () => {
-      //     const player = new window.Spotify.Player({
-      //       name: "Web Playback SDK",
-      //       getOAuthToken: cb => {
-      //         cb('BQA1s6jcq-qqd4Ep8O_1BNyI-8ahYCBoor-ceIwnoMlEsTneihKVzS-vIgJRPD9q1i19fraoE0BojCvPEufTKwxjLi3BFPMoLMQAt9jr6ZlmWIGqrWSRDcw-e9sSoHc0a0s4Ll6efnok7yvit10hd2lo-g2zC3hqzYFM6MD7VtAmnEDX9aWMxci2OXZAF53wSQCP42p_9FIKu-1wFnPMlb5te64c');
-      //       },
-      //       volume: 0.5,
-      //     })
+      const script = document.createElement('script');
+      script.src = "https://sdk.scdn.co/spotify-player.js";
+      script.async = true;
+      document.body.appendChild(script);
 
-      //     this.player = player;
-      //     console.log(player);
-
-      //     player.addListener('ready', ({ device_id }) => {
-      //       console.log('Ready with Device ID', device_id);
-      //     });
-
-      //     player.addListener('not_ready', ({ device_id }) => {
-      //       console.log('Device ID has gone offline', device_id);
-      //     });
-
-      //     player.addListener('autoplay_failed', () => {
-      //       console.log('Autoplay is not allowed by the browser autoplay rules');
-      //     });
-
-      //     player.connect();
-      //   }
-      // }
+      this.onLoadAnimation();
 
       const currentUrl = window.location.href;
       const url = new URL(currentUrl);
 
       if (url.search) {
         const params = new URLSearchParams(url.search);
-        
+
         if (params.get('code') !== "") {
-          console.log(`Hello World`);
-          const script = document.createElement('script');
-          script.src = "https://sdk.scdn.co/spotify-player.js";
-          script.async = true;
-          document.body.appendChild(script);
+          console.log(`Hello World Code`);
+          console.log(params.get('code'));
 
-          script.onload = () => {
-            window.onSpotifyWebPlaybackSDKReady = () => {
-              const player = new window.Spotify.Player({
-                name: "Web Playback SDK",
-                getOAuthToken: cb => {
-                  cb('BQAYBMTLoT3viRbnhOKWUI0HiymNr8hhJSrIar1t5-Xhh2mgE-hd4oeE6mAMEIRBEF5Zz-oXj01y1gL4jMOBoJMeHsZYLaTUuj648EvWn_Rep_PR2g2aUXLOFk8b9w9Ds8u9v1riAxAZRoYgc5q5Ypp_TSlaXC2gsAA_vVvWfsyndN8mXluTwgUqYbtn4qJM2Ho25vKvfSPGM8FgtVJ7u3tMKnHz');
-                },
-                volume: 0.5,
-              })
+          const code = params.get('code');
+          const authString = `${this.client_id}:${this.client_secret}`;
+          const base64Auth = btoa(authString);
+          const spotify_redirect_uri = 'http://127.0.0.1:9292';
 
-              this.player = player;
-              console.log(player);
 
-              player.addListener('ready', ({ device_id }) => {
-                console.log('Ready with Device ID', device_id);
-              });
-
-              player.addListener('not_ready', ({ device_id }) => {
-                console.log('Device ID has gone offline', device_id);
-              });
-
-              player.addListener('autoplay_failed', () => {
-                console.log('Autoplay is not allowed by the browser autoplay rules');
-              });
-
-              player.connect().then(success => {
-                console.log(success);
-              });
-            }
+          const authOptions = {
+            method:'POST',
+            url: 'https://accounts.spotify.com/api/token',
+            headers: {
+              'Authorization': 'Basic ' + btoa(this.client_id + ':' + this.client_secret),
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'code=' + code + '&redirect_uri=' + encodeURIComponent(spotify_redirect_uri) + '&grant_type=authorization_code'
           }
+
+          fetch(authOptions.url, authOptions).then((response) => {
+            return response.json();
+          }).then(data => {
+            const access_token = data.access_token;
+            const refresh_token = data.refresh_token;
+            localStorage.setItem('access_token', access_token);
+            localStorage.setItem('refresh_token', refresh_token);
+            window.location.href = `http://127.0.0.1:9292`;
+          })
         }
       }
 
-      this.onLoadAnimation();
-      // this.getAccessToken().then(data => {
-      //   const {access_token} = data;
-      //   this.getNowPlaying(access_token);
-      //   // setInterval(() => {
-      //   //   this.getNowPlaying(access_token);
-      //   // }, 1000);
-      // })
+      if (this.access_token) {
+        this.connectToSpotifyWebSDK();
+      }
+    },
+    watch: {
+      device(newValue, oldValue) {
+        this.autoConnect(newValue, oldValue);
+      },
+      access_token(newValue, oldValue) {
+        console.log(newValue);
+        console.log(`Compare Access Token ${newValue}:${oldValue}`);
+        this.connectToSpotifyWebSDK();
+      }
     },
     mounted() {
       this.widgetDragScroll();
@@ -356,6 +379,123 @@
       }
     },
     methods: {
+      connectToSpotifyWebSDK() {
+
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            const player = new window.Spotify.Player({
+              name: "Deadbeat Vuejs",
+              getOAuthToken: (cb) => {
+                console.log(this.access_token);
+                cb(this.access_token);
+              },
+              volume:0.5,
+            })
+
+            this.player = player;
+            console.log(player);
+
+            player.addListener('ready', ({device_id}) => {
+              this.device = device_id
+              console.log(`Ready With Device ID ${device_id}`);
+
+            })
+
+            player.addListener('not_ready', ({device_id}) => {
+
+              console.log(`Device ID has gone offline ${device_id}`);
+
+            })
+
+            player.addListener('player_state_changed', (state) => {
+
+              console.log(`Player State Changed`);
+              if (!state) {
+                return;
+              }
+
+              console.log(state.track_window.current_track);
+              console.log(state);
+              this.is_paused = state.paused;
+              this.track = state.track_window.current_track
+
+              player.getCurrentState().then(state => {
+                !state ? this.is_active=false : this.is_active=true;
+              })
+
+            });
+
+            player.on('authentication_error', ({ message }) => {
+              console.error('Failed to authenticate', message);
+              
+              this.getAccessToken();
+            });
+
+            player.connect();
+        }
+      },
+      async autoConnect(newValue, oldValue) {
+        console.log(`Compare ${newValue}:${oldValue}`);
+        console.log(this.access_token);
+
+        const response = await fetch(`https://api.spotify.com/v1/playlists/6guhtLC6PbcxXowxpWwP4a`, {
+          headers: {
+            Authorization: `Bearer ${this.access_token}`,
+          }
+        })
+
+        const data = await response.json();
+
+        const getTrackURIS = data.tracks.items.map((track) => {
+          return track.track.uri;
+        })
+
+        console.log(getTrackURIS);
+
+        // const convertToJson = JSON.stringify({
+        //   "uris": ['spotify:track:5CUQnKjA6nlteCnxMKsjIu', 'spotify:track:0mtkRIAOueeXqHpyahIbtJ']
+        // });
+        const convertToJson = JSON.stringify({
+          uris: getTrackURIS
+        })
+
+        fetch(`https://api.spotify.com/v1/me/player/play?device_id=${newValue}`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${this.access_token}`,
+          },
+          body: convertToJson,
+        }).then((response) => {
+          console.log(response.headers);
+          return response.json();
+        }).then(data => {
+          console.log(`Playback started: ${data}`);
+          this.player.togglePlay();
+        })
+      },
+      togglePlay() {
+        this.player.togglePlay();
+      },
+      nextPlay() {
+        this.player.nextTrack();
+      },
+      previousPlay() {
+        this.player.previousTrack();
+      },
+      login2() {
+        const scope = `streaming user-read-email user-read-private user-modify-playback-state`;
+
+        const state = this.generateRandomString(16);
+
+        const auth_query_parameters = new URLSearchParams({
+          response_type:'code',
+          client_id: this.client_id,
+          scope:scope,
+          redirect_uri: 'http://127.0.0.1:9292',
+          state:state,
+        })
+
+        window.location.href = `https://accounts.spotify.com/authorize/?${auth_query_parameters.toString()}`;
+      },
       login() {
         const scope = `
           streaming
@@ -386,21 +526,37 @@
         return text;
       },
       async getAccessToken() {
-        const combinedString = `${this.client_id}:${this.client_secret}`;
-        const basic = btoa(combinedString);
 
+        // const payload = {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/x-www-form-urlencoded'
+        //   },
+        //   body: new URLSearchParams({
+        //     grant_type: 'refresh_token',
+        //     refresh_token: this.refresh_token,
+        //     client_id: this.client_id
+        //   }),
+        // }
+
+        // const body = await fetch(url, payload);
+        // console.log(body);
+
+        // const response = await body.json();
+
+        const combinedString = `${this.client_id}:${this.client_secret}`;
+        const url = "https://accounts.spotify.com/api/token";
+        const basic = btoa(combinedString);
         const params = {
           grant_type: 'refresh_token',
           refresh_token: this.refresh_token
         }
-
         const encodedParams = Object.keys(params).map(key => {
           return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
         });
-
         const queryString = encodedParams.join('&');
 
-        const response = await fetch(this.token_endpoint, {
+        const response = await fetch(url, {
           method:'POST',
           headers: {
             Authorization: `Basic ${basic}`,
@@ -409,7 +565,13 @@
           body: queryString
         })
 
-        return response.json();
+        const data = await response.json();
+
+        console.log(data);
+
+        this.access_token = data.access_token;
+
+        localStorage.setItem('access_token', data.access_token);
       },
       async getNowPlaying(access_token) {
         try {
