@@ -1232,6 +1232,46 @@ ul, ol {
 .db-widget-item .db-widget-box {
   transition: box-shadow 200ms ease-in-out 0ms, scale 200ms ease-in-out 0ms !important;
 }
+.db-widget-item.--columbus .db-widget-box {
+  background-image: url("DB_Widget01_bg-v02-1312x886.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 656px;
+  width: 100%;
+  height: 443px;
+  padding-top: 67px;
+  padding-right: 57px;
+  scale: 1;
+  border-radius: 30px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.db-widget-item.--columbus .db-widget-box::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  display: block;
+  box-shadow: unset;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-radius: inherit;
+  transition: all 200ms ease-in-out 0ms;
+}
+.db-widget-item.--columbus .db-widget-box .db-columbus {
+  max-width: 314px;
+  width: 100%;
+}
+.db-widget-item.--columbus .db-widget-box:hover {
+  scale: 1.05;
+}
+.db-widget-item.--columbus .db-widget-box:hover::before {
+  box-shadow: 4.07796px 4.07796px 8.15591px rgba(181, 34, 235, 0.3019607843), -4.07796px -4.07796px 8.15591px rgba(181, 34, 235, 0.3019607843), 2.03898px 2.03898px 4.07796px rgba(216, 110, 255, 0.6), -2.03898px -2.03898px 4.07796px rgba(216, 110, 255, 0.6);
+  border-color: #D47FF3;
+}
 .db-widget-item.--year-2069 .db-widget-box {
   position: relative;
   display: flex;
@@ -1790,9 +1830,6 @@ ul, ol {
   justify-content: center;
 }
 .db-page--home .spotify-backdrop .spotify-login {
-  max-width: 312px;
-  min-width: 312px;
-  width: 100%;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 26px 53px 26px 33px;
@@ -1829,66 +1866,44 @@ ul, ol {
   max-width: 312px;
   min-width: 312px;
   width: 100%;
+  height: 295px;
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  height: 115px;
-  padding: 26px 33px;
   display: flex;
-  column-gap: 24px;
-  justify-content: space-between;
-  padding: 26px 33px;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 22px 18px 22px 21px;
+  background: url("Homepage__asset-v01-624x590.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
-.db-page--home .spotify-backdrop .spotify-player .spotify-music-moving {
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper {
+  border-radius: 30px;
+  background: rgba(68, 29, 86, 0.5);
+  backdrop-filter: blur(20px);
+  max-width: 273px;
+  min-width: 273px;
+  width: 100%;
+  height: 158px;
   display: flex;
-  column-gap: 3px;
-  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 24px 21px 24px;
 }
-.db-page--home .spotify-backdrop .spotify-player .spotify-music-moving span {
-  max-width: 8px;
-  display: block;
-  min-width: 8px;
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-info {
+  max-width: 195px;
+  min-width: 195px;
   width: 100%;
-  background-color: #1ED760;
-  height: 63px;
-  border-radius: 10px;
-  animation: loading 0.8s linear infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 9px;
 }
-.db-page--home .spotify-backdrop .spotify-player .spotify-music-moving span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.db-page--home .spotify-backdrop .spotify-player .spotify-music-moving span:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.db-page--home .spotify-backdrop .spotify-player .spotify-music-moving span:nth-child(4) {
-  animation-delay: 0.4s;
-}
-.db-page--home .spotify-backdrop .spotify-player .spotify-music-moving span:nth-child(5) {
-  animation-delay: 0.5s;
-}
-@keyframes loading {
-  0% {
-    transform: scaleY(0);
-  }
-  50% {
-    transform: scaleY(1);
-  }
-  100% {
-    transform: scaleY(0);
-  }
-}
-.db-page--home .spotify-backdrop .spotify-player .spotify-pause {
-  cursor: pointer;
-}
-.db-page--home .spotify-backdrop .spotify-player .spotify-content {
-  max-width: 140px;
-  width: 100%;
-  min-width: 140px;
-}
-.db-page--home .spotify-backdrop .spotify-player .spotify-content .trackName-container {
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-info .spotify-trackName-container {
   width: 100%;
   overflow: hidden;
 }
-.db-page--home .spotify-backdrop .spotify-player .spotify-content .trackName-container .marquee {
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-info .spotify-trackName-container .spotify-trackName {
   white-space: nowrap;
   display: inline-block;
   animation: marquee 12s linear infinite;
@@ -1902,24 +1917,67 @@ ul, ol {
     transform: translateX(-100%);
   }
 }
-.db-page--home .spotify-backdrop .spotify-player .spotify-content .trackName-container .marquee span {
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-info .spotify-trackName-container .spotify-trackName span {
   color: #FFF;
   font-family: var(--primaryFontFamily);
   font-size: 18px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 130%;
+  font-weight: 700;
+  line-height: 100%; /* 18px */
+  letter-spacing: -0.54px;
 }
-.db-page--home .spotify-backdrop .spotify-player .spotify-content .artist-container {
-  margin-top: 5px;
-}
-.db-page--home .spotify-backdrop .spotify-player .spotify-content .artist-container .artistInfo span {
-  color: #FFF;
-  font-family: var(--primaryFontFamily);
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-info .spotify-artist-container .spotify-artist span {
+  color: #CAC7D0;
+  font-family: var(--secondaryFontFamily);
   font-size: 12px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 130%;
+  font-weight: 400;
+  line-height: 100%; /* 12px */
+  letter-spacing: -0.48px;
+}
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-controls {
+  display: flex;
+  column-gap: 23px;
+  margin-top: 14px;
+}
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-controls .shuffle {
+  max-width: 17px;
+  width: 100%;
+  min-width: 17px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-controls .controls {
+  display: flex;
+  column-gap: 18px;
+  align-items: center;
+}
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-controls .controls .next {
+  max-width: 23px;
+  width: 100%;
+  min-width: 23px;
+  cursor: pointer;
+}
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-controls .controls .play-pause {
+  max-width: 60px;
+  width: 100%;
+  min-width: 60px;
+  cursor: pointer;
+}
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-controls .controls .previous {
+  max-width: 23px;
+  width: 100%;
+  min-width: 23px;
+  cursor: pointer;
+}
+.db-page--home .spotify-backdrop .spotify-player .spotify-wrapper .spotify-controls .restart {
+  max-width: 18px;
+  width: 100%;
+  min-width: 18px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 .db-page--home .db-section--banner {
   position: relative;
@@ -2066,17 +2124,12 @@ ul, ol {
   }
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) h1 span:nth-of-type(2) {
-  color: #B1FF29;
-  font-size: 88px;
+  color: #B522EB;
+  font-size: 70px;
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
-  letter-spacing: -3.52px;
+  letter-spacing: -2.88px;
   position: relative;
   display: inline-block;
-}
-@media only screen and (max-width: 1440px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) h1 span:nth-of-type(2) {
-    font-size: 84px;
-  }
 }
 @media only screen and (max-width: 768px) {
   .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) h1 span:nth-of-type(2) {
@@ -2084,16 +2137,13 @@ ul, ol {
   }
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) h1 span:nth-of-type(3) {
-  color: #B522EB;
-  font-size: 88px;
-  letter-spacing: -3.52px;
+  color: #B1FF29;
+  font-size: 70px;
+  letter-spacing: -2.88px;
+  text-transform: uppercase;
   position: relative;
   display: inline-block;
-}
-@media only screen and (max-width: 1440px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) h1 span:nth-of-type(3) {
-    font-size: 84px;
-  }
+  margin-left: 13px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) h1 span:nth-of-type(3) {
@@ -2180,7 +2230,7 @@ ul, ol {
   height: 100%;
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) {
-  max-width: 656px;
+  max-width: 700px;
   width: 100%;
   margin: 0 auto;
 }
@@ -2194,28 +2244,96 @@ ul, ol {
   flex-direction: column;
   align-items: center;
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col .db-widget-list {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col {
+  padding: 20px;
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row {
+  display: flex;
+  column-gap: 32px;
+  cursor: pointer;
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) {
+  max-width: 312px;
+  width: 100%;
+  min-width: 312px;
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
+  max-width: 312px;
+  width: 100%;
+  min-width: 312px;
+  padding-top: 38px;
+  padding-left: 35px;
+  padding-bottom: 37px;
+  height: 295px;
+  scale: 1;
+  user-select: none;
+  background: url("Homepage__asset-v02-625x591.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 30px;
+  transition: box-shadow 200ms ease-in-out 0ms, scale 200ms ease-in-out 0ms !important;
+  user-select: none;
+  position: relative;
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  display: block;
+  box-shadow: unset;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  border: 3px solid transparent;
+  border-radius: inherit;
+  transition: all 200ms ease-in-out 0ms;
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2):hover {
+  scale: 1.05;
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2):hover::before {
+  box-shadow: 4.07796px 4.07796px 8.15591px rgba(181, 34, 235, 0.3019607843), -4.07796px -4.07796px 8.15591px rgba(181, 34, 235, 0.3019607843), 2.03898px 2.03898px 4.07796px rgba(216, 110, 255, 0.6), -2.03898px -2.03898px 4.07796px rgba(216, 110, 255, 0.6);
+  border-color: #D47FF3;
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer {
   display: flex;
   flex-direction: column;
-  row-gap: 24px;
+  row-gap: 59px;
 }
-@media only screen and (max-width: 1080px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col .db-widget-list {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col .db-widget-list .db-widget-item {
-  opacity: 0;
-  scale: 1.1;
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-play {
+  max-width: 60px;
   width: 100%;
-  min-height: 50px;
+  min-width: 60px;
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-project-trailer span:nth-child(1) {
+  text-align: right;
+  font-family: var(--primaryFontFamily);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 48px */
+  letter-spacing: -1.92px;
+  background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.6) 57.21%, rgba(181, 210, 255, 0) 89.93%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-project-trailer span:nth-child(2) {
+  text-align: right;
+  font-family: var(--primaryFontFamily);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 48px */
+  letter-spacing: -1.92px;
+  background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.6) 57.21%, rgba(181, 210, 255, 0) 89.93%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row:nth-child(1) {
-  max-width: 656px;
+  max-width: 700px;
   width: 100%;
 }
 @media only screen and (max-width: 1080px) {
@@ -2441,6 +2559,11 @@ ul, ol {
 .db-page--about-us .db-section--about-us {
   padding-bottom: 134px;
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us {
+    padding-bottom: 10px;
+  }
+}
 .db-page--about-us .db-section--about-us::before {
   content: "";
   position: absolute;
@@ -2468,17 +2591,15 @@ ul, ol {
   max-width: 795px;
   margin-inline: auto;
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h1 {
   text-align: center;
-}
-@media only screen and (max-width: 480px) {
-  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h1 {
-    display: flex;
-    justify-content: center;
-    column-gap: 10px;
-    flex-wrap: wrap;
-    row-gap: 10px;
-  }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h1 span {
   font-family: var(--primaryFontFamily);
@@ -2491,20 +2612,36 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h1 span {
-    font-size: 60px;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h1 span {
     font-size: 50px;
-    letter-spacing: -2px;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h1 span:nth-child(1) {
   color: var(--secondaryColor);
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h1 span:nth-child(1) {
+    text-align: center;
+    font-family: var(--primaryFontFamily);
+    font-size: 23.91px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 23.91px */
+    letter-spacing: -0.956px;
+  }
+}
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h1 span:nth-child(2) {
   color: var(--primaryColor);
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h1 span:nth-child(2) {
+    text-align: center;
+    font-family: var(--primaryFontFamily);
+    font-size: 23.91px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 23.91px */
+    letter-spacing: -0.956px;
+  }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h4 {
   color: var(--whiteColor);
@@ -2520,17 +2657,22 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h4 {
     font-size: 20px;
-    max-width: 500px;
-    margin-inline: auto;
+    margin-top: 15px;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .title-wrap h4 {
-    font-size: 16px;
-    margin-top: 19px;
-    max-width: 375px;
+    margin-top: 5px;
+    max-width: 268px;
     width: 100%;
-    min-width: 310px;
+    min-width: 268px;
+    color: #FFF;
+    text-align: center;
+    font-family: var(--primaryFontFamily);
+    font-size: 11.747px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) {
@@ -2547,17 +2689,17 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) {
-    background-image: url("About-Us__asset-mb-banner.png");
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
+    margin-top: 42px;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) {
-    margin-top: 74px;
-    border: 8px solid #242031;
-    border-radius: 15px;
+    background-image: url("About-Us__asset-mb-banner.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 12.9px;
+    border: 4.299px solid #242031;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
@@ -2570,31 +2712,26 @@ ul, ol {
 }
 @media only screen and (max-width: 1366px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
-    column-gap: 130px;
+    column-gap: 80px;
+    padding-right: 88px;
   }
 }
 @media only screen and (max-width: 1080px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
-    column-gap: 50px;
-    padding-left: 80px;
-    padding-right: 80px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
     flex-direction: column;
-    align-items: center;
-    row-gap: 20px;
-    height: 750px;
-    padding-right: 34px;
+    padding-left: 80px;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
-    height: 540px;
-    padding-top: 34px;
-    padding-right: 24px;
-    padding-left: 24px;
+    height: 334px;
+    padding-top: 17px;
+    padding-right: 19px;
+    padding-left: 30px;
+    padding-bottom: unset;
+    flex-direction: row;
+    column-gap: 36px;
+    justify-content: center;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) {
@@ -2603,29 +2740,19 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) {
-    align-self: center;
+    max-width: 200px;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) {
-    max-width: 176px;
+    max-width: 135px;
+    min-width: 135px;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container {
   max-width: 316px;
-  min-width: 150px;
+  min-width: 135px;
   width: 100%;
-}
-@media only screen and (max-width: 768px) {
-  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container {
-    max-width: 300px;
-    align-self: center;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container {
-    max-width: 176px;
-  }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container img {
   display: block;
@@ -2636,12 +2763,33 @@ ul, ol {
   position: relative;
   z-index: 5;
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) {
+    width: min-content;
+  }
+}
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 643px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) {
+    height: auto;
+    margin-top: 50px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) {
+    margin-top: 20px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) {
+    display: none;
+  }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(1) {
   color: #FFF;
@@ -2651,6 +2799,19 @@ ul, ol {
   font-weight: 700;
   line-height: 115%; /* 64.4px */
   letter-spacing: -2.24px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(1) {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(1) {
+    font-size: 40px;
+    max-width: 266px;
+    width: 100%;
+    min-width: 266px;
+  }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(2) {
   margin-top: 32px;
@@ -2662,10 +2823,20 @@ ul, ol {
   font-weight: 500;
   line-height: 150%;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(2) {
+    font-size: 15px;
+  }
+}
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) {
   display: flex;
   flex-direction: column;
   margin-top: 70px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) {
+    margin-top: 30px;
+  }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) span:nth-child(1) {
   color: #FFF;
@@ -2675,6 +2846,11 @@ ul, ol {
   font-weight: 700;
   line-height: 115%;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) span:nth-child(1) {
+    font-size: 20px;
+  }
+}
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) span:nth-child(2) {
   color: #FFF;
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
@@ -2683,6 +2859,38 @@ ul, ol {
   font-style: normal;
   font-weight: 700;
   line-height: 150%;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) span:nth-child(2) {
+    font-size: 15px;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) {
+  font-family: var(--primaryFontFamily);
+  font-size: 47.795px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%; /* 54.964px */
+  letter-spacing: -1.912px;
+  width: min-content;
+  display: none;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) {
+    display: block;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) span {
+  display: inline-block;
+}
+.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) span:nth-child(1) {
+  color: #FFF;
+}
+.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) span:nth-child(2) {
+  color: #B1FF29;
+}
+.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) span:nth-child(3) {
+  color: #B522EB;
 }
 .db-page--about-us .db-section--about-us-elevate {
   background: linear-gradient(180deg, #0D0616 0%, #150E1F 100%);
@@ -5017,6 +5225,113 @@ ul, ol {
     height: 308px;
     z-index: 2;
   }
+}
+.db-page--explore-oc .db-section--explore-oc-the-game {
+  position: relative;
+  padding-bottom: 0;
+  background-color: #0E051A;
+  padding-top: 256px;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game::before {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1573px;
+  background-image: url("About-Us__asset-bg-v01.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  z-index: 1;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc {
+  position: relative;
+  z-index: 2;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) {
+  flex-direction: column;
+  row-gap: 40px;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) h1 {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: var(--primaryFontFamily);
+  font-size: 88px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 88px */
+  letter-spacing: -3.52px;
+  display: flex;
+  column-gap: 10px;
+  justify-content: center;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) h1 span:nth-child(1) {
+  display: inline-block;
+  color: #A120D2;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) h1 span:nth-child(2) {
+  display: inline-block;
+  color: #B1FF29;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+  color: #FFF;
+  text-align: center;
+  font-family: var(--primaryFontFamily);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) {
+  max-width: 1440px;
+  padding-left: 62px;
+  padding-right: 62px;
+  padding-bottom: 73px;
+  width: 100%;
+  height: 810px;
+  margin-top: 96px;
+  border-radius: 30px;
+  border: 10px solid #242031;
+  box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.4);
+  background: url("Explore-OC__asset-v01-2880x1620.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .db-col:nth-child(1) {
+  display: flex;
+  column-gap: 177px;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-behind-the-scenes {
+  max-width: 442px;
+  width: 100%;
+  min-width: 442px;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-behind-the-scenes .db-behind-the-scenes-title {
+  color: #FFF;
+  font-family: var(--primaryFontFamily);
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 50px */
+  text-transform: uppercase;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-behind-the-scenes .db-behind-the-scenes-description {
+  color: #FFF;
+  font-family: var(--secondaryFontFamily);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 46px;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-play-button {
+  max-width: 38px;
+  min-width: 38px;
+  width: 100%;
 }
 .db-page--explore-oc .db-section--explore-oc-resurrection {
   background-image: url("About-Us__asset-resurrection-bg-v01.png");

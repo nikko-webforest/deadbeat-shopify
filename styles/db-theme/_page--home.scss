@@ -108,13 +108,12 @@
     // }
 
     .spotify-login {
-      max-width: 312px;
-      min-width: 312px;
-      width: 100%;
+      
       border-radius: 30px;
       border: 1px solid rgba(255, 255, 255, 0.40);
       padding:26px 53px 26px 33px;
       cursor: pointer;
+
       .spotify-wrap-login {
         display: flex;
         column-gap: 24px;
@@ -151,113 +150,237 @@
       max-width: 312px;
       min-width: 312px;
       width: 100%;
+      height: 295px;
       border-radius: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.40);
-      height: 115px;
-      padding: 26px 33px;
       display: flex;
-      column-gap: 24px;
-      justify-content: space-between;
-      padding: 26px 33px;
+      justify-content: center;
+      align-items: flex-end;
+      padding:22px 18px 22px 21px;
+      background: url('Homepage__asset-v01-624x590.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
 
-      .spotify-music-moving {
-        display: flex;
-        column-gap: 3px;
-        cursor: pointer;
-        span {
-          max-width: 8px;
-          display: block;
-          min-width: 8px;
-          width: 100%;
-          background-color: #1ED760;
-          height: 63px;
-          border-radius: 10px;
-          animation: loading 0.8s linear infinite;
-
-          &:nth-child(2) {
-            animation-delay: 0.2s;
-          }
-
-          &:nth-child(3) {
-            animation-delay: 0.3s;
-          }
-
-          &:nth-child(4) {
-            animation-delay: 0.4s;
-          }
-
-          &:nth-child(5) {
-            animation-delay: 0.5s;
-          }
-
-          @keyframes loading {
-            0% {
-              transform: scaleY(0);
-            }
-
-            50% {
-              transform: scaleY(1);
-            }
-
-            100% {
-              transform: scaleY(0);
-            }
-          }
-        }
-      }
-
-      .spotify-pause {
-        cursor: pointer;
-      }
-
-      .spotify-content {
-        max-width: 140px;
+      .spotify-wrapper {
+        border-radius: 30px;
+        background: rgba(68, 29, 86, 0.50);
+        backdrop-filter: blur(20px);
+        max-width: 273px;
+        min-width: 273px;
         width: 100%;
-        min-width: 140px; 
-        .trackName-container {
+        height: 158px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 24px 21px 24px;
+        .spotify-info {
+          max-width: 195px;
+          min-width: 195px;
           width: 100%;
-          overflow: hidden;
-          .marquee {
-            white-space: nowrap;
-            display: inline-block;
-            animation: marquee 12s linear infinite;
-            padding-left: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          row-gap: 9px;
 
-            @keyframes marquee {
-              0% {
-                transform: translateX(0);
+
+          .spotify-trackName-container {
+            width: 100%;
+            overflow: hidden;
+
+            .spotify-trackName {
+              white-space: nowrap;
+              display: inline-block;
+              animation: marquee 12s linear infinite;
+              padding-left: 100%;
+
+              @keyframes marquee {
+                0% {
+                  transform: translateX(0);
+                }
+
+                100% {
+                  transform: translateX(-100%);
+                }
               }
 
-              100% {
-                transform: translateX(-100%);
+              span {
+                color: #FFF;
+                font-family: $primaryFontFamily;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 100%; /* 18px */
+                letter-spacing: -0.54px;
               }
-            }
-
-            span {
-              color: #FFF;
-              font-family: $primaryFontFamily;
-              font-size: 18px;
-              font-style: normal;
-              font-weight: 500;
-              line-height: 130%;
             }
           }
+
+          .spotify-artist-container {
+            .spotify-artist {
+              span {
+                color: #CAC7D0;
+                font-family: $secondaryFontFamily;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 100%; /* 12px */
+                letter-spacing: -0.48px;
+              }
+            }
+          }
+
         }
 
-        .artist-container {
-          margin-top: 5px;
-          .artistInfo {
-            span {
-              color: #FFF;
-              font-family: $primaryFontFamily;
-              font-size: 12px;
-              font-style: normal;
-              font-weight: 500;
-              line-height: 130%;
+        .spotify-controls {
+          display: flex;
+          column-gap: 23px;
+
+          margin-top: 14px;
+
+          .shuffle {
+            max-width: 17px;
+            width: 100%;
+            min-width: 17px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+          }
+
+          .controls {
+            display: flex;
+            column-gap: 18px;
+            align-items: center;
+            .next {
+              max-width: 23px;
+              width: 100%;
+              min-width: 23px;
+              cursor: pointer;
             }
+
+            .play-pause {
+              max-width: 60px;
+              width: 100%;
+              min-width: 60px;
+              cursor: pointer;
+            }
+
+            .previous {
+              max-width: 23px;
+              width: 100%;
+              min-width: 23px;
+              cursor: pointer;
+            }
+          }
+
+          .restart {
+            max-width: 18px;
+            width: 100%;
+            min-width: 18px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
           }
         }
       }
+
+      // .spotify-music-moving {
+      //   display: flex;
+      //   column-gap: 3px;
+      //   cursor: pointer;
+      //   span {
+      //     max-width: 8px;
+      //     display: block;
+      //     min-width: 8px;
+      //     width: 100%;
+      //     background-color: #1ED760;
+      //     height: 63px;
+      //     border-radius: 10px;
+      //     animation: loading 0.8s linear infinite;
+
+      //     &:nth-child(2) {
+      //       animation-delay: 0.2s;
+      //     }
+
+      //     &:nth-child(3) {
+      //       animation-delay: 0.3s;
+      //     }
+
+      //     &:nth-child(4) {
+      //       animation-delay: 0.4s;
+      //     }
+
+      //     &:nth-child(5) {
+      //       animation-delay: 0.5s;
+      //     }
+
+      //     @keyframes loading {
+      //       0% {
+      //         transform: scaleY(0);
+      //       }
+
+      //       50% {
+      //         transform: scaleY(1);
+      //       }
+
+      //       100% {
+      //         transform: scaleY(0);
+      //       }
+      //     }
+      //   }
+      // }
+
+      // .spotify-pause {
+      //   cursor: pointer;
+      // }
+
+      // .spotify-content {
+      //   max-width: 140px;
+      //   width: 100%;
+      //   min-width: 140px; 
+      //   .trackName-container {
+      //     width: 100%;
+      //     overflow: hidden;
+      //     .marquee {
+      //       white-space: nowrap;
+      //       display: inline-block;
+      //       animation: marquee 12s linear infinite;
+      //       padding-left: 100%;
+
+      //       @keyframes marquee {
+      //         0% {
+      //           transform: translateX(0);
+      //         }
+
+      //         100% {
+      //           transform: translateX(-100%);
+      //         }
+      //       }
+
+      //       span {
+      //         color: #FFF;
+      //         font-family: $primaryFontFamily;
+      //         font-size: 18px;
+      //         font-style: normal;
+      //         font-weight: 500;
+      //         line-height: 130%;
+      //       }
+      //     }
+      //   }
+
+      //   .artist-container {
+      //     margin-top: 5px;
+      //     .artistInfo {
+      //       span {
+      //         color: #FFF;
+      //         font-family: $primaryFontFamily;
+      //         font-size: 12px;
+      //         font-style: normal;
+      //         font-weight: 500;
+      //         line-height: 130%;
+      //       }
+      //     }
+      //   }
+      // }
     }
 
   }
@@ -401,16 +524,12 @@
                 }
 
                 &:nth-of-type(2) {
-                  color: #B1FF29;
-                  font-size: 88px;
+                  color: #B522EB;
+                  font-size: 70px;
                   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
-                  letter-spacing: -3.52px;
+                  letter-spacing: -2.88px;
                   position: relative;
                   display: inline-block;
-
-                  @media only screen and (max-width: 1440px) {
-                    font-size: 84px;
-                  }
 
                   @media only screen and (max-width: 768px) {
                     font-size: 60px;
@@ -418,15 +537,14 @@
                 }
 
                 &:nth-of-type(3) {
-                  color: #B522EB;
-                  font-size: 88px;
-                  letter-spacing: -3.52px;
+                  color: #B1FF29;
+                  font-size: 70px;
+                  letter-spacing: -2.88px;
+                  text-transform: uppercase;
                   position: relative;
                   display: inline-block;
-
-                  @media only screen and (max-width: 1440px) {
-                    font-size: 84px;
-                  }
+                  margin-left: 13px;
+                  
                   
                   @media only screen and (max-width: 768px) {
                     font-size: 60px;
@@ -516,7 +634,8 @@
                 height: 100%;
 
                 &:nth-of-type(1) {
-                  max-width: 656px;
+                  // max-width: 656px;
+                  max-width: 700px;
                   width: 100%;
                   margin: 0 auto;
 
@@ -609,30 +728,149 @@
 
                     .db-widget-row {
                       .db-widget-col {
-                        .db-widget-list {
-                          width: 100%;
-                          height: 100%;
-                          padding: 20px;
-                          display: flex;
-                          flex-direction: column;
-                          row-gap: 24px;
+                        padding: 20px;
+                        // .db-widget-list {
+                        //   width: 100%;
+                        //   height: 100%;
+                        //   padding: 20px;
+                        //   display: flex;
+                        //   flex-direction: column;
+                        //   row-gap: 24px;
 
-                          @media only screen and (max-width: 1080px) {
-                            padding-left: 30px;
-                            padding-right: 30px;
-                          }
+                        //   @media only screen and (max-width: 1080px) {
+                        //     padding-left: 30px;
+                        //     padding-right: 30px;
+                        //   }
                           
-                          .db-widget-item {
-                            opacity: 0;
-                            scale:1.1;
-                            width: 100%;
-                            min-height: 50px;
+                        //   .db-widget-item {
+                        //     opacity: 0;
+                        //     scale:1.1;
+                        //     width: 100%;
+                        //     min-height: 50px;
+                        //   }
+                        // }
+
+                        &:nth-child(1) {
+
+                        }
+
+                        &:nth-child(2) {
+                          .db-widget-inner-row {
+                            display: flex;
+                            column-gap: 32px;
+                            cursor: pointer;
+
+                            .db-widget-inner-col {
+
+                              &:nth-child(1) {
+                                max-width: 312px;
+                                width: 100%;
+                                min-width: 312px;
+                              }
+
+                              &:nth-child(2) {
+                                max-width: 312px;
+                                width: 100%;
+                                min-width: 312px;
+                                padding-top: 38px;
+                                padding-left: 35px;
+                                padding-bottom: 37px;
+                                height: 295px;
+                                scale: 1;
+                                user-select: none;
+                                background: url('Homepage__asset-v02-625x591.png');
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                border-radius: 30px;
+                                transition:
+                                  box-shadow 200ms ease-in-out 0ms,
+                                  scale 200ms ease-in-out 0ms !important;
+                                  user-select: none;
+                                  position: relative;
+
+                                &::before {
+                                  content: '';
+                                  position: absolute;
+                                  z-index: -1;
+                                  inset: 0;
+                                  display: block;
+                                  box-shadow: unset;
+                                  width: 100%;
+                                  height: 100%;
+                                  border: 3px solid transparent;
+                                  border-radius: inherit;
+                                  transition:
+                                    all 200ms ease-in-out 0ms;
+                                }
+
+                                &:hover {
+                                  scale: 1.05;
+                                  
+                                  &::before {
+                                    box-shadow:
+                                      4.07796px 4.07796px 8.15591px #B522EB4D,
+                                      -4.07796px -4.07796px 8.15591px #B522EB4D,
+                                      2.03898px 2.03898px 4.07796px #D86EFF99,
+                                      -2.03898px -2.03898px 4.07796px #D86EFF99;
+                                    border-color: #D47FF3;
+                                  }
+                                }
+
+                                .db-widget-project-trailer {
+                                  display: flex;
+                                  flex-direction: column;
+                                  row-gap: 59px;
+
+                                  .db-play {
+                                    max-width: 60px;
+                                    width: 100%;
+                                    min-width: 60px;
+                                  }
+
+                                  .db-project-trailer {
+                                    span {
+                                      &:nth-child(1) {
+                                        text-align: right;
+                                        font-family: $primaryFontFamily;
+                                        font-size: 48px;
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        line-height: 100%; /* 48px */
+                                        letter-spacing: -1.92px;
+                                        background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.60) 57.21%, rgba(181, 210, 255, 0.00) 89.93%);
+                                        background-clip: text;
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color: transparent;
+                                      }
+
+                                      &:nth-child(2) {
+                                        text-align: right;
+                                        font-family: $primaryFontFamily;
+                                        font-size: 48px;
+                                        font-style: normal;
+                                        font-weight: 600;
+                                        line-height: 100%; /* 48px */
+                                        letter-spacing: -1.92px;
+                                        background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.60) 57.21%, rgba(181, 210, 255, 0.00) 89.93%);
+                                        background-clip: text;
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color: transparent;
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+
+                            }
                           }
+
+
                         }
                       }
 
                       &:nth-child(1) {
-                        max-width: 656px;
+                        max-width: 700px;
                         width: 100%;
 
                         @media only screen and (max-width: 1080px) {

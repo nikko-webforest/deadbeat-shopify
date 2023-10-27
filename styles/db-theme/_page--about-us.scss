@@ -2,6 +2,9 @@
   .db-section--about-us {
     padding-bottom: 134px;
 
+    @media only screen and (max-width: 480px) {
+      padding-bottom: 10px;
+    }
     &::before {
       content: "";
       position: absolute;
@@ -31,16 +34,13 @@
             max-width: 795px;
             margin-inline: auto;
 
+            @media only screen and (max-width: 480px) {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
             h1 {
               text-align: center;
-
-              @media only screen and (max-width: 480px) {
-                display: flex;
-                justify-content: center;
-                column-gap: 10px;
-                flex-wrap: wrap;
-                row-gap: 10px;
-              }
 
               span {
                 font-family: $primaryFontFamily;
@@ -52,20 +52,38 @@
                 letter-spacing: -3.52px;
 
                 @media only screen and (max-width: 768px) {
-                  font-size: 60px;
+                  font-size: 50px;
                 }
 
-                @media only screen and (max-width: 480px) {
-                  font-size: 50px;
-                  letter-spacing: -2px;
-                }
 
                 &:nth-child(1) {
                   color: $secondaryColor;
+                  @media only screen and (max-width:480px) {
+                    
+
+                    text-align: center;
+                    font-family: $primaryFontFamily;
+                    font-size: 23.91px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 100%; /* 23.91px */
+                    letter-spacing: -0.956px;
+                  }
                 }
                 
                 &:nth-child(2) {
                   color: $primaryColor;
+                  @media only screen and (max-width:480px) {
+                    
+
+                    text-align: center;
+                    font-family: $primaryFontFamily;
+                    font-size: 23.91px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 100%; /* 23.91px */
+                    letter-spacing: -0.956px;
+                  }
                 }
               }
             }
@@ -83,16 +101,22 @@
 
               @media only screen and (max-width: 768px) {
                 font-size: 20px;
-                max-width: 500px;
-                margin-inline: auto;
+                margin-top: 15px;
               }
 
               @media only screen and (max-width: 480px) {
-                font-size: 16px;
-                margin-top: 19px;
-                max-width: 375px;
+                
+                margin-top: 5px;
+                max-width: 268px;
                 width: 100%;
-                min-width: 310px;
+                min-width: 268px;
+                color: #FFF;
+                text-align: center;
+                font-family: $primaryFontFamily;
+                font-size: 11.747px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 150%;
               }
             }
           }
@@ -111,19 +135,17 @@
               border-radius: 30px;
               border: 10px solid #242031;
 
-              
               @media only screen and (max-width: 768px) {
+                margin-top: 42px;
+              }
+
+              @media only screen and (max-width: 480px) {
                 background-image: url('About-Us__asset-mb-banner.png');
                 background-position: bottom;
                 background-repeat: no-repeat;
                 background-size: cover;
-              }
-
-              
-              @media only screen and (max-width: 480px) {
-                margin-top: 74px;
-                border: 8px solid #242031;
-                border-radius: 15px;
+                border-radius: 12.9px;
+                border: 4.299px solid #242031;
               }
 
               .db-col-spacer {
@@ -135,30 +157,25 @@
                 height: 777px;
 
                 @media only screen and (max-width: 1366px) {
-                  column-gap: 130px;
+                  column-gap: 80px;
+                  padding-right: 88px;
                 }
 
                 @media only screen and (max-width: 1080px) {
-                  column-gap: 50px;
-                  padding-left: 80px;
-                  padding-right: 80px;
-                }
-
-                @media only screen and (max-width: 768px) {
                   flex-direction: column;
-                  align-items: center;
-                  row-gap: 20px;
-                  height: 750px;
-                  padding-right: 34px;
-
+                  padding-left: 80px;
                 }
 
                 @media only screen and (max-width: 480px) {
-                  // padding: 30px 60px;
-                  height: 540px;
-                  padding-top: 34px;
-                  padding-right: 24px;
-                  padding-left: 24px;
+                  height: 334px;
+                  padding-top: 17px;
+                  padding-right: 19px;
+                  padding-left: 30px;
+                  padding-bottom: unset;
+                  // max-width: 319px;
+                  flex-direction: row;
+                  column-gap: 36px;
+                  justify-content: center;
                 }
 
 
@@ -168,30 +185,18 @@
                     width: 100%;
 
                     @media only screen and (max-width: 768px) {
-                      align-self: center;
-                      
+                      max-width: 200px;
                     }
 
                     @media only screen and (max-width: 480px) {
-                      max-width: 176px;
-                      
+                      max-width: 135px;
+                      min-width: 135px;
                     }
 
                     .db-logo-container {
                       max-width: 316px;
-                      // min-width: 240px;
-                      min-width: 150px;
+                      min-width: 135px;
                       width: 100%;
-
-                      @media only screen and (max-width: 768px) {
-                        max-width: 300px;
-                        align-self: center;
-                      }
-
-                      @media only screen and (max-width: 480px) {
-                        max-width: 176px;
-                      }
-
 
                       img {
                         display: block;
@@ -204,10 +209,9 @@
                   &:nth-child(2) {
                     position: relative;
                     z-index: 5;
-
-                    // addition
-                    // max-width: 694px;
-                    // width: 100%;
+                    @media only screen and (max-width: 480px) {
+                      width: min-content;
+                    }
 
                     .yaas-inner-row {
                       &:nth-child(1) {
@@ -216,6 +220,20 @@
                         flex-direction: column;
                         justify-content: center;
                         height: 643px;
+
+                        @media only screen and (max-width: 1080px) {
+                          height: auto;
+                          margin-top: 50px;
+                        }
+
+                        @media only screen and (max-width: 768px) {
+                          margin-top: 20px;
+                        }
+
+                        @media only screen and (max-width: 480px) {
+                          display: none;
+                        }
+
                         .yaas-inner-col {
                           &:nth-child(1) {
                             color: #FFF;
@@ -225,6 +243,16 @@
                             font-weight: 700;
                             line-height: 115%; /* 64.4px */
                             letter-spacing: -2.24px;
+                            @media only screen and (max-width: 1080px) {
+                              text-align: center;
+                            }
+
+                            @media only screen and (max-width: 768px) {
+                              font-size: 40px;
+                              max-width: 266px;
+                              width: 100%;
+                              min-width: 266px;
+                            }
                           }
 
                           &:nth-child(2) {
@@ -236,6 +264,9 @@
                             font-style: normal;
                             font-weight: 500;
                             line-height: 150%;
+                            @media only screen and (max-width: 768px) {
+                              font-size: 15px;
+                            }
                             
                           }
 
@@ -243,6 +274,13 @@
                             display: flex;
                             flex-direction: column;
                             margin-top: 70px;
+
+                            @media only screen and (max-width: 1080px) {
+                              margin-top: 30px;
+                            }
+
+
+
                             span {
                               &:nth-child(1) {
                                 color: #FFF;
@@ -251,6 +289,10 @@
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: 115%;
+
+                                @media only screen and (max-width: 768px) {
+                                  font-size: 20px;
+                                }
                               }
 
                               &:nth-child(2) {
@@ -261,8 +303,43 @@
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: 150%;
+                                @media only screen and (max-width: 768px) {
+                                  font-size: 15px;
+                                }
                               }
                             }
+                          }
+                        }
+                      }
+
+                      &:nth-child(2) {
+                        font-family: $primaryFontFamily;
+                        font-size: 47.795px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 115%; /* 54.964px */
+                        letter-spacing: -1.912px;
+                        width: min-content;
+                        display: none;
+
+                         @media only screen and (max-width: 480px) {
+                          display: block;
+                          
+                        }
+
+                        span {
+                          display: inline-block;
+
+                          &:nth-child(1) {
+                            
+                            color: #FFF;
+                          }
+                          &:nth-child(2) {
+                            color: #B1FF29;
+                          }
+
+                          &:nth-child(3) {
+                            color: #B522EB;
                           }
                         }
                       }
