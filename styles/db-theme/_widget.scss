@@ -25,6 +25,17 @@
       justify-content: flex-end;
       position: relative;
 
+      @media only screen and (max-width: 768px) {
+        background-position: left;
+      }
+
+      @media only screen and (max-width: 480px) {
+        padding-top: 31px;
+        padding-right: 23px;
+        background-image: url('DB_Widget01_bg-mb-v02-790x747.png');
+        height: 373px;
+      }
+
       &::before {
         content: '';
         position: absolute;
@@ -44,6 +55,28 @@
       .db-columbus {
         max-width: 314px;
         width: 100%;
+
+        @media only screen and (max-width: 480px) {
+          max-width: 246px;
+        }
+
+        svg {
+          &:nth-child(1) {
+            display: block;
+
+            @media only screen and (max-width: 480px) {
+              display: none;
+            }
+
+          }
+
+          &:nth-child(2) {
+            display: none;
+            @media only screen and (max-width: 480px) {
+              display: block;
+            }
+          }
+        }
       }
 
       &:hover {
