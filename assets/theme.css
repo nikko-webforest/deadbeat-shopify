@@ -6483,7 +6483,7 @@ ul, ol {
     align-items: center;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) span:nth-child(1) {
+.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) .radio-link {
   color: #A120D2;
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--primaryFontFamily);
@@ -6494,12 +6494,12 @@ ul, ol {
   letter-spacing: -3.2px;
 }
 @media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) span:nth-child(1) {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) .radio-link {
     font-size: 60px;
   }
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) span:nth-child(1) {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) .radio-link {
     text-align: center;
     font-family: var(--primaryFontFamily);
     font-size: 31.74px;
