@@ -55,7 +55,13 @@
                 margin: 0 auto 16px;
               }
               
-              .db-site-logo {}
+              .db-site-logo {
+                max-width: 264px;
+                min-width: 264px;
+                width: 100%;
+                object-fit: cover;
+                display: block;
+              }
             }
 
             h4 {
