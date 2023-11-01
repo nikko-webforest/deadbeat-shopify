@@ -10,7 +10,7 @@
   width: 100%;
   transition:
     translate 1000ms cubic-bezier(0.86, 0, 0.07, 1) 0s;
-  
+ 
   .db-header-main {
     position: static;
     padding: 30px 20px;
@@ -521,6 +521,18 @@
 
                       &::before {
                         transition-delay: 3.0s;
+                      }
+                    }
+                  }
+
+                  &:nth-child(9) {
+                    .db-menu-link {
+                      transition:
+                        color 200ms ease-in-out 0ms,
+                        opacity 200ms ease-in-out 2.8s;
+
+                      &::before {
+                        transition-delay: 3.2s;
                       }
                     }
                   }

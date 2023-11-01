@@ -1198,6 +1198,12 @@ ul, ol {
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(8) .db-menu-link::before {
   transition-delay: 3s;
 }
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(9) .db-menu-link {
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.8s;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(9) .db-menu-link::before {
+  transition-delay: 3.2s;
+}
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(2) p {
   opacity: 1;
   translate: 0 0;
@@ -2824,6 +2830,7 @@ ul, ol {
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us {
     padding-bottom: 10px;
+    background: #0D0713;
   }
 }
 .db-page--about-us .db-section--about-us::before {
@@ -2838,6 +2845,19 @@ ul, ol {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: unset;
+    background-image: url("About-Us__asset-750x1436.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 728px;
+  }
 }
 .db-page--about-us .db-section--about-us .about-us--banner {
   padding-top: 256px;
