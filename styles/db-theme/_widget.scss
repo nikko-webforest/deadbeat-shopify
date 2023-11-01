@@ -60,22 +60,8 @@
           max-width: 246px;
         }
 
-        svg {
-          &:nth-child(1) {
-            display: block;
-
-            @media only screen and (max-width: 480px) {
-              display: none;
-            }
-
-          }
-
-          &:nth-child(2) {
-            display: none;
-            @media only screen and (max-width: 480px) {
-              display: block;
-            }
-          }
+        .db-svg {
+          width: 100%;
         }
       }
 

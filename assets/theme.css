@@ -1302,21 +1302,8 @@ ul, ol {
     max-width: 246px;
   }
 }
-.db-widget-item.--columbus .db-widget-box .db-columbus svg:nth-child(1) {
-  display: block;
-}
-@media only screen and (max-width: 480px) {
-  .db-widget-item.--columbus .db-widget-box .db-columbus svg:nth-child(1) {
-    display: none;
-  }
-}
-.db-widget-item.--columbus .db-widget-box .db-columbus svg:nth-child(2) {
-  display: none;
-}
-@media only screen and (max-width: 480px) {
-  .db-widget-item.--columbus .db-widget-box .db-columbus svg:nth-child(2) {
-    display: block;
-  }
+.db-widget-item.--columbus .db-widget-box .db-columbus .db-svg {
+  width: 100%;
 }
 .db-widget-item.--columbus .db-widget-box:hover {
   scale: 1.05;
