@@ -4,6 +4,7 @@
 
     @media only screen and (max-width: 480px) {
       padding-bottom: 10px;
+      background: #0D0713;
     }
     &::before {
       content: "";
@@ -17,6 +18,18 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+
+      @media only screen and (max-width: 480px) {
+        top: 0;
+        left:0;
+        right: 0;
+        bottom:unset;
+        background-image: url('About-Us__asset-750x1436.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 728px;
+      }
     }
 
     .about-us--banner {
