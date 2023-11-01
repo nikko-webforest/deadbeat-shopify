@@ -3419,10 +3419,11 @@
 
   .db-section--explore-oc-faction {
     background: #0E0914;
+    // background: #150E1F;
     padding-top: 127px;
     position: relative;
     z-index: 3;
-    height: 1300px;
+    height: 1100px;
 
     @media only screen and (max-width: 1080px) {
       height: 1600px;
