@@ -2631,6 +2631,7 @@ ul, ol {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 @media only screen and (max-width: 768px) {
   .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-project-trailer span:nth-child(1) {
@@ -7049,7 +7050,7 @@ ul, ol {
   padding-top: 127px;
   position: relative;
   z-index: 3;
-  height: 1300px;
+  height: 1100px;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--explore-oc .db-section--explore-oc-faction {
