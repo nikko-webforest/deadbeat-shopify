@@ -2948,12 +2948,13 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) {
-    background-image: url("About-Us__asset-mb-banner.png");
+    background-image: url("About-Us__asset-638x1084.png");
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 12.9px;
+    border-radius: 7px;
     border: 4.299px solid #242031;
+    box-shadow: 0px 12.89575px 21.49292px 0px rgba(0, 0, 0, 0.4);
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
@@ -2978,14 +2979,16 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer {
-    height: 334px;
+    height: 542px;
+    max-width: 319px;
+    min-width: 319px;
     padding-top: 17px;
     padding-right: 19px;
     padding-left: 30px;
     padding-bottom: unset;
-    flex-direction: row;
-    column-gap: 36px;
-    justify-content: center;
+    flex-direction: column;
+    row-gap: 24px;
+    margin-inline: auto;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) {
@@ -2999,14 +3002,21 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) {
-    max-width: 135px;
-    min-width: 135px;
+    max-width: 151px;
+    min-width: 151px;
+    align-self: center;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container {
   max-width: 316px;
   min-width: 135px;
   width: 100%;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container {
+    max-width: 151px;
+    min-width: 151px;
+  }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(1) .db-logo-container img {
   display: block;
@@ -3042,7 +3052,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) {
-    display: none;
+    margin-top: unset;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(1) {
@@ -3067,6 +3077,13 @@ ul, ol {
     min-width: 266px;
   }
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(1) {
+    font-size: 27.411px;
+    letter-spacing: -1.096px;
+    text-align: left;
+  }
+}
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(2) {
   margin-top: 32px;
   color: #FFF;
@@ -3082,6 +3099,13 @@ ul, ol {
     font-size: 15px;
   }
 }
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(2) {
+    font-size: 9.789px;
+    text-shadow: 2.4473686218px 2.4473686218px 7.3421053886px rgba(0, 0, 0, 0.4);
+    margin-top: 15px;
+  }
+}
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) {
   display: flex;
   flex-direction: column;
@@ -3090,6 +3114,11 @@ ul, ol {
 @media only screen and (max-width: 1080px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) {
     margin-top: 30px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) {
+    margin-top: 34px;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) span:nth-child(1) {
@@ -3103,6 +3132,11 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) span:nth-child(1) {
     font-size: 20px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) span:nth-child(1) {
+    font-size: 15.663px;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) span:nth-child(2) {
@@ -3119,32 +3153,10 @@ ul, ol {
     font-size: 15px;
   }
 }
-.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) {
-  font-family: var(--primaryFontFamily);
-  font-size: 47.795px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 115%; /* 54.964px */
-  letter-spacing: -1.912px;
-  width: min-content;
-  display: none;
-}
 @media only screen and (max-width: 480px) {
-  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) {
-    display: block;
+  .db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(1) .yaas-inner-col:nth-child(3) span:nth-child(2) {
+    font-size: 9.789px;
   }
-}
-.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) span {
-  display: inline-block;
-}
-.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) span:nth-child(1) {
-  color: #FFF;
-}
-.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) span:nth-child(2) {
-  color: #B1FF29;
-}
-.db-page--about-us .db-section--about-us .about-us--banner .db-container:nth-child(1) .db-row:nth-child(2) .db-col-spacer .db-col:nth-child(2) .yaas-inner-row:nth-child(2) span:nth-child(3) {
-  color: #B522EB;
 }
 .db-page--about-us .db-section--about-us-elevate {
   background: linear-gradient(180deg, #0D0616 0%, #150E1F 100%);
