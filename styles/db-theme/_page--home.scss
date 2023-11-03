@@ -523,11 +523,17 @@
       svg {
         position: absolute;
         right: 50px;
-        top: 150px;
+        top: 53px;
         z-index: 10;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
+        opacity: 0.2;
         cursor: pointer;
+        transition: opacity 600ms ease-in-out 0ms;
+
+        &:hover {
+          opacity: 1;
+        }
       }
     }
 

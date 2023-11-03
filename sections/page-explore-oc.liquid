@@ -162,7 +162,7 @@
     </section>
   {% endcomment %}
 
-  <section class="db-section db-section--explore-oc-the-game">
+  <section class="db-section db-section--explore-oc-the-game" id="explore-oc-the-game">
     <div class="explore-oc">
       <div class="db-container">
         <div class="db-row">
@@ -180,6 +180,28 @@
           :class="{ 'fullscreen': isVideoFullScreen === true }"
           @mouseenter="handleMouseEnter"
           @mouseleave="handleMouseLeave">
+          
+          <div class="video-overlay" :class="activeVideoOverlay">
+            <svg xmlns="http://www.w3.org/2000/svg" width="671" height="810" viewBox="0 0 671 810" fill="none" class="db-svg">
+              <path d="M0 15C0 6.71572 6.71573 0 15 0H671V810H15C6.71575 810 0 803.284 0 795V15Z" fill="url(#paint0_linear_2983_2279)"/>
+              <defs>
+              <linearGradient id="paint0_linear_2983_2279" x1="-4.99934e-06" y1="405" x2="671" y2="405" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#03010E" stop-opacity="0.6"/>
+              <stop offset="1" stop-color="#03010E" stop-opacity="0"/>
+              </linearGradient>
+              </defs>
+            </svg>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="141" height="170" viewBox="0 0 141 170" fill="none" class="db-svg">
+              <path d="M0 3.14617C0 1.40877 1.40844 0.000335693 3.14583 0.000335693H140.724V169.875H3.14583C1.40843 169.875 0 168.467 0 166.729V3.14617Z" fill="url(#paint0_linear_3119_742)"/>
+              <defs>
+              <linearGradient id="paint0_linear_3119_742" x1="-1.04847e-06" y1="84.9378" x2="140.724" y2="84.9378" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#03010E" stop-opacity="0.6"/>
+              <stop offset="1" stop-color="#03010E" stop-opacity="0"/>
+              </linearGradient>
+              </defs>
+            </svg>
+          </div>
 
           <figure id="videoContainer"
             data-fullscreen="false"
@@ -319,7 +341,7 @@
               BEHIND THE SCENES
             </div>
             <div class="description">
-              Step into the intriguing world of Deadbeat, as we delve deep into the behind-the-scenes magic that made Deadbeat a reality. Discover the hidden secrets, creative processes, and untold stories that brought this captivating production to the screen. Get ready to be immersed in the world of Deadbeat like never before.
+              Unearth the creation of Deadbeat in this exclusive behind the scenes video peering into this exciting new world.
             </div>
           </div>
 
@@ -343,13 +365,13 @@
           </div>
 
           <div class="db-col">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Unearth the creation of Deadbeat in this exclusive behind the scenes video peering into this exciting new world.
           </div>
         </div>
       </div>
     </div>
 
-    <div class="the-game">
+    <div class="the-game" id="the-game">
       <div class="db-container">
         <div class="db-row">
           <div class="db-col">
@@ -442,9 +464,6 @@
                   </path>
                 </svg>
                 <div class="db-content">
-                  <div class="db-title">
-                    One Big Musical Glory
-                  </div>
                   <div class="db-description">
                     Do you have what it takes to become a permanent resident of the OC ?
                   </div>
@@ -452,6 +471,7 @@
               </div>
             </div>
           </div>
+          {% comment %} <div class="db-col"></div> {% endcomment %}
           <div class="db-col">
             <h3>
               Ok deep breath. We can do this.
@@ -614,6 +634,9 @@
   <section class="db-section db-section--explore-oc-coming-soon-2">
     <div class="db-container">
       <div class="db-row">
+        <a class="db-image-container" href="https://cd929fm.com">
+          <img src="{{ 'Explore-OC__asset-v17-1894x1200.png' | asset_url }}" alt="">
+        </a>
         <a class="radio-link"
           title="Radio Link"
           href="https://cd929fm.com">
@@ -624,7 +647,7 @@
           A Really Real Radio Station
         </span>
         <p>
-          No, really. We're making a radio station with our friends at CD 92.9 FN. A direct line from the undead world of 2069 into your ear-hole. Dope music, DJ’s, YOU, and sometimes our fav artists show up.
+          No, really. We're making a radio station with our friends at CD 92.9 FM. A direct line from the undead world of 2069 into your ear-hole. Dope music, DJ’s, YOU, and sometimes our fav artists show up.
         </p>
       </div>
     </div>
@@ -633,6 +656,10 @@
 
   <section class="db-section db-section--explore-oc-faction">
 
+    <div class="db-factions-image-container" ref="factionsContainer">
+
+      <img v-for="(faction, index) in factions" :src="faction.bg" alt="" :class="selectPosition(index)">
+    </div>
 
     <div class="db-container">
 
@@ -722,15 +749,15 @@
                     :src="faction.image_url"/>
                 </div>
 
-                <div class="faction-svg" v-if="index === 0">
+                <div class="faction-svg" v-if="index === 4">
                   {% render 'faction--harold-helping-hand' %}
                 </div>
 
-                <div class="faction-svg" v-if="index === 1">
+                <div class="faction-svg" v-if="index === 2">
                   {% render 'faction--stab-and-grab' %}
                 </div>
 
-                <div class="faction-svg" v-if="index === 2">
+                <div class="faction-svg" v-if="index === 0">
                   {% render 'faction--toothy-burger' %}
                 </div>
 
@@ -738,7 +765,7 @@
                   {% render 'faction--sharky-swim-club' %}
                 </div>
 
-                <div class="faction-svg" v-if="index === 4">
+                <div class="faction-svg" v-if="index === 1">
                   {% render 'faction--wolf-and-foot' %}
                 </div>
 
@@ -845,36 +872,78 @@
         isMutedVideo: false,
         isVideoFullScreen: false,
         isVideoHover: false,
+        // factions: [
+        //   {
+        //     name: "HAROLD'S HELPING HAND",
+        //     image_url: "{{ 'Explore-OC__harold-helping-hand.png' | asset_url }}",
+        //     description: 'Handyman / Massage Parlour.',
+        //     hq: "Are you stressed? Tired? Overwhelmed? Married? Come on down to Harold's Helping Hand. Member of the Deadbeat 2069 BBB.",
+        //     bg: "{{ 'Explore-OC__asset-v13-2392x1006.png' | asset_url }}"
+        //   },
+        //   {
+        //     name: "STAB 'N' GRAB",
+        //     image_url: "{{ 'Explore-OC__stab-and-grab.png' | asset_url }}",
+        //     description: 'Deadly Deals and More.',
+        //     hq: "Shop dangerously with deals that are to die for again. Stab 'N' Grab, voted the OC quickest way out.",
+        //     bg: "{{ 'Explore-OC__asset-v14-2494x594.png' | asset_url }}"
+        //   },
+        //   {
+        //     name: 'TOOTHY BURGER',
+        //     image_url: "{{ 'Explore-OC__toothy-burger.png' | asset_url }}",
+        //     description: 'Home of the Green Sauce.',
+        //     hq: 'Come on down to Toothy Burger! The OC #73 rated burger joint. For a limited time only, get the bathroom key with purchase of two or more burgers.',
+        //     bg: "{{ 'Explore-OC__asset-v08-2470x2468.png' | asset_url }}"
+        //   },
+        //   {
+        //     name: "SHARKY'S SWIM CLUB",
+        //     image_url: "{{ 'Explore-OC__sharky-swim-club.png' | asset_url }}",
+        //     description: 'Take the Bait.',
+        //     hq: "Dive back into the fun and fitness at Sharky's Swim Club. We're thrilled to announce our grand reopening, with better health and safety measures in place to ensure a splashing good time for all. We promise it, this time. Waivers and tasers provided at the gate.",
+        //     bg: "{{ 'Explore-OC__asset-v12-1936x2140.png' | asset_url }}"
+        //   },
+        //   {
+        //     name: 'WOLF & Foot',
+        //     image_url: "{{ 'Explore-OC__wolf-and-foot.png' | asset_url }}",
+        //     description: 'Roasted Amongst Free-range Alpacas.',
+        //     hq: 'Step into our world of coffee. Where each bean is treated like a treasure and every sip is an exploration of taste and exclusivity.',
+        //     bg: "{{ 'Explore-OC__asset-v11-1536x2196.png' | asset_url }}"
+        //   },
+        // ],
         factions: [
-          {
-            name: 'HAROLDS HELPING HAND',
-            image_url: "{{ 'Explore-OC__harold-helping-hand.png' | asset_url }}",
-            description: 'Handyman / Massage Parlour.',
-            hq: 'Are you stressed? Tired? Overwhelmed? Married? Come on down to Harolds Helping Hand. Member of the Deadbeat 2069 BBB.'
-          },
-          {
-            name: 'STAB & GRAB',
-            image_url: "{{ 'Explore-OC__stab-and-grab.png' | asset_url }}",
-            description: 'Deadly Deals and More.',
-            hq: 'Shop dangerously with deals that are to die for again. Stab N Grab, voted the OC quickest way out.'
-          },
           {
             name: 'TOOTHY BURGER',
             image_url: "{{ 'Explore-OC__toothy-burger.png' | asset_url }}",
             description: 'Home of the Green Sauce.',
-            hq: 'Come on down to Toothy Burger! The OC #73 rated burger joint. For a limited time only, get the bathroom key with purchase of two or more burgers.'
+            hq: 'Come on down to Toothy Burger! The OC #73 rated burger joint. For a limited time only, get the bathroom key with purchase of two or more burgers.',
+            bg: "{{ 'Explore-OC__asset-v08-2470x2468.png' | asset_url }}"
           },
           {
-            name: 'SHARKY SWIM CLUB',
+            name: 'WOLF & Foot',
+            image_url: "{{ 'Explore-OC__wolf-and-foot.png' | asset_url }}",
+            description: 'Roasted Amongst Free-range Alpacas.',
+            hq: 'Step into our world of coffee. Where each bean is treated like a treasure and every sip is an exploration of taste and exclusivity.',
+            bg: "{{ 'Explore-OC__asset-v11-1536x2196.png' | asset_url }}"
+          },
+          {
+            name: "STAB 'N' GRAB",
+            image_url: "{{ 'Explore-OC__stab-and-grab.png' | asset_url }}",
+            description: 'Deadly Deals and More.',
+            hq: "Shop dangerously with deals that are to die for again. Stab 'N' Grab, voted the OC quickest way out.",
+            bg: "{{ 'Explore-OC__asset-v14-2494x594.png' | asset_url }}"
+          },
+          {
+            name: "SHARKY'S SWIM CLUB",
             image_url: "{{ 'Explore-OC__sharky-swim-club.png' | asset_url }}",
             description: 'Take the Bait.',
-            hq: 'Dive backj into the fun and fitness at Sharky Swim Club. Were thrilled to announce our grand reopening, with better health and safety measures in place to ensure a splashing good time for all. We promise it, this time. Waivers and tasers provided at the gate.'
+            hq: "Dive back into the fun and fitness at Sharky's Swim Club. We're thrilled to announce our grand reopening, with better health and safety measures in place to ensure a splashing good time for all. We promise it, this time. Waivers and tasers provided at the gate.",
+            bg: "{{ 'Explore-OC__asset-v12-1936x2140.png' | asset_url }}"
           },
           {
-            name: 'WOLF AND FOOT COFFEE',
-            image_url: "{{ 'Explore-OC__wolf-and-foot.png' | asset_url }}",
-            description: 'Undead Pretentiousness in a Cup.',
-            hq: 'Step into our world of coffee. Where each bean is treated like a treasure and every sip is an exploration of taste and exclusivity'
+            name: "HAROLD'S HELPING HAND",
+            image_url: "{{ 'Explore-OC__harold-helping-hand.png' | asset_url }}",
+            description: 'Handyman / Massage Parlour.',
+            hq: "Are you stressed? Tired? Overwhelmed? Married? Come on down to Harold's Helping Hand. Member of the Deadbeat 2069 BBB.",
+            bg: "{{ 'Explore-OC__asset-v13-2392x1006.png' | asset_url }}"
           },
         ],
         undeadData: [
@@ -984,7 +1053,7 @@
       setTimeout(() => {
         const footer = document.querySelector('footer')
         footer.style.backgroundColor = '#0E0914';
-      }, 4000)
+      }, 3000)
     },
     computed: {
       activeControls() {
@@ -1046,9 +1115,42 @@
         return {
           'active-bts': false
         }
-      }
+      },
+      activeVideoOverlay() {
+
+        if (this.isActiveVideo === false) { 
+          return {
+            'active': true
+          }
+        }
+
+        return {
+          'active': false
+        }
+      },
     },
     mounted() {
+      const explore_oc_the_game = document.querySelector('#the-game');
+      console.log(explore_oc_the_game);
+
+      const revealSection = function(entries, observer) {
+        const [entry] = entries;
+        console.log(entry.isIntersecting);
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          console.log(`Not Intersect`)
+        }
+      }
+
+      const explore_oc_the_game_options = {
+        root: null,
+        threshold: 0.70,
+      }
+
+      const explore_oc_the_game_observer = new IntersectionObserver(revealSection, explore_oc_the_game_options);
+
+      explore_oc_the_game_observer.observe(explore_oc_the_game);
     },
     methods: {
       onLoadAnimation() {
@@ -1204,7 +1306,7 @@
         if (index === 0) {
 
          return {
-          'first-faction': true,
+          'third-faction': true,
           '--first': true
          }
 
@@ -1213,7 +1315,7 @@
         if (index === 1) {
 
          return {
-          'second-faction': true,
+          'fifth-faction': true,
           '--second': true
          } 
 
@@ -1222,7 +1324,7 @@
         if (index === 2) {
 
          return {
-          'third-faction': true,
+          'second-faction': true,
           '--third': true
          }
 
@@ -1240,7 +1342,7 @@
         if (index === 4) {
 
          return {
-          'fifth-faction': true,
+          'first-faction': true,
           '--hidden': true
          }
          
@@ -1326,7 +1428,7 @@
           return position;
         }
 
-        if (index === this.dataSample.length - 1) {
+        if (index === this.factions.length - 1) {
 
           position = {
             ...position,
@@ -1403,13 +1505,51 @@
           // }, 2000)
         })
       },
+      changeBgImage(type) {
+        const factionsContainer = this.$refs.factionsContainer;
+        const active = factionsContainer.querySelector('.active');
+        const last = factionsContainer.querySelector('.last');
+
+        let next = active.nextElementSibling;
+
+        if (!next) {
+          next = factionsContainer.firstElementChild;
+        }
+
+        if (type === 'prev') {
+          active.classList.remove(['active']);
+          last.classList.remove(['last']);
+          
+          active.classList.add('next');
+          last.classList.add('active');
+          next = last.previousElementSibling;
+
+          if (!next) {
+            next = factionsContainer.lastElementChild
+          }
+
+          next.classList.remove(['next']);
+          next.classList.add('last');
+          return
+        }
+
+
+        active.classList.remove(['active']);
+        last.classList.remove(['last']);
+        next.classList.remove(['next']);
+
+        active.classList.add('last');
+        next.classList.add('active');
+        last.classList.add('next');
+      },
       onChangeSlide(type) {
         const sliderContainer = this.$refs.newSliderContainer;
         const first = sliderContainer.querySelector('.--first');
         const second = sliderContainer.querySelector('.--second');
         const third = sliderContainer.querySelector('.--third');
-
         
+        this.changeBgImage(type);
+
         if (type === "next") {
           // this.curIndex = this.curIndex + 1;
           this.activeButton = 'right';

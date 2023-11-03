@@ -2173,11 +2173,16 @@ ul, ol {
 .db-page--home .db-section--banner figure svg {
   position: absolute;
   right: 50px;
-  top: 150px;
+  top: 53px;
   z-index: 10;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  opacity: 0.2;
   cursor: pointer;
+  transition: opacity 600ms ease-in-out 0ms;
+}
+.db-page--home .db-section--banner figure svg:hover {
+  opacity: 1;
 }
 .db-page--home .db-section--banner .db-container {
   position: relative;
@@ -2848,7 +2853,12 @@ ul, ol {
 }
 
 .db-page--about-us .db-section--about-us {
-  padding-bottom: 134px;
+  padding-bottom: 100px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us {
+    padding-bottom: 134px;
+  }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us {
@@ -2862,12 +2872,18 @@ ul, ol {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: 1488px;
   display: block;
   background-image: url("About-Us__asset-3800x2916.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us::before {
+    height: unset;
+    bottom: 0;
+  }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us::before {
@@ -2880,6 +2896,21 @@ ul, ol {
     background-repeat: no-repeat;
     background-size: cover;
     height: 728px;
+  }
+}
+.db-page--about-us .db-section--about-us::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, #0D0616 0%, #150E1F 100%);
+  height: 1145px;
+  display: block;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us::after {
+    display: none;
   }
 }
 .db-page--about-us .db-section--about-us .about-us--banner {
@@ -3209,10 +3240,214 @@ ul, ol {
     font-size: 9.789px;
   }
 }
+.db-page--about-us .db-section--about-us .about-us--elevate {
+  padding-top: unset;
+  position: relative;
+  z-index: 3;
+  padding-top: 134px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate {
+    display: none;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate {
+    padding: 79px 33px 61px 24px;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row {
+  column-gap: 176px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row {
+    flex-direction: column;
+    row-gap: 100px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row {
+    row-gap: 50px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row {
+    row-gap: 41px;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
+  max-width: 388px;
+  padding-top: 50px;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
+    padding-top: unset;
+    padding-left: 20px;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h4 {
+  color: var(--whiteColor);
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  font-family: var(--primaryFontFamily);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.1em;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h4 {
+    font-size: 40px;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h3 {
+  color: #A120D2;
+  font-family: var(--primaryFontFamily);
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  line-height: 1.1em;
+  letter-spacing: -2.24px;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(1) h3 {
+    font-size: 50px;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+  max-width: 840px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+    align-items: flex-start;
+    align-self: flex-start;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-image-container {
+  max-width: 408px;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-image-container {
+    max-width: 350px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-image-container {
+    max-width: 322px;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-image-container img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description {
+  margin-top: 40px;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description {
+    max-width: 373px;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description p {
+  color: #CAC7D0;
+  font-family: var(--primaryFontFamily);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3em;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description p {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-description p {
+    font-size: 24px;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us {
+  margin-top: 90px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us {
+    margin-top: 65px;
+    width: 100%;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .connect-with-us {
+  color: #CAC7D0;
+  font-family: var(--secondaryFontFamily);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .connect-with-us {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .db-elevate-website {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 10px;
+  margin-top: 32px;
+  padding: 16px 30px;
+  border-radius: 5px;
+  border: 1.5px solid #AA27B1;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .db-elevate-website {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .db-elevate-website span {
+  color: #A120D2;
+  font-family: var(--primaryFontFamily);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.1em;
+}
+.db-page--about-us .db-section--about-us .about-us--elevate .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-elevate-connect-with-us .db-elevate-website a {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.1em;
+}
 .db-page--about-us .db-section--about-us-elevate {
   background: linear-gradient(180deg, #0D0616 0%, #150E1F 100%);
   padding-top: unset;
   padding-bottom: 133px;
+  display: none;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--about-us .db-section--about-us-elevate {
+    display: block;
+  }
 }
 @media only screen and (max-width: 480px) {
   .db-page--about-us .db-section--about-us-elevate {
@@ -5548,7 +5783,7 @@ ul, ol {
   padding-bottom: 0;
   background-color: #0D0713;
   padding-top: 256px;
-  padding-bottom: 130px;
+  padding-bottom: 0px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-the-game {
@@ -5743,6 +5978,54 @@ ul, ol {
     justify-content: flex-end;
   }
 }
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 671px;
+  height: 810px;
+  z-index: -1;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay {
+    max-width: 671px;
+    height: auto;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay {
+    display: none;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay {
+    display: block;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay svg {
+  width: 100%;
+  height: 100%;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay svg:nth-child(1) {
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay svg:nth-child(1) {
+    display: none;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay svg:nth-child(2) {
+  display: none;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay svg:nth-child(2) {
+    display: block;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .video-overlay.active {
+  z-index: 3;
+}
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) html:-ms-fullscreen {
   max-width: 100vw;
 }
@@ -5761,6 +6044,9 @@ ul, ol {
     row-gap: unset;
     justify-content: space-between;
   }
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2).fullscreen .video-overlay {
+  display: none;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2).fullscreen figure video::-webkit-media-controls {
   display: none !important;
@@ -5820,7 +6106,7 @@ ul, ol {
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .play-button {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -100%);
@@ -5854,7 +6140,7 @@ ul, ol {
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .button-container {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   right: 74px;
   top: 37px;
   display: flex;
@@ -5985,7 +6271,7 @@ ul, ol {
   max-width: 442px;
   width: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   margin-top: 271px;
   opacity: 1;
   transition: opacity 600ms ease-in-out 0ms;
@@ -6183,8 +6469,8 @@ ul, ol {
 .db-page--explore-oc .db-section--explore-oc-the-game .the-game {
   position: relative;
   z-index: 2;
-  padding-top: 218px;
-  background-color: #0D0713;
+  padding-top: 222px;
+  padding-bottom: 213px;
 }
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .the-game {
@@ -6420,7 +6706,7 @@ ul, ol {
 .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(1) .db-inner-row .db-inner-col:nth-child(2) .db-content .db-description {
   color: #EFEFEF;
   font-family: var(--secondaryFontFamily);
-  font-size: 20px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
@@ -6438,6 +6724,7 @@ ul, ol {
   max-width: 493px;
   width: 100%;
   padding-top: 5px;
+  position: relative;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) h3 {
   color: var(--whiteColor);
@@ -6975,15 +7262,46 @@ ul, ol {
   width: 100%;
   height: 100%;
 }
+.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .db-image-container {
+  max-width: 286px;
+  width: 100%;
+  height: 184px;
+  display: block;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .db-image-container {
+    max-width: 200px;
+    height: 100px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .db-image-container {
+    align-self: center;
+    max-width: 100px;
+    height: 50px;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .db-image-container img {
+  object-fit: cover;
+  width: 100%;
+  display: block;
+  height: 100%;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .db-image-container img {
+    object-fit: contain;
+  }
+}
 .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .radio-link {
-  color: #A120D2;
+  color: #FFF;
   font-family: var(--primaryFontFamily);
   font-size: 80px;
   font-style: normal;
   font-weight: 700;
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
-  line-height: 1em;
-  letter-spacing: -3.2px;
+  line-height: 115%;
+  letter-spacing: -2.4px;
+  text-decoration: underline;
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .radio-link {
@@ -7066,29 +7384,28 @@ ul, ol {
     padding-top: 30px;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-faction::before {
-  content: "";
+.db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container {
   position: absolute;
-  display: block;
   height: 966px;
   max-width: 707px;
   width: 100%;
-  background-image: url("Explore-OC__asset-v08-2305x2236.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   top: 50%;
   z-index: 1;
   left: 50%;
   transform: translateX(-53%) translateY(-50%);
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-faction::before {
+  .db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container {
     top: 40%;
   }
 }
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container {
+    display: none;
+  }
+}
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-faction::before {
+  .db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container {
     display: block;
     max-width: 377px;
     transform: translateX(-50%);
@@ -7096,6 +7413,26 @@ ul, ol {
     top: 10%;
     height: 638px;
   }
+}
+.db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 600ms ease-in-out 0ms;
+}
+.db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container img.active {
+  opacity: 1;
+}
+.db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container img.next {
+  opacity: 0;
+}
+.db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container img.last {
+  opacity: 0;
 }
 .db-page--explore-oc .db-section--explore-oc-faction .db-container {
   max-width: 1336px;
