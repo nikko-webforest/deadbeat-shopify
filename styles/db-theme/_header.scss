@@ -96,6 +96,8 @@
             justify-content: center;
             align-items: center;
             gap: 24px;
+            
+            display: none;
 
             .db-btn-label {
               display: flex;
@@ -314,6 +316,12 @@
                     }
                   }
                 }
+
+                &.--disabled {
+                  .db-menu-link {
+                    pointer-events: none;
+                  }
+                }
               }
             }
           }
@@ -401,6 +409,12 @@
                 line-height: 1.3em;
                 letter-spacing: -0.64px;
                 display: block;
+
+                &.--disabled {
+                  opacity: 0.5;
+                  pointer-events: none;
+                  cursor: default;
+                }
   
                 &:hover {
                   color: $secondaryColor;
@@ -426,6 +440,12 @@
 
                     &::before {
                       background-color: transparent;
+                    }
+                  }
+
+                  &.--disabled {
+                    .db-menu-link {
+                      opacity: 0.5;
                     }
                   }
 
@@ -529,7 +549,7 @@
                     .db-menu-link {
                       transition:
                         color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 2.8s;
+                        opacity 200ms ease-in-out 3.0s;
 
                       &::before {
                         transition-delay: 3.2s;

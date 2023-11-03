@@ -1,30 +1,64 @@
-{% comment %}
-  hide on index/home page
-{% endcomment %}
-{% if template != 'index' %}
-
-  <footer class="db-footer site-footer">
-    <section class="db-section db-section--newsletter">
-      <div class="db-container">
-        <div class="db-row">
-          <div class="db-col">
-            <a class="db-site-link"
+<footer class="db-footer site-footer">
+  <section class="db-section db-section--newsletter">
+    <div class="db-container">
+      <div class="db-row">
+        <div class="db-col">
+          <a class="db-site-link"
+            title="Deadbeat"
+            href="{{ shop.url }}">
+            <img class="db-site-logo db-img"
+              alt="Deadbeat"
               title="Deadbeat"
-              href="{{ shop.url }}">
-              <img class="db-site-logo db-img"
-                alt="Deadbeat"
-                title="Deadbeat"
-                src="{{ 'DB-Trademark__asset.png' | asset_url }}"
-                width=""
-                height=""
-                loading="lazy">
-            </a>
-            <h4>
-              BREAKING NEWS
-            </h4>
-            <p>
-              Put your digital John Hancock there mister, or maam, or mister maam and get updates direct to your eyeballs from 2069.
-            </p>
+              src="{{ 'DB-Trademark__asset.png' | asset_url }}"
+              width=""
+              height=""
+              loading="lazy">
+          </a>
+          <h4>
+            BREAKING NEWS
+          </h4>
+          <p>
+            Put your digital John Hancock there mister, or maam, or mister maam and get updates direct to your eyeballs from 2069.
+          </p>
+          <form class="db-form--newsletter db-form validate"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            method="post"
+            action="https://elevate-m.us21.list-manage.com/subscribe/post?u=c9161b1e17a490930cf29bfcd&amp;id=b779bd68b4&amp;f_id=00fbdce6f0"
+            accept-charset="UTF-8"
+            target="_blank">
+            <div class="db-form-wrap">
+              <div class="db-form-group">
+                <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                  /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                  <input type="text" name="b_c9161b1e17a490930cf29bfcd_b779bd68b4" tabindex="-1" value="">
+                </div>
+              </div>
+              <div class="db-form-group">
+                <input class="db-form-input required email"
+                  id="mce-EMAIL"
+                  type="email"
+                  name="EMAIL"
+                  placeholder=""
+                  required=""
+                  value=""
+                  autocorrect="off"
+                  autocapitalize="off">
+                <button class="db-btn--form-submit db-btn"
+                  id="mc-embedded-subscribe"
+                  type="submit"
+                  name="subscribe">
+                  SUBSCRIBE
+                </button>
+              </div>
+            </div>
+            <div id="mce-responses" class="clear foot">
+              <div class="response" id="mce-error-response" style="display: none;"></div>
+              <div class="response" id="mce-success-response" style="display: none;"></div>
+            </div>
+          </form>
+
+          {% comment %}
             <ul class="db-contact-list">
               <li class="db-contact-item">
                 <a class="db-contact-link"
@@ -43,78 +77,86 @@
                 </a>
               </li>
             </ul>
-          </div>
-          <div class="db-col">
-            <img class="db-img-figure01 db-img"
-              alt=""
-              title=""
-              src="{{ 'DB_Footer_NewsletterFigure01_v01-809x512.png' | asset_url }}"
-              width=""
-              height=""
-              loading="lazy">
-          </div>
+          {% endcomment %}
+
+        </div>
+        <div class="db-col">
+          <img class="db-img-figure01 db-img"
+            alt=""
+            title=""
+            src="{{ 'DB_Footer_NewsletterFigure01_v01-809x512.png' | asset_url }}"
+            width=""
+            height=""
+            loading="lazy">
+          <div class="db-img-overlay"></div>
         </div>
       </div>
-    </section>
-    <section class="db-section db-section--primary">
-      <div class="db-container">
-        <div class="db-row">
-          <div class="db-col">
-            <div class="db-inner-row">
-              <a class="db-elevate-link"
+    </div>
+  </section>
+  <section class="db-section db-section--primary">
+    <div class="db-container">
+      <div class="db-row">
+        <div class="db-col">
+          <div class="db-inner-row">
+            <a class="db-elevate-link"
+              title="Elevate Taleng Group"
+              href="https://elevatetalent.group/"
+              target="_blank">
+              <img class="db-elevate-logo db-img"
+                alt=""
                 title=""
-                href="">
-                <img class="db-elevate-logo db-img"
-                  alt=""
-                  title=""
-                  src="{{ 'DB_Elevate_logo-v01-72x81.png' | asset_url }}"
-                  width=""
-                  height=""
-                  loading="lazy">
-              </a>
-              <p>
-                Elevate is a transmedia entertainment company chasing simple ideas that can change the world.
-              </p>
-            </div>
-            <p class="db-copyright">
-              &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
+                src="{{ 'DB_Elevate_logo-v01-72x81.png' | asset_url }}"
+                width=""
+                height=""
+                loading="lazy">
+            </a>
+            <p>
+              Elevate is a transmedia entertainment company chasing simple ideas that can change the world.
             </p>
           </div>
-          <div class="db-col">
-
-            {% if linklists.footer.links.size > 0 %}
-
-              <ul class="db-menu-list">
-
-                {% for menuItem in linklists.footer.links %}
-
-                  <li class="db-menu-item">
-                    <a class="db-menu-link"
-                      title="{{ menuItem.title }}"
-                      href="{{ menuItem.url }}">
-                      {{ menuItem.title }}
-                    </a>
-                  </li>
-
-                {% endfor %}
-
-              </ul>
-
-            {% endif %}
-            
-          </div>
-          <div class="db-col">
-            <h5>
-              SOCIALS
-            </h5>
-            {% render 'socials' %}
-          </div>
+          <p class="db-copyright">
+            &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
+          </p>
         </div>
-        <p class="db-copyright">
-          &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
-        </p>
-      </div>
-    </section>
-  </footer>
+        <div class="db-col">
 
-{% endif %}
+          {% if linklists.footer.links.size > 0 %}
+            
+            {% if linklists.footer.links.size > 4 %}
+              {% assign column_count = '--column-count-2' %}
+            {% else %}
+              {% assign column_count = '--column-count-1' %}
+            {% endif %}
+
+            <ul class="db-menu-list {{ column_count }}">
+
+              {% for menuItem in linklists.footer.links %}
+
+                <li class="db-menu-item">
+                  <a class="db-menu-link"
+                    title="{{ menuItem.title }}"
+                    href="{{ menuItem.url }}">
+                    {{ menuItem.title }}
+                  </a>
+                </li>
+
+              {% endfor %}
+
+            </ul>
+
+          {% endif %}
+          
+        </div>
+        <div class="db-col">
+          <h5>
+            SOCIALS
+          </h5>
+          {% render 'socials' %}
+        </div>
+      </div>
+      <p class="db-copyright">
+        &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
+      </p>
+    </div>
+  </section>
+</footer>

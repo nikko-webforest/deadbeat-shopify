@@ -424,7 +424,7 @@
 
             .db-col {
               &:nth-child(1) {
-                color: #FFF;
+                color: $whiteColor;
                 text-align: center;
                 font-family: $primaryFontFamily;
                 font-size: 32px;
@@ -575,7 +575,7 @@
               }
 
               &:nth-child(2) {
-                color: #FFF;
+                color: $whiteColor;
                 text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
                 font-family: $primaryFontFamily;
                 font-size: 20px;
@@ -659,7 +659,7 @@
                       transition: opacity 0.6s ease-in;
                       .db-inner-col {
                         &:nth-child(1) {
-                          color: #FFF;
+                          color: $whiteColor;
                           font-family: $primaryFontFamily;
                           font-size: 56px;
                           font-style: normal;
@@ -676,7 +676,7 @@
                         }
 
                         &:nth-child(2) {
-                          color: #FFF;
+                          color: $whiteColor;
                           text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
                           font-family: $tertiaryFontFamily;
                           font-size: 20px;
@@ -1908,7 +1908,7 @@
 
             .db-col {
               &:nth-child(2) {
-                color: #FFF;
+                color: $whiteColor;
                 text-align: center;
                 font-family: $primaryFontFamily;
                 font-size: 24px;
@@ -2071,7 +2071,7 @@
               z-index: 2;
               top: 50%;
               left: 50%;
-              transform: translate(-50%, -169%);
+              transform: translate(-50%, -100%);
               max-width: 38px;
               width: 100%;
               height: 45px;
@@ -2258,7 +2258,7 @@
               }
 
               .behind-the-scenes {
-                color: #FFF;
+                color: $whiteColor;
                 font-family: $primaryFontFamily;
                 font-size: 50px;
                 font-style: normal;
@@ -2272,12 +2272,12 @@
               }
 
               .description {
-                color: #FFF;
+                color: $whiteColor;
                 font-family: $secondaryFontFamily;
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: normal;
+                line-height: 1.5em;
                 margin-top: 40px;
 
                 @media only screen and (max-width: 768px) {
@@ -2289,7 +2289,7 @@
             }
 
             .db-duration-container {
-              margin-top: 245px;
+              margin-top: 200px;
               position: relative;
               z-index: 2;
 
@@ -2381,7 +2381,7 @@
                 }
 
                 .total-time {
-                  color: #FFF;
+                  color: $whiteColor;
                   font-family: $primaryFontFamily;
                   font-size: 14px;
                   font-style: normal;
@@ -2408,7 +2408,7 @@
 
             .db-col {
               &:nth-child(1) {
-                color: #FFF;
+                color: $whiteColor;
                 font-family: $primaryFontFamily;
                 font-size: 24.474px;
                 font-style: normal;
@@ -2422,7 +2422,7 @@
               }
 
               &:nth-child(2) {
-                color: #FFF;
+                color: $whiteColor;
                 margin-top: 26px;
                 font-family: $secondaryFontFamily;
                 font-size: 10px;
@@ -2660,7 +2660,7 @@
 
                       .db-content {
                         .db-title {
-                          color: #FFF;
+                          color: $whiteColor;
                           font-family: $primaryFontFamily;
                           font-size: 24px;
                           font-style: normal;
@@ -2702,184 +2702,156 @@
                 width: 100%;
                 padding-top: 5px;
 
-                @media only screen and (max-width: 768px) {
-                  align-self: center;
+                // @media only screen and (max-width: 768px) {
+                //   align-self: center;
+                // }
+
+                // @media only screen and (max-width: 480px) {
+                //   display: flex;
+                //   justify-content: center;
+                // }
+
+                h3 {
+                  color: $whiteColor;
+                  font-family: $primaryFontFamily;
+                  font-size: 56px;
+                  font-style: normal;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  line-height: 1.15em;
+                  letter-spacing: -2.24px;
+                  max-width: 380px;
+                  // min-width: 380px;
+                  width: 100%;
+
+                  @media only screen and (max-width: 1080px) {
+                    font-size: 45px;
+                  }
+
+                  @media only screen and (max-width: 768px) {
+                    font-size: 56px;
+                  }
+
+                  @media only screen and (max-width: 480px) {
+                    font-size: 25px;
+                    max-width: 190px;
+                  }
                 }
 
-                @media only screen and (max-width: 480px) {
-                  display: flex;
-                  justify-content: center;
+                p {
+                  color: $whiteColor;
+                  font-family: $primaryFontFamily;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: 1.5em;
+                  margin-top: 24px;
+
+                  @media only screen and (max-width: 1080px) {
+                    font-size: 15px;
+                  }
+
+                  @media only screen and (max-width: 768px) {
+                    font-size: 20px;
+                  }
+
+                  @media only screen and (max-width: 480px) {
+                    font-size: 10px;
+                    max-width: 310px;
+                    margin-top: 10px;
+                  }
                 }
 
-                .db-inner-row {
-                  flex-direction: column;
-                  &:nth-child(1) {
+                .db-options {
+                  position: relative;
+                  margin-top: 50px;
 
-                    .db-inner-col {
-                      &:nth-child(1) {
-                        color: #FFF;
+                  @media only screen and (max-width: 1440px) {
+                    margin-top: 10px;
+                  }
+
+                  @media only screen and (max-width: 768px) {
+                    margin-top: 40px;
+                  }
+
+                  @media only screen and (max-width: 480px) {
+                    margin-top: 20px;
+                  }
+
+                  .db-item-hover-indicator {
+                    position: absolute;
+                    z-index: 1;
+                    inset: 0;
+                    display: block;
+                    background: linear-gradient(90deg, rgba(161, 32, 210, 0.40) -19.47%, rgba(162, 82, 193, 0.00) 75%);
+                    max-width: 490px;
+                    width: 100%;
+                    height: 122px;
+                    translate: 0 0;
+                    transition: all 600ms ease-in-out 0ms;  
+                  }
+
+                  .db-items {
+                    position: relative;
+                    z-index: 2;
+                    padding-top: 30px;
+                    padding-bottom: 28px;
+                    padding-left: 43px;
+                    overflow: hidden;
+                    cursor: default;
+
+                    @media only screen and (max-width: 1440px) {
+                      padding-top: 20px;
+                      padding-bottom: 20px;
+                    }
+
+                    @media only screen and (max-width: 768px) {
+                      padding-top: 30px;
+                    }
+
+                    @media only screen and (max-width: 480px) {
+                      padding-top: 19px;
+                      padding-left: 28px;
+                      padding-bottom: 18px;
+                    }
+
+                    .db-wrap {
+                      .db-option {
+                        color: $whiteColor;
                         font-family: $primaryFontFamily;
-                        max-width: 380px;
-                        width: 100%;
-                        // min-width: 380px;
-                        font-size: 56px;
-                        font-style: normal;
-                        font-weight: 700;
-                        line-height: 115%; /* 64.4px */
-                        letter-spacing: -2.24px;
-                        text-transform: uppercase;
-
-                        @media only screen and (max-width: 1080px) {
-                          font-size: 45px;
-                        }
-
-                        @media only screen and (max-width: 768px) {
-                          font-size: 56px;
-                        }
-
-                        @media only screen and (max-width: 480px) {
-                          color: #FFF;
-                          font-family: $primaryFontFamily;
-                          font-size: 24.47px;
-                          font-style: normal;
-                          font-weight: 700;
-                          line-height: 115%; /* 28.14px */
-                          letter-spacing: -0.979px;
-                          text-transform: uppercase;
-                          max-width: 190px;
-                        }
-                      }
-
-                      &:nth-child(2) {
-                        color: #FFF;
-                        font-family: $primaryFontFamily;
-                        font-size: 20px;
+                        font-size: 28px;
                         font-style: normal;
                         font-weight: 500;
-                        line-height: 150%;
-                        margin-top: 24px;
-
-                        @media only screen and (max-width: 1080px) {
-                          font-size: 15px;
-                        }
-
-                        @media only screen and (max-width: 768px) {
-                          font-size: 20px;
-                        }
-
+                        line-height: 100%;
                         @media only screen and (max-width: 480px) {
-                          color: #FFF;
+                          color: $whiteColor;
                           font-family: $primaryFontFamily;
-                          font-size: 10px;
+                          font-size: 18.468px;
                           font-style: normal;
                           font-weight: 500;
-                          line-height: 150%;
-                          max-width: 310px;
-                          margin-top: 10px;
+                          line-height: 100%; 
                         }
                       }
 
-                      &:nth-child(3) {
-                        margin-top: 50px;
-
-                        @media only screen and (max-width: 1440px) {
-                          margin-top: 10px;
-                        }
-
-                        @media only screen and (max-width: 768px) {
-                          margin-top: 40px;
-                        }
+                      .db-description {
+                        color: #CAC7D0;
+                        font-family: $secondaryFontFamily;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 150%;
+                        margin-top: 9px;
 
                         @media only screen and (max-width: 480px) {
-                          margin-top: 20px;
-                        }
-
-                        .db-options {
-                          .db-items {
-                            padding-top: 30px;
-                            padding-bottom: 28px;
-                            padding-left: 43px;
-                            position: relative;
-                            cursor: pointer;
-                            overflow: hidden;
-
-                            @media only screen and (max-width: 1440px) {
-                              padding-top: 20px;
-                              padding-bottom: 20px;
-                            }
-
-                            @media only screen and (max-width: 768px) {
-                              padding-top: 30px;
-                            }
-
-                            @media only screen and (max-width: 480px) {
-                              padding-top: 19px;
-                              padding-left: 28px;
-                              padding-bottom: 18px;
-                            }
-
-                            &::before {
-                              content: "";
-                              position: absolute;
-                              top: 0;
-                              left:0;
-                              bottom: 0;
-                              right: 0;
-                              z-index: -1;
-                              background: linear-gradient(90deg, rgba(161, 32, 210, 0.40) -19.47%, rgba(162, 82, 193, 0.00) 75%);
-                              transform: translateX(-100%);
-                              transition: all 600ms ease-in-out 0ms;  
-                            }
-
-                            &:hover {
-                              &::before {
-                                transform: translateX(0);
-                              }
-                            }
-
-
-                            .db-wrap {
-                              .db-option {
-                                color: #FFF;
-                                font-family: $primaryFontFamily;
-                                font-size: 28px;
-                                font-style: normal;
-                                font-weight: 500;
-                                line-height: 100%;
-                                @media only screen and (max-width: 480px) {
-                                  color: #FFF;
-                                  font-family: $primaryFontFamily;
-                                  font-size: 18.468px;
-                                  font-style: normal;
-                                  font-weight: 500;
-                                  line-height: 100%; 
-                                }
-                              }
-
-                              .db-description {
-                                color: #CAC7D0;
-                                font-family: $secondaryFontFamily;
-                                font-size: 18px;
-                                font-style: normal;
-                                font-weight: 400;
-                                line-height: 150%;
-                                margin-top: 9px;
-
-                                @media only screen and (max-width: 480px) {
-                                  color: #CAC7D0;
-                                  font-family: $secondaryFontFamily;
-                                  font-size: 11.872px;
-                                  font-style: normal;
-                                  font-weight: 400;
-                                  line-height: 150%;
-                                }
-                              }
-                            }
-                          }
+                          color: #CAC7D0;
+                          font-family: $secondaryFontFamily;
+                          font-size: 11.872px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: 150%;
                         }
                       }
                     }
-
                   }
                 }
               }
@@ -2912,7 +2884,7 @@
             
             .db-col {
               &:nth-child(1) {
-                color: #FFF;
+                color: $whiteColor;
                 text-align: center;
                 font-family: $primaryFontFamily;
                 font-size: 31.74px;
@@ -2922,7 +2894,7 @@
               }
 
               &:nth-child(2) {
-                color: #FFF;
+                color: $whiteColor;
                 text-align: center;
                 font-family: $primaryFontFamily;
                 font-size: 14px;
@@ -3013,7 +2985,7 @@
             row-gap: 5px;
             .db-col {
               &:nth-child(1) {
-                color: #FFF;
+                color: $whiteColor;
 
                 text-align: center;
                 text-shadow: 0.7985672950744629px 0.7985672950744629px 5.989255428314209px rgba(0, 0, 0, 0.15);
@@ -3026,7 +2998,7 @@
               }
 
               &:nth-child(2) {
-                color: #FFF;
+                color: $whiteColor;
                 text-align: center;
                 max-width: 325px;
                 width: 100%;
@@ -3090,7 +3062,7 @@
             align-items: center;
             .db-col {
               &:nth-child(1) {
-                color: #FFF;
+                color: $whiteColor;
                 text-align: center;
                 font-family: $primaryFontFamily;
                 font-size: 80px;
@@ -3107,7 +3079,7 @@
                 max-width: 773px;
                 width: 100%;
                 min-width: 773px;
-                color: #FFF;
+                color: $whiteColor;
                 text-align: center;
                 font-family: $primaryFontFamily;
                 font-size: 32px;
@@ -3221,7 +3193,7 @@
 
             .db-col {
               &:nth-child(1) {
-                color: #FFF;
+                color: $whiteColor;
                 text-shadow: 1.7687277793884277px 1.7687277793884277px 13.265459060668945px rgba(0, 0, 0, 0.15);
                 font-family: $primaryFontFamily;
                 font-size: 48px;
@@ -3232,7 +3204,7 @@
               }
 
               &:nth-child(2) {
-                color: #FFF;
+                color: $whiteColor;
                 text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
                 font-family: $primaryFontFamily;
                 font-size: 24px;
@@ -3248,169 +3220,131 @@
   }
 
   .db-section--explore-oc-coming-soon-2 {
-    background: #09050F;
     position: relative;
+    z-index: 2;
+    background-color: transparent;
+    height: 985px;
+    margin: -53px auto 0;
+    padding: 50px 20px;
 
     @media only screen and (max-width: 768px) {
-      height: 850px;
-    }
-
-    @media only screen and (max-width: 480px) {
-      height: 636px;
-      display: flex;
-      align-items: flex-end;
+      z-index: 3;
+      height: auto;
     }
 
     &::before {
       content: "";
       position: absolute;
+      z-index: 1;
       right: 0;
       left: 0;
       bottom: 0;
-      height: 979px;
-      background-image: url('About-Us__asset-coming-soon-v01-3800x1958.png');
+      height: 100%;
+      background-image: url('Explore-OC_ComingSoon_bg-v02-3840x979.png');
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
 
-      @media only screen and (max-width: 1080px) {
+      @media only screen and (min-width: 1920px) {
+        background-size: auto 100%;
+      }
+      
+      @media only screen and (max-width: 1440px) {
+        background-image: url('About-Us__asset-coming-soon-v01-3800x1958.png');
         background-position: right;
       }
 
       @media only screen and (max-width: 768px) {
-        height: 400px;
-        bottom:unset;
-        top: -21px;
+        position: relative;
+        background-image: url(Explore-OC_ComingSoon_bg-v03-769x622.png);
+        background-position: center;
+        background-size: auto 100%;
+        height: 620px;
+        display: block;
+        top: -31px;
+        width: calc(100% + 40px);
+        margin: 0 -20px;
       }
 
       @media only screen and (max-width: 480px) {
-        background-image: url('About-Us__asset-mb-coming-soon-v01-432x349.png');
-        width: unset;
-        bottom: unset;
-        top: -21px;
-        background-position: center;
-        z-index: 10;
+        height: 370px;
       }
     }
 
     .db-container {
-      padding-top: 194px;
-      padding-bottom: 347px;
       position: relative;
-
-      @media only screen and (max-width: 768px) {
-        padding-top: unset;
-        padding-bottom: unset;
-        margin-top: 418px;
-      }
+      z-index: 2;
+      height: 100%;
 
       .db-row {
         flex-direction: column;
-        row-gap: 56px;
+        justify-content: center;
         max-width: 685px;
         width: 100%;
+        height: 100%;
 
-        @media only screen and (max-width: 768px) {
-          row-gap: 30px;
+        .radio-link {
+          color: #A120D2;
+          font-family: $primaryFontFamily;
+          font-size: 80px;
+          font-style: normal;
+          font-weight: 700;
+          text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
+          line-height: 1em;
+          letter-spacing: -3.2px;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 60px;
+          }
+
+          @media only screen and (max-width: 480px) {
+            font-size: 32px;
+            text-align: center;
+            line-height: 1.15em;
+            letter-spacing: -1.27px;
+          }
         }
 
-        @media only screen and (max-width: 480px) {
-          row-gap: 20px;
-          align-items: center;
+        span {
+          color: $whiteColor;
+          font-family: $primaryFontFamily;
+          font-size: 48px;
+          font-style: normal;
+          font-weight: 700;
+          text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
+          line-height: 1em;
+          margin: 0 0 56px;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 35px;
+          }
+
+          @media only screen and (max-width: 480px) {
+            font-size: 15px;
+            text-align: center;
+            line-height: 1.15em;
+            letter-spacing: -0.632px;
+            margin: 0 auto 18px;
+          }
         }
 
-        &:nth-child(1) {
-          .db-col {
-            &:nth-child(1) {
-              // color: #FFF;
-              // font-family: $primaryFontFamily;
-              // font-size: 80px;
-              // font-style: normal;
-              // font-weight: 700;
-              // line-height: 115%; /* 92px */
-              // letter-spacing: -3.2px;
-              // max-width: 477px;
-              // width: 100%;
+        p {
+          color: $whiteColor;
+          font-family: $primaryFontFamily;
+          font-size: 32px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 1.5em;
+          max-width: 685px;
+          width: 100%;
 
-              @media only screen and (max-width: 480px) {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-              }
+          @media only screen and (max-width: 768px) {
+            font-size: 25px;
+          }
 
-              .radio-link {
-                  color: #A120D2;
-                  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
-                  font-family: $primaryFontFamily;
-                  font-size: 80px;
-                  font-style: normal;
-                  font-weight: 700;
-                  line-height: 100%; /* 80px */
-                  letter-spacing: -3.2px;
-
-                  @media only screen and (max-width: 768px) {
-                    font-size: 60px;
-                  }
-
-                  @media only screen and (max-width: 480px) {
-                    text-align: center;
-                    font-family: $primaryFontFamily;
-                    font-size: 31.74px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: 115%; /* 36.501px */
-                    letter-spacing: -1.27px;
-                  }
-              }
-              span {
-
-                &:nth-child(3) {
-                  color: #FFF;
-                  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
-                  font-family: $primaryFontFamily;
-                  font-size: 48px;
-                  font-style: normal;
-                  font-weight: 700;
-                  line-height: 100%;
-                  @media only screen and (max-width: 768px) {
-                    font-size: 35px;
-                  }
-
-                  @media only screen and (max-width: 480px) {
-                    color: #FFF;
-                    font-family: $primaryFontFamily;
-                    font-size: 15.791px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: 115%;
-                    letter-spacing: -0.632px;
-                    margin-top: -13px;
-                  }
-                }
-              }
-            }
-
-            &:nth-child(2) {
-              color: #FFF;
-              font-family: $primaryFontFamily;
-              font-size: 32px;
-              font-style: normal;
-              font-weight: 500;
-              line-height: 150%;
-              max-width: 685px;
-              width: 100%;
-
-              @media only screen and (max-width: 768px) {
-                font-size: 25px;
-              }
-
-              @media only screen and (max-width: 480px) {
-                max-width: 347px;
-                text-align: center;
-                font-family: $primaryFontFamily;
-                font-size: 18px;
-              }
-            }
+          @media only screen and (max-width: 480px) {
+            font-size: 18px;
+            text-align: center;
           }
         }
       }
@@ -3547,7 +3481,7 @@
                 }
 
               .meet-the-business-of-oc {
-                color: #FFF;
+                color: $whiteColor;
                 text-shadow: 4.9926557540893555px 4.9926557540893555px 14.977965354919434px rgba(0, 0, 0, 0.40);
                 font-family: $primaryFontFamily;
                 font-size: 47.929px;
@@ -3557,7 +3491,7 @@
                 margin-top: 8px;
 
                 @media only screen and (max-width: 480px) {
-                  color: #FFF;
+                  color: $whiteColor;
                   font-family: $primaryFontFamily;
                   font-size: 15.79px;
                   font-style: normal;
@@ -3568,7 +3502,7 @@
             }
 
             &:nth-child(2) {
-              color: #FFF;
+              color: $whiteColor;
               text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
               font-family: $primaryFontFamily;
               font-size: 20px;
@@ -3648,7 +3582,7 @@
 
                     .db-inner-col {
                       &:nth-child(1) {
-                        color: #FFF;
+                        color: $whiteColor;
                         font-family: $primaryFontFamily;
                         font-size: 56px;
                         font-style: normal;
@@ -3665,7 +3599,7 @@
                       }
 
                       &:nth-child(2) {
-                        color: #FFF;
+                        color: $whiteColor;
                         text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
                         font-family: $tertiaryFontFamily;
                         font-size: 20px;
@@ -5329,7 +5263,7 @@
 
         .db-col {
           &:nth-child(1) {
-            color: #FFF;
+            color: $whiteColor;
             font-family: $primaryFontFamily;
             font-size: 80px;
             font-style: normal;
@@ -5344,7 +5278,7 @@
 
             @media only screen and (max-width: 480px) {
               
-              color: #FFF;
+              color: $whiteColor;
               text-align: center;
               font-family: $primaryFontFamily;
               font-size: 18px;
@@ -5353,7 +5287,7 @@
           }
 
           &:nth-child(2) {
-            color: #FFF;
+            color: $whiteColor;
             font-family: $primaryFontFamily;
             font-size: 32px;
             font-style: normal;

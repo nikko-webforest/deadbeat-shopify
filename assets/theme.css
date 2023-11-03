@@ -321,10 +321,10 @@ ul, ol {
   padding: 45px 0 0;
 }
 .db-footer .db-section--newsletter {
-  background-image: url("DB_Footer_Newsletter_bg-v01-1900x467.jpg");
-  background-position: 100% center;
+  background-image: url("DB_Footer_Newsletter_bg-v03-3840x700.jpg");
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto 100%;
   height: 470px;
   padding: 0 20px;
 }
@@ -594,6 +594,7 @@ ul, ol {
 }
 .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(2) .db-img-figure01 {
   position: absolute;
+  z-index: 2;
   left: 0;
   bottom: 0;
   height: 512px;
@@ -606,8 +607,18 @@ ul, ol {
     margin: 0 auto;
   }
 }
+.db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(2) .db-img-overlay {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 73px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.48) 51.51%, rgba(0, 0, 0, 0.37) 68.91%, rgba(0, 0, 0, 0) 100%);
+  border-radius: 831px;
+}
 .db-footer .db-section--primary {
-  background-color: #09050F;
+  background-color: #0B070F;
   padding: 30px 20px 63px;
 }
 @media only screen and (max-width: 768px) {
@@ -669,7 +680,7 @@ ul, ol {
 }
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(1) .db-inner-row p {
   color: #CAC7D0;
-  font-family: var(--secondaryFontFamily);
+  font-family: var(--primaryFontFamily);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -677,6 +688,7 @@ ul, ol {
   letter-spacing: -0.64px;
 }
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(1) .db-copyright {
+  font-family: var(--primaryFontFamily);
   text-align: left;
   display: block;
 }
@@ -701,7 +713,6 @@ ul, ol {
   }
 }
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(2) .db-menu-list {
-  column-count: 2;
   column-gap: 130px;
 }
 @media only screen and (max-width: 1440px) {
@@ -735,6 +746,12 @@ ul, ol {
 }
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(2) .db-menu-list .db-menu-item .db-menu-link:hover {
   color: var(--secondaryColor);
+}
+.db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(2) .db-menu-list.--column-count-1 {
+  column-count: 1;
+}
+.db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(2) .db-menu-list.--column-count-2 {
+  column-count: 2;
 }
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(3) {
   width: max-content;
@@ -879,6 +896,7 @@ ul, ol {
   justify-content: center;
   align-items: center;
   gap: 24px;
+  display: none;
 }
 .db-header .db-header-main .db-container .db-row .db-btn--account .db-btn-wrap .db-btn-label {
   display: flex;
@@ -1065,6 +1083,9 @@ ul, ol {
   color: var(--secondaryColor);
   animation: glitchBotom 1.5s linear infinite;
 }
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item.--disabled .db-menu-link {
+  pointer-events: none;
+}
 .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) {
   max-width: 390px;
 }
@@ -1138,6 +1159,11 @@ ul, ol {
   letter-spacing: -0.64px;
   display: block;
 }
+.db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .db-menu-link.--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
 .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .db-menu-link:hover {
   color: var(--secondaryColor);
 }
@@ -1149,6 +1175,9 @@ ul, ol {
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link::before {
   background-color: transparent;
+}
+.db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item.--disabled .db-menu-link {
+  opacity: 0.5;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(1) .db-menu-link {
   transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 1.4s;
@@ -1199,7 +1228,7 @@ ul, ol {
   transition-delay: 3s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(9) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.8s;
+  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 3s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(9) .db-menu-link::before {
   transition-delay: 3.2s;
@@ -1296,21 +1325,8 @@ ul, ol {
     max-width: 246px;
   }
 }
-.db-widget-item.--columbus .db-widget-box .db-columbus svg:nth-child(1) {
-  display: block;
-}
-@media only screen and (max-width: 480px) {
-  .db-widget-item.--columbus .db-widget-box .db-columbus svg:nth-child(1) {
-    display: none;
-  }
-}
-.db-widget-item.--columbus .db-widget-box .db-columbus svg:nth-child(2) {
-  display: none;
-}
-@media only screen and (max-width: 480px) {
-  .db-widget-item.--columbus .db-widget-box .db-columbus svg:nth-child(2) {
-    display: block;
-  }
+.db-widget-item.--columbus .db-widget-box .db-columbus .db-svg {
+  width: 100%;
 }
 .db-widget-item.--columbus .db-widget-box:hover {
   scale: 1.05;
@@ -2029,9 +2045,8 @@ ul, ol {
 .db-page--home .db-section--banner {
   position: relative;
   width: 100%;
-  height: 100vh;
-  padding: 0 20px;
-  overflow: hidden;
+  height: auto;
+  padding: 0 20px 50px;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--home .db-section--banner {
@@ -2050,6 +2065,40 @@ ul, ol {
   inset: 0;
   display: block;
   background-color: rgba(12, 7, 15, 0.4);
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--home .db-section--banner .db-bg-wrap {
+    height: 100vh;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--home .db-section--banner .db-bg-wrap {
+    height: 555px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--home .db-section--banner .db-bg-wrap {
+    height: 555px;
+  }
+}
+.db-page--home .db-section--banner .db-bg-wrap .db-bg-video {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.db-page--home .db-section--banner .db-bg-wrap .db-bg-overlay {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: block;
+  background-color: rgba(12, 7, 15, 0.6);
   width: 100%;
   height: 100%;
 }
@@ -2092,55 +2141,16 @@ ul, ol {
     transform: translateY(6%);
   }
 }
-@media only screen and (max-width: 1080px) {
-  .db-page--home .db-section--banner .db-bg-wrap {
-    height: 100vh;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .db-page--home .db-section--banner .db-bg-wrap {
-    height: 555px;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--home .db-section--banner .db-bg-wrap {
-    height: 555px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .db-page--home .db-section--banner .db-bg-wrap::before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    inset: 0;
-    display: block;
-    background-color: rgba(12, 7, 15, 0.6);
-    width: 100%;
-    height: 100%;
-  }
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--home .db-section--banner .db-bg-wrap::after {
-    content: "";
-    position: absolute;
-    z-index: 10;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: block;
-    background: linear-gradient(0deg, #0E0914 0%, rgba(14, 9, 20, 0) 100%);
-    height: 71px;
-  }
-}
-.db-page--home .db-section--banner .db-bg-wrap .db-bg-video {
+.db-page--home .db-section--banner .db-bg-wrap::after {
+  content: "";
   position: absolute;
-  z-index: 1;
-  inset: 0;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: block;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
+  background: linear-gradient(0deg, #0E0914 0%, rgba(14, 9, 20, 0) 100%);
+  height: 71px;
 }
 .db-page--home .db-section--banner figure {
   position: fixed;
@@ -2200,10 +2210,10 @@ ul, ol {
   }
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) {
+  position: relative;
   max-width: 550px;
   min-width: 550px;
   padding: 80px 0 0;
-  position: relative;
 }
 @media only screen and (max-width: 1440px) {
   .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) {
@@ -2235,7 +2245,21 @@ ul, ol {
     height: auto;
   }
 }
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -160px;
+  left: -160px;
+  display: block;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(11, 7, 32, 0.6) 0%, rgba(11, 7, 31, 0) 100%);
+  width: 900px;
+  height: 900px;
+  border-radius: 900px;
+}
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) h1 {
+  position: relative;
+  z-index: 2;
   margin: 0 0 50px;
   pointer-events: none;
 }
@@ -2358,6 +2382,8 @@ ul, ol {
   font-weight: 400;
   line-height: 1.3em;
   letter-spacing: -0.64px;
+  position: relative;
+  z-index: 2;
   max-width: 350px;
   margin: 0 0 266px;
 }
@@ -2473,14 +2499,11 @@ ul, ol {
   }
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container {
-  scroll-behavior: smooth;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  cursor: grab;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col {
   padding: 20px;
@@ -2510,29 +2533,6 @@ ul, ol {
   max-width: 312px;
   width: 100%;
   min-width: 312px;
-}
-@media only screen and (max-width: 1366px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) {
-    max-width: 250px;
-    min-width: 250px;
-  }
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) {
-    max-width: 312px;
-    min-width: 312px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) {
-    max-width: 100%;
-    min-width: 100%;
-  }
-}
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
-  max-width: 312px;
-  width: 100%;
-  min-width: 312px;
   padding-top: 38px;
   padding-left: 35px;
   padding-bottom: 37px;
@@ -2549,32 +2549,32 @@ ul, ol {
   position: relative;
 }
 @media only screen and (max-width: 1366px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) {
     max-width: 300px;
     min-width: 300px;
   }
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) {
     max-width: 312px;
     min-width: 312px;
   }
 }
 @media only screen and (max-width: 768px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) {
     max-width: 100%;
     min-width: 100%;
   }
 }
 @media only screen and (max-width: 480px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) {
     padding-top: 48px;
     padding-left: 44px;
     padding-bottom: 47px;
     height: 377px;
   }
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2)::before {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1)::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -2587,52 +2587,52 @@ ul, ol {
   border-radius: inherit;
   transition: all 200ms ease-in-out 0ms;
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2):hover {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1):hover {
   scale: 1.05;
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2):hover::before {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1):hover::before {
   box-shadow: 4.07796px 4.07796px 8.15591px rgba(181, 34, 235, 0.3019607843), -4.07796px -4.07796px 8.15591px rgba(181, 34, 235, 0.3019607843), 2.03898px 2.03898px 4.07796px rgba(216, 110, 255, 0.6), -2.03898px -2.03898px 4.07796px rgba(216, 110, 255, 0.6);
   border-color: #D47FF3;
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer {
   display: flex;
   flex-direction: column;
   row-gap: 59px;
 }
 @media only screen and (max-width: 768px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer {
     row-gap: unset;
     height: 100%;
     justify-content: space-between;
   }
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-play {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-play {
   max-width: 60px;
   width: 100%;
   min-width: 60px;
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-play svg:nth-child(1) {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-play svg:nth-child(1) {
   display: block;
 }
 @media only screen and (max-width: 480px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-play svg:nth-child(1) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-play svg:nth-child(1) {
     display: none;
   }
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-play svg:nth-child(2) {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-play svg:nth-child(2) {
   display: none;
 }
 @media only screen and (max-width: 480px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-play svg:nth-child(2) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-play svg:nth-child(2) {
     display: block;
   }
 }
 @media only screen and (max-width: 768px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-project-trailer {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-project-trailer {
     width: min-content;
   }
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-project-trailer span:nth-child(1) {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-project-trailer span:nth-child(1) {
   text-align: right;
   font-family: var(--primaryFontFamily);
   font-size: 48px;
@@ -2647,7 +2647,7 @@ ul, ol {
   color: transparent;
 }
 @media only screen and (max-width: 768px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-project-trailer span:nth-child(1) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-project-trailer span:nth-child(1) {
     text-align: right;
     font-family: var(--primaryFontFamily);
     font-size: 60.651px;
@@ -2661,7 +2661,7 @@ ul, ol {
     -webkit-text-fill-color: transparent;
   }
 }
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-project-trailer span:nth-child(2) {
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-project-trailer span:nth-child(2) {
   text-align: right;
   font-family: var(--primaryFontFamily);
   font-size: 48px;
@@ -2675,7 +2675,7 @@ ul, ol {
   -webkit-text-fill-color: transparent;
 }
 @media only screen and (max-width: 768px) {
-  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) .db-widget-project-trailer .db-project-trailer span:nth-child(2) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(1) .db-widget-project-trailer .db-project-trailer span:nth-child(2) {
     text-align: right;
     font-family: var(--primaryFontFamily);
     font-size: 60.651px;
@@ -2687,6 +2687,29 @@ ul, ol {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+}
+.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
+  max-width: 312px;
+  width: 100%;
+  min-width: 312px;
+}
+@media only screen and (max-width: 1366px) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
+    max-width: 250px;
+    min-width: 250px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
+    max-width: 312px;
+    min-width: 312px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(2) .db-widget-inner-row .db-widget-inner-col:nth-child(2) {
+    max-width: 100%;
+    min-width: 100%;
   }
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row:nth-child(1) {
@@ -4304,7 +4327,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-banner-after-life-faction .explore-oc--after-life .db-container .db-row:nth-child(2) .db-col:nth-child(1) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-align: center;
   font-family: var(--primaryFontFamily);
   font-size: 32px;
@@ -4454,7 +4477,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-banner-after-life-faction .explore-oc--faction .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--primaryFontFamily);
   font-size: 20px;
@@ -4545,7 +4568,7 @@ ul, ol {
   transition: opacity 0.6s ease-in;
 }
 .db-page--explore-oc .db-section--explore-oc-banner-after-life-faction .explore-oc--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) .db-faction-content .db-inner-col:nth-child(1) {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 56px;
   font-style: normal;
@@ -4562,7 +4585,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-banner-after-life-faction .explore-oc--faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) .db-faction-content .db-inner-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--tertiaryFontFamily);
   font-size: 20px;
@@ -5654,7 +5677,7 @@ ul, ol {
   color: #B1FF29;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-align: center;
   font-family: var(--primaryFontFamily);
   font-size: 24px;
@@ -5800,7 +5823,7 @@ ul, ol {
   z-index: 2;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -169%);
+  transform: translate(-50%, -100%);
   max-width: 38px;
   width: 100%;
   height: 45px;
@@ -5982,7 +6005,7 @@ ul, ol {
   opacity: 0;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .db-behind-the-scenes .behind-the-scenes {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 50px;
   font-style: normal;
@@ -5996,12 +6019,12 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .db-behind-the-scenes .description {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--secondaryFontFamily);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 1.5em;
   margin-top: 40px;
 }
 @media only screen and (max-width: 768px) {
@@ -6012,7 +6035,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .db-duration-container {
-  margin-top: 245px;
+  margin-top: 200px;
   position: relative;
   z-index: 2;
 }
@@ -6105,7 +6128,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(2) .db-duration-container .duration .total-time {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 14px;
   font-style: normal;
@@ -6129,7 +6152,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(3) .db-col:nth-child(1) {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 24.474px;
   font-style: normal;
@@ -6143,7 +6166,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(3) .db-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   margin-top: 26px;
   font-family: var(--secondaryFontFamily);
   font-size: 10px;
@@ -6380,7 +6403,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(1) .db-inner-row .db-inner-col:nth-child(2) .db-content .db-title {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 24px;
   font-style: normal;
@@ -6416,147 +6439,120 @@ ul, ol {
   width: 100%;
   padding-top: 5px;
 }
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-    align-self: center;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-    display: flex;
-    justify-content: center;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row {
-  flex-direction: column;
-}
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(1) {
-  color: #FFF;
+.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) h3 {
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
-  max-width: 380px;
-  width: 100%;
   font-size: 56px;
   font-style: normal;
   font-weight: 700;
-  line-height: 115%; /* 64.4px */
-  letter-spacing: -2.24px;
   text-transform: uppercase;
+  line-height: 1.15em;
+  letter-spacing: -2.24px;
+  max-width: 380px;
+  width: 100%;
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(1) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) h3 {
     font-size: 45px;
   }
 }
 @media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(1) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) h3 {
     font-size: 56px;
   }
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(1) {
-    color: #FFF;
-    font-family: var(--primaryFontFamily);
-    font-size: 24.47px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 115%; /* 28.14px */
-    letter-spacing: -0.979px;
-    text-transform: uppercase;
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) h3 {
+    font-size: 25px;
     max-width: 190px;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(2) {
-  color: #FFF;
+.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) p {
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%;
+  line-height: 1.5em;
   margin-top: 24px;
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(2) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) p {
     font-size: 15px;
   }
 }
 @media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(2) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) p {
     font-size: 20px;
   }
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(2) {
-    color: #FFF;
-    font-family: var(--primaryFontFamily);
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) p {
     font-size: 10px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%;
     max-width: 310px;
     margin-top: 10px;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) {
+.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options {
+  position: relative;
   margin-top: 50px;
 }
 @media only screen and (max-width: 1440px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options {
     margin-top: 10px;
   }
 }
 @media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options {
     margin-top: 40px;
   }
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options {
     margin-top: 20px;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items {
+.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-item-hover-indicator {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  background: linear-gradient(90deg, rgba(161, 32, 210, 0.4) -19.47%, rgba(162, 82, 193, 0) 75%);
+  max-width: 490px;
+  width: 100%;
+  height: 122px;
+  translate: 0 0;
+  transition: all 600ms ease-in-out 0ms;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items {
+  position: relative;
+  z-index: 2;
   padding-top: 30px;
   padding-bottom: 28px;
   padding-left: 43px;
-  position: relative;
-  cursor: pointer;
   overflow: hidden;
+  cursor: default;
 }
 @media only screen and (max-width: 1440px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items {
     padding-top: 20px;
     padding-bottom: 20px;
   }
 }
 @media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items {
     padding-top: 30px;
   }
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items {
     padding-top: 19px;
     padding-left: 28px;
     padding-bottom: 18px;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
-  background: linear-gradient(90deg, rgba(161, 32, 210, 0.4) -19.47%, rgba(162, 82, 193, 0) 75%);
-  transform: translateX(-100%);
-  transition: all 600ms ease-in-out 0ms;
-}
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items:hover::before {
-  transform: translateX(0);
-}
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items .db-wrap .db-option {
-  color: #FFF;
+.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items .db-wrap .db-option {
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 28px;
   font-style: normal;
@@ -6564,8 +6560,8 @@ ul, ol {
   line-height: 100%;
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items .db-wrap .db-option {
-    color: #FFF;
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items .db-wrap .db-option {
+    color: var(--whiteColor);
     font-family: var(--primaryFontFamily);
     font-size: 18.468px;
     font-style: normal;
@@ -6573,7 +6569,7 @@ ul, ol {
     line-height: 100%;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items .db-wrap .db-description {
+.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items .db-wrap .db-description {
   color: #CAC7D0;
   font-family: var(--secondaryFontFamily);
   font-size: 18px;
@@ -6583,7 +6579,7 @@ ul, ol {
   margin-top: 9px;
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-inner-row:nth-child(1) .db-inner-col:nth-child(3) .db-options .db-items .db-wrap .db-description {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items .db-wrap .db-description {
     color: #CAC7D0;
     font-family: var(--secondaryFontFamily);
     font-size: 11.872px;
@@ -6611,7 +6607,7 @@ ul, ol {
   flex-direction: column;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .after-life .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-align: center;
   font-family: var(--primaryFontFamily);
   font-size: 31.74px;
@@ -6620,7 +6616,7 @@ ul, ol {
   line-height: 100%;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .after-life .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-align: center;
   font-family: var(--primaryFontFamily);
   font-size: 14px;
@@ -6702,7 +6698,7 @@ ul, ol {
   row-gap: 5px;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .roadmap .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-align: center;
   text-shadow: 0.7985672951px 0.7985672951px 5.9892554283px rgba(0, 0, 0, 0.15);
   font-family: var(--primaryFontFamily);
@@ -6713,7 +6709,7 @@ ul, ol {
   letter-spacing: -1.27px;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .roadmap .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-align: center;
   max-width: 325px;
   width: 100%;
@@ -6770,7 +6766,7 @@ ul, ol {
   align-items: center;
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-align: center;
   font-family: var(--primaryFontFamily);
   font-size: 80px;
@@ -6787,7 +6783,7 @@ ul, ol {
   max-width: 773px;
   width: 100%;
   min-width: 773px;
-  color: #FFF;
+  color: var(--whiteColor);
   text-align: center;
   font-family: var(--primaryFontFamily);
   font-size: 32px;
@@ -6893,7 +6889,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap .roadmap .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-shadow: 1.7687277794px 1.7687277794px 13.2654590607px rgba(0, 0, 0, 0.15);
   font-family: var(--primaryFontFamily);
   font-size: 48px;
@@ -6903,7 +6899,7 @@ ul, ol {
   letter-spacing: -1.92px;
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap .roadmap .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--primaryFontFamily);
   font-size: 24px;
@@ -6912,164 +6908,139 @@ ul, ol {
   line-height: 150%;
 }
 .db-page--explore-oc .db-section--explore-oc-coming-soon-2 {
-  background: #09050F;
   position: relative;
+  z-index: 2;
+  background-color: transparent;
+  height: 985px;
+  margin: -53px auto 0;
+  padding: 50px 20px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2 {
-    height: 850px;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 {
-    height: 636px;
-    display: flex;
-    align-items: flex-end;
+    z-index: 3;
+    height: auto;
   }
 }
 .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
   content: "";
   position: absolute;
+  z-index: 1;
   right: 0;
   left: 0;
   bottom: 0;
-  height: 979px;
-  background-image: url("About-Us__asset-coming-soon-v01-3800x1958.png");
+  height: 100%;
+  background-image: url("Explore-OC_ComingSoon_bg-v02-3840x979.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-@media only screen and (max-width: 1080px) {
+@media only screen and (min-width: 1920px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
+    background-size: auto 100%;
+  }
+}
+@media only screen and (max-width: 1440px) {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
+    background-image: url("About-Us__asset-coming-soon-v01-3800x1958.png");
     background-position: right;
   }
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
-    height: 400px;
-    bottom: unset;
-    top: -21px;
+    position: relative;
+    background-image: url(Explore-OC_ComingSoon_bg-v03-769x622.png);
+    background-position: center;
+    background-size: auto 100%;
+    height: 620px;
+    display: block;
+    top: -31px;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
-    background-image: url("About-Us__asset-mb-coming-soon-v01-432x349.png");
-    width: unset;
-    bottom: unset;
-    top: -21px;
-    background-position: center;
-    z-index: 10;
+    height: 370px;
   }
 }
 .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container {
-  padding-top: 194px;
-  padding-bottom: 347px;
   position: relative;
-}
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container {
-    padding-top: unset;
-    padding-bottom: unset;
-    margin-top: 418px;
-  }
+  z-index: 2;
+  height: 100%;
 }
 .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row {
   flex-direction: column;
-  row-gap: 56px;
+  justify-content: center;
   max-width: 685px;
   width: 100%;
+  height: 100%;
 }
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row {
-    row-gap: 30px;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row {
-    row-gap: 20px;
-    align-items: center;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) .radio-link {
+.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .radio-link {
   color: #A120D2;
-  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--primaryFontFamily);
   font-size: 80px;
   font-style: normal;
   font-weight: 700;
-  line-height: 100%; /* 80px */
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  line-height: 1em;
   letter-spacing: -3.2px;
 }
 @media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) .radio-link {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .radio-link {
     font-size: 60px;
   }
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) .radio-link {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .radio-link {
+    font-size: 32px;
     text-align: center;
-    font-family: var(--primaryFontFamily);
-    font-size: 31.74px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 115%; /* 36.501px */
+    line-height: 1.15em;
     letter-spacing: -1.27px;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) span:nth-child(3) {
-  color: #FFF;
-  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row span {
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
-  line-height: 100%;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  line-height: 1em;
+  margin: 0 0 56px;
 }
 @media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) span:nth-child(3) {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row span {
     font-size: 35px;
   }
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(1) span:nth-child(3) {
-    color: #FFF;
-    font-family: var(--primaryFontFamily);
-    font-size: 15.791px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 115%;
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row span {
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.15em;
     letter-spacing: -0.632px;
-    margin-top: -13px;
+    margin: 0 auto 18px;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-  color: #FFF;
+.db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row p {
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 32px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%;
+  line-height: 1.5em;
   max-width: 685px;
   width: 100%;
 }
 @media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row p {
     font-size: 25px;
   }
 }
 @media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-    max-width: 347px;
-    text-align: center;
-    font-family: var(--primaryFontFamily);
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row p {
     font-size: 18px;
+    text-align: center;
   }
 }
 .db-page--explore-oc .db-section--explore-oc-faction {
@@ -7206,7 +7177,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(1) .db-col:nth-child(1) .meet-the-business-of-oc {
-  color: #FFF;
+  color: var(--whiteColor);
   text-shadow: 4.9926557541px 4.9926557541px 14.9779653549px rgba(0, 0, 0, 0.4);
   font-family: var(--primaryFontFamily);
   font-size: 47.929px;
@@ -7217,7 +7188,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(1) .db-col:nth-child(1) .meet-the-business-of-oc {
-    color: #FFF;
+    color: var(--whiteColor);
     font-family: var(--primaryFontFamily);
     font-size: 15.79px;
     font-style: normal;
@@ -7226,7 +7197,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--primaryFontFamily);
   font-size: 20px;
@@ -7312,7 +7283,7 @@ ul, ol {
   transition: opacity 0.6s ease-in;
 }
 .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) .db-faction-content .db-inner-col:nth-child(1) {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 56px;
   font-style: normal;
@@ -7329,7 +7300,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) .db-faction-content .db-inner-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--tertiaryFontFamily);
   font-size: 20px;
@@ -8736,7 +8707,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-coming-soon .db-container .db-row .db-col:nth-child(1) {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 80px;
   font-style: normal;
@@ -8753,7 +8724,7 @@ ul, ol {
 }
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon .db-container .db-row .db-col:nth-child(1) {
-    color: #FFF;
+    color: var(--whiteColor);
     text-align: center;
     font-family: var(--primaryFontFamily);
     font-size: 18px;
@@ -8761,7 +8732,7 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-coming-soon .db-container .db-row .db-col:nth-child(2) {
-  color: #FFF;
+  color: var(--whiteColor);
   font-family: var(--primaryFontFamily);
   font-size: 32px;
   font-style: normal;
