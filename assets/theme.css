@@ -5889,12 +5889,17 @@ ul, ol {
   line-height: 100%; /* 88px */
   letter-spacing: -0.52px;
   display: flex;
-  column-gap: 10px;
+  column-gap: 25px;
   justify-content: center;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) h1 {
+    column-gap: 10px;
+  }
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) h1 {
-    font-size: 60px;
+    font-size: 50px;
   }
 }
 @media only screen and (max-width: 480px) {
