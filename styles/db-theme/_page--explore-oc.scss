@@ -2071,7 +2071,7 @@
               z-index: 2;
               top: 50%;
               left: 50%;
-              transform: translate(-50%, -169%);
+              transform: translate(-50%, -100%);
               max-width: 38px;
               width: 100%;
               height: 45px;
@@ -2277,7 +2277,7 @@
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: normal;
+                line-height: 1.5em;
                 margin-top: 40px;
 
                 @media only screen and (max-width: 768px) {
@@ -2289,7 +2289,7 @@
             }
 
             .db-duration-container {
-              margin-top: 245px;
+              margin-top: 200px;
               position: relative;
               z-index: 2;
 
@@ -2798,7 +2798,7 @@
                     padding-bottom: 28px;
                     padding-left: 43px;
                     overflow: hidden;
-                    cursor: pointer;
+                    cursor: default;
 
                     @media only screen and (max-width: 1440px) {
                       padding-top: 20px;

@@ -316,6 +316,12 @@
                     }
                   }
                 }
+
+                &.--disabled {
+                  .db-menu-link {
+                    pointer-events: none;
+                  }
+                }
               }
             }
           }
@@ -403,6 +409,12 @@
                 line-height: 1.3em;
                 letter-spacing: -0.64px;
                 display: block;
+
+                &.--disabled {
+                  opacity: 0.5;
+                  pointer-events: none;
+                  cursor: default;
+                }
   
                 &:hover {
                   color: $secondaryColor;
@@ -428,6 +440,12 @@
 
                     &::before {
                       background-color: transparent;
+                    }
+                  }
+
+                  &.--disabled {
+                    .db-menu-link {
+                      opacity: 0.5;
                     }
                   }
 

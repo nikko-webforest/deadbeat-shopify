@@ -98,7 +98,7 @@
         muted
         loop>
       </video>
-
+      <div class="db-bg-overlay"></div>
       <div class="db-socials">
         {% render 'socials' %}
       </div>
@@ -186,17 +186,6 @@
                   <div class="db-widget-col">
                     <div class="db-widget-inner-row">
                       <div class="db-widget-inner-col">
-                        <iframe src="https://open.spotify.com/embed/playlist/3KWtOgG4qoKIoFO9Ls6bvk?utm_source=generator&theme=0"
-                          style="border-radius:12px"
-                          width="100%"
-                          height="352"
-                          frameBorder="0"
-                          allowfullscreen=""
-                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                          loading="lazy">
-                        </iframe>
-                      </div>
-                      <div class="db-widget-inner-col">
                         <div class="db-widget-project-trailer"
                           @click="toggleVideo">
                           <div class="db-play">
@@ -246,6 +235,17 @@
                             </span>
                           </div>
                         </div>
+                      </div>
+                      <div class="db-widget-inner-col">
+                        <iframe src="https://open.spotify.com/embed/playlist/3KWtOgG4qoKIoFO9Ls6bvk?utm_source=generator&theme=0"
+                          style="border-radius:12px"
+                          width="100%"
+                          height="352"
+                          frameBorder="0"
+                          allowfullscreen=""
+                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                          loading="lazy">
+                        </iframe>
                       </div>
                     </div>
                   </div>
