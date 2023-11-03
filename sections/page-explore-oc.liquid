@@ -480,9 +480,9 @@
               Deadbeat is one big community game of musical glory. Join a music borough (psst if you know how to spell Burrr-oh slip us a note) create your character, then you and your mates do the damn thang to dominate the OC.
             </p>
             <ul class="db-options">
-              <div class="db-item-hover-indicator"></div>
+              {% comment %} <div class="db-item-hover-indicator" ref="indicator"></div> {% endcomment %}
 
-              <li class="db-items" @mouseenter="theGameItemHover($event);">
+              <li class="db-items" ref="compete">
                 <div class="db-wrap">
                   <div class="db-option">
                     COMPETE
@@ -493,7 +493,7 @@
                 </div>
               </li>
 
-              <li class="db-items" @mouseenter="theGameItemHover($event);">
+              <li class="db-items" ref="characterCreation">
                 <div class="db-wrap">
                   <div class="db-option">
                     CHARACTER CREATION
@@ -504,7 +504,7 @@
                 </div>
               </li>
 
-              <li class="db-items" @mouseenter="theGameItemHover($event);">
+              <li class="db-items" ref="breakthrough">
                 <div class="db-wrap">
                   <div class="db-option">
                     BREAKTHROUGH
@@ -515,7 +515,7 @@
                 </div>
               </li>
 
-              <li class="db-items" @mouseenter="theGameItemHover($event);">
+              <li class="db-items" ref="community">
                 <div class="db-wrap">
                   <div class="db-option">
                     COMMUNITY
@@ -676,7 +676,11 @@
           </h3>
 
           <div class="meet-the-business-of-oc">
-            Meet The Businesses of the OC
+            Meet The Businesses of the OC.
+          </div>
+
+          <div class="join-us">
+            Community built and backed. Join us in Discord for world building sessions.
           </div>
         </div>
       </div>
@@ -778,6 +782,7 @@
     </div>
   </section>
 
+
   {% comment %}
     <section class="db-section db-section--explore-oc-resurrection">
       <div class="db-container">
@@ -872,41 +877,42 @@
         isMutedVideo: false,
         isVideoFullScreen: false,
         isVideoHover: false,
+        isHoverEnabled: false,
         factions: [
           {
             name: 'TOOTHY BURGER',
             image_url: "{{ 'Explore-OC__toothy-burger.png' | asset_url }}",
             description: 'Home of the Green Sauce.',
-            hq: 'Come on down to Toothy Burger! The OC #73 rated burger joint. For a limited time only, get the bathroom key with purchase of two or more burgers.',
-            bg: "{{ 'Explore-OC__asset-v08-2470x2468.png' | asset_url }}"
+            hq: "Come on down to Toothy Burger! The OC's #73 rated burger joint. For a limited time only, get the bathroom key with purchase of two or more burgers.",
+            bg: "{{ 'Explore-OC__asset-v08-2470x2468.png' | asset_url }}",
           },
           {
-            name: 'WOLF & Foot',
+            name: 'WOLF & FOOT COFFEE',
             image_url: "{{ 'Explore-OC__wolf-and-foot.png' | asset_url }}",
             description: 'Roasted Amongst Free-range Alpacas.',
             hq: 'Step into our world of coffee. Where each bean is treated like a treasure and every sip is an exploration of taste and exclusivity.',
-            bg: "{{ 'Explore-OC__asset-v11-1536x2196.png' | asset_url }}"
+            bg: "{{ 'Explore-OC__asset-v11-1536x2196.png' | asset_url }}",
           },
           {
             name: "STAB 'N' GRAB",
             image_url: "{{ 'Explore-OC__stab-and-grab.png' | asset_url }}",
             description: 'Deadly Deals and More.',
-            hq: "Shop dangerously with deals that are to die for again. Stab 'N' Grab, voted the OC quickest way out.",
-            bg: "{{ 'Explore-OC__asset-v14-2494x594.png' | asset_url }}"
+            hq: "Shop dangerously with deals that are to die for-again. Stab 'N' Grab, voted the OC's quickest way out.",
+            bg: "{{ 'Explore-OC__asset-v14-2494x594.png' | asset_url }}",
           },
           {
             name: "SHARKY'S SWIM CLUB",
             image_url: "{{ 'Explore-OC__sharky-swim-club.png' | asset_url }}",
-            description: 'Take the Bait.',
+            description: 'Take the Bait!',
             hq: "Dive back into the fun and fitness at Sharky's Swim Club. We're thrilled to announce our grand reopening, with better health and safety measures in place to ensure a splashing good time for all. We promise it, this time. Waivers and tasers provided at the gate.",
-            bg: "{{ 'Explore-OC__asset-v12-1936x2140.png' | asset_url }}"
+            bg: "{{ 'Explore-OC__asset-v12-1936x2140.png' | asset_url }}",
           },
           {
             name: "HAROLD'S HELPING HAND",
             image_url: "{{ 'Explore-OC__harold-helping-hand.png' | asset_url }}",
             description: 'Handyman / Massage Parlour.',
             hq: "Are you stressed? Tired? Overwhelmed? Married? Come on down to Harold's Helping Hand. Member of the Deadbeat 2069 BBB.",
-            bg: "{{ 'Explore-OC__asset-v13-2392x1006.png' | asset_url }}"
+            bg: "{{ 'Explore-OC__asset-v13-2392x1006.png' | asset_url }}",
           },
         ],
         undeadData: [
@@ -1094,15 +1100,45 @@
     },
     mounted() {
       const explore_oc_the_game = document.querySelector('#the-game');
+      // const dbItemHoverIndicator = this.$refs.indicator;
+
+      const compete = this.$refs.compete;
+      const characterCreation = this.$refs.characterCreation;
+      const breakthrough = this.$refs.breakthrough;
+      const community = this.$refs.community;
+
       console.log(explore_oc_the_game);
 
-      const revealSection = function(entries, observer) {
+      const revealSection = (entries, observer) => {
         const [entry] = entries;
         console.log(entry.isIntersecting);
         if (!entry.isIntersecting) {
           return;
         } else {
-          console.log(`Not Intersect`)
+          setTimeout(() => {
+            compete.classList.add('active')
+          }, 1000);
+
+          setTimeout(() => {
+            compete.classList.remove(['active']);
+            characterCreation.classList.add('active')
+          }, 2000);
+
+          setTimeout(() => {
+            characterCreation.classList.remove(['active'])
+            breakthrough.classList.add('active')
+          }, 3000);
+
+          setTimeout(() => {
+            breakthrough.classList.remove(['active'])
+            community.classList.add('active')
+          }, 4000);
+
+          setTimeout(() => {
+            community.classList.remove(['active']);
+          }, 5000);
+
+          observer.unobserve(entry.target);
         }
       }
 
@@ -1411,6 +1447,7 @@
 
         console.log(parentElement.classList.contains('--second'))
         console.log(parentElement.classList.contains('--third'));
+        this.changeBgImage('next');
 
         if (parentElement.classList.contains('--second') || parentElement.classList.contains('--third')) {
           let curIndex = 1;
@@ -1569,13 +1606,17 @@
         }
 
       },
-      theGameItemHover(event) {
-        console.log('event =', event);
-        const dbItemHoverIndicator = document.querySelector('.db-item-hover-indicator');
-        dbItemHoverIndicator.style.width = `${event.target.offsetWidth}px`;
-        dbItemHoverIndicator.style.height = `${event.target.offsetHeight}px`;
-        dbItemHoverIndicator.style.translate = `0 ${event.target.offsetTop}px`;
-      }
+      // theGameItemHover(event) {
+      //   console.log('event =', event);
+
+      //   if (this.isHoverEnabled === true) {
+
+      //     const dbItemHoverIndicator = document.querySelector('.db-item-hover-indicator');
+      //     dbItemHoverIndicator.style.width = `${event.target.offsetWidth}px`;
+      //     dbItemHoverIndicator.style.height = `${event.target.offsetHeight}px`;
+      //     dbItemHoverIndicator.style.translate = `0 ${event.target.offsetTop}px`;
+      //   }
+      // }
     },
   }
 

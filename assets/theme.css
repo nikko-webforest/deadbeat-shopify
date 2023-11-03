@@ -680,7 +680,7 @@ ul, ol {
 }
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(1) .db-inner-row p {
   color: #CAC7D0;
-  font-family: var(--primaryFontFamily);
+  font-family: sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -735,7 +735,7 @@ ul, ol {
 }
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(2) .db-menu-list .db-menu-item .db-menu-link {
   color: #CAC7D0;
-  font-family: var(--secondaryFontFamily);
+  font-family: sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -5784,6 +5784,8 @@ ul, ol {
   background-color: #0D0713;
   padding-top: 256px;
   padding-bottom: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-the-game {
@@ -5846,6 +5848,8 @@ ul, ol {
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc {
   position: relative;
   z-index: 2;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc {
@@ -6476,6 +6480,8 @@ ul, ol {
   z-index: 2;
   padding-top: 222px;
   padding-bottom: 213px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .the-game {
@@ -6491,55 +6497,23 @@ ul, ol {
   position: absolute;
   left: 0;
   bottom: 0;
+  right: 0;
+  top: 0;
   display: block;
-  background: url("Explore-OC__asset-v04-3454x2030.png");
+  background: url("Explore-OC__asset-v15-6908x4060.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: left;
   background-size: cover;
-  max-width: 1727px;
-  width: 100%;
-  height: 1015px;
-  z-index: -1;
-  top: 10px;
-}
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game::before {
-    bottom: unset;
-    top: 0;
-  }
 }
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .the-game::before {
+    background: url("Explore-OC__asset-v18-4600x4060.png");
+    background-repeat: no-repeat;
+    bottom: unset;
     max-width: 701px;
     height: 412px;
-    background-position: inherit;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: block;
-  height: 241px;
-  background: linear-gradient(0deg, rgba(13, 8, 23, 0) 0%, rgba(13, 8, 23, 0.46) 17.61%, rgba(12, 8, 22, 0.74) 35.14%, #0C0915 49.79%);
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game::after {
-    top: -11px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game::after {
-    top: 0;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game .the-game::after {
-    background: linear-gradient(0deg, rgba(13, 8, 23, 0) 0%, rgba(13, 8, 23, 0.46) 17.61%, rgba(12, 8, 22, 0.74) 35.14%, #0C0915 49.79%);
-    height: 118px;
-    top: -61px;
+    background-position: left;
+    background-size: cover;
   }
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container {
@@ -6566,6 +6540,7 @@ ul, ol {
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
   max-width: 662px;
+  position: relative;
   width: 100%;
   min-width: 662px;
   border-radius: 10px;
@@ -6710,10 +6685,10 @@ ul, ol {
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(1) .db-inner-row .db-inner-col:nth-child(2) .db-content .db-description {
   color: #EFEFEF;
-  font-family: var(--secondaryFontFamily);
+  font-family: var(--primaryFontFamily);
   font-size: 30px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 130%;
   margin-top: 8px;
 }
@@ -6804,18 +6779,6 @@ ul, ol {
     margin-top: 20px;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-item-hover-indicator {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  display: block;
-  background: linear-gradient(90deg, rgba(161, 32, 210, 0.4) -19.47%, rgba(162, 82, 193, 0) 75%);
-  max-width: 490px;
-  width: 100%;
-  height: 122px;
-  translate: 0 0;
-  transition: all 600ms ease-in-out 0ms;
-}
 .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items {
   position: relative;
   z-index: 2;
@@ -6824,6 +6787,22 @@ ul, ol {
   padding-left: 43px;
   overflow: hidden;
   cursor: default;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  background: linear-gradient(90deg, rgba(161, 32, 210, 0.4) -19.47%, rgba(162, 82, 193, 0) 75%);
+  max-width: 490px;
+  width: 100%;
+  height: 122px;
+  transition: all 600ms ease-in-out 0ms;
+  transform: translateX(-100%);
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items.active::before {
+  transform: translateX(0%);
 }
 @media only screen and (max-width: 1440px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container .db-row:nth-child(1) .db-col:nth-child(2) .db-options .db-items {
@@ -7368,14 +7347,15 @@ ul, ol {
 }
 .db-page--explore-oc .db-section--explore-oc-faction {
   background: #0E0914;
-  padding-top: 127px;
   position: relative;
   z-index: 3;
-  height: 1100px;
+  height: 1311px;
+  padding-top: 286px;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--explore-oc .db-section--explore-oc-faction {
     height: 1600px;
+    padding-top: 127px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -7391,8 +7371,8 @@ ul, ol {
 }
 .db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container {
   position: absolute;
-  height: 966px;
-  max-width: 707px;
+  max-width: 1235px;
+  height: 1234px;
   width: 100%;
   top: 50%;
   z-index: 1;
@@ -7402,6 +7382,7 @@ ul, ol {
 @media only screen and (max-width: 1080px) {
   .db-page--explore-oc .db-section--explore-oc-faction .db-factions-image-container {
     top: 40%;
+    transform: translateX(-50%) translateY(-50%);
   }
 }
 @media only screen and (max-width: 768px) {
@@ -7538,6 +7519,17 @@ ul, ol {
     line-height: 100%;
   }
 }
+.db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(1) .db-col:nth-child(1) .join-us {
+  color: var(--whiteColor);
+  text-shadow: 4.9926557541px 4.9926557541px 14.9779653549px rgba(0, 0, 0, 0.4);
+  font-family: var(--primaryFontFamily);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  margin-top: 8px;
+  max-width: 350px;
+}
 .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
   color: var(--whiteColor);
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
@@ -7582,7 +7574,7 @@ ul, ol {
   max-width: 650px;
   width: 100%;
   min-width: 650px;
-  padding-top: 53px;
+  padding-top: 132px;
 }
 @media only screen and (max-width: 1440px) {
   .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) {
@@ -7602,9 +7594,9 @@ ul, ol {
   flex-direction: column;
 }
 .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) {
-  height: 499px;
   position: relative;
   width: 100%;
+  height: 300px;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(1) {
@@ -7690,6 +7682,8 @@ ul, ol {
   display: flex;
   column-gap: 70px;
   justify-content: flex-start;
+  position: relative;
+  z-index: 2;
 }
 .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(2) .db-col:nth-child(1) .db-inner-row:nth-child(2) .db-inner-col:nth-child(1) svg {
   cursor: pointer;
@@ -7715,6 +7709,12 @@ ul, ol {
 .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) {
   max-width: 522px;
   width: 100%;
+  margin-top: -120px;
+}
+@media only screen and (max-width: 1440px) {
+  .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) {
+    margin-top: unset;
+  }
 }
 @media only screen and (max-width: 1080px) {
   .db-page--explore-oc .db-section--explore-oc-faction .db-container .db-row:nth-child(2) .db-col:nth-child(2) {
