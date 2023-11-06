@@ -3,12 +3,42 @@
 /*============*/
 .db-footer {
   padding: 45px 0 0;
+  background-image: url('DB_Footer_Newsletter_bg-v04-16936x2800.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+
+  @media only screen and (max-width: 1080px) {
+    background-image: none;
+  }
+
+  @media only screen and (max-width: 768px) {
+    background-image: url('DB_Footer_Newsletter_bg-v05-860x2920.jpg');
+    background-size: cover;
+  }
+
+  @media only screen and (max-width: 468px) {
+    background-position-y: top;
+  }
 
   .db-section--newsletter {
-    background-image: url('DB_Footer_Newsletter_bg-v03-3840x700.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
+    // background-image: url('DB_Footer_Newsletter_bg-v03-3840x700.jpg');
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: auto 100%;
+
+    @media only screen and (max-width: 1080px) {
+      background-image: url('DB_Footer_Newsletter_bg-v03-3840x700.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+    }
+
+    @media only screen and (max-width: 768px) {
+      background-image: none;
+    }
+
+    background-color: transparent;
     height: 470px;
     padding: 0 20px;
 
@@ -320,7 +350,16 @@
   }
 
   .db-section--primary {
-    background-color: #0B070F;
+    // background-color: #0B070F;
+    background-color: transparent;
+    @media only screen and (max-width: 1080px) {
+      background-color: #0B070F;
+    }
+
+    @media only screen and (max-width: 768px) {
+      background-color: transparent;
+    }
+
     padding: 30px 20px 63px;
 
     .db-container {

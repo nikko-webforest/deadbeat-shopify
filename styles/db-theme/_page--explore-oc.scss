@@ -3262,11 +3262,14 @@
         content: "";
         position: absolute;
         display: block;
-        bottom: 0;
+        bottom: 48px;
         left: 0;
         right: 0;
         height: 228px;
         background: linear-gradient(0deg, #0E0914 0%, rgba(14, 9, 20, 0.00) 100%);
+        @media only screen and (max-width: 768px) {
+          bottom: -1px;
+        }
       }
 
       .roadmap-bg-video-container {

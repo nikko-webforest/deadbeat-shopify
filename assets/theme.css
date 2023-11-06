@@ -319,14 +319,44 @@ ul, ol {
 /*============*/
 .db-footer {
   padding: 45px 0 0;
-}
-.db-footer .db-section--newsletter {
-  background-image: url("DB_Footer_Newsletter_bg-v03-3840x700.jpg");
+  background-image: url("DB_Footer_Newsletter_bg-v04-16936x2800.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto 100%;
+}
+@media only screen and (max-width: 1080px) {
+  .db-footer {
+    background-image: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-footer {
+    background-image: url("DB_Footer_Newsletter_bg-v05-860x2920.jpg");
+    background-size: cover;
+  }
+}
+@media only screen and (max-width: 468px) {
+  .db-footer {
+    background-position-y: top;
+  }
+}
+.db-footer .db-section--newsletter {
+  background-color: transparent;
   height: 470px;
   padding: 0 20px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-footer .db-section--newsletter {
+    background-image: url("DB_Footer_Newsletter_bg-v03-3840x700.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-footer .db-section--newsletter {
+    background-image: none;
+  }
 }
 @media only screen and (max-width: 1080px) {
   .db-footer .db-section--newsletter {
@@ -618,8 +648,18 @@ ul, ol {
   border-radius: 831px;
 }
 .db-footer .db-section--primary {
-  background-color: #0B070F;
+  background-color: transparent;
   padding: 30px 20px 63px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-footer .db-section--primary {
+    background-color: #0B070F;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-footer .db-section--primary {
+    background-color: transparent;
+  }
 }
 @media only screen and (max-width: 768px) {
   .db-footer .db-section--primary .db-container {
@@ -7099,11 +7139,16 @@ ul, ol {
   content: "";
   position: absolute;
   display: block;
-  bottom: 0;
+  bottom: 48px;
   left: 0;
   right: 0;
   height: 228px;
   background: linear-gradient(0deg, #0E0914 0%, rgba(14, 9, 20, 0) 100%);
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap .roadmap:after {
+    bottom: -1px;
+  }
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap .roadmap .roadmap-bg-video-container {
   position: absolute;
