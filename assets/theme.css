@@ -7200,7 +7200,7 @@ ul, ol {
   left: 0;
   bottom: 0;
   height: 100%;
-  background-image: url("Explore-OC_ComingSoon_bg-v02-3840x979.png");
+  background-image: url("Explore-OC__asset-v19-15075x2850.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -7210,22 +7210,16 @@ ul, ol {
     background-size: auto 100%;
   }
 }
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1080px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
-    background-image: url("About-Us__asset-coming-soon-v01-3800x1958.png");
-    background-position: right;
+    background-image: url("Explore-OC__asset-v20-6817x2850.jpg");
   }
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
     position: relative;
-    background-image: url(Explore-OC_ComingSoon_bg-v03-769x622.png);
-    background-position: center;
-    background-size: auto 100%;
     height: 620px;
     display: block;
-    top: -31px;
-    width: calc(100% + 40px);
     margin: 0 -20px;
   }
 }
