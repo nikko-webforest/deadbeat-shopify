@@ -7223,18 +7223,209 @@ ul, ol {
   font-weight: 500;
   line-height: 150%;
 }
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 {
+  position: relative;
+  height: 2197px;
+  padding-left: unset;
+  padding-right: unset;
+  padding-top: unset;
+}
+@media only screen and (max-width: 480px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 {
+    display: none;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife {
+  height: 1065px;
+  position: relative;
+  padding-top: 121px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 70px;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1065px;
+  background: url("Explore-OC__asset-v21-3800x2130.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+}
+@media only screen and (max-width: 1440px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife::before {
+    background-position: left;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) {
+  flex-direction: column;
+  row-gap: 40px;
+  align-items: center;
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
+  color: #FFF;
+  text-align: center;
+  font-family: var(--primaryFontFamily);
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
+    font-size: 50px;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+  color: #FFF;
+  text-align: center;
+  font-family: var(--primaryFontFamily);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  max-width: 773px;
+  width: 100%;
+  min-width: 773px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+    font-size: 25px;
+    max-width: 550px;
+    min-width: unset;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap {
+  background-color: #0E0914;
+  height: 1132px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 77px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap {
+    justify-content: center;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 1070px;
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  object-position: center;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video.--ds-view {
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video.--ds-view {
+    display: none;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video.--mb-view {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video.--mb-view {
+    display: block;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, #0F0918 0%, rgba(15, 9, 23, 0) 100%);
+  z-index: 2;
+  height: 287px;
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container::after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 228px;
+  background: linear-gradient(0deg, #100A16 0%, rgba(16, 10, 22, 0) 100%);
+  z-index: 2;
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container {
+  z-index: 3;
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container .db-row:nth-child(1) {
+  flex-direction: column;
+  row-gap: 8px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container .db-row:nth-child(1) {
+    max-width: 500px;
+    width: 100%;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
+  color: #FFF;
+  text-shadow: 1.7687277794px 1.7687277794px 13.2654590607px rgba(0, 0, 0, 0.15);
+  font-family: var(--primaryFontFamily);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 48px */
+  letter-spacing: -1.92px;
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
+  color: #FFF;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  font-family: var(--primaryFontFamily);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
 .db-page--explore-oc .db-section--explore-oc-coming-soon-2 {
   position: relative;
   z-index: 2;
   background-color: transparent;
   height: 985px;
-  margin: -53px auto 0;
   padding: 50px 20px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2 {
     z-index: 3;
     height: auto;
+    padding-top: unset;
+    background: #09050F;
   }
 }
 .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
@@ -7263,6 +7454,7 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
     position: relative;
+    background-image: url("Explore-OC__asset-v22-2044x1672.jpg");
     height: 620px;
     display: block;
     margin: 0 -20px;
@@ -7297,6 +7489,13 @@ ul, ol {
     height: 100px;
   }
 }
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .db-image-container {
+    align-self: center;
+    max-width: 100px;
+    height: 80px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .db-image-container {
     align-self: center;
@@ -7329,6 +7528,7 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row .radio-link {
     font-size: 60px;
+    align-self: center;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -7352,6 +7552,8 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2 .db-container .db-row span {
     font-size: 35px;
+    align-self: center;
+    margin: 0 0 35px;
   }
 }
 @media only screen and (max-width: 480px) {

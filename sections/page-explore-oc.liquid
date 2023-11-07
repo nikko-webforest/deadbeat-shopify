@@ -1,167 +1,5 @@
 <div class="db-page db-page--explore-oc">
 
-  {% comment %}
-    <section class="db-section db-section--explore-oc-banner-after-life-faction">
-      <div class="explore-oc--banner">
-        <div class="db-container">
-          <div class="title-wrap">
-
-            <h1>
-              <span>
-                HELL YEAH
-              </span>
-
-              <span>
-                WE ARE
-              </span>
-            </h1>
-
-            <h4>
-              Welcome to the world of deadbeat, Deadbeat is a transmedia story centered around a radio station in the year 2069, where the undead rule the world.
-            </h4>
-
-          </div>
-
-          <div class="db-row">
-            <div class="db-col-spacer">
-              <div class="db-col">
-                <div class="db-logo-container">
-
-                  <img class="db-img"
-                    alt="Deadbeats Logo"
-                    title="Deadbeats Logo"
-                    src="{{ 'About-Us__asset-DB-logo.png' | asset_url }}"
-                    width=""
-                    height=""
-                    loading="lazy"
-                  />
-
-                </div>
-              </div>
-
-              <div class="db-col">
-
-                <div class="db-banner-its-year">
-                  IT’S YEAR
-                </div>
-
-                <div class="db-banner-2069">
-                    2069
-                </div>
-
-                <div class="db-banner-rock-the-world">
-                    Undead rock the world
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="explore-oc--after-life">
-        <div class="db-container">
-          <div class="db-row">
-            <h2>
-              THE AFTER, AFTER LIFE
-            </h2>
-          </div>
-
-          <div class="db-row">
-            <div class="db-col">
-                Welcome to BEAT 96.9, a once great independent radio station struggling to stay alive in the world of the undead. This new animated world follows the lives of the stations’ reimagined crew as they manage their post-apocalyptic lives.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="explore-oc--faction">
-        <div class="db-container">
-          <div class="db-row">
-            <div class="db-col">
-              <h3>
-                <span>
-                  CHOOSE YOUR
-                </span>
-
-                <span>
-                  FACTION
-                </span>
-              </h3>
-            </div>
-
-            <div class="db-col">
-              The streets of Old Columbus are no longer ruled by a government, rather 7 powerful gangs fight for control of the city. Pick the faction of your choice and begin your journey to rise through the ranks and become known as the most powerful faction in Old Columbus.
-              <br />
-              <br />
-              They are waiting on you to help lead them to victory.
-            </div>
-          </div>
-          <div class="db-row">
-            <div class="db-col">
-              <div class="db-inner-row" ref="contentContainer">
-                  <div class="db-faction-content" v-for="(faction, index) in factions" :class="selectPosition(index)">
-                    <div class="db-inner-col" v-text="faction.name">
-                    </div>
-
-                    <db class="db-inner-col" v-text="faction.description">
-                    </db>
-                  
-                    <div class="db-inner-col"v-text="faction.hq"> 
-                    </div>
-                  </div>
-              </div>
-
-              <div class="db-inner-row">
-                <div class="db-inner-col">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-prev db-svg" @click="onChangeSlide('prev')">
-                    <path d="M0 10C0 10.4969 0.248704 10.9938 0.497409 11.2422L8.70466 19.441C9.45078 20.1863 10.6943 20.1863 11.4404 19.441C12.1865 18.6957 12.1865 17.4534 11.4404 16.7081L4.72539 10L11.4404 3.29193C12.1865 2.54659 12.1865 1.30435 11.4404 0.559006C10.6943 -0.186337 9.45078 -0.186337 8.70466 0.559006L0.746114 8.50932C0.248705 9.00621 0 9.50311 0 10Z" fill="#CAC7D0" :style="{fillOpacity: activeButton !== 'left' ? 0.4 : ''}"/>
-                  </svg>
-
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none" class="svg-icon-next db-svg" @click="onChangeSlide('next')">
-                    <path d="M12 10C12 10.4969 11.7513 10.9938 11.5026 11.2422L3.29534 19.441C2.54922 20.1863 1.3057 20.1863 0.559586 19.441C-0.186529 18.6957 -0.186529 17.4534 0.559586 16.7081L7.27461 10L0.559586 3.29193C-0.186529 2.54659 -0.186529 1.30435 0.559586 0.559006C1.3057 -0.186337 2.54922 -0.186337 3.29534 0.559006L11.2539 8.50932C11.7513 9.00621 12 9.50311 12 10Z" fill="#CAC7D0" :style="{fillOpacity: activeButton !== 'right' ? 0.4 : ''}"/>
-                  </svg>
-                  
-                </div>
-              </div>
-            </div>
-
-            <div class="db-col">
-              <ul class="card-list" ref="newSliderContainer">
-
-                <li class="card" v-for="(faction, index) in factions" :class="factionClass(index)" @click="onChangeClickFactionCardSlide($event)">
-                  
-                    <div class="card-wrapper">
-                      <div class="faction-img-container">
-                        <img :src="faction.image_url" alt="">
-                      </div>
-
-                      <div class="faction-svg" v-if="index === 0">
-                        {% render 'faction--king' %}
-                      </div>
-
-                      <div class="faction-svg" v-if="index === 1">
-                        {% render 'faction--bleeding-hearts' %}
-                      </div>
-
-                      <div class="faction-svg" v-if="index === 2">
-                        {% render 'faction--honky-tonkin' %}
-                      </div>
-
-                      <div class="faction-svg" v-if="index === 3">
-                        {% render 'faction--the-blues' %}
-                      </div>
-
-                    </div>
-                
-                </li>
-              </ul>
-            </div> 
-            
-          </div>
-        </div>
-      </div>
-    </section>
-  {% endcomment %}
-
   <section class="db-section db-section--explore-oc-the-game" id="explore-oc-the-game">
     <div class="explore-oc">
       <div class="db-container">
@@ -577,7 +415,61 @@
     </div>
   </section>
 
-  <section class="db-section db-section--explore-oc-after-life-roadmap">
+  <section class="db-section db-section--explore-oc-after-life-roadmap2">
+    <div class="afterlife">
+      <div class="db-container">
+        <div class="db-row">
+          <div class="db-col">
+            THE AFTER, AFTER LIFE
+          </div>
+          <div class="db-col">
+            But wait, that’s not all! For a limited time only get a full story world and all the insanity that rolls with a bunch of hooligans in the undead world of 2069.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="roadmap">
+      <div class="roadmap-bg-video-container">
+        <video class="db-bg-video --ds-view"
+          src="https://cdn.shopify.com/videos/c/o/v/77af5f37ef2a4afd9104d2a6f08e811c.mp4"
+          allow="autoplay"
+          preload="auto"
+          control="false"
+          autoplay="true"
+          volume="0"
+          playsinline=""
+          muted=""
+          loop="">
+        </video>
+        <video class="db-bg-video --mb-view"
+          src="https://cdn.shopify.com/videos/c/o/v/1c279c7d77d2420a8d2a0bdc8e73805e.mp4"
+          allow="autoplay"
+          preload="auto"
+          control="false"
+          autoplay="true"
+          volume="0"
+          playsinline=""
+          muted=""
+          loop="">
+        </video>
+      </div>
+
+      <div class="db-container">
+        <div class="db-row">
+          <div class="db-col">
+            IT’S A ROAD. MAP.
+          </div>
+          <div class="db-col">
+            Yep, that’s it, there’s where it all goes down. This is the world we’re building together with you.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% comment %} ------------------------------------------ {% endcomment %}
+  {% comment %} <section class="db-section db-section--explore-oc-after-life-roadmap">
     <div class="afterlife">
       <div class="db-container">
         <div class="db-row">
@@ -629,7 +521,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
 
   <section class="db-section db-section--explore-oc-coming-soon-2">
     <div class="db-container">
@@ -1020,7 +912,7 @@
       this.onLoadAnimation();
 
       setTimeout(() => {
-        const footer = document.querySelector('footer')
+        const footer = document.querySelector('footer');
         footer.style.backgroundColor = '#0E0914';
       }, 3000)
     },
@@ -1445,10 +1337,9 @@
         const targetElement = event.target;
         const parentElement = targetElement.parentElement;
 
-        console.log(parentElement.classList.contains('--second'))
+        console.log(parentElement.classList.contains('--second'));
         console.log(parentElement.classList.contains('--third'));
-        this.changeBgImage('next');
-
+        
         if (parentElement.classList.contains('--second') || parentElement.classList.contains('--third')) {
           let curIndex = 1;
           
@@ -1473,7 +1364,7 @@
       },
       async onChangeCardPosition() {
         return new Promise((resolve, reject) => {
-
+          this.changeBgImage('next');
           const sliderContainer = this.$refs.newSliderContainer;
           const first = sliderContainer.querySelector('.--first');
           const second = sliderContainer.querySelector('.--second');
