@@ -1,0 +1,31 @@
+<div class="db-page db-page--privacy-policy">
+  <h1>Hello World</h1>
+</div>
+
+<script>
+  const DB_SF_Page_Privacy_Policy_Options = {
+    name: 'DB SF Page Privacy Policy Options',
+    data() {
+      return {
+      }
+    },
+    created() {
+      this.onLoadAnimation();
+    },
+    mounted() {},
+    computed: {},
+    methods: {
+      onLoadAnimation() {
+        console.log('onLoadAnimation');
+        setTimeout(() => {
+          document.querySelector('.db-site-loader').classList.remove('--show');
+          // document.querySelector('.db-section--banner').classList.add('--animate-now');
+          document.querySelector('.db-header').classList.add('--animate-now');
+        }, 3000);
+      },
+    },
+
+  }
+
+  Vue.createApp(DB_SF_Page_Privacy_Policy_Options).mount('.db-page--privacy-policy');
+</script>
