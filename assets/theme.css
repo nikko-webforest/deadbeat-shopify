@@ -9828,3 +9828,97 @@ ul, ol {
 .db-page--explore-oc .db-section--explore-oc-subscribe .db-container .db-row .db-col:nth-of-type(2) .db-form--newsletter #mce-responses #mce-error-response {
   color: #FF2020;
 }
+
+.db-page--privacy-policy .db-section--privacy-policy {
+  padding-top: 256px;
+  background-color: #0A070E;
+}
+.db-page--privacy-policy .db-section--privacy-policy .db-container .db-row:nth-child(1) .db-col:nth-child(1) h1 {
+  color: #FFF;
+  font-family: var(--primaryFontFamily);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 115%;
+  letter-spacing: -2.24px;
+}
+.db-page--privacy-policy .db-section--privacy-policy .db-container .db-row:nth-child(2) {
+  max-width: 1300px;
+  margin-inline: auto;
+  margin-top: 50px;
+  flex-direction: column;
+}
+.db-page--privacy-policy .db-section--privacy-policy .db-container .db-row:nth-child(2) span {
+  color: #CAC7D0;
+  font-family: var(--secondaryFontFamily);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+.db-page--privacy-policy .db-section--privacy-policy .db-container .db-row:nth-child(2) .db-col {
+  margin-top: 80px;
+}
+.db-page--privacy-policy .db-section--privacy-policy .db-container .db-row:nth-child(2) .db-col .db-policy {
+  color: #CAC7D0;
+  font-family: var(--primaryFontFamily);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3em;
+}
+.db-page--privacy-policy .db-section--privacy-policy .db-container .db-row:nth-child(2) .db-col .db-policy-content {
+  margin-top: 32px;
+  color: #FFF;
+  font-family: var(--primaryFontFamily);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.db-page--terms-of-use .db-section--terms-of-use {
+  padding-top: 256px;
+  background-color: #0A070E;
+}
+.db-page--terms-of-use .db-section--terms-of-use .db-container .db-row:nth-child(1) .db-col:nth-child(1) h1 {
+  color: #FFF;
+  font-family: var(--primaryFontFamily);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 115%;
+  letter-spacing: -2.24px;
+}
+.db-page--terms-of-use .db-section--terms-of-use .db-container .db-row:nth-child(2) {
+  max-width: 1300px;
+  margin-inline: auto;
+  margin-top: 50px;
+  flex-direction: column;
+}
+.db-page--terms-of-use .db-section--terms-of-use .db-container .db-row:nth-child(2) span {
+  color: #CAC7D0;
+  font-family: var(--secondaryFontFamily);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+.db-page--terms-of-use .db-section--terms-of-use .db-container .db-row:nth-child(2) .db-col {
+  margin-top: 80px;
+}
+.db-page--terms-of-use .db-section--terms-of-use .db-container .db-row:nth-child(2) .db-col .db-policy {
+  color: #CAC7D0;
+  font-family: var(--primaryFontFamily);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3em;
+}
+.db-page--terms-of-use .db-section--terms-of-use .db-container .db-row:nth-child(2) .db-col .db-policy-content {
+  margin-top: 32px;
+  color: #FFF;
+  font-family: var(--primaryFontFamily);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
