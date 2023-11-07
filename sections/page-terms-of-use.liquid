@@ -1,0 +1,31 @@
+<div class="db-page db-page--terms-of-use">
+  <h1>Hello World</h1>
+</div>
+
+<script>
+  const DB_SF_Page_Terms_Of_Use_Options = {
+    name: 'DB SF Page Terms Of Use Options',
+    data() {
+      return {
+      }
+    },
+    created() {
+      this.onLoadAnimation();
+    },
+    mounted() {},
+    computed: {},
+    methods: {
+      onLoadAnimation() {
+        console.log('onLoadAnimation');
+        setTimeout(() => {
+          document.querySelector('.db-site-loader').classList.remove('--show');
+          // document.querySelector('.db-section--banner').classList.add('--animate-now');
+          document.querySelector('.db-header').classList.add('--animate-now');
+        }, 3000);
+      },
+    },
+
+  }
+
+  Vue.createApp(DB_SF_Page_Terms_Of_Use_Options).mount('.db-page--terms-of-use');
+</script>
