@@ -6522,6 +6522,7 @@ ul, ol {
   padding-bottom: 213px;
   padding-right: 20px;
   padding-left: 20px;
+  background: #0E0914;
 }
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .the-game {
@@ -6536,14 +6537,15 @@ ul, ol {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
-  right: 0;
-  top: 0;
+  top: 100px;
   display: block;
   background: url("Explore-OC__asset-v15-6908x4060.png");
   background-repeat: no-repeat;
   background-position: left;
   background-size: cover;
+  max-width: 1727px;
+  width: 100%;
+  height: 1015px;
 }
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .the-game::before {
@@ -7239,6 +7241,13 @@ ul, ol {
   height: 1065px;
   position: relative;
   padding-top: 121px;
+  padding-left: 20px;
+  background: url("Explore-OC__asset-v23-12000x3394.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: -10px 0;
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife {
@@ -7251,51 +7260,53 @@ ul, ol {
   content: "";
   position: absolute;
   display: block;
-  top: 0;
-  right: 0;
+  bottom: 0;
   left: 0;
-  height: 1065px;
-  background: url("Explore-OC__asset-v21-3800x2130.png");
+  right: 0;
+  height: 1148px;
+  background: url("Explore-OC__asset-v24-12000x3446.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  z-index: -1;
+  z-index: 2;
 }
-@media only screen and (max-width: 1440px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife::before {
-    background-position: left;
-  }
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container {
+  position: relative;
+  z-index: 3;
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) {
   flex-direction: column;
-  row-gap: 40px;
-  align-items: center;
+  row-gap: 475px;
+  align-items: flex-start;
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
   color: #FFF;
-  text-align: center;
+  text-align: left;
   font-family: var(--primaryFontFamily);
-  font-size: 80px;
+  font-size: 96px;
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
 }
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
-    font-size: 50px;
-  }
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) span {
+  color: #FFF;
+  font-family: var(--primaryFontFamily);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
   color: #FFF;
-  text-align: center;
+  text-align: left;
   font-family: var(--primaryFontFamily);
   font-size: 32px;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
-  max-width: 773px;
+  max-width: 578px;
   width: 100%;
-  min-width: 773px;
+  min-width: 578px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
@@ -7419,6 +7430,7 @@ ul, ol {
   background-color: transparent;
   height: 985px;
   padding: 50px 20px;
+  background: #0E0914;
 }
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2 {
@@ -7440,6 +7452,7 @@ ul, ol {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  top: -11px;
 }
 @media only screen and (min-width: 1920px) {
   .db-page--explore-oc .db-section--explore-oc-coming-soon-2::before {
