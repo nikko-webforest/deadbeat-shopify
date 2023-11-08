@@ -1818,26 +1818,6 @@
       }
     }
 
-    &::after {
-      display: none;
-
-      @media only screen and (max-width: 480px) {
-        content: "";
-        position: absolute;
-        display: block;
-        left: 0;
-        right: 0;
-        background-image: url('Explore-OC__asset-v10-750x1427.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        object-fit: cover;
-        z-index: 1;
-        height: 713px;
-        top:1453px;
-      }
-    }
-
 
     .explore-oc {
       position: relative;
@@ -2510,6 +2490,10 @@
       padding-left: 20px;
       background: #0E0914;
 
+      @media only screen and (max-width: 768px) {
+        padding-bottom: 100px;
+      }
+
       @media only screen and (max-width: 480px) {
         padding-top: 20px;
         padding-right: 20px;
@@ -2548,6 +2532,7 @@
           height: 412px;
           background-position: left;
           background-size: cover;
+          top:0;
         }
       }
 
@@ -3001,11 +2986,57 @@
 
     .after-life {
       display: none;
-      padding-top: 65px;
-      // padding-bottom: 420px;
-      padding-bottom: 355px;
+      padding-top: 45px;
+      height: 456px;
       padding-left: 20px;
       padding-right: 20px;
+      background: url('Explore-OC__asset-v27-1500x1198.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        left: 0;
+        top:0;
+        display: block;
+        height: 148px;
+        background: linear-gradient(180deg, #080410 58.45%, rgba(7, 4, 16, 0.00) 100%);
+        z-index: -1;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        height: 158px;
+        background: url('Explore-OC__asset-v28-1500x404.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+      }
+
+      .db-hero-inn-img {
+        position: absolute;
+        max-width: 287px;
+        width: 100%;
+        height: 479px;
+        left:50%;
+        bottom:0;
+
+        img {
+          display: block;
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
 
       @media only screen and (max-width: 480px) {
         display: block;
@@ -3014,7 +3045,7 @@
       }
 
       .db-container {
-
+        position: relative;
         .db-row {
           &:nth-child(1) {
             row-gap: 15px;
@@ -3053,7 +3084,7 @@
     .roadmap {
       display: none;
       height: 569px;
-      padding-top: 14px;
+      padding-top: 34px;
       padding-left: 22px;
       padding-right: 22px;
       @media only screen and (max-width: 480px) {
@@ -3366,7 +3397,10 @@
     padding-left: unset;
     padding-right: unset;
     padding-top: unset;
-    
+
+    @media only screen and (max-width: 1080px) {
+      height: 1875px;
+    }
 
     @media only screen and (max-width: 480px) {
       display: none;
@@ -3385,12 +3419,40 @@
       // background-size: auto 100%;
       background-attachment: fixed;
       margin: -10px 0;
-      
+      @media only screen and (max-width: 1080px) {
+        background: url('Explore-OC__asset-v25-1976x1486.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size:cover;
+        height: 743px;
+        padding-top: 65px;  
+      }
 
       @media only screen and (max-width: 768px) {
         padding-left: 20px;
         padding-right: 20px;
-        padding-top: 70px;
+        background-position: left;
+      }
+
+      .db-hero-inn-img {
+        position: absolute;
+        display: none;
+        left: 50%;
+        bottom:0;
+        max-width: 319px;
+        width: 100%;
+        height: 534px;
+
+        @media only screen and (max-width: 1080px) {
+          display: block;
+        }
+
+        img {
+          object-fit: cover;
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
       }
 
       &::before {
@@ -3406,6 +3468,33 @@
         background-position: center;
         background-size: cover;
         z-index: 2;
+
+        @media only screen and (max-width: 1080px) {
+          // display: none;
+          background: none;
+          top:0;
+          bottom:unset;
+          height: 243px;
+          background: linear-gradient(180deg, #070510 0%, rgba(7, 5, 16, 0.82) 32.1%, rgba(7, 5, 16, 0.66) 56.33%, rgba(7, 5, 16, 0.00) 100%);
+        }
+      }
+
+      &::after {
+        @media only screen and (max-width: 1080px) {
+          content: "";
+          position: absolute;
+          display: block;
+          bottom: 0;
+          left:0;
+          right: 0;
+          height: 202px;
+          z-index: 2;
+          background: url('Explore-OC__asset-v26-1976x406.png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size:cover;
+
+        }
       }
 
       // &::before {
@@ -3454,6 +3543,11 @@
             flex-direction: column;
             row-gap: 475px;
             align-items: flex-start;
+            @media only screen and (max-width: 1080px) {
+              row-gap: 24px;
+              align-items: center;
+            }
+
             .db-col {
 
               &:nth-child(1) {            
@@ -3464,7 +3558,10 @@
                 font-style: normal;
                 font-weight: 700;
                 line-height: 100%;
-
+                @media only screen and (max-width: 1080px) {
+                  font-size: 39px;
+                  text-align: center;
+                }
                 span {
                   color: #FFF;
                   font-family: $primaryFontFamily;
@@ -3472,7 +3569,12 @@
                   font-style: normal;
                   font-weight: 700;
                   line-height: 100%;
+                  @media only screen and (max-width: 1080px) {
+                    font-size: 39px;
+                  }
                 }
+
+
                 // @media only screen and (max-width: 768px) {
                 //   font-size: 50px;
                 // }
@@ -3501,11 +3603,18 @@
                 width: 100%;
                 min-width: 578px;
 
-                @media only screen and (max-width: 768px) {
-                  font-size: 25px;
-                  max-width: 550px;
-                  min-width: unset;
+                @media only screen and (max-width: 1080px) {
+                  font-size: 15px;
+                  max-width: 396px;
+                  min-width: 396px;
+                  text-align: center;
                 }
+
+                // @media only screen and (max-width: 768px) {
+                //   font-size: 25px;
+                //   max-width: 550px;
+                //   min-width: unset;
+                // }
               }
             }
           }
@@ -3514,7 +3623,8 @@
     }
 
     .roadmap {
-      background-color: #0E0914;
+      // background-color: #0E0914;
+      background-color: #0F0918;
       height: 1132px;
       position: relative;
       display: flex;

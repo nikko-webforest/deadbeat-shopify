@@ -2421,7 +2421,7 @@ ul, ol {
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(1) p {
   color: #CAC7D0;
-  font-family: var(--secondaryFontFamily);
+  font-family: sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -5865,26 +5865,6 @@ ul, ol {
     height: 1338px;
   }
 }
-.db-page--explore-oc .db-section--explore-oc-the-game::after {
-  display: none;
-}
-@media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-the-game::after {
-    content: "";
-    position: absolute;
-    display: block;
-    left: 0;
-    right: 0;
-    background-image: url("Explore-OC__asset-v10-750x1427.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
-    z-index: 1;
-    height: 713px;
-    top: 1453px;
-  }
-}
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc {
   position: relative;
   z-index: 2;
@@ -6524,6 +6504,11 @@ ul, ol {
   padding-left: 20px;
   background: #0E0914;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--explore-oc-the-game .the-game {
+    padding-bottom: 100px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .the-game {
     padding-top: 20px;
@@ -6556,6 +6541,7 @@ ul, ol {
     height: 412px;
     background-position: left;
     background-size: cover;
+    top: 0;
   }
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .the-game .db-container {
@@ -6903,10 +6889,52 @@ ul, ol {
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .after-life {
   display: none;
-  padding-top: 65px;
-  padding-bottom: 355px;
+  padding-top: 45px;
+  height: 456px;
   padding-left: 20px;
   padding-right: 20px;
+  background: url("Explore-OC__asset-v27-1500x1198.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .after-life::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  display: block;
+  height: 148px;
+  background: linear-gradient(180deg, #080410 58.45%, rgba(7, 4, 16, 0) 100%);
+  z-index: -1;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .after-life::after {
+  content: "";
+  position: absolute;
+  display: block;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 158px;
+  background: url("Explore-OC__asset-v28-1500x404.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .after-life .db-hero-inn-img {
+  position: absolute;
+  max-width: 287px;
+  width: 100%;
+  height: 479px;
+  left: 50%;
+  bottom: 0;
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .after-life .db-hero-inn-img img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-the-game .after-life {
@@ -6914,6 +6942,9 @@ ul, ol {
     position: relative;
     z-index: 3;
   }
+}
+.db-page--explore-oc .db-section--explore-oc-the-game .after-life .db-container {
+  position: relative;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .after-life .db-container .db-row:nth-child(1) {
   row-gap: 15px;
@@ -6944,7 +6975,7 @@ ul, ol {
 .db-page--explore-oc .db-section--explore-oc-the-game .roadmap {
   display: none;
   height: 569px;
-  padding-top: 14px;
+  padding-top: 34px;
   padding-left: 22px;
   padding-right: 22px;
 }
@@ -7232,6 +7263,11 @@ ul, ol {
   padding-right: unset;
   padding-top: unset;
 }
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 {
+    height: 1875px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 {
     display: none;
@@ -7249,12 +7285,42 @@ ul, ol {
   background-attachment: fixed;
   margin: -10px 0;
 }
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife {
+    background: url("Explore-OC__asset-v25-1976x1486.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 743px;
+    padding-top: 65px;
+  }
+}
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife {
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 70px;
+    background-position: left;
   }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-hero-inn-img {
+  position: absolute;
+  display: none;
+  left: 50%;
+  bottom: 0;
+  max-width: 319px;
+  width: 100%;
+  height: 534px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-hero-inn-img {
+    display: block;
+  }
+}
+.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-hero-inn-img img {
+  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife::before {
   content: "";
@@ -7270,6 +7336,31 @@ ul, ol {
   background-size: cover;
   z-index: 2;
 }
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife::before {
+    background: none;
+    top: 0;
+    bottom: unset;
+    height: 243px;
+    background: linear-gradient(180deg, #070510 0%, rgba(7, 5, 16, 0.82) 32.1%, rgba(7, 5, 16, 0.66) 56.33%, rgba(7, 5, 16, 0) 100%);
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife::after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 202px;
+    z-index: 2;
+    background: url("Explore-OC__asset-v26-1976x406.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container {
   position: relative;
   z-index: 3;
@@ -7278,6 +7369,12 @@ ul, ol {
   flex-direction: column;
   row-gap: 475px;
   align-items: flex-start;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) {
+    row-gap: 24px;
+    align-items: center;
+  }
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
   color: #FFF;
@@ -7288,6 +7385,12 @@ ul, ol {
   font-weight: 700;
   line-height: 100%;
 }
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
+    font-size: 39px;
+    text-align: center;
+  }
+}
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) span {
   color: #FFF;
   font-family: var(--primaryFontFamily);
@@ -7295,6 +7398,11 @@ ul, ol {
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) span {
+    font-size: 39px;
+  }
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
   color: #FFF;
@@ -7308,15 +7416,16 @@ ul, ol {
   width: 100%;
   min-width: 578px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1080px) {
   .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-    font-size: 25px;
-    max-width: 550px;
-    min-width: unset;
+    font-size: 15px;
+    max-width: 396px;
+    min-width: 396px;
+    text-align: center;
   }
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap {
-  background-color: #0E0914;
+  background-color: #0F0918;
   height: 1132px;
   position: relative;
   display: flex;
