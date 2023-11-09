@@ -7066,6 +7066,196 @@ ul, ol {
   line-height: 150%;
   align-self: center;
 }
+.db-page--explore-oc .db-section--after-life {
+  position: relative;
+  height: 100vh;
+  padding: 0;
+}
+.db-page--explore-oc .db-section--after-life .db-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  height: 100%;
+}
+.db-page--explore-oc .db-section--after-life .db-bg-container .db-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  object-position: center;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.db-page--explore-oc .db-section--after-life .db-bg-container .db-bg-video.--ds-view {
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--after-life .db-bg-container .db-bg-video.--ds-view {
+    display: none;
+  }
+}
+.db-page--explore-oc .db-section--after-life .db-bg-container .db-bg-video.--mb-view {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--after-life .db-bg-container .db-bg-video.--mb-view {
+    display: block;
+  }
+}
+.db-page--explore-oc .db-section--after-life .db-container {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+  padding: 60px 20px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--after-life .db-container {
+    padding: 50px 20px;
+  }
+}
+.db-page--explore-oc .db-section--after-life .db-container h2 {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 88px;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.25em;
+  letter-spacing: -3.52px;
+  margin: 0 auto 32px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--after-life .db-container h2 {
+    font-size: 50px;
+  }
+}
+.db-page--explore-oc .db-section--after-life .db-container p {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5em;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--after-life .db-container p {
+    font-size: 18px;
+  }
+}
+.db-page--explore-oc .db-section--road-map {
+  position: relative;
+  height: 100vh;
+  padding: 0;
+}
+.db-page--explore-oc .db-section--road-map .db-bg-container {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.db-page--explore-oc .db-section--road-map .db-bg-container .db-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  object-position: center;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.db-page--explore-oc .db-section--road-map .db-bg-container .db-bg-video.--ds-view {
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--road-map .db-bg-container .db-bg-video.--ds-view {
+    display: none;
+  }
+}
+.db-page--explore-oc .db-section--road-map .db-bg-container .db-bg-video.--mb-view {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--road-map .db-bg-container .db-bg-video.--mb-view {
+    display: block;
+  }
+}
+.db-page--explore-oc .db-section--road-map .db-bg-container::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  background: linear-gradient(180deg, #0F0918 0%, rgba(15, 9, 23, 0) 100%);
+  height: 287px;
+}
+.db-page--explore-oc .db-section--road-map .db-bg-container::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 228px;
+  display: block;
+  background: linear-gradient(0deg, #100A16 0%, rgba(16, 10, 22, 0) 100%);
+}
+.db-page--explore-oc .db-section--road-map .db-container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 75px 20px;
+}
+.db-page--explore-oc .db-section--road-map .db-container .db-row {
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100%;
+}
+.db-page--explore-oc .db-section--road-map .db-container .db-row .db-col {
+  width: 100%;
+}
+.db-page--explore-oc .db-section--road-map .db-container .db-row .db-col h2 {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  text-shadow: 1.7687277794px 1.7687277794px 13.2654590607px rgba(0, 0, 0, 0.15);
+  line-height: 1.1em;
+  letter-spacing: -1.92px;
+  margin: 0 0 8px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--road-map .db-container .db-row .db-col h2 {
+    font-size: 35px;
+  }
+}
+.db-page--explore-oc .db-section--road-map .db-container .db-row .db-col p {
+  color: var(--whiteColor);
+  font-family: var(--primaryFontFamily);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  line-height: 1.5em;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--road-map .db-container .db-row .db-col p {
+    font-size: 18px;
+  }
+}
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap {
   position: relative;
   height: 2276px;
@@ -7249,283 +7439,6 @@ ul, ol {
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap .roadmap .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
   color: var(--whiteColor);
-  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
-  font-family: var(--primaryFontFamily);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%;
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 {
-  position: relative;
-  height: 2197px;
-  padding-left: unset;
-  padding-right: unset;
-  padding-top: unset;
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 {
-    height: 1875px;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 {
-    display: none;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife {
-  height: 1065px;
-  position: relative;
-  padding-top: 121px;
-  padding-left: 20px;
-  background: url("Explore-OC__asset-v23-12000x3394.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  margin: -10px 0;
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife {
-    background: url("Explore-OC__asset-v25-1976x1486.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 743px;
-    padding-top: 65px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife {
-    padding-left: 20px;
-    padding-right: 20px;
-    background-position: left;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-hero-inn-img {
-  position: absolute;
-  display: none;
-  left: 50%;
-  bottom: 0;
-  max-width: 319px;
-  width: 100%;
-  height: 534px;
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-hero-inn-img {
-    display: block;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-hero-inn-img img {
-  object-fit: cover;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife::before {
-  content: "";
-  position: absolute;
-  display: block;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1148px;
-  background: url("Explore-OC__asset-v24-12000x3446.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  z-index: 2;
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife::before {
-    background: none;
-    top: 0;
-    bottom: unset;
-    height: 243px;
-    background: linear-gradient(180deg, #070510 0%, rgba(7, 5, 16, 0.82) 32.1%, rgba(7, 5, 16, 0.66) 56.33%, rgba(7, 5, 16, 0) 100%);
-  }
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife::after {
-    content: "";
-    position: absolute;
-    display: block;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 202px;
-    z-index: 2;
-    background: url("Explore-OC__asset-v26-1976x406.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container {
-  position: relative;
-  z-index: 3;
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) {
-  flex-direction: column;
-  row-gap: 475px;
-  align-items: flex-start;
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) {
-    row-gap: 24px;
-    align-items: center;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
-  color: #FFF;
-  text-align: left;
-  font-family: var(--primaryFontFamily);
-  font-size: 96px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
-    font-size: 39px;
-    text-align: center;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) span {
-  color: #FFF;
-  font-family: var(--primaryFontFamily);
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(1) span {
-    font-size: 39px;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-  color: #FFF;
-  text-align: left;
-  font-family: var(--primaryFontFamily);
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%;
-  max-width: 578px;
-  width: 100%;
-  min-width: 578px;
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .afterlife .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-    font-size: 15px;
-    max-width: 396px;
-    min-width: 396px;
-    text-align: center;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap {
-  background-color: #0F0918;
-  height: 1132px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 77px;
-}
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap {
-    justify-content: center;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: 1070px;
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  display: block;
-  object-position: center;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video.--ds-view {
-  display: block;
-}
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video.--ds-view {
-    display: none;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video.--mb-view {
-  display: none;
-}
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container .db-bg-video.--mb-view {
-    display: block;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container::before {
-  content: "";
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(180deg, #0F0918 0%, rgba(15, 9, 23, 0) 100%);
-  z-index: 2;
-  height: 287px;
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .roadmap-bg-video-container::after {
-  content: "";
-  position: absolute;
-  display: block;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 228px;
-  background: linear-gradient(0deg, #100A16 0%, rgba(16, 10, 22, 0) 100%);
-  z-index: 2;
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container {
-  z-index: 3;
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container .db-row:nth-child(1) {
-  flex-direction: column;
-  row-gap: 8px;
-}
-@media only screen and (max-width: 768px) {
-  .db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container .db-row:nth-child(1) {
-    max-width: 500px;
-    width: 100%;
-  }
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container .db-row:nth-child(1) .db-col:nth-child(1) {
-  color: #FFF;
-  text-shadow: 1.7687277794px 1.7687277794px 13.2654590607px rgba(0, 0, 0, 0.15);
-  font-family: var(--primaryFontFamily);
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 100%; /* 48px */
-  letter-spacing: -1.92px;
-}
-.db-page--explore-oc .db-section--explore-oc-after-life-roadmap2 .roadmap .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
-  color: #FFF;
   text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--primaryFontFamily);
   font-size: 24px;
