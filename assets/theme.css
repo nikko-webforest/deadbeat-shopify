@@ -7131,6 +7131,12 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--after-life .db-container h2 {
     font-size: 50px;
+    margin: 0 auto 18px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--explore-oc .db-section--after-life .db-container h2 {
+    font-size: 35px;
   }
 }
 .db-page--explore-oc .db-section--after-life .db-container p {
@@ -7225,6 +7231,11 @@ ul, ol {
   align-items: flex-end;
   height: 100%;
 }
+@media only screen and (max-width: 768px) {
+  .db-page--explore-oc .db-section--road-map .db-container .db-row {
+    align-items: flex-start;
+  }
+}
 .db-page--explore-oc .db-section--road-map .db-container .db-row .db-col {
   width: 100%;
 }
@@ -7242,6 +7253,7 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--road-map .db-container .db-row .db-col h2 {
     font-size: 35px;
+    text-align: center;
   }
 }
 .db-page--explore-oc .db-section--road-map .db-container .db-row .db-col p {
@@ -7256,6 +7268,7 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--explore-oc .db-section--road-map .db-container .db-row .db-col p {
     font-size: 18px;
+    text-align: center;
   }
 }
 .db-page--explore-oc .db-section--explore-oc-after-life-roadmap {

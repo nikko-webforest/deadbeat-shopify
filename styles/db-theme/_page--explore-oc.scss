@@ -3252,6 +3252,11 @@
 
         @media only screen and (max-width: 768px) {
           font-size: 50px;
+          margin: 0 auto 18px;
+        }
+
+        @media only screen and (max-width: 480px) {
+          font-size: 35px;
         }
       }
 
@@ -3354,6 +3359,10 @@
         align-items: flex-end;
         height: 100%;
 
+        @media only screen and (max-width: 768px) {
+          align-items: flex-start;
+        }
+
         .db-col {
           width: 100%;
 
@@ -3370,6 +3379,7 @@
 
             @media only screen and (max-width: 768px) {
               font-size: 35px;
+              text-align: center;
             }
           }
 
@@ -3384,6 +3394,7 @@
 
             @media only screen and (max-width: 768px) {
               font-size: 18px;
+              text-align: center;
             }
           }
         }
