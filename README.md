@@ -1,2 +1,2 @@
 # deadbeat-shopify
-Website Shopify
+Deadbeat Shopify Production Theme
