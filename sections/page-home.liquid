@@ -93,10 +93,16 @@
       <video class="db-bg-video"
         id=""
         poster=""
-        src="{{ 'DB_bg-radio-station.mp4' | asset_url }}"
+        allow="autoplay"
+        preload="auto"
+        control="false"
         autoplay="true"
+        volume="0"
+        playsinline
         muted
         loop>
+        <source type="video/mp4" src="https://cdn.shopify.com/videos/c/o/v/2820077309c546bc80c521efca8ed9bd.mp4">
+        <source type="video/webm" src="https://cdn.shopify.com/videos/c/o/v/e77f47c17e6845c8a5093f2e3fde59bf.webm">
       </video>
       <div class="db-bg-overlay"></div>
       <div class="db-socials">
