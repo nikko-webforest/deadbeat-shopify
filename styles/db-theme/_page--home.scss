@@ -981,8 +981,8 @@
                           }
 
                           .db-video {
-                            opacity: 0;
-                            z-index: -1;
+                            // opacity: 0;
+                            // z-index: -1;
 
                             top: 0;
                             left: 0;
@@ -999,7 +999,7 @@
                             justify-content: space-between;
                             align-items: flex-start;
                             
-                            transition: opacity 600ms ease-in-out 400ms;
+                            // transition: opacity 600ms ease-in-out 400ms;
 
                             @media only screen and (max-width: 480px) {
                               border: 6px solid #242031;
@@ -1008,11 +1008,11 @@
                               justify-content: flex-end;
                             }
 
-                            &.active {
-                              z-index: 1;
-                              opacity: 1;
-                              transition: opacity 600ms ease-in-out 400ms;
-                            }
+                            // &.active {
+                            //   z-index: 1;
+                            //   opacity: 1;
+                            //   transition: opacity 600ms ease-in-out 400ms;
+                            // }
 
 
                             figure {
@@ -1101,6 +1101,7 @@
                               }
 
                               .project-trailer {
+                                color: #fff;
                                 font-family: $primaryFontFamily;
                                 font-size: 30px;
                                 font-style: normal;
@@ -1108,15 +1109,7 @@
                                 line-height: 100%; /* 50px */
                                 text-transform: uppercase;
 
-                                span {
-                                  &:nth-child(1) {
-                                    color: #B522EB;
-                                  }
-
-                                  &:nth-child(2) {
-                                    color: #B1FF29;
-                                  }
-                                }
+                                
                               }
                             }
 

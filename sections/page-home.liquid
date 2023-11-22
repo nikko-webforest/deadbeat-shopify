@@ -172,7 +172,7 @@
                   {% endcomment %}
 
                   <div class="db-widget-col">
-                    <div class="db-video" :class="activeVideoPlayer">
+                    <div class="db-video">
 
                       <figure id="videoContainer" data-fullscreen="false" @click="handleVideoClick">
                         <video id="video"
@@ -227,7 +227,7 @@
 
                     </div>
 
-                    <div class="db-video-widget" @click="toggleVideo" :class="activeProjectTrailerWidget">
+                    {% comment %} <div class="db-video-widget" @click="toggleVideo" :class="activeProjectTrailerWidget">
                       <div class="video-widget">
                         <div class="db-play">
                             <svg class="db-svg"
@@ -247,25 +247,7 @@
                                 fill="#B1FF29">
                               </path>
                             </svg>
-                            {% comment %} <svg class="db-svg"
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="78"
-                              height="79"
-                              viewBox="0 0 78 79"
-                              fill="none">
-                              <ellipse id="ellipse_01"
-                                cx="39.2908"
-                                cy="39.0925"
-                                rx="37.9808"
-                                ry="38.4231"
-                                stroke="#B1FF29"
-                                stroke-width="1.26355">
-                              </ellipse>
-                              <path id="path_01"
-                                d="M51.9516 39.0925C51.9524 39.427 51.8673 39.756 51.7044 40.0475C51.5416 40.3391 51.3065 40.5832 51.0222 40.7562L33.4032 51.6102C33.1062 51.7933 32.7659 51.8933 32.4177 51.8998C32.0694 51.9063 31.7257 51.8191 31.4222 51.6471C31.1215 51.4778 30.871 51.2309 30.6965 50.9318C30.522 50.6327 30.4297 50.2922 30.4292 49.9453V28.2397C30.4297 27.8928 30.522 27.5523 30.6965 27.2532C30.871 26.9541 31.1215 26.7072 31.4222 26.5379C31.7257 26.3659 32.0694 26.2786 32.4177 26.2851C32.7659 26.2916 33.1062 26.3916 33.4032 26.5748L51.0222 37.4288C51.3065 37.6018 51.5416 37.8459 51.7044 38.1374C51.8673 38.429 51.9524 38.758 51.9516 39.0925Z"
-                                fill="#B1FF29">
-                              </path>
-                            </svg> {% endcomment %}
+                            
                         </div>
 
                         <div class="db-project-trailer">
@@ -277,7 +259,7 @@
                             </span>
                         </div>
                       </div>
-                    </div>
+                    </div> {% endcomment %}
                   </div>
 
                   <div class="db-widget-col">

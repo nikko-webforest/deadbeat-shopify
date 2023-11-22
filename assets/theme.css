@@ -2620,8 +2620,6 @@ ul, ol {
   }
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video {
-  opacity: 0;
-  z-index: -1;
   top: 0;
   left: 0;
   right: 0;
@@ -2636,7 +2634,6 @@ ul, ol {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  transition: opacity 600ms ease-in-out 400ms;
 }
 @media only screen and (max-width: 480px) {
   .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video {
@@ -2645,11 +2642,6 @@ ul, ol {
     border-radius: 15px;
     justify-content: flex-end;
   }
-}
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video.active {
-  z-index: 1;
-  opacity: 1;
-  transition: opacity 600ms ease-in-out 400ms;
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video figure {
   position: absolute;
@@ -2729,18 +2721,13 @@ ul, ol {
   opacity: 0;
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video .db-project-trailer .project-trailer {
+  color: #fff;
   font-family: var(--primaryFontFamily);
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
   line-height: 100%; /* 50px */
   text-transform: uppercase;
-}
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video .db-project-trailer .project-trailer span:nth-child(1) {
-  color: #B522EB;
-}
-.db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video .db-project-trailer .project-trailer span:nth-child(2) {
-  color: #B1FF29;
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video .db-duration-container {
   position: relative;
