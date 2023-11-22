@@ -110,7 +110,7 @@
       </div>
     </div>
  
-    <figure v-if="isActiveVideo">
+    {% comment %} <figure v-if="isActiveVideo">
       <video controls preload="metadata" poster="{{ 'Explore-OC__asset-v01-2880x1620.png' | asset_url }}">
         <source src="https://cdn.shopify.com/videos/c/o/v/f29d9162681349ebb6dc586b7f45ce2c.mp4" type="video/mp4"/>
       </video>
@@ -124,7 +124,7 @@
         </clipPath>
         </defs>
       </svg>
-    </figure>
+    </figure> {% endcomment %}
 
     <div class="db-container">
       <div class="db-row">
@@ -172,12 +172,117 @@
                   {% endcomment %}
 
                   <div class="db-widget-col">
-                    {% render 'widget--columbus' %}
+                    <div class="db-video" :class="activeVideoPlayer">
+
+                      <figure id="videoContainer" data-fullscreen="false" @click="handleVideoClick">
+                        <video id="video"
+                          preload="metadata"
+                          ref="video"
+                          poster="{{ 'Explore-OC__asset-v01-2880x1620.png' | asset_url }}"
+                          @play="handlePlay"
+                          @pause="handlePause"
+                          @loadedmetadata="handleLoadedMetaData"
+                          @timeupdate="handleTimeUpdate"
+                        >
+                          <source src="https://cdn.shopify.com/videos/c/o/v/f29d9162681349ebb6dc586b7f45ce2c.mp4" type="video/mp4"/>
+                        </video>
+                      </figure>
+
+                      <div class="play-button" @click="handleVideoClick" :class="activePlayButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62" fill="none" class="db-svg">
+                          <circle cx="31" cy="31" r="30" stroke="#B1FF29"/>
+                          <path d="M41 31C41.0006 31.2612 40.9334 31.5181 40.8047 31.7457C40.6761 31.9733 40.4905 32.1639 40.2659 32.299L26.3491 40.7736C26.1145 40.9166 25.8457 40.9947 25.5706 40.9997C25.2956 41.0048 25.0241 40.9367 24.7843 40.8024C24.5468 40.6702 24.349 40.4775 24.2111 40.2439C24.0733 40.0104 24.0004 39.7445 24 39.4736V22.5264C24.0004 22.2555 24.0733 21.9896 24.2111 21.7561C24.349 21.5225 24.5468 21.3298 24.7843 21.1976C25.0241 21.0633 25.2956 20.9952 25.5706 21.0003C25.8457 21.0053 26.1145 21.0834 26.3491 21.2264L40.2659 29.701C40.4905 29.8361 40.6761 30.0267 40.8047 30.2543C40.9334 30.4819 41.0006 30.7388 41 31Z" fill="#B1FF29"/>
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" fill="none" class="db-svg">
+                          <path d="M18.4143 11.6421L1.63816 1.38999C1.35867 1.21918 1 1.42034 1 1.74789V22.2521C1 22.5797 1.35866 22.7808 1.63816 22.61L18.4143 12.3579C18.682 12.1944 18.682 11.8056 18.4143 11.6421Z" stroke="#B1FF29" stroke-linecap="round"/>
+                        </svg>
+                      </div>
+
+                      <div class="db-project-trailer" :class="activeProjectTrailer">
+                        <div class="project-trailer">
+                          <span>
+                            PROJECT
+                          </span>
+
+                          <span>
+                            TRAILER
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="db-duration-container">
+                        <div class="progress">
+                          <progress id="progress" value="0" min="0" ref="progress" @click="handleProgress">
+                            <span id="progress-bar" ref="progressBar"></span>
+                          </progress>
+                        </div>
+
+                        <div class="duration">
+                          <div class="current-time" ref="currentTime">0:00</div>
+                          <div class="total-time" ref="totalTime">10:00</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="db-video-widget" @click="toggleVideo" :class="activeProjectTrailerWidget">
+                      <div class="video-widget">
+                        <div class="db-play">
+                            <svg class="db-svg"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="62"
+                              height="62"
+                              viewBox="0 0 62 62"
+                              fill="none">
+                              <circle id="circle_01"
+                                cx="31.4326"
+                                cy="31"
+                                r="30"
+                                stroke="#B1FF29">
+                              </circle>
+                              <path id="path_01"
+                                d="M41.4326 31C41.4333 31.2612 41.366 31.5181 41.2373 31.7457C41.1087 31.9733 40.9231 32.1639 40.6985 32.299L26.7817 40.7736C26.5471 40.9166 26.2783 40.9947 26.0033 40.9997C25.7282 41.0048 25.4567 40.9367 25.2169 40.8024C24.9794 40.6702 24.7816 40.4775 24.6437 40.2439C24.5059 40.0104 24.433 39.7445 24.4326 39.4736V22.5264C24.433 22.2555 24.5059 21.9896 24.6437 21.7561C24.7816 21.5225 24.9794 21.3298 25.2169 21.1976C25.4567 21.0633 25.7282 20.9952 26.0033 21.0003C26.2783 21.0053 26.5471 21.0834 26.7817 21.2264L40.6985 29.701C40.9231 29.8361 41.1087 30.0267 41.2373 30.2543C41.366 30.4819 41.4333 30.7388 41.4326 31Z"
+                                fill="#B1FF29">
+                              </path>
+                            </svg>
+                            {% comment %} <svg class="db-svg"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="78"
+                              height="79"
+                              viewBox="0 0 78 79"
+                              fill="none">
+                              <ellipse id="ellipse_01"
+                                cx="39.2908"
+                                cy="39.0925"
+                                rx="37.9808"
+                                ry="38.4231"
+                                stroke="#B1FF29"
+                                stroke-width="1.26355">
+                              </ellipse>
+                              <path id="path_01"
+                                d="M51.9516 39.0925C51.9524 39.427 51.8673 39.756 51.7044 40.0475C51.5416 40.3391 51.3065 40.5832 51.0222 40.7562L33.4032 51.6102C33.1062 51.7933 32.7659 51.8933 32.4177 51.8998C32.0694 51.9063 31.7257 51.8191 31.4222 51.6471C31.1215 51.4778 30.871 51.2309 30.6965 50.9318C30.522 50.6327 30.4297 50.2922 30.4292 49.9453V28.2397C30.4297 27.8928 30.522 27.5523 30.6965 27.2532C30.871 26.9541 31.1215 26.7072 31.4222 26.5379C31.7257 26.3659 32.0694 26.2786 32.4177 26.2851C32.7659 26.2916 33.1062 26.3916 33.4032 26.5748L51.0222 37.4288C51.3065 37.6018 51.5416 37.8459 51.7044 38.1374C51.8673 38.429 51.9524 38.758 51.9516 39.0925Z"
+                                fill="#B1FF29">
+                              </path>
+                            </svg> {% endcomment %}
+                        </div>
+
+                        <div class="db-project-trailer">
+                            <span>
+                              PROJECT
+                            </span>
+                            <span>
+                              TRAILER
+                            </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="db-widget-col">
                     <div class="db-widget-inner-row">
-                      <div class="db-widget-inner-col">
+                      {% comment %} <div class="db-widget-inner-col">
                         <div class="db-widget-project-trailer"
                           @click="toggleVideo">
                           <div class="db-play">
@@ -227,6 +332,10 @@
                             </span>
                           </div>
                         </div>
+                      </div> {% endcomment %}
+                      <div class="db-widget-inner-col">
+                        {% render 'widget--columbus2' %}
+                        {% render 'widget--columbus' %}
                       </div>
                       <div class="db-widget-inner-col">
                         <iframe src="https://open.spotify.com/embed/playlist/3KWtOgG4qoKIoFO9Ls6bvk?utm_source=generator&theme=0"
@@ -293,7 +402,14 @@
     name: 'DB Page Home Options',
     data() {
       return {
+        windowSize: {
+          windowHeight: 0,
+          windowWidth: 0,
+        },
         pageLoader: true,
+        isActiveVideo: false,
+        isMutedVideo: false,
+        isOpenVideo: false,
         now_playing_endpoint: 'https://api.spotify.com/v1/me/player/currently-playing',
         token_endpoint:'https://accounts.spotify.com/api/token',
         client_id: 'd73738945439475087703b513466d0d7',
@@ -333,7 +449,6 @@
         is_paused: true,
         is_active: false,
         track: null,
-        isActiveVideo:false,
         playlist: [],
       }
     },
@@ -391,27 +506,165 @@
       device(newValue, oldValue) {
         this.autoConnect(newValue, oldValue);
       },
+      windowSize(newValue, oldValue) {
+        console.log(typeof `${newValue.windowWidth}`);
+
+        const windowWidth = Number(newValue.windowWidth);
+
+        if (windowWidth <= 768) {
+          this.isOpenVideo = true;
+        }
+      }
     },
     mounted() {
+
+      const handleWindowSize = () => {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        // console.log({windowWidth, windowHeight});
+        this.windowSize = {
+          windowWidth,
+          windowHeight
+        }        
+      }
+
+      window.addEventListener('resize', handleWindowSize);
+
+      handleWindowSize();
+
       this.widgetDragScroll();
     },
     updated() {},
     computed: {
       songUrl() {
         return this.playerState === 'PLAY' || this.playerState === 'PAUSE' ? this.music_player.songUrl : '';
+      },
+      activePlayButton() {
+        if (this.isActiveVideo === false) {
+          
+          return {
+            'hide': false
+          }
+        }
+
+        return {
+          'hide': true
+        }
+      },
+      activeProjectTrailer() {
+        if (this.isActiveVideo === false) {
+          
+          return {
+            'hide': false
+          }
+        }
+
+        return {
+          'hide': true
+        }
+      },
+      activeVideoPlayer() {
+        if (this.isOpenVideo === false) {
+          
+          return {
+            'active': false
+          }
+        }
+
+        return {
+          'active': true
+        }
+      },
+      activeProjectTrailerWidget() {
+        if (this.isOpenVideo === false) {
+          
+          return {
+            'active': true
+          }
+        }
+
+        return {
+          'active': false
+        }
       }
     },
     methods: {
-      toggleVideo() {
-        this.isActiveVideo = !this.isActiveVideo;
-        const headerContainer = document.querySelector('.db-header');
-
-        console.log(headerContainer);
-        if (this.isActiveVideo === true) {
-          headerContainer.style.display = 'none';
+      handleVideoClick() {
+        const video = this.$refs.video;
+        if (video.paused || video.ended) {
+          video.play();
         } else {
-          headerContainer.style.display = 'block';
+          video.pause();
         }
+      },
+      handleTimeUpdate() {
+        const video = this.$refs.video;
+        const progress = this.$refs.progress;
+        const progressBar = this.$refs.progressBar;
+        const currentTime = this.$refs.currentTime;
+
+        if (!progress.getAttribute('max')) {
+          progress.setAttribute('max', video.duration);
+        }
+
+        currentTime.textContent = this.formatDuration(video.currentTime);
+        progress.value = video.currentTime;
+        progressBar.style.width = Math.floor((video.currentTime / video.duration) * 100) + '%';
+      },
+      formatDuration(time) {
+        const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
+          minimumIntegerDigits: 2,
+        })
+
+        const seconds = Math.floor(time % 60);
+        const minutes = Math.floor(time / 60) % 60;
+        const hours = Math.floor(time / 3600);
+
+        if (hours === 0) {
+          return `${minutes}:${leadingZeroFormatter.format(seconds)}`
+        } else {
+          return `${hours}:${leadingZeroFormatter.format(minutes)}:${leadingZeroFormatter.format(seconds)}`;
+        }
+      },
+      handleProgress(e) {
+        const progress = this.$refs.progress;
+        const video = this.$refs.video;
+
+        const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+
+        video.currentTime = scrubTime;
+      },
+      handleLoadedMetaData() {
+        const progress = this.$refs.progress;
+        const video = this.$refs.video;
+        const totalTime = this.$refs.totalTime;
+
+        progress.setAttribute('max', video.duration);
+        totalTime.textContent = this.formatDuration(video.duration);
+      },
+      changeButtonState(type) {
+        const video = this.$refs.video;
+
+        if (type === 'playpause') {
+         if (video.paused || video.ended) {
+          this.isActiveVideo = false;
+         } else {
+          this.isActiveVideo = true;
+         }
+        } else if (type === 'mute') {
+          this.isMutedVideo = !this.isMutedVideo;
+        }
+      },
+      handlePlay() {
+        this.changeButtonState('playpause');
+      },
+      handlePause() {
+        this.changeButtonState('playpause');
+      },
+      toggleVideo() {
+        this.isOpenVideo = !this.isOpenVideo;
+        const headerContainer = document.querySelector('.db-header');
       },
       connectToSpotifyWebSDK() {
         window.onSpotifyWebPlaybackSDKReady = () => {

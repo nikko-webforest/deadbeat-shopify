@@ -9,6 +9,11 @@
   }
 
   &.--columbus {
+    display: none;
+    @media only screen and (max-width: 768px) {
+      display: block;
+    }
+
     .db-widget-box {
       background-image: url('DB_Widget01_bg-v02-1312x886.jpg');
       background-position: bottom;
@@ -76,6 +81,83 @@
           border-color: #D47FF3;
         }
       }
+    }
+  }
+
+  &.--columbus2 {
+
+    display: block;
+
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+
+    .db-widget-box {
+      background-image: url('DB_Widget01_bg-v02-624x590.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      max-width: 312px;
+      width: 100%;
+      min-width: 312px;
+      height: 295px;
+      scale: 1;
+      position: relative;
+      user-select: none;
+      padding-top: 46px;
+      padding-right: 31px;
+      border-radius: 26px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        background-image: url('DB_Widget01_bg-v02-avatar-357x394.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-width: 177px;
+        width: 100%;
+        height: 202px;
+        bottom: 0;
+        left: 10px;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        display: block;
+        box-shadow: unset;
+        background: transparent;
+        width: 100%;
+        height: 100%;
+        border: 3px solid transparent;
+        border-radius: inherit;
+        transition:
+          all 200ms ease-in-out 0ms;
+      }
+
+      &:hover {
+        scale: 1.05;
+
+        &::after {
+          box-shadow:
+            4.07796px 4.07796px 8.15591px #B522EB4D,
+            -4.07796px -4.07796px 8.15591px #B522EB4D,
+            2.03898px 2.03898px 4.07796px #D86EFF99,
+            -2.03898px -2.03898px 4.07796px #D86EFF99;
+          border-color: #D47FF3;
+          z-index: 2;
+        }
+      }
+
+      .db-columbus {
+        display: flex;
+        justify-content: flex-end;
+      }
+
     }
   }
 
