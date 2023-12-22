@@ -1992,6 +1992,9 @@ ul, ol {
   border: 3px solid var(--whiteColor);
 }
 
+.db-page--home {
+  position: relative;
+}
 .db-page--home .spotify-backdrop {
   position: fixed;
   top: 0;
@@ -3114,6 +3117,45 @@ ul, ol {
 .db-page--home .db-section--banner.--animate-now::after {
   display: none;
   transition: display 0ms ease-in-out 2000ms;
+}
+.db-page--home .db-chat-logo {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  max-width: 150px;
+  width: 100%;
+  min-width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 99;
+  background: linear-gradient(180deg, #8D50A0 0%, #B522EB 135.7%);
+  transition: background 200ms ease-in-out 0ms;
+}
+.db-page--home .db-chat-logo:hover {
+  background: linear-gradient(180deg, #7DAA41 0%, #B1FF29 141.83%);
+}
+.db-page--home .db-chat-logo .db-chat-logo--wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.db-page--home .db-chat-logo .db-chat-logo--wrapper > svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.db-page--home .db-chat-logo .db-chat-logo--wrapper > img {
+  position: absolute;
+  max-width: 100px;
+  min-width: 100px;
+  height: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .db-page--about-us .db-section--about-us {

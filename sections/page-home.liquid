@@ -364,12 +364,28 @@
       </div>
     </div>
 
-    <div>
+    {% comment %} <div class="db-chat-modal">
       
       <zapier-interfaces-page-embed page-id='clpbajc5z004klc0o3em0khbg' no-background="false" style='max-width: 900px; height: 500px;'></zapier-interfaces-page-embed>
-    </div> 
+    </div>  {% endcomment %}
       
   </section>
+
+  <div class="db-chat-logo">
+    <div class="db-chat-logo--wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 219 219" fill="none" class="db-svg">
+          <circle cx="109.5" cy="109.5" r="109.5" fill="url(#paint0_radial_4137_2076)"/>
+          <defs>
+          <radialGradient id="paint0_radial_4137_2076" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(109.5 109.5) rotate(90) scale(109.5)">
+          <stop stop-color="white"/>
+          <stop offset="1" stop-color="white" stop-opacity="0"/>
+          </radialGradient>
+          </defs>
+      </svg>
+
+      <img src="{{ 'DB_Main_logo-v03-393x340.png' | asset_url }}" alt="DB Main Logo" class="db-img w-100 h-100">
+    </div>
+  </div>
       
 </div>
 
@@ -1036,6 +1052,5 @@
 
   
   Vue.createApp(DB_Page_Home_Options).mount('.db-page--home');
-  // console.log(Vue.component);
 
 </script>
