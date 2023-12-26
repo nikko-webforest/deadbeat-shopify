@@ -1,0 +1,307 @@
+<main class="db-main site-main">
+
+  {% assign collection = collections['all-products'] %}
+
+  <section class="db-section db-section--merch-store">
+    <div class="db-container">
+      <div class="db-row">
+        <div class="db-col"></div>
+        <div class="db-col">
+          <div class="product-list"
+            v-if="shop.products.pagination.list.length">
+            <div class="product-item"
+              v-for="(productItem, productIndex) in shop.products.pagination.list"
+              :data-product-id="productItem.id">
+              <a class="product-img-link"
+                :title="productItem.title"
+                :href="'/products/'+productItem.handle">
+                <img class="product-img db-img"
+                  :alt="productItem.title"
+                  :title="productItem.title"
+                  :src="productItem.images[0].src"
+                  width=""
+                  height=""/>
+              </a>
+              <div class="product-details">
+                <div class="product-title"
+                  v-text="productItem.title">
+                </div>
+                <div class="product-price">
+                  <span class="current-price"
+                    v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].price">
+                  </span>
+                  <span class="before-price"
+                    v-if="productItem.variants[0].compare_at_price != null"
+                    v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].compare_at_price">
+                  </span>
+                </div>
+              </div>
+              <div class="product-actions">
+                <button class="db-btn--buy-it-now"
+                  type="button"
+                  @click="buyItNow(productItem, $event);">
+                  <span class="label">
+                    BUY IT NOW
+                  </span>
+                </button>
+                <button class="db-btn--add-to-cart"
+                  type="button"
+                  @click="addThisToCart(productItem, $event);">
+                  <svg class="svg-icon-cart db-svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path id="path_01"
+                      d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                      fill="#FFFFFF">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="product-pagination db-pagination">
+            <div class="prev"
+              v-if="shop.products.pagination.current != 1"
+              @click="paginationPrevPage();">
+              <svg class="svg-icon-angle-left db-svg"
+                width="8"
+                height="14"
+                viewBox="0 0 8 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M2.41421 7L7.70711 1.70711C8.09763 1.31658 8.09763 0.683417 7.70711 0.292893C7.31658 -0.0976311 6.68342 -0.0976311 6.29289 0.292893L0.292893 6.29289C-0.0976311 6.68342 -0.0976311 7.31658 0.292893 7.70711L6.29289 13.7071C6.68342 14.0976 7.31658 14.0976 7.70711 13.7071C8.09763 13.3166 8.09763 12.6834 7.70711 12.2929L2.41421 7Z"
+                  fill="#4C5157">
+                </path>
+              </svg>
+            </div>
+            <div class="pages"
+              v-for="number in shop.products.pagination.pages"
+              v-text="number"
+              :class="{ '--current' : shop.products.pagination.current == number }"
+              @click="paginationSelectedPage(number);">
+            </div>
+            <div class="next"
+              v-if="shop.products.pagination.current != shop.products.pagination.total"
+              @click="paginationNextPage()">
+              <svg class="svg-icon-angle-right db-svg"
+                width="8"
+                height="14"
+                viewBox="0 0 8 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
+                  fill="#4C5157">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</main>
+<script>
+  const DB_SF_Page_MerchStore_Options = {
+    name: 'DB SF Page MerchStore Options',
+    data() {
+      return {
+        shop: {
+          products: {
+            count: {{ shop.products_count }},
+            list: {
+              all: [],
+              filtered: [],
+            },
+            pagination: {
+              current: 1,
+              total: 0,
+              pages: [],
+              perPage: 8,
+              startIndex: 0,
+              endIndex: 0,
+              list: [],
+            }
+          },
+        },
+      }
+    },
+    methods: {
+      async initPage() {
+        // console.log('initPage()');
+        var productsLimitPerFetch = 30;
+        var productsTotalPageFetch = Math.ceil(this.shop.products.count / productsLimitPerFetch);
+
+        await this.fetchShopProducts(productsTotalPageFetch);
+
+        await this.paginationSettings();
+        await this.paginationPaginateList();
+        await this.paginationSelectedPage(1);
+
+        this.loadPage();
+      },
+      async fetchShopProducts(productsTotalPageFetch) {
+        // console.log('fetchShopProducts()', productsTotalPageFetch);
+        for (let page = 1; page <= productsTotalPageFetch; page++) {
+          var productEndpoint = `/products.json?page=${page}`;
+
+          const response = await fetch(productEndpoint);
+          const data = await response.json();
+          // console.log('data =', data);
+
+          data.products.forEach((item) => {
+            this.shop.products.list.all.push(item);
+            this.shop.products.list.filtered.push(item);
+          });
+        }
+      },
+      paginationSettings() {
+        this.shop.products.pagination.current = 1;
+        this.shop.products.pagination.total = Math.ceil(this.shop.products.list.filtered.length / this.shop.products.pagination.perPage);
+        this.shop.products.pagination.pages = [];
+
+        for (var n = 1; n <= this.shop.products.pagination.total; n++) {
+          this.shop.products.pagination.pages.push(n);
+        }
+      },
+      paginationSelectedPage(page) {
+        this.shop.products.pagination.current = page;
+        this.shop.products.pagination.startIndex = (page * this.shop.products.pagination.perPage) - (this.shop.products.pagination.perPage);
+        this.shop.products.pagination.endIndex = (page * this.shop.products.pagination.perPage);
+
+        this.paginationPaginateList();
+        this.paginationScrollTop();
+      },
+      paginationPrevPage() {
+        this.shop.products.pagination.current -= 1;
+        this.paginationSelectedPage(this.shop.products.pagination.current);
+      },
+      paginationNextPage() {
+        this.shop.products.pagination.current += 1;
+        this.paginationSelectedPage(this.shop.products.pagination.current);
+      },
+      paginationPaginateList() {
+        this.shop.products.pagination.list = [];
+        this.shop.products.list.filtered.slice(this.shop.products.pagination.startIndex, this.shop.products.pagination.endIndex).forEach((item, index) => {
+          this.shop.products.pagination.list.push(item);
+        });
+
+        this.productsFadeIn(500);
+      },
+      paginationScrollTop() {
+        const scrollTo = document.querySelector('.db-section--merch-store');
+        scrollTo.scrollIntoView();
+      },
+      loadPage() {
+        console.log('loadPage()');
+        setTimeout(() => {
+          document.querySelector('.db-site-loader').classList.remove('--show');
+          document.querySelector('.db-header').classList.add('--animate-now');
+        }, 1000);
+      },
+
+      // product item methods
+      addThisToCart(product, event) {
+        // console.log('addThisToCart() ', product, event);
+
+        let items = [
+          {
+            id: product.variants[0].id,
+            quantity: 1,
+          }
+        ];
+
+        let self = this;
+
+        DB_Cart_App.cart.loader = true;
+
+        $.ajax({
+          type: "POST",
+          url: '/cart/add.js',
+          dataType: 'json',
+          crossDomain: true,
+          data: {
+            items: items
+          },
+          success: (data) => {
+            // console.log('Added this to Cart SUCCESS...', data);
+            self.openCart();
+            DB_Cart_App.fetchCartData();
+            DB_Cart_App.cart.loader = false;
+          },
+          error: (error) => {
+            console.log('Added this to Cart FAILED...', error);
+          }
+        });
+      },
+      buyItNow(product, event) {
+        // console.log('buyItNow()', product, event);
+        
+        let items = [
+          {
+            id: product.variants[0].id,
+            quantity: 1,
+          }
+        ];
+
+        let self = this;
+
+        $.ajax({
+          type: "POST",
+          url: '/cart/add.js',
+          dataType: 'json',
+          crossDomain: true,
+          data: {
+            items: items
+          },
+          success: (data) => {
+            // console.log('Added this to Cart SUCCESS...', data);
+          },
+          error: (error) => {
+            console.log('Added this to Cart FAILED...', error);
+          }
+        });
+
+        setTimeout(() => {
+          window.location = '/checkout';
+        }, 1000);
+      },
+      productsFadeIn(delay) {
+        document.querySelectorAll('.db-section--merch-store .product-list .product-item').forEach((item, index) => {
+          item.classList.remove('--fade-in');
+        });
+
+        setTimeout(() => {
+          document.querySelectorAll('.db-section--merch-store .product-list .product-item').forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('--fade-in');
+            }, (index * 100));
+          });
+        }, delay);
+      },
+
+      // cart methods
+      closeCart() {
+        document.querySelector('body').classList.remove('--show-cart');
+        document.querySelector('body').style.overflowY = 'auto';
+      },
+      openCart() {
+        document.querySelector('body').classList.add('--show-cart');
+        document.querySelector('body').style.overflowY = 'hidden';
+      },
+    },
+    computed: {},
+    created() {
+      this.initPage();
+    },
+    mounted() {},
+    updated() {},
+  };
+
+  Vue.createApp(DB_SF_Page_MerchStore_Options).mount('.db-section--merch-store');
+</script>

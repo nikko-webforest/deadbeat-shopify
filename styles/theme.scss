@@ -1,20 +1,25 @@
-@import './db-theme/fonts';
-@import './db-theme/variables';
-@import './db-theme/reset';
-@import './db-theme/classes';
-// @import './db-theme/buttons';
-@import './db-theme/animation';
-@import './db-theme/media';
-@import './db-theme/test';
+// base
+@import './db-theme/base/fonts';
+@import './db-theme/base/variables';
+@import './db-theme/base/reset';
+@import './db-theme/base/classes';
+// @import './db-theme/base/buttons';
+@import './db-theme/base/animation';
+@import './db-theme/base/media';
+@import './db-theme/base/test';
 
-@import './db-theme/footer';
-@import './db-theme/header';
+// components
+@import './db-theme/components/footer';
+@import './db-theme/components/header';
+@import './db-theme/components/cart';
 
 @import './db-theme/widget';
 
-@import './db-theme/page--home';
-@import './db-theme/page--about-us';
-@import './db-theme/page--roadmap';
-@import './db-theme/page--explore-oc';
-@import './db-theme/page-privacy-policy';
-@import './db-theme/page-terms-of-use';
+// pages
+@import './db-theme/pages/page--home';
+@import './db-theme/pages/page--about-us';
+@import './db-theme/pages/page--roadmap';
+@import './db-theme/pages/page--explore-oc';
+@import './db-theme/pages/page--privacy-policy';
+@import './db-theme/pages/page--terms-of-use';
+@import './db-theme/pages/page--merch-store';

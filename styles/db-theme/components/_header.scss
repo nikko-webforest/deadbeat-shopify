@@ -7,6 +7,7 @@
   top: 0;
   translate: 0 -100%;
   display: block;
+  min-width: 380px;
   width: 100%;
   transition:
     translate 1000ms cubic-bezier(0.86, 0, 0.07, 1) 0s;
@@ -80,6 +81,41 @@
           }
         }
 
+        .db-btn--my-cart {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 6px;
+          max-width: 130px;
+          min-width: 130px;
+          width: 100%;
+
+          @media only screen and (max-width: 768px) {
+            max-width: 50px;
+            min-width: 50px;
+          }
+
+          .svg-icon-cart {
+            max-width: 18px;
+            min-width: 18px;
+            width: 100%;
+          }
+
+          .label {
+            color: $white-color;
+            font-family: $primary-font-family;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 1em;
+            white-space: nowrap;
+
+            @media only screen and (max-width: 480px) {
+              display: none;
+            }
+          }
+        }
+
         .db-btn--account {
           display: block;
           max-width: 130px;
@@ -96,8 +132,6 @@
             justify-content: center;
             align-items: center;
             gap: 24px;
-            
-            display: none;
 
             .db-btn-label {
               display: flex;

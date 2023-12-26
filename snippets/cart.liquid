@@ -1,0 +1,281 @@
+<aside class="db-shopping-cart db-scroll-bar">
+  <div class="db-cart-wrap">
+    <div class="db-cart-head">
+      <h5>
+        YOUR SHOPPING CART
+      </h5>
+      <button class="close-cart"
+        type="button"
+        @click="closeCart();">
+        <svg class="svg-icon-close db-svg"
+          width="9"
+          height="9"
+          viewBox="0 0 9 9"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path id="path_01"
+            d="M8.20471 1.22504L7.48834 0.508667L4.11115 3.88586L0.733952 0.508667L0.0175781 1.22504L3.39477 4.60223L0.0175781 7.97943L0.733952 8.6958L4.11115 5.31861L7.48834 8.6958L8.20471 7.97943L4.82752 4.60223L8.20471 1.22504Z"
+            fill="#ABAFB2">
+          </path>
+        </svg>
+        <span class="label">
+          CLOSE
+        </span>
+      </button>
+    </div>
+    <div class="db-cart-body">
+      <div class="product-list"
+        v-if="isCartDataEmpty && cart.data.items.length">
+        <div class="product-item"
+          v-for="(cartItem, cartIndex) in cart.data.items"
+          :data-product-id="cartItem.product_id"
+          :data-variant-id="cartItem.variant_id">
+          <img class="product-img db-img"
+            :alt="cartItem.title"
+            :title="cartItem.title"
+            :src="cartItem.featured_image.url"
+            width=""
+            height=""
+            loading="lazy"/>
+          <div class="product-details">
+            <div class="product-title"
+              v-text="cartItem.title">
+            </div>
+            <div class="product-variant">
+              <div class="option"
+                v-for="option in cartItem.options_with_values">
+                <div v-if="option.name != 'Title'">
+                  <span class="name"
+                    v-text="option.name+': '">
+                  </span>
+                  <span class="value"
+                    v-text="option.value">
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-quantity">
+            <div class="product-price"
+              v-text="'{{ cart.currency.symbol }}'+formatPrice((cartItem.final_price * cartItem.quantity))">
+            </div>
+            <div class="quantity-actions">
+              <button class="quantity-minus"
+                type="button"
+                @click="decreaseQuantity(cartItem.variant_id, cartItem.quantity);">
+                <svg class="svg-icon-minus db-svg"
+                  width="5"
+                  height="2"
+                  viewBox="0 0 5 2"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path id="path_01"
+                    d="M4.816 0L4.592 1.148H0L0.21 0H4.816Z"
+                    fill="#FFFFFF">
+                  </path>
+                </svg>
+              </button>
+              <input class="quantity-input"
+                type="text"
+                :value="cartItem.quantity"
+                readonly/>
+              <button class="quantity-plus"
+                type="button"
+                @click="increaseQuantity(cartItem.variant_id, cartItem.quantity);">
+                <svg class="svg-icon-plus db-svg"
+                  width="6"
+                  height="6"
+                  viewBox="0 0 6 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path id="path_01"
+                    d="M3.402 2.058H5.53L5.39 3.206H3.402V5.404H2.114V3.206H0L0.126 2.058H2.114V0H3.402V2.058Z"
+                    fill="white">
+                  </path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button class="product-delete"
+            type="button"
+            @click="deleteCartItem(cartItem.variant_id);">
+            <svg class="svg-icon-bin db-svg"
+              width="16"
+              height="17"
+              viewBox="0 0 16 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path id="path_01"
+                d="M15.3333 3.05999H12.6667V1.36C12.6667 0.609879 12.0687 0 11.3333 0H4.66666C3.93125 0 3.33333 0.609879 3.33333 1.36V3.05999H0.666666C0.297917 3.05999 0 3.36386 0 3.73999V4.41999C0 4.51349 0.0750003 4.58998 0.166667 4.58998H1.425L1.93958 15.7037C1.97291 16.4283 2.56042 17 3.27082 17H12.7291C13.4416 17 14.027 16.4305 14.0604 15.7037L14.575 4.58998H15.8333C15.9249 4.58998 16 4.51349 16 4.41999V3.73999C16 3.36386 15.7021 3.05999 15.3333 3.05999ZM11.1666 3.05999H4.83333V1.53H11.1666V3.05999Z"
+                fill="#C21E59">
+              </path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="cart-empty"
+        v-if="isCartDataEmpty && !cart.data.items.length">
+        YOUR CART IS EMPTY
+      </div>
+      <div class="cart-loader"
+        v-if="cart.loader">
+        <div class="loader"></div>
+      </div>
+    </div>
+    <div class="db-cart-foot">
+      <div class="subtotal-wrap">
+        <div class="label">
+          SUBTOTAL
+        </div>
+        <div class="value"
+          v-text="'{{ cart.currency.symbol }}'+formatPrice(cart.data.items_subtotal_price)">
+        </div>
+      </div>
+      <div class="discounts-wrap">
+        <div class="label">
+          DISCOUNTS
+        </div>
+        <div class="value"
+          v-text="formatPrice(cart.data.total_discount)">
+        </div>
+      </div>
+      <div class="totalamount-wrap">
+        <div class="label">
+          TOTAL AMOUNT
+        </div>
+        <div class="value"
+          v-text="'{{ cart.currency.symbol }}'+formatPrice(cart.data.total_price)">
+        </div>
+      </div>
+      <a class="db-btn--proceed-to-checkout"
+        type="button"
+        href="/checkout">
+        <span class="label">
+          PROCEED TO CHECKOUT
+        </span>
+      </a>
+    </div>
+  </div>
+</aside>
+<script>
+  const DB_Cart_Options = {
+    name: 'DB Cart Options',
+    data() {
+      return {
+        cart: {
+          data: {},
+          loader: false,
+        }
+      }
+    },
+    methods: {
+      async fetchCartData() {
+        console.log('fetchCartData()');
+        var cartEndpoint = '/cart.json';
+
+        const response = await fetch(cartEndpoint);
+        const data = await response.json();
+
+        this.cart.data = data;
+      },
+      closeCart() {
+        document.querySelector('body').classList.remove('--show-cart');
+        document.querySelector('body').style.overflowY = 'auto';
+      },
+      openCart() {
+        document.querySelector('body').classList.add('--show-cart');
+        document.querySelector('body').style.overflowY = 'hidden';
+      },
+      increaseQuantity(variant_id, quantity) {
+        // console.log('increaseQuantity()');
+
+        var cartItemQuantity = quantity + 1;
+
+        this.updateCartItem(variant_id, cartItemQuantity);
+      },
+      decreaseQuantity(variant_id, quantity) {
+        // console.log('decreaseQuantity()');
+
+        var cartItemQuantity = quantity - 1;
+
+        this.updateCartItem(variant_id, cartItemQuantity);
+      },
+      deleteCartItem(variantID) {
+        // console.log('deleteCartItem()');
+        
+        this.cart.loader = true;
+
+        fetch(`/cart/change.js`, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            'id': variantID.toString(),
+            'quantity': 0,
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            // console.log('Delete Cart Item SUCCESS...', data);
+            this.fetchCartData();
+          })
+          .catch(error => {
+            console.error('Delete Cart Item FAILED...', error);
+          })
+          .finally(() => {
+            setTimeout(() => {
+              this.cart.loader = false;
+            }, 1500);
+          });
+      },
+      updateCartItem(variant_id, quantity) {
+        // console.log('updateCartItem()');
+
+        this.cart.loader = true;
+
+        fetch(`/cart/change.js`, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            'id': variant_id.toString(),
+            'quantity': quantity,
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            // console.log('Update Cart Item SUCCESS...', data);
+            this.fetchCartData();
+          })
+          .catch(error => {
+            console.error('Update Cart Item FAILED...', error);
+          })
+          .finally(() => {
+            setTimeout(() => {
+              this.cart.loader = false;
+            }, 1500);
+          });
+      },
+
+      formatPrice(price) {
+        return (price / 100).toFixed(2);
+      },
+    },
+    computed: {
+      isCartDataEmpty() {
+        return Object.keys(this.cart.data).length > 0;
+      }
+    },
+    created() {
+      this.fetchCartData();
+    },
+    mounted() {},
+    updated() {},
+  };
+
+  const DB_Cart_App = Vue.createApp(DB_Cart_Options).mount('.db-shopping-cart');
+</script>
