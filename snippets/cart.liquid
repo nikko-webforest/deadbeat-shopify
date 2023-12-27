@@ -38,20 +38,22 @@
             height=""
             loading="lazy"/>
           <div class="product-details">
-            <div class="product-title"
+            <a class="product-title"
+              :title="cartItem.title"
+              :href="'/products/'+cartItem.handle"
               v-text="cartItem.title">
-            </div>
+            </a>
             <div class="product-variant">
               <div class="option"
                 v-for="option in cartItem.options_with_values">
-                <div v-if="option.name != 'Title'">
+                <template v-if="option.name != 'Title'">
                   <span class="name"
                     v-text="option.name+': '">
                   </span>
                   <span class="value"
                     v-text="option.value">
                   </span>
-                </div>
+                </template>
               </div>
             </div>
           </div>
@@ -62,6 +64,7 @@
             <div class="quantity-actions">
               <button class="quantity-minus"
                 type="button"
+                title="Decrease Quantity"
                 @click="decreaseQuantity(cartItem.variant_id, cartItem.quantity);">
                 <svg class="svg-icon-minus db-svg"
                   width="5"
@@ -81,6 +84,7 @@
                 readonly/>
               <button class="quantity-plus"
                 type="button"
+                title="Increase Quantity"
                 @click="increaseQuantity(cartItem.variant_id, cartItem.quantity);">
                 <svg class="svg-icon-plus db-svg"
                   width="6"
@@ -98,6 +102,7 @@
           </div>
           <button class="product-delete"
             type="button"
+            title="Remove Item from Cart"
             @click="deleteCartItem(cartItem.variant_id);">
             <svg class="svg-icon-bin db-svg"
               width="16"

@@ -37,9 +37,9 @@
           </path>
         </svg>
         <a class="breadcrumb-item --current"
-          title=""
-          href="/products/">
-          Test Product
+          :title="product.data.title"
+          :href="'/products/'+product.data.handle"
+          v-text="product.data.title">
         </a>
       </div>
       <div class="db-row">
@@ -68,39 +68,57 @@
           <template v-for="option in product.data.options">
             <div class="product-option --color"
               v-if="option.name == 'Color'">
-              <div class="label"
-                v-text="option.name">
-              </div>
-              <ul class="option-list">
-                <li class="option-item"
-                  v-for="optionValue in option.values"
-                  :data-color="getHexColor(optionValue)"
-                  :style="{ 'background-color' : getHexColor(optionValue), 'box-shadow' : getHexColor(optionValue)+'0px 0px 0px 2px' }"
-                  @click="selectedOption(option.name, 1, optionValue);">
-                </li>
-              </ul>
-            </div>
-            <div class="product-option --size"
-              v-if="option.name == 'Size'">
-              <div class="label"
-                v-text="option.name">
-              </div>
-              <button class="db-btn--size-guide"
-                type="button">
-                <div class="label">
-                  SIZE GUIDE
+              <div class="db-inner-row">
+                <div class="label"
+                  v-text="option.name">
                 </div>
-              </button>
-              <ul class="option-list">
-                <li class="option-item"
-                  v-for="optionValue in option.values"
-                  v-text="optionValue"
-                  :class="{ '--selected' : optionValue == product.selected.option2 }"
-                  @click="selectedOption(option.name, 2, optionValue);">
-                </li>
-              </ul>
+                <ul class="option-list">
+                  <li class="option-item"
+                    v-for="optionValue in option.values"
+                    :title="optionValue"
+                    :style="{
+                      'background-color' : getHexColor(optionValue),
+                      optionValue == product.data.selected.option1 ? `box-shadow : ${getHexColor(optionValue)} 0px 0px 0px 2px` : 'none'
+                    }"
+                    @click="selectedOption(option.name, 1, optionValue);">
+                  </li>
+                </ul>
+              </div>
             </div>
           </template>
+          <div class="product-option --size">
+            <div class="db-inner-row">
+              <div class="label">
+                Size
+              </div>
+              <template v-if="product.selected.metafields.size_guide">
+                <button class="db-btn--size-guide"
+                  type="button"
+                  :class="{ '--toggled' : product.selected.sizeGuideToggle }"
+                  @click="toggleSizeGuide();">
+                  <div class="label">
+                    SIZE GUIDE
+                  </div>
+                </button>
+              </template>
+              <template v-for="option in product.data.options">
+                <ul class="option-list"
+                  v-if="option.name == 'Size'">
+                  <li class="option-item"
+                    v-for="optionValue in option.values"
+                    v-text="optionValue"
+                    :class="{ '--selected' : optionValue == product.selected.option2 }"
+                    @click="selectedOption(option.name, 2, optionValue);">
+                  </li>
+                </ul>
+              </template>
+            </div>
+            <template v-if="product.selected.metafields.size_guide">
+              <div class="product-size-guide-wrap"
+                v-html="product.selected.metafields.size_guide">
+              </div>
+            </template>
+          </div>
           <div class="product-quantity-wrap">
             <div class="label">
               Quantity
@@ -109,7 +127,7 @@
               <button class="quantity-minus"
                 type="button"
                 :disable="product.selected.quantity <= 1"
-                @click="product.selected.quantity--">
+                @click="decreaseQuantity();">
                 <svg class="svg-icon-circle-minus db-svg"
                   width="19"
                   height="19"
@@ -134,7 +152,7 @@
                 readonly/>
               <button class="quantity-plus"
                 type="button"
-                @click="product.selected.quantity++">
+                @click="increaseQuantity();">
                 <svg class="svg-icon-circle-plus db-svg"
                   width="19"
                   height="19"
@@ -158,13 +176,15 @@
           <hr>
           <div class="product-buttons">
             <button class="db-btn--add-to-cart"
-              type="button">
+              type="button"
+              @click="addThisToCart();">
               <span class="label">
                 ADD TO CART
               </span>
             </button>
             <button class="db-btn--buy-it-now"
-              type="button">
+              type="button"
+              @click="buyItNow();">
               <span class="label">
                 BUY IT NOW
               </span>
@@ -174,9 +194,7 @@
             <h5>
               Product Details
             </h5>
-            <p>
-              A t-shirt perfect for all kinds of workouts. Its moisture management and anti-microbial qualities are sure to keep athletes dry and comfortable even during the most vigorous of workouts.
-            </p>
+            <div v-html="product.data.body_html"></div>
           </div>
         </div>
       </div>
@@ -214,6 +232,98 @@
             name: "Solid White Triblend",
             value: 'rgb(255, 255, 255)',
           },
+          {
+            name: "Black",
+            value: 'rgb(0, 0, 0)',
+          },
+          {
+            name: "Red",
+            value: 'rgb(255, 0, 0)',
+          },
+          {
+            name: "White",
+            value: 'rgb(255, 255, 255)',
+          },
+          {
+            name: "Heather Grey",
+            value: 'rgb(116, 115, 111)',
+          },
+          {
+            name: "Baby Pink",
+            value: 'rgb(233, 169, 177)',
+          },
+          {
+            name: "Red Triblend",
+            value: 'rgb(172, 61, 65)',
+          },
+          {
+            name: "Emerald Triblend",
+            value: 'rgb(14, 37, 24)',
+          },
+          {
+            name: "Navy Triblend",
+            value: 'rgb(50, 55, 92)',
+          },
+          {
+            name: "Athletic Grey Triblend",
+            value: 'rgb(111, 112, 107)',
+          },
+          {
+            name: "Brown Triblend",
+            value: 'rgb(83, 55, 44)',
+          },
+          {
+            name: "Teal Triblend",
+            value: 'rgb(20, 109, 104)',
+          },
+          {
+            name: "Heather Grey/Black",
+            value: 'rgb(31, 31, 31)',
+          },
+          {
+            name: "Heather Grey/Heather Red",
+            value: 'rgb(190, 64, 65)',
+          },
+          {
+            name: "Athletic Heather",
+            value: 'rgb(164, 164, 164)',
+          },
+          {
+            name: "Charcoal Heather",
+            value: 'rgb(37, 38, 35)',
+          },
+          {
+            name: "Purple",
+            value: 'rgb(128, 0, 128)',
+          },
+          {
+            name: "Carbon Grey",
+            value: 'rgb(144, 142, 138)',
+          },
+          {
+            name: "Navy Blazer",
+            value: 'rgb(25, 33, 44)',
+          },
+          {
+            name: "Maroon",
+            value: 'rgb(128, 0, 0)',
+          },
+          {
+            name: "Dusty Rose",
+            value: 'rgb(179, 109, 97)',
+          },
+          {
+            name: "Sky Blue",
+            value: 'rgb(135, 206, 235)',
+          },
+          {
+            name: "Forest Green",
+            value: 'rgb(48, 73, 47)',
+          },
+          {
+            name: "Military Green",
+            value: 'rgb(82, 71, 48)',
+          },
         ],
 
         product: {
@@ -226,6 +336,8 @@
             option2: null,
             option3: null,
             image: '',
+            sizeGuideToggle: false,
+            metafields: {{ product.metafields.custom | json }},
             variant: {},
           }
         },
@@ -280,7 +392,7 @@
             this.product.selected.variant = this.product.data.variants[variantIndex];
             this.setProductVariantImage(this.product.data.variants[variantIndex].image_id);
           }
-        })
+        });
       },
       setDefaultVariant() {
         this.product.selected.variant = this.product.data.variants[0];
@@ -296,6 +408,17 @@
           }
         });
       },
+      decreaseQuantity() {
+        if (this.product.selected.quantity == this.product.selected.variant.quantity_rule.min) {
+          this.product.selected.quantity = 1;  
+        }
+        else {
+          this.product.selected.quantity--;
+        }
+      },
+      increaseQuantity() {
+        this.product.selected.quantity++;
+      },
       getHexColor(colorName) {
         // console.log('getHexColor()', colorName);
         var convertedColorValue = '';
@@ -307,6 +430,92 @@
         });
 
         return convertedColorValue;
+      },
+      toggleSizeGuide() {
+        this.product.selected.sizeGuideToggle = !this.product.selected.sizeGuideToggle;
+
+        var element = document.querySelector('.product-size-guide-wrap');
+
+        if (this.product.selected.sizeGuideToggle) {
+          var sizeGuideHeight = element.scrollHeight;
+          element.style.height = `${sizeGuideHeight}px`;
+        }
+        else {
+          element.style.height = `0px`;
+        }
+      },
+      addThisToCart() {
+        // console.log('addThisToCart() ', product, event);
+
+        let items = [
+          {
+            id: this.product.selected.variant.id,
+            quantity: this.product.selected.quantity,
+          }
+        ];
+
+        let self = this;
+
+        DB_Cart_App.cart.loader = true;
+
+        $.ajax({
+          type: "POST",
+          url: '/cart/add.js',
+          dataType: 'json',
+          crossDomain: true,
+          data: {
+            items: items
+          },
+          success: (data) => {
+            // console.log('Added this to Cart SUCCESS...', data);
+            self.openCart();
+            DB_Cart_App.fetchCartData();
+            DB_Cart_App.cart.loader = false;
+          },
+          error: (error) => {
+            console.log('Added this to Cart FAILED...', error);
+          }
+        });
+      },
+      buyItNow(product, event) {
+        // console.log('buyItNow()', product, event);
+        
+        let items = [
+          {
+            id: this.product.selected.variant.id,
+            quantity: this.product.selected.quantity,
+          }
+        ];
+
+        let self = this;
+
+        $.ajax({
+          type: "POST",
+          url: '/cart/add.js',
+          dataType: 'json',
+          crossDomain: true,
+          data: {
+            items: items
+          },
+          success: (data) => {
+            // console.log('Added this to Cart SUCCESS...', data);
+          },
+          error: (error) => {
+            console.log('Added this to Cart FAILED...', error);
+          }
+        });
+
+        setTimeout(() => {
+          window.location = '/checkout';
+        }, 1000);
+      },
+      closeCart() {
+        document.querySelector('body').classList.remove('--show-cart');
+        document.querySelector('body').style.overflowY = 'auto';
+      },
+      openCart() {
+        document.querySelector('body').classList.add('--show-cart');
+        document.querySelector('body').style.overflowY = 'hidden';
       },
     },
     computed: {
