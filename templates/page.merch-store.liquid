@@ -1,8 +1,8 @@
-<main class="db-main site-main">
+<main class="db-main site-main db-page--merch-store">
 
   {% assign collection = collections['all-products'] %}
 
-  <section class="db-section db-section--merch-store">
+  <section class="db-section db-section--merch-store-listing">
     <div class="db-container">
       <div class="db-row">
         <div class="db-col"></div>
@@ -194,7 +194,7 @@
         this.productsFadeIn(500);
       },
       paginationScrollTop() {
-        const scrollTo = document.querySelector('.db-section--merch-store');
+        const scrollTo = document.querySelector('.db-section--merch-store-listing');
         scrollTo.scrollIntoView();
       },
       loadPage() {
@@ -272,12 +272,12 @@
         }, 1000);
       },
       productsFadeIn(delay) {
-        document.querySelectorAll('.db-section--merch-store .product-list .product-item').forEach((item, index) => {
+        document.querySelectorAll('.db-section--merch-store-listing .product-list .product-item').forEach((item, index) => {
           item.classList.remove('--fade-in');
         });
 
         setTimeout(() => {
-          document.querySelectorAll('.db-section--merch-store .product-list .product-item').forEach((item, index) => {
+          document.querySelectorAll('.db-section--merch-store-listing .product-list .product-item').forEach((item, index) => {
             setTimeout(() => {
               item.classList.add('--fade-in');
             }, (index * 100));
@@ -303,5 +303,5 @@
     updated() {},
   };
 
-  Vue.createApp(DB_SF_Page_MerchStore_Options).mount('.db-section--merch-store');
+  Vue.createApp(DB_SF_Page_MerchStore_Options).mount('.db-page--merch-store');
 </script>

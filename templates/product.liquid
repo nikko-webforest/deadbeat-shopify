@@ -1,1 +1,325 @@
-<div style="color: #FFFFFF; font-size: 30px;">test</div>
+<main class="db-main site-main db-page--product-page">
+    
+  <section class="db-section db-section--product-details"
+    v-if="isProductDataEmpty">
+    <div class="db-container">
+      <div class="breadcrumbs">
+        <a class="breadcrumb-item"
+          title="Home"
+          href="{{ shop.url }}">
+          Home
+        </a>
+        <svg class="svg-icon-angle-right db-svg"
+          width="6"
+          height="8"
+          viewBox="0 0 6 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path id="path_01"
+            d="M0.726562 7.06L3.7799 4L0.726562 0.94L1.66656 0L5.66656 4L1.66656 8L0.726562 7.06Z"
+            fill="#838383">
+          </path>
+        </svg>
+        <a class="breadcrumb-item"
+          title="Merch Store"
+          href="{{ shop.url }}/pages/merch-store">
+          Merch Store
+        </a>
+        <svg class="svg-icon-angle-right db-svg"
+          width="6"
+          height="8"
+          viewBox="0 0 6 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path id="path_01"
+            d="M0.726562 7.06L3.7799 4L0.726562 0.94L1.66656 0L5.66656 4L1.66656 8L0.726562 7.06Z"
+            fill="#838383">
+          </path>
+        </svg>
+        <a class="breadcrumb-item --current"
+          title=""
+          href="/products/">
+          Test Product
+        </a>
+      </div>
+      <div class="db-row">
+        <div class="db-col">
+          <img class="product-img db-img"
+            :alt="product.data.image.alt"
+            :title="product.data.image.alt"
+            :src="product.selected.image"
+            width=""
+            height=""
+            loading="lazy"/>
+        </div>
+        <div class="db-col">
+          <h1 class="product-title"
+            v-text="product.data.title">
+          </h1>
+          <div class="product-prices">
+            <div class="current-price"
+              v-text="'{{ cart.currency.symbol }}'+product.selected.variant.price">
+            </div>
+            <div class="before-price"
+              v-if="product.selected.variant.compare_at_price != ''"
+              v-text="'{{ cart.currency.symbol }}'+product.selected.variant.compare_at_price">
+            </div>
+          </div>
+          <template v-for="option in product.data.options">
+            <div class="product-option --color"
+              v-if="option.name == 'Color'">
+              <div class="label"
+                v-text="option.name">
+              </div>
+              <ul class="option-list">
+                <li class="option-item"
+                  v-for="optionValue in option.values"
+                  :data-color="getHexColor(optionValue)"
+                  :style="{ 'background-color' : getHexColor(optionValue), 'box-shadow' : getHexColor(optionValue)+'0px 0px 0px 2px' }"
+                  @click="selectedOption(option.name, 1, optionValue);">
+                </li>
+              </ul>
+            </div>
+            <div class="product-option --size"
+              v-if="option.name == 'Size'">
+              <div class="label"
+                v-text="option.name">
+              </div>
+              <button class="db-btn--size-guide"
+                type="button">
+                <div class="label">
+                  SIZE GUIDE
+                </div>
+              </button>
+              <ul class="option-list">
+                <li class="option-item"
+                  v-for="optionValue in option.values"
+                  v-text="optionValue"
+                  :class="{ '--selected' : optionValue == product.selected.option2 }"
+                  @click="selectedOption(option.name, 2, optionValue);">
+                </li>
+              </ul>
+            </div>
+          </template>
+          <div class="product-quantity-wrap">
+            <div class="label">
+              Quantity
+            </div>
+            <div class="quantity-control">
+              <button class="quantity-minus"
+                type="button"
+                :disable="product.selected.quantity <= 1"
+                @click="product.selected.quantity--">
+                <svg class="svg-icon-circle-minus db-svg"
+                  width="19"
+                  height="19"
+                  viewBox="0 0 19 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <circle id="circle_01"
+                    cx="9.5"
+                    cy="9.5"
+                    r="8.5"
+                    stroke="#FFFFFF">
+                  </circle>
+                  <path id="path_01"
+                    d="M11.816 9L11.592 10.148H7L7.21 9H11.816Z"
+                    fill="#FFFFFF">
+                  </path>
+                </svg>
+              </button>
+              <input class="quantity-input"
+                type="text"
+                :value="product.selected.quantity"
+                readonly/>
+              <button class="quantity-plus"
+                type="button"
+                @click="product.selected.quantity++">
+                <svg class="svg-icon-circle-plus db-svg"
+                  width="19"
+                  height="19"
+                  viewBox="0 0 19 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <circle id="circle_01"
+                    cx="9.5"
+                    cy="9.5"
+                    r="8.5"
+                    stroke="#FFFFFF">
+                  </circle>
+                  <path id="path_01"
+                    d="M10.402 9.058H12.53L12.39 10.206H10.402V12.404H9.114V10.206H7L7.126 9.058H9.114V7H10.402V9.058Z"
+                    fill="#FFFFFF">
+                  </path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <hr>
+          <div class="product-buttons">
+            <button class="db-btn--add-to-cart"
+              type="button">
+              <span class="label">
+                ADD TO CART
+              </span>
+            </button>
+            <button class="db-btn--buy-it-now"
+              type="button">
+              <span class="label">
+                BUY IT NOW
+              </span>
+            </button>
+          </div>
+          <div class="product-details">
+            <h5>
+              Product Details
+            </h5>
+            <p>
+              A t-shirt perfect for all kinds of workouts. Its moisture management and anti-microbial qualities are sure to keep athletes dry and comfortable even during the most vigorous of workouts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script>
+  const DB_SF_Page_Product_Options = {
+    name: 'DB SF Page Product Options',
+    data() {
+      return {
+        colorNames: [
+          {
+            name: "Charcoal-Black Triblend",
+            value: 'rgb(25, 30, 28)',
+          },
+          {
+            name: "Purple Triblend",
+            value: 'rgb(120, 84, 137)',
+          },
+          {
+            name: "Blue Triblend",
+            value: 'rgb(101,119,161)',
+          },
+          {
+            name: "Mustard Triblend",
+            value: 'rgb(226, 171, 87)',
+          },
+          {
+            name: "White Fleck Triblend",
+            value: 'rgb(232,232,232)',
+          },
+          {
+            name: "Solid White Triblend",
+            value: 'rgb(255, 255, 255)',
+          },
+        ],
+
+        product: {
+          data: {},
+          selected: {
+            id: '',
+            title: '',
+            quantity: 1,
+            option1: null,
+            option2: null,
+            option3: null,
+            image: '',
+            variant: {},
+          }
+        },
+      }
+    },
+    methods: {
+      async fetchThisProduct() {
+        const productEndpoint = `/products/{{ product.handle }}.json`;
+        fetch(productEndpoint)
+          .then(response => response.json())
+          .then(data => {
+            console.log(`Fetch this Product Data from Endpoint SUCCESS...`, data);
+            this.product.data = data.product;
+          })
+          .catch(error => {
+            console.error(`Fetch this Product Data from Endpoint FAILED...`, error);
+          })
+          .finally(() => {
+            this.setDefaultVariant();
+            this.loadPage();
+          });
+      },
+      loadPage() {
+        console.log('loadPage()');
+        setTimeout(() => {
+          document.querySelector('.db-site-loader').classList.remove('--show');
+          document.querySelector('.db-header').classList.add('--animate-now');
+        }, 1000);
+      },
+      selectedOption(optionName, optionIndex, optionValue) {
+        console.log('selectedOption() =', optionName, optionIndex, optionValue);
+
+        if (optionIndex == 1) {
+          this.product.selected.option1 = optionValue;
+        }
+        if (optionIndex == 2) {
+          this.product.selected.option2 = optionValue;
+        }
+        if (optionIndex == 3) {
+          this.product.selected.option3 = optionValue;
+        }
+
+        this.setProductVariant();
+      },
+      setProductVariant() {
+        this.product.data.variants.forEach((variantItem, variantIndex) => {
+          if (
+            variantItem.option1 == this.product.selected.option1 &&
+            variantItem.option2 == this.product.selected.option2 &&
+            variantItem.option3 == this.product.selected.option3
+          ) {
+            this.product.selected.variant = this.product.data.variants[variantIndex];
+            this.setProductVariantImage(this.product.data.variants[variantIndex].image_id);
+          }
+        })
+      },
+      setDefaultVariant() {
+        this.product.selected.variant = this.product.data.variants[0];
+        this.product.selected.option1 = this.product.data.variants[0].option1;
+        this.product.selected.option2 = this.product.data.variants[0].option2;
+        this.product.selected.option3 = this.product.data.variants[0].option3;
+        this.setProductVariantImage(this.product.selected.variant.image_id);
+      },
+      setProductVariantImage(variantImageID) {
+        this.product.data.images.forEach((item) => {
+          if (item.id == variantImageID ) {
+            this.product.selected.image = item.src;
+          }
+        });
+      },
+      getHexColor(colorName) {
+        // console.log('getHexColor()', colorName);
+        var convertedColorValue = '';
+
+        this.colorNames.forEach((colorItem) => {
+          if (colorItem.name == colorName) {
+            convertedColorValue = colorItem.value;
+          }
+        });
+
+        return convertedColorValue;
+      },
+    },
+    computed: {
+      isProductDataEmpty() {
+        return Object.keys(this.product.data).length > 0;
+      }
+    },
+    created() {
+      this.fetchThisProduct();
+    },
+    mounted() {},
+    updated() {},
+  };
+
+  Vue.createApp(DB_SF_Page_Product_Options).mount('.db-page--product-page');
+</script>
