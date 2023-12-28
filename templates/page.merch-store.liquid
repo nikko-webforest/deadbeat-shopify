@@ -20,7 +20,8 @@
                   :title="productItem.title"
                   :src="productItem.images[0].src"
                   width=""
-                  height=""/>
+                  height=""
+                  loading="lazy"/>
               </a>
               <div class="product-details">
                 <div class="product-title"
@@ -198,7 +199,7 @@
         scrollTo.scrollIntoView();
       },
       loadPage() {
-        console.log('loadPage()');
+        // console.log('loadPage()');
         setTimeout(() => {
           document.querySelector('.db-site-loader').classList.remove('--show');
           document.querySelector('.db-header').classList.add('--animate-now');
@@ -235,7 +236,7 @@
             DB_Cart_App.cart.loader = false;
           },
           error: (error) => {
-            console.log('Added this to Cart FAILED...', error);
+            console.error('Added this to Cart FAILED...', error);
           }
         });
       },
@@ -263,7 +264,7 @@
             // console.log('Added this to Cart SUCCESS...', data);
           },
           error: (error) => {
-            console.log('Added this to Cart FAILED...', error);
+            console.error('Added this to Cart FAILED...', error);
           }
         });
 

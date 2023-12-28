@@ -1,3 +1,28 @@
+{%- liquid
+  assign prev_product = collection.prev_product
+  assign next_product = collection.next_product
+  if prev_product or next_product
+  else
+    assign collectionList = product.collections[0].handle
+    assign prev_product = nil
+    assign next_product = nil
+    assign last = collections[collectionList].products_count
+    for p in collections[collectionList].products
+      if p.handle == product.handle
+        assign prev = forloop.index | minus: 2
+        assign next = forloop.index
+        if prev >= 0
+          assign prev_product = collections[collectionList].products[prev]
+        endif
+        if last >= next
+          assign next_product = collections[collectionList].products[next]
+        endif
+        break
+      endif
+    endfor
+  endif
+-%}
+
 <main class="db-main site-main db-page--product-page">
     
   <section class="db-section db-section--product-details"
@@ -76,9 +101,10 @@
                   <li class="option-item"
                     v-for="optionValue in option.values"
                     :title="optionValue"
+                    :class="{ '--selected' : optionValue == product.selected.option1 }"
                     :style="{
                       'background-color' : getHexColor(optionValue),
-                      optionValue == product.data.selected.option1 ? `box-shadow : ${getHexColor(optionValue)} 0px 0px 0px 2px` : 'none'
+                      'box-shadow' : setBoxShadow(optionValue)
                     }"
                     @click="selectedOption(option.name, 1, optionValue);">
                   </li>
@@ -94,6 +120,7 @@
               <template v-if="product.selected.metafields.size_guide">
                 <button class="db-btn--size-guide"
                   type="button"
+                  title="See Size Guide Table"
                   :class="{ '--toggled' : product.selected.sizeGuideToggle }"
                   @click="toggleSizeGuide();">
                   <div class="label">
@@ -177,7 +204,7 @@
           <div class="product-buttons">
             <button class="db-btn--add-to-cart"
               type="button"
-              @click="addThisToCart();">
+              @click="addToCart();">
               <span class="label">
                 ADD TO CART
               </span>
@@ -196,6 +223,175 @@
             </h5>
             <div v-html="product.data.body_html"></div>
           </div>
+        </div>
+      </div>
+      <div class="product-details">
+        <h5>
+          Product Details
+        </h5>
+        <div v-html="product.data.body_html"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="db-section db-section--product-recommendation">
+    <div class="db-container">
+      <h2>
+        You May Also Like
+      </h2>
+      <div class="product-list">
+        <div class="product-item --fade-in"
+          v-for="(productItem, productIndex) in productRecommendation.products.slice(0, 4)">
+          <a class="product-img-link"
+            :title="productItem.title"
+            :href="'/products/'+productItem.handle">
+            <img class="product-img db-img"
+              :alt="productItem.title"
+              :title="productItem.title"
+              :src="productItem.featured_image"
+              width=""
+              height=""
+              loading="lazy"/>
+          </a>
+          <div class="product-details">
+            <div class="product-title"
+              v-text="productItem.title">
+            </div>
+            <div class="product-price">
+              <span class="current-price"
+                v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].price)">
+              </span>
+              <span class="before-price"
+                v-if="productItem.variants[0].compare_at_price != null"
+                v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].compare_at_price)">
+              </span>
+            </div>
+          </div>
+          <div class="product-actions">
+            <button class="db-btn--buy-it-now"
+              type="button"
+              @click="buyItNow(productItem, $event);">
+              <span class="label">
+                BUY IT NOW
+              </span>
+            </button>
+            <button class="db-btn--add-to-cart"
+              type="button"
+              @click="addThisToCart(productItem, $event);">
+              <svg class="svg-icon-cart db-svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                  fill="#FFFFFF">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="db-section db-section--prev-next-product">
+    <div class="db-container">
+      <div class="db-row">
+        <div class="db-col">
+          <a class="prev-next-btns --prev"
+            :title="prevProduct.title"
+            :href="'/products/'+prevProduct.handle"
+            :data-product-id="prevProduct.id">
+            <div class="prev-next-label">
+              Previous
+            </div>
+            <div class="db-inner-row">
+              <svg class="svg-icon-angle-left db-svg"
+                width="19"
+                height="32"
+                viewBox="0 0 19 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M15.9994 0L18.4883 2.66667L5.33273 16L18.4883 29.3333L15.9994 32L-0.000606537 16L15.9994 0Z"
+                  fill="#D86FFF">
+                </path>
+              </svg>
+              <div class="product-details">
+                <div class="prev-next-label">
+                  Previous
+                </div>
+                <div class="product-title"
+                  v-text="prevProduct.title">
+                </div>
+                <div class="product-prices">
+                  <div class="before-price"
+                    v-if="prevProduct.compare_at_price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prevProduct.compare_at_price)">
+                  </div>
+                  <div class="current-price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prevProduct.price)">
+                  </div>
+                </div>
+              </div>
+              <img class="product-img db-img"
+                :alt="prevProduct.title"
+                :title="prevProduct.title"
+                :src="prevProduct.featured_image"
+                width=""
+                height=""
+                loading="lazy"/>
+            </div>
+          </a>
+        </div>
+        <div class="db-col">
+          <a class="prev-next-btns --next"
+            :title="nextProduct.title"
+            :href="'/products/'+nextProduct.handle"
+            :data-product-id="nextProduct.id">
+            <div class="prev-next-label">
+              Next
+            </div>
+            <div class="db-inner-row">
+              <img class="product-img db-img"
+                :alt="nextProduct.title"
+                :title="nextProduct.title"
+                :src="nextProduct.featured_image"
+                width=""
+                height=""
+                loading="lazy"/>
+              <div class="product-details">
+                <div class="prev-next-label">
+                  Next
+                </div>
+                <div class="product-title"
+                  v-text="nextProduct.title">
+                </div>
+                <div class="product-prices">
+                  <div class="current-price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(nextProduct.price)">
+                  </div>
+                  <div class="before-price"
+                    v-if="nextProduct.compare_at_price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(nextProduct.compare_at_price)">
+                  </div>
+                </div>
+              </div>
+              <svg class="svg-icon-angle-right db-svg"
+                width="19"
+                height="32"
+                viewBox="0 0 19 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M2.48889 0L0 2.66667L13.1556 16L0 29.3333L2.48889 32L18.4889 16L2.48889 0Z" 
+                  fill="#D86FFF">
+                </path>
+              </svg>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -341,7 +537,13 @@
             variant: {},
           }
         },
-      }
+
+        productRecommendation: {
+          products: [],
+        },
+        prevProduct: {{ prev_product | json }},
+        nextProduct: {{ next_product | json }},
+      };
     },
     methods: {
       async fetchThisProduct() {
@@ -349,7 +551,7 @@
         fetch(productEndpoint)
           .then(response => response.json())
           .then(data => {
-            console.log(`Fetch this Product Data from Endpoint SUCCESS...`, data);
+            // console.log(`Fetch this Product Data from Endpoint SUCCESS...`, data);
             this.product.data = data.product;
           })
           .catch(error => {
@@ -361,14 +563,14 @@
           });
       },
       loadPage() {
-        console.log('loadPage()');
+        // console.log('loadPage()');
         setTimeout(() => {
           document.querySelector('.db-site-loader').classList.remove('--show');
           document.querySelector('.db-header').classList.add('--animate-now');
         }, 1000);
       },
       selectedOption(optionName, optionIndex, optionValue) {
-        console.log('selectedOption() =', optionName, optionIndex, optionValue);
+        // console.log('selectedOption() =', optionName, optionIndex, optionValue);
 
         if (optionIndex == 1) {
           this.product.selected.option1 = optionValue;
@@ -431,6 +633,12 @@
 
         return convertedColorValue;
       },
+      setBoxShadow(colorName) {
+        if (colorName == this.product.selected.option1) {
+          return `${this.getHexColor(colorName)} 0px 0px 0px 2px`;
+        }
+        return 'none';
+      },
       toggleSizeGuide() {
         this.product.selected.sizeGuideToggle = !this.product.selected.sizeGuideToggle;
 
@@ -444,8 +652,41 @@
           element.style.height = `0px`;
         }
       },
-      addThisToCart() {
+      addThisToCart(product, event) {
         // console.log('addThisToCart() ', product, event);
+
+        let items = [
+          {
+            id: product.variants[0].id,
+            quantity: 1,
+          }
+        ];
+
+        let self = this;
+
+        DB_Cart_App.cart.loader = true;
+
+        $.ajax({
+          type: "POST",
+          url: '/cart/add.js',
+          dataType: 'json',
+          crossDomain: true,
+          data: {
+            items: items
+          },
+          success: (data) => {
+            // console.log('Added this to Cart SUCCESS...', data);
+            self.openCart();
+            DB_Cart_App.fetchCartData();
+            DB_Cart_App.cart.loader = false;
+          },
+          error: (error) => {
+            console.error('Added this to Cart FAILED...', error);
+          }
+        });
+      },
+      addToCart() {
+        // console.log('addToCart());
 
         let items = [
           {
@@ -473,7 +714,7 @@
             DB_Cart_App.cart.loader = false;
           },
           error: (error) => {
-            console.log('Added this to Cart FAILED...', error);
+            console.error('Added this to Cart FAILED...', error);
           }
         });
       },
@@ -501,13 +742,16 @@
             // console.log('Added this to Cart SUCCESS...', data);
           },
           error: (error) => {
-            console.log('Added this to Cart FAILED...', error);
+            console.error('Added this to Cart FAILED...', error);
           }
         });
 
         setTimeout(() => {
           window.location = '/checkout';
         }, 1000);
+      },
+      formatPrice(price) {
+        return (price / 100).toFixed(2);
       },
       closeCart() {
         document.querySelector('body').classList.remove('--show-cart');
@@ -517,6 +761,19 @@
         document.querySelector('body').classList.add('--show-cart');
         document.querySelector('body').style.overflowY = 'hidden';
       },
+
+      fetchProductRecommendation() {
+        const endpoint = `/recommendations/products.json?product_id={{ product.id }}`;
+        fetch(endpoint)
+          .then(response => response.json())
+          .then(data => {
+            console.log(`Fetch this Product Recommendations Data from Endpoint SUCCESS`, data);
+            this.productRecommendation.products = data.products;
+          })
+          .catch(error => {
+            console.error(`Fetch this Product Recommendation Data from Endpoint FAILED`, error);
+          });
+      },
     },
     computed: {
       isProductDataEmpty() {
@@ -525,6 +782,7 @@
     },
     created() {
       this.fetchThisProduct();
+      this.fetchProductRecommendation();
     },
     mounted() {},
     updated() {},
