@@ -300,7 +300,7 @@
     <div class="db-container">
       <div class="db-row">
         <div class="db-col">
-          <a class="prev-next-btns --prev"
+          <a class="prev-next-btns --prev" v-if="prevProduct"
             :title="prevProduct.title"
             :href="'/products/'+prevProduct.handle"
             :data-product-id="prevProduct.id">
@@ -347,7 +347,7 @@
           </a>
         </div>
         <div class="db-col">
-          <a class="prev-next-btns --next"
+          <a class="prev-next-btns --next" v-if="nextProduct"
             :title="nextProduct.title"
             :href="'/products/'+nextProduct.handle"
             :data-product-id="nextProduct.id">
