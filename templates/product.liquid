@@ -90,23 +90,23 @@
               v-text="'{{ cart.currency.symbol }}'+product.selected.variant.compare_at_price">
             </div>
           </div>
-          <template v-for="option in product.data.options">
+          <template v-for="(optionItem, optionIndex) in product.data.options">
             <div class="product-option --color"
-              v-if="option.name == 'Color'">
+              v-if="optionItem.name == 'Color'">
               <div class="db-inner-row">
-                <div class="label"
-                  v-text="option.name">
+                <div class="label">
+                  Color
                 </div>
                 <ul class="option-list">
                   <li class="option-item"
-                    v-for="optionValue in option.values"
-                    :title="optionValue"
-                    :class="{ '--selected' : optionValue == product.selected.option1 }"
+                    v-for="(valueItem, valueIndex) in optionItem.values"
+                    :title="valueItem"
+                    :class="{ '--selected' : isSelected(valueItem, optionIndex) }"
                     :style="{
-                      'background-color' : getHexColor(optionValue),
-                      'box-shadow' : setBoxShadow(optionValue)
+                      'background-color' : getHexColor(valueItem),
+                      'box-shadow' : setBoxShadow(valueItem)
                     }"
-                    @click="selectedOption(option.name, 1, optionValue);">
+                    @click="selectedOption(optionItem.name, optionIndex, valueItem);">
                   </li>
                 </ul>
               </div>
@@ -128,18 +128,14 @@
                   </div>
                 </button>
               </template>
-              <template v-for="option in product.data.options">
+              <template v-for="(optionItem, optionIndex) in product.data.options">
                 <ul class="option-list"
-                  v-if="option.name == 'Size'">
+                  v-if="optionItem.name == 'Size'">
                   <li class="option-item"
-                    v-for="optionItem in product.available_options.option2"
-                    v-text="optionItem.value"
-                    :title="optionItem.available === 'false' ? 'Option Out of Stock' : ''"
-                    :class="[
-                      { '--selected' : optionItem.value == product.selected.option2 },
-                      { '--out-of-stock' : optionItem.available === 'false' }
-                    ]"
-                    @click="selectedOption(option.name, 2, optionItem.value);">
+                    v-for="(valueItem, valueIndex) in optionItem.values"
+                    v-text="valueItem"
+                    :class="[{ '--selected' : isSelected(valueItem, optionIndex) }]"
+                    @click="selectedOption(optionItem.name, optionIndex, valueItem);">
                   </li>
                 </ul>
               </template>
@@ -556,11 +552,6 @@
             {% endfor %}
           ],
           options_liquid: [],
-          available_options: {
-            option1: [],
-            option2: [],
-            option3: [],
-          },
           selected: {
             id: '',
             title: '',
@@ -568,6 +559,7 @@
             option1: null,
             option2: null,
             option3: null,
+            options: {},
             image: '',
             sizeGuideToggle: false,
             metafields: {{ product.metafields.custom | json }},
@@ -626,30 +618,7 @@
       selectedOption(optionName, optionIndex, optionValue) {
         console.log('selectedOption() =', optionName, optionIndex, optionValue);
 
-        if (optionIndex == 1) {
-          this.product.selected.option1 = optionValue;
-
-          this.product.available_options.option2 = [];
-          this.product.data.variants.filter(optionItem => optionItem.option1 === optionValue).forEach(optionItem => this.product.available_options.option2.push({
-            value: optionItem.option2,
-            available: optionItem.available
-          }));
-
-        }
-        if (optionIndex == 2) {
-          this.product.selected.option2 = optionValue;
-
-          this.product.available_options.option1 = [];
-          this.product.data.variants.filter(variantItem => variantItem.option2 === optionValue).forEach(variantItem => {
-            this.product.available_options.option1.push({
-              value: variantItem.option1,
-              available: variantItem.available
-            });
-          });
-        }
-        if (optionIndex == 3) {
-          this.product.selected.option3 = optionValue;
-        }
+        this.product.selected[`option${optionIndex + 1}`] = optionValue;
 
         this.setProductVariant();
       },
@@ -670,8 +639,6 @@
         this.product.selected.option1 = this.product.data.variants[0].option1;
         this.product.selected.option2 = this.product.data.variants[0].option2;
         this.product.selected.option3 = this.product.data.variants[0].option3;
-
-        this.selectedOption('Color', 1, this.product.selected.option1);
         this.setProductVariantImage(this.product.selected.variant.image_id);
       },
       setProductVariantImage(variantImageID) {
@@ -680,6 +647,12 @@
             this.product.selected.image = item.src;
           }
         });
+      },
+      isSelected(valueItem, optionIndex) {
+        if (valueItem == this.product.selected[`option${optionIndex + 1}`]) {
+          return true;
+        }
+        return false;
       },
       decreaseQuantity() {
         if (this.product.selected.quantity == this.product.selected.variant.quantity_rule.min) {

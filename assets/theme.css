@@ -11128,11 +11128,6 @@ ul, ol {
 .db-page--product-page .db-section--product-details {
   padding: 195px 30px 50px;
 }
-@media only screen and (max-width: 1080px) {
-  .db-page--product-page .db-section--product-details {
-    padding: 110px 30px 25px;
-  }
-}
 .db-page--product-page .db-section--product-details .db-container .breadcrumbs {
   display: flex;
   justify-content: flex-start;
@@ -11177,6 +11172,7 @@ ul, ol {
 @media only screen and (max-width: 1080px) {
   .db-page--product-page .db-section--product-details .db-container .db-row {
     gap: 12px 40px;
+    margin: 0 auto 30px;
   }
 }
 @media only screen and (max-width: 768px) {
