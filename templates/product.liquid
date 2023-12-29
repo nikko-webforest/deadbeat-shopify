@@ -132,10 +132,14 @@
                 <ul class="option-list"
                   v-if="option.name == 'Size'">
                   <li class="option-item"
-                    v-for="optionValue in option.values"
-                    v-text="optionValue"
-                    :class="{ '--selected' : optionValue == product.selected.option2 }"
-                    @click="selectedOption(option.name, 2, optionValue);">
+                    v-for="optionItem in product.available_options.option2"
+                    v-text="optionItem.value"
+                    :title="optionItem.available === 'false' ? 'Option Out of Stock' : ''"
+                    :class="[
+                      { '--selected' : optionItem.value == product.selected.option2 },
+                      { '--out-of-stock' : optionItem.available === 'false' }
+                    ]"
+                    @click="selectedOption(option.name, 2, optionItem.value);">
                   </li>
                 </ul>
               </template>
@@ -202,20 +206,31 @@
           </div>
           <hr>
           <div class="product-buttons">
-            <button class="db-btn--add-to-cart"
-              type="button"
-              @click="addToCart();">
-              <span class="label">
-                ADD TO CART
-              </span>
-            </button>
-            <button class="db-btn--buy-it-now"
-              type="button"
-              @click="buyItNow();">
-              <span class="label">
-                BUY IT NOW
-              </span>
-            </button>
+            <template v-if="product.selected.variant.available == 'true'">
+              <button class="db-btn--add-to-cart"
+                type="button"
+                @click="addToCart();">
+                <span class="label">
+                  ADD TO CART
+                </span>
+              </button>
+              <button class="db-btn--buy-it-now"
+                type="button"
+                @click="buyItNow();">
+                <span class="label">
+                  BUY IT NOW
+                </span>
+              </button>
+            </template>
+            <template v-else>
+              <button class="db-btn--out-of-stock"
+                type="button"
+                disabled>
+                <span class="label">
+                  Out of Stock
+                </span>
+              </button>
+            </template>
           </div>
           <div class="product-details">
             <h5>
@@ -524,6 +539,28 @@
 
         product: {
           data: {},
+          variants_liquid: [
+            {% for product_variant in product.variants %}
+              {
+                id: '{{ product_variant.id }}',
+                title: '{{ product_variant.title }}',
+                price: '{{ product_variant.price }}',
+                compare_at_price: '{{ product_variant.compare_at_price }}',
+                inventory_quantity: '{{ product_variant.inventory_quantity }}',
+                available: '{{ product_variant.available }}',
+
+                {% for product_option in product_variant.options %}
+                  "option{{ forloop.index }}" : "{{ product_option }}",
+                {% endfor %}
+              },
+            {% endfor %}
+          ],
+          options_liquid: [],
+          available_options: {
+            option1: [],
+            option2: [],
+            option3: [],
+          },
           selected: {
             id: '',
             title: '',
@@ -535,7 +572,7 @@
             sizeGuideToggle: false,
             metafields: {{ product.metafields.custom | json }},
             variant: {},
-          }
+          },
         },
 
         productRecommendation: {
@@ -551,8 +588,25 @@
         fetch(productEndpoint)
           .then(response => response.json())
           .then(data => {
-            // console.log(`Fetch this Product Data from Endpoint SUCCESS...`, data);
-            this.product.data = data.product;
+            console.log(`Fetch this Product Data from Endpoint SUCCESS...`, data);
+
+            // var variants_in_liquid = {{ product.variants | json }};
+            // console.log('variants_in_liquid =', variants_in_liquid);
+
+            data.product.variants.forEach((variantItem, variantIndex) => {
+              this.product.variants_liquid.forEach((item, index) => {
+                if (variantItem.id == item.id) {
+                  // console.log('variantItem.id =', variantItem.id);
+                  // console.log('item.id =', item.id);
+                  // console.log('item.inventory_quantity =', item.inventory_quantity);
+                  // console.log('item.option1 =', item.option1);
+                  variantItem.available = item.available;
+                  variantItem.inventory = item.inventory_quantity;
+                }
+              });
+            });
+
+            this.product.data = { ...data.product };
           })
           .catch(error => {
             console.error(`Fetch this Product Data from Endpoint FAILED...`, error);
@@ -570,13 +624,28 @@
         }, 1000);
       },
       selectedOption(optionName, optionIndex, optionValue) {
-        // console.log('selectedOption() =', optionName, optionIndex, optionValue);
+        console.log('selectedOption() =', optionName, optionIndex, optionValue);
 
         if (optionIndex == 1) {
           this.product.selected.option1 = optionValue;
+
+          this.product.available_options.option2 = [];
+          this.product.data.variants.filter(optionItem => optionItem.option1 === optionValue).forEach(optionItem => this.product.available_options.option2.push({
+            value: optionItem.option2,
+            available: optionItem.available
+          }));
+
         }
         if (optionIndex == 2) {
           this.product.selected.option2 = optionValue;
+
+          this.product.available_options.option1 = [];
+          this.product.data.variants.filter(variantItem => variantItem.option2 === optionValue).forEach(variantItem => {
+            this.product.available_options.option1.push({
+              value: variantItem.option1,
+              available: variantItem.available
+            });
+          });
         }
         if (optionIndex == 3) {
           this.product.selected.option3 = optionValue;
@@ -601,6 +670,8 @@
         this.product.selected.option1 = this.product.data.variants[0].option1;
         this.product.selected.option2 = this.product.data.variants[0].option2;
         this.product.selected.option3 = this.product.data.variants[0].option3;
+
+        this.selectedOption('Color', 1, this.product.selected.option1);
         this.setProductVariantImage(this.product.selected.variant.image_id);
       },
       setProductVariantImage(variantImageID) {
@@ -762,12 +833,12 @@
         document.querySelector('body').style.overflowY = 'hidden';
       },
 
-      fetchProductRecommendation() {
+      async fetchProductRecommendation() {
         const endpoint = `/recommendations/products.json?product_id={{ product.id }}`;
         fetch(endpoint)
           .then(response => response.json())
           .then(data => {
-            console.log(`Fetch this Product Recommendations Data from Endpoint SUCCESS`, data);
+            // console.log(`Fetch this Product Recommendations Data from Endpoint SUCCESS`, data);
             this.productRecommendation.products = data.products;
           })
           .catch(error => {

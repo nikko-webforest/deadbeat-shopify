@@ -3,6 +3,10 @@
   .db-section--product-details {
     padding: 195px 30px 50px;
 
+    @media only screen and (max-width: 1080px) {
+      padding: 110px 30px 25px;
+    }
+
     .db-container {
       .breadcrumbs {
         display: flex;
@@ -329,6 +333,14 @@
                         color: #D86FFF;
                         border-color: #D86FFF;
                       }
+
+                      &.--out-of-stock {
+                        color: #202329;
+                        background-color: #5D6068;
+                        border-color: transparent;
+                        // pointer-events: none;
+                        cursor: no-drop;
+                      }
                     }
                   }
                 }
@@ -473,7 +485,8 @@
 
               .db-btn {
                 &--add-to-cart,
-                &--buy-it-now {
+                &--buy-it-now,
+                &--out-of-stock {
                   width: 100%;
                   padding: 15px 20px;
                   border-width: 1px;
@@ -490,7 +503,7 @@
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 700;
-                    line-height: 1em;
+                    line-height: 1.25em;
                     display: block;
 
                     @media only screen and (max-width: 1080px) {
@@ -515,6 +528,13 @@
                   &:hover {
                     background-color: transparent;
                   }
+                }
+
+                &--out-of-stock {
+                  border-color: rgba(255, 255, 255, 0.4);
+                  border-radius: 0px;
+                  pointer-events: none;
+                  cursor: default;
                 }
               }
             }
@@ -565,6 +585,10 @@
   .db-section--product-recommendation {
     padding: 80px 30px 50px;
 
+    @media only screen and (max-width: 1080px) {
+      padding: 25px 30px;
+    }
+
     .db-container {
       h2 {
         color: $white-color;
@@ -585,7 +609,6 @@
         align-items: stretch;
         grid-gap: 50px 40px;
         gap: 50px 40px;
-        margin-bottom: 90px;
 
         @media only screen and (max-width: 1440px) {
           grid-template-columns: repeat(4, minmax(250px, 1fr));
@@ -597,14 +620,12 @@
           grid-template-columns: repeat(2, minmax(200px, 1fr));
           grid-gap: 50px 30px;
           gap: 50px 30px;
-          margin-bottom: 80px;
         }
 
         @media only screen and (max-width: 480px) {
           grid-template-columns: repeat(2, minmax(144px, 1fr));
           grid-gap: 20px 15px;
           gap: 20px 15px;
-          margin-bottom: 40px;
         }
 
         .product-item {
@@ -855,6 +876,10 @@
 
   .db-section--prev-next-product {
     padding: 80px 30px 260px;
+
+    @media only screen and (max-width: 1080px) {
+      padding: 25px 30px 70px;
+    }
 
     .db-container {
       .db-row {
