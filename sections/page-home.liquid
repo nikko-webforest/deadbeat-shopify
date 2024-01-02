@@ -364,27 +364,42 @@
       </div>
     </div>
 
-    <div class="db-chat-modal">
+    <div class="db-chat-modal" :class="{'--show-modal': isShowChat}">
 
-      <div class="db-chat-modal--bg-overlay"></div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none" class="db-svg-icon--close db-svg" @click="onClickShowModal">
+        <path d="M9.37112 7.5L14.6085 2.26263C14.8571 2.01451 14.9969 1.6778 14.9972 1.32659C14.9975 0.975376 14.8583 0.638425 14.6101 0.38986C14.362 0.141296 14.0253 0.00147988 13.6741 0.00116972C13.3229 0.000859549 12.9859 0.140081 12.7374 0.388207L7.5 5.62557L2.26263 0.388207C2.01407 0.139642 1.67694 0 1.32542 0C0.973897 0 0.636771 0.139642 0.388207 0.388207C0.139642 0.636771 0 0.973897 0 1.32542C0 1.67694 0.139642 2.01407 0.388207 2.26263L5.62557 7.5L0.388207 12.7374C0.139642 12.9859 0 13.3231 0 13.6746C0 14.0261 0.139642 14.3632 0.388207 14.6118C0.636771 14.8604 0.973897 15 1.32542 15C1.67694 15 2.01407 14.8604 2.26263 14.6118L7.5 9.37443L12.7374 14.6118C12.9859 14.8604 13.3231 15 13.6746 15C14.0261 15 14.3632 14.8604 14.6118 14.6118C14.8604 14.3632 15 14.0261 15 13.6746C15 13.3231 14.8604 12.9859 14.6118 12.7374L9.37112 7.5Z" fill="#A5A5A5"/>
+      </svg>
+
+      <div class="db-chat-modal--bg-overlay" @click="onClickShowModal"></div>
 
       <div class="db-chat-modal-wrapper">
-        <zapier-interfaces-page-embed page-id='clpbajc5z004klc0o3em0khbg' no-background="false" style='max-width: 900px; height: 500px;'></zapier-interfaces-page-embed>
+        <zapier-interfaces-page-embed page-id='clpbajc5z004klc0o3em0khbg' no-background="false"></zapier-interfaces-page-embed ref="chatModal">
       </div>
     </div>
       
   </section>
 
-  <div class="db-chat-logo">
+  <div class="db-chat-logo" @click="onClickShowModal">
     <div class="db-chat-logo--wrapper">
-      <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 219 219" fill="none" class="db-svg">
-          <circle cx="109.5" cy="109.5" r="109.5" fill="url(#paint0_radial_4137_2076)"/>
-          <defs>
-          <radialGradient id="paint0_radial_4137_2076" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(109.5 109.5) rotate(90) scale(109.5)">
-          <stop stop-color="white"/>
-          <stop offset="1" stop-color="white" stop-opacity="0"/>
-          </radialGradient>
-          </defs>
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none" class="db-svg">
+        <circle cx="40" cy="40" r="40" fill="url(#paint0_radial_4245_308)"/>
+        <defs>
+        <radialGradient id="paint0_radial_4245_308" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(40 40) rotate(90) scale(40)">
+        <stop stop-color="white"/>
+        <stop offset="1" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+        </defs>
+      </svg>
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none" class="db-svg">
+        <circle cx="35" cy="35" r="35" fill="url(#paint0_radial_4245_308)"/>
+        <defs>
+        <radialGradient id="paint0_radial_4245_308" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(35 35) rotate(90) scale(35)">
+        <stop stop-color="white"/>
+        <stop offset="1" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+        </defs>
       </svg>
 
       <img src="{{ 'DB_Main_logo-v03-393x340.png' | asset_url }}" alt="DB Main Logo" class="db-img w-100 h-100">
@@ -410,6 +425,7 @@
         isActiveVideo: false,
         isMutedVideo: false,
         isOpenVideo: false,
+        isShowChat: false,
         now_playing_endpoint: 'https://api.spotify.com/v1/me/player/currently-playing',
         token_endpoint:'https://accounts.spotify.com/api/token',
         client_id: 'd73738945439475087703b513466d0d7',
@@ -534,6 +550,7 @@
       handleWindowSize();
 
       this.widgetDragScroll();
+
     },
     updated() {},
     computed: {
@@ -590,6 +607,15 @@
       }
     },
     methods: {
+      onClickShowModal() {
+        this.isShowChat = !this.isShowChat;
+
+        if (this.isShowChat) {
+          document.querySelector('body').style.overflowY = 'hidden';
+        } else {
+          document.querySelector('body').style.overflowY = 'auto';
+        }
+      },
       handleVideoClick() {
         const video = this.$refs.video;
         if (video.paused || video.ended) {

@@ -1451,16 +1451,91 @@
       }
     }
 
+    .hydrated {
+      scale: 0.8;
+      transition: scale 350ms ease-in-out 0ms;
+      max-width: 900px;
+      width: 100%;
+      min-width: 900px;
+      height: 500px;
+
+      @media only screen and (max-width: 1080px) {
+        max-width: 700px;
+        min-width: 700px;
+      }
+
+      @media only screen and (max-width: 768px) {
+        max-width: 100%;
+        height: 100%;
+        min-width: unset;
+        scale: 1;
+      }
+    }
+
     .db-chat-modal {
-      position: absolute;
+      // position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      z-index: 999;
+      z-index: 10000;
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
+      height: 100%;
+
+      visibility: hidden;
+      overflow: auto;
+      opacity: 0;
+
+      transition: visibility 350ms ease-in-out 10ms,
+      opacity 350ms ease-in-out 10ms;
+
+      @media only screen and (max-width: 768px) {
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        left: unset;
+        visibility: visible;
+        opacity: 1;
+        transition:
+          right 350ms ease-in-out 0ms;
+      }
+
+      .db-svg-icon--close {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: none !important;
+        z-index: 2;
+        transform: rotate(0deg);
+        transition: transform 200ms ease-in-out 0ms;
+        cursor: pointer;
+
+        &:hover {
+          transform: rotate(180deg);
+        }
+
+        @media only screen and (max-width: 768px) {
+          display: block !important;
+        }
+      }
+
+      &.--show-modal {
+        visibility: visible;
+        opacity: 1;
+
+        @media only screen and (max-width: 768px) {
+          right: 0;
+        }
+
+        .hydrated {
+          scale: 1;
+        }
+      }
+      
       
       .db-chat-modal--bg-overlay {
         position: absolute;
@@ -1472,6 +1547,10 @@
         width: 100%;
         height: 100%;
         background: rgba(12, 7, 15, 0.40);
+
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
       }
 
       .db-chat-modal-wrapper {
@@ -1480,6 +1559,17 @@
         width: 100%;
         min-width: 900px;
         height: 500px;
+
+        @media only screen and (max-width: 1080px) {
+          max-width: 700px;
+          min-width: 700px;
+        }
+
+        @media only screen and (max-width: 768px) {
+          max-width: 100%;
+          height: 100%;
+          min-width: unset;
+        }
       }
 
     }
@@ -1612,15 +1702,22 @@
     position: fixed;
     bottom: 40px;
     right: 40px;
-    max-width: 150px;
+    max-width: 100px;
     width: 100%;
-    min-width: 150px;
-    height: 150px;
+    min-width: 100px;
+    height: 100px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 99;
     background: linear-gradient(180deg, #8D50A0 0%, #B522EB 135.7%);
     transition: background 200ms ease-in-out 0ms;
+
+    @media only screen and (max-width: 768px) {
+      max-width: 70px;
+      min-width: 70px;
+      height: 70px;
+    }
+
     &:hover {
       background: linear-gradient(180deg, #7DAA41 0%, #B1FF29 141.83%);
     }
@@ -1637,16 +1734,36 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+
+        &:nth-child(1) {
+          display: block;
+          @media only screen and (max-width: 768px) {
+            display: none;
+          }
+        }
+
+        &:nth-child(2) {
+          display: none;
+          @media only screen and (max-width: 768px) {
+            display: block;
+          }
+        }
       }
 
       > img {
         position: absolute;
-        max-width: 100px;
-        min-width: 100px;
-        height: 100px;
+        max-width: 70px;
+        min-width: 70px;
+        height: 70px;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+
+        @media only screen and (max-width: 768px) {
+          max-width: 50px;
+          min-width: 50px;
+          height: 50px;
+        }
 
       }
 
