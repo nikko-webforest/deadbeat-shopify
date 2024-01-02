@@ -1,0 +1,836 @@
+{%- liquid
+  assign prev_product = collection.prev_product
+  assign next_product = collection.next_product
+  if prev_product or next_product
+  else
+    assign collectionList = product.collections[0].handle
+    assign prev_product = nil
+    assign next_product = nil
+    assign last = collections[collectionList].products_count
+    for p in collections[collectionList].products
+      if p.handle == product.handle
+        assign prev = forloop.index | minus: 2
+        assign next = forloop.index
+        if prev >= 0
+          assign prev_product = collections[collectionList].products[prev]
+        endif
+        if last >= next
+          assign next_product = collections[collectionList].products[next]
+        endif
+        break
+      endif
+    endfor
+  endif
+-%}
+
+<main class="db-main site-main db-page--product-page">
+    
+  <section class="db-section db-section--product-details"
+    v-if="isProductDataEmpty">
+    <div class="db-container">
+      <div class="breadcrumbs">
+        <a class="breadcrumb-item"
+          title="Home"
+          href="{{ shop.url }}">
+          Home
+        </a>
+        <svg class="svg-icon-angle-right db-svg"
+          width="6"
+          height="8"
+          viewBox="0 0 6 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path id="path_01"
+            d="M0.726562 7.06L3.7799 4L0.726562 0.94L1.66656 0L5.66656 4L1.66656 8L0.726562 7.06Z"
+            fill="#838383">
+          </path>
+        </svg>
+        <a class="breadcrumb-item"
+          title="Merch Store"
+          href="{{ shop.url }}/pages/merch-store">
+          Merch Store
+        </a>
+        <svg class="svg-icon-angle-right db-svg"
+          width="6"
+          height="8"
+          viewBox="0 0 6 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path id="path_01"
+            d="M0.726562 7.06L3.7799 4L0.726562 0.94L1.66656 0L5.66656 4L1.66656 8L0.726562 7.06Z"
+            fill="#838383">
+          </path>
+        </svg>
+        <a class="breadcrumb-item --current"
+          :title="product.data.title"
+          :href="'/products/'+product.data.handle"
+          v-text="product.data.title">
+        </a>
+      </div>
+      <div class="db-row">
+        <div class="db-col">
+          <img class="product-img db-img"
+            :alt="product.data.image.alt"
+            :title="product.data.image.alt"
+            :src="product.selected.image"
+            width=""
+            height=""
+            loading="lazy"/>
+        </div>
+        <div class="db-col">
+          <h1 class="product-title"
+            v-text="product.data.title">
+          </h1>
+          <div class="product-prices">
+            <div class="current-price"
+              v-text="'{{ cart.currency.symbol }}'+product.selected.variant.price">
+            </div>
+            <div class="before-price"
+              v-if="product.selected.variant.compare_at_price != ''"
+              v-text="'{{ cart.currency.symbol }}'+product.selected.variant.compare_at_price">
+            </div>
+          </div>
+          <template v-for="(optionItem, optionIndex) in product.data.options">
+            <div class="product-option --color"
+              v-if="optionItem.name == 'Color'">
+              <div class="db-inner-row">
+                <div class="label">
+                  Color
+                </div>
+                <ul class="option-list">
+                  <li class="option-item"
+                    v-for="(valueItem, valueIndex) in optionItem.values"
+                    :title="valueItem"
+                    :class="{ '--selected' : isSelected(valueItem, optionIndex) }"
+                    :style="{
+                      'background-color' : getHexColor(valueItem),
+                      'box-shadow' : setBoxShadow(valueItem)
+                    }"
+                    @click="selectedOption(optionItem.name, optionIndex, valueItem);">
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </template>
+          <div class="product-option --size">
+            <div class="db-inner-row">
+              <div class="label">
+                Size
+              </div>
+              <template v-if="product.selected.metafields.size_guide">
+                <button class="db-btn--size-guide"
+                  type="button"
+                  title="See Size Guide Table"
+                  :class="{ '--toggled' : product.selected.sizeGuideToggle }"
+                  @click="toggleSizeGuide();">
+                  <div class="label">
+                    SIZE GUIDE
+                  </div>
+                </button>
+              </template>
+              <template v-for="(optionItem, optionIndex) in product.data.options">
+                <ul class="option-list"
+                  v-if="optionItem.name == 'Size'">
+                  <li class="option-item"
+                    v-for="(valueItem, valueIndex) in optionItem.values"
+                    v-text="valueItem"
+                    :class="[{ '--selected' : isSelected(valueItem, optionIndex) }]"
+                    @click="selectedOption(optionItem.name, optionIndex, valueItem);">
+                  </li>
+                </ul>
+              </template>
+            </div>
+            <template v-if="product.selected.metafields.size_guide">
+              <div class="product-size-guide-wrap"
+                v-html="product.selected.metafields.size_guide">
+              </div>
+            </template>
+          </div>
+          <div class="product-quantity-wrap">
+            <div class="label">
+              Quantity
+            </div>
+            <div class="quantity-control">
+              <button class="quantity-minus"
+                type="button"
+                :disable="product.selected.quantity <= 1"
+                @click="decreaseQuantity();">
+                <svg class="svg-icon-circle-minus db-svg"
+                  width="19"
+                  height="19"
+                  viewBox="0 0 19 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <circle id="circle_01"
+                    cx="9.5"
+                    cy="9.5"
+                    r="8.5"
+                    stroke="#FFFFFF">
+                  </circle>
+                  <path id="path_01"
+                    d="M11.816 9L11.592 10.148H7L7.21 9H11.816Z"
+                    fill="#FFFFFF">
+                  </path>
+                </svg>
+              </button>
+              <input class="quantity-input"
+                type="text"
+                :value="product.selected.quantity"
+                readonly/>
+              <button class="quantity-plus"
+                type="button"
+                @click="increaseQuantity();">
+                <svg class="svg-icon-circle-plus db-svg"
+                  width="19"
+                  height="19"
+                  viewBox="0 0 19 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <circle id="circle_01"
+                    cx="9.5"
+                    cy="9.5"
+                    r="8.5"
+                    stroke="#FFFFFF">
+                  </circle>
+                  <path id="path_01"
+                    d="M10.402 9.058H12.53L12.39 10.206H10.402V12.404H9.114V10.206H7L7.126 9.058H9.114V7H10.402V9.058Z"
+                    fill="#FFFFFF">
+                  </path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <hr>
+          <div class="product-buttons">
+            <template v-if="product.selected.variant.available == 'true'">
+              <button class="db-btn--add-to-cart"
+                type="button"
+                @click="addToCart();">
+                <span class="label">
+                  ADD TO CART
+                </span>
+              </button>
+              <button class="db-btn--buy-it-now"
+                type="button"
+                @click="buyItNow();">
+                <span class="label">
+                  BUY IT NOW
+                </span>
+              </button>
+            </template>
+            <template v-else>
+              <button class="db-btn--out-of-stock"
+                type="button"
+                disabled>
+                <span class="label">
+                  Out of Stock
+                </span>
+              </button>
+            </template>
+          </div>
+          <div class="product-details">
+            <h5>
+              Product Details
+            </h5>
+            <div v-html="product.data.body_html"></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-details">
+        <h5>
+          Product Details
+        </h5>
+        <div v-html="product.data.body_html"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="db-section db-section--product-recommendation">
+    <div class="db-container">
+      <h2>
+        You May Also Like
+      </h2>
+      <div class="product-list">
+        <div class="product-item --fade-in"
+          v-for="(productItem, productIndex) in productRecommendation.products.slice(0, 4)">
+          <a class="product-img-link"
+            :title="productItem.title"
+            :href="'/products/'+productItem.handle">
+            <img class="product-img db-img"
+              :alt="productItem.title"
+              :title="productItem.title"
+              :src="productItem.featured_image"
+              width=""
+              height=""
+              loading="lazy"/>
+          </a>
+          <div class="product-details">
+            <div class="product-title"
+              v-text="productItem.title">
+            </div>
+            <div class="product-price">
+              <span class="current-price"
+                v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].price)">
+              </span>
+              <span class="before-price"
+                v-if="productItem.variants[0].compare_at_price != null"
+                v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].compare_at_price)">
+              </span>
+            </div>
+          </div>
+          <div class="product-actions">
+            <button class="db-btn--buy-it-now"
+              type="button"
+              @click="buyItNow(productItem, $event);">
+              <span class="label">
+                BUY IT NOW
+              </span>
+            </button>
+            <button class="db-btn--add-to-cart"
+              type="button"
+              @click="addThisToCart(productItem, $event);">
+              <svg class="svg-icon-cart db-svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                  fill="#FFFFFF">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="db-section db-section--prev-next-product">
+    <div class="db-container">
+      <div class="db-row">
+        <div class="db-col">
+          <a class="prev-next-btns --prev" v-if="prevProduct"
+            :title="prevProduct.title"
+            :href="'/products/'+prevProduct.handle"
+            :data-product-id="prevProduct.id">
+            <div class="prev-next-label">
+              Previous
+            </div>
+            <div class="db-inner-row">
+              <svg class="svg-icon-angle-left db-svg"
+                width="19"
+                height="32"
+                viewBox="0 0 19 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M15.9994 0L18.4883 2.66667L5.33273 16L18.4883 29.3333L15.9994 32L-0.000606537 16L15.9994 0Z"
+                  fill="#D86FFF">
+                </path>
+              </svg>
+              <div class="product-details">
+                <div class="prev-next-label">
+                  Previous
+                </div>
+                <div class="product-title"
+                  v-text="prevProduct.title">
+                </div>
+                <div class="product-prices">
+                  <div class="before-price"
+                    v-if="prevProduct.compare_at_price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prevProduct.compare_at_price)">
+                  </div>
+                  <div class="current-price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prevProduct.price)">
+                  </div>
+                </div>
+              </div>
+              <img class="product-img db-img"
+                :alt="prevProduct.title"
+                :title="prevProduct.title"
+                :src="prevProduct.featured_image"
+                width=""
+                height=""
+                loading="lazy"/>
+            </div>
+          </a>
+        </div>
+        <div class="db-col">
+          <a class="prev-next-btns --next" v-if="nextProduct"
+            :title="nextProduct.title"
+            :href="'/products/'+nextProduct.handle"
+            :data-product-id="nextProduct.id">
+            <div class="prev-next-label">
+              Next
+            </div>
+            <div class="db-inner-row">
+              <img class="product-img db-img"
+                :alt="nextProduct.title"
+                :title="nextProduct.title"
+                :src="nextProduct.featured_image"
+                width=""
+                height=""
+                loading="lazy"/>
+              <div class="product-details">
+                <div class="prev-next-label">
+                  Next
+                </div>
+                <div class="product-title"
+                  v-text="nextProduct.title">
+                </div>
+                <div class="product-prices">
+                  <div class="current-price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(nextProduct.price)">
+                  </div>
+                  <div class="before-price"
+                    v-if="nextProduct.compare_at_price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(nextProduct.compare_at_price)">
+                  </div>
+                </div>
+              </div>
+              <svg class="svg-icon-angle-right db-svg"
+                width="19"
+                height="32"
+                viewBox="0 0 19 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M2.48889 0L0 2.66667L13.1556 16L0 29.3333L2.48889 32L18.4889 16L2.48889 0Z" 
+                  fill="#D86FFF">
+                </path>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script>
+  const DB_SF_Page_Product_Options = {
+    name: 'DB SF Page Product Options',
+    data() {
+      return {
+        colorNames: [
+          {
+            name: "Charcoal-Black Triblend",
+            value: 'rgb(25, 30, 28)',
+          },
+          {
+            name: "Purple Triblend",
+            value: 'rgb(120, 84, 137)',
+          },
+          {
+            name: "Blue Triblend",
+            value: 'rgb(101,119,161)',
+          },
+          {
+            name: "Mustard Triblend",
+            value: 'rgb(226, 171, 87)',
+          },
+          {
+            name: "White Fleck Triblend",
+            value: 'rgb(232,232,232)',
+          },
+          {
+            name: "Solid White Triblend",
+            value: 'rgb(255, 255, 255)',
+          },
+          {
+            name: "Black",
+            value: 'rgb(0, 0, 0)',
+          },
+          {
+            name: "Red",
+            value: 'rgb(255, 0, 0)',
+          },
+          {
+            name: "White",
+            value: 'rgb(255, 255, 255)',
+          },
+          {
+            name: "Heather Grey",
+            value: 'rgb(116, 115, 111)',
+          },
+          {
+            name: "Baby Pink",
+            value: 'rgb(233, 169, 177)',
+          },
+          {
+            name: "Red Triblend",
+            value: 'rgb(172, 61, 65)',
+          },
+          {
+            name: "Emerald Triblend",
+            value: 'rgb(14, 37, 24)',
+          },
+          {
+            name: "Navy Triblend",
+            value: 'rgb(50, 55, 92)',
+          },
+          {
+            name: "Athletic Grey Triblend",
+            value: 'rgb(111, 112, 107)',
+          },
+          {
+            name: "Brown Triblend",
+            value: 'rgb(83, 55, 44)',
+          },
+          {
+            name: "Teal Triblend",
+            value: 'rgb(20, 109, 104)',
+          },
+          {
+            name: "Heather Grey/Black",
+            value: 'rgb(31, 31, 31)',
+          },
+          {
+            name: "Heather Grey/Heather Red",
+            value: 'rgb(190, 64, 65)',
+          },
+          {
+            name: "Athletic Heather",
+            value: 'rgb(164, 164, 164)',
+          },
+          {
+            name: "Charcoal Heather",
+            value: 'rgb(37, 38, 35)',
+          },
+          {
+            name: "Purple",
+            value: 'rgb(128, 0, 128)',
+          },
+          {
+            name: "Carbon Grey",
+            value: 'rgb(144, 142, 138)',
+          },
+          {
+            name: "Navy Blazer",
+            value: 'rgb(25, 33, 44)',
+          },
+          {
+            name: "Maroon",
+            value: 'rgb(128, 0, 0)',
+          },
+          {
+            name: "Dusty Rose",
+            value: 'rgb(179, 109, 97)',
+          },
+          {
+            name: "Sky Blue",
+            value: 'rgb(135, 206, 235)',
+          },
+          {
+            name: "Forest Green",
+            value: 'rgb(48, 73, 47)',
+          },
+          {
+            name: "Military Green",
+            value: 'rgb(82, 71, 48)',
+          },
+        ],
+
+        product: {
+          data: {},
+          variants_liquid: [
+            {% for product_variant in product.variants %}
+              {
+                id: '{{ product_variant.id }}',
+                title: '{{ product_variant.title }}',
+                price: '{{ product_variant.price }}',
+                compare_at_price: '{{ product_variant.compare_at_price }}',
+                inventory_quantity: '{{ product_variant.inventory_quantity }}',
+                available: '{{ product_variant.available }}',
+
+                {% for product_option in product_variant.options %}
+                  "option{{ forloop.index }}" : "{{ product_option }}",
+                {% endfor %}
+              },
+            {% endfor %}
+          ],
+          options_liquid: [],
+          selected: {
+            id: '',
+            title: '',
+            quantity: 1,
+            option1: null,
+            option2: null,
+            option3: null,
+            options: {},
+            image: '',
+            sizeGuideToggle: false,
+            metafields: {{ product.metafields.custom | json }},
+            variant: {},
+          },
+        },
+
+        productRecommendation: {
+          products: [],
+        },
+        prevProduct: {{ prev_product | json }},
+        nextProduct: {{ next_product | json }},
+      };
+    },
+    methods: {
+      async fetchThisProduct() {
+        const productEndpoint = `/products/{{ product.handle }}.json`;
+        fetch(productEndpoint)
+          .then(response => response.json())
+          .then(data => {
+            console.log(`Fetch this Product Data from Endpoint SUCCESS...`, data);
+
+            // var variants_in_liquid = {{ product.variants | json }};
+            // console.log('variants_in_liquid =', variants_in_liquid);
+
+            data.product.variants.forEach((variantItem, variantIndex) => {
+              this.product.variants_liquid.forEach((item, index) => {
+                if (variantItem.id == item.id) {
+                  // console.log('variantItem.id =', variantItem.id);
+                  // console.log('item.id =', item.id);
+                  // console.log('item.inventory_quantity =', item.inventory_quantity);
+                  // console.log('item.option1 =', item.option1);
+                  variantItem.available = item.available;
+                  variantItem.inventory = item.inventory_quantity;
+                }
+              });
+            });
+
+            this.product.data = { ...data.product };
+          })
+          .catch(error => {
+            console.error(`Fetch this Product Data from Endpoint FAILED...`, error);
+          })
+          .finally(() => {
+            this.setDefaultVariant();
+            this.loadPage();
+          });
+      },
+      loadPage() {
+        // console.log('loadPage()');
+        setTimeout(() => {
+          document.querySelector('.db-site-loader').classList.remove('--show');
+          document.querySelector('.db-header').classList.add('--animate-now');
+        }, 1000);
+      },
+      selectedOption(optionName, optionIndex, optionValue) {
+        console.log('selectedOption() =', optionName, optionIndex, optionValue);
+
+        this.product.selected[`option${optionIndex + 1}`] = optionValue;
+
+        this.setProductVariant();
+      },
+      setProductVariant() {
+        this.product.data.variants.forEach((variantItem, variantIndex) => {
+          if (
+            variantItem.option1 == this.product.selected.option1 &&
+            variantItem.option2 == this.product.selected.option2 &&
+            variantItem.option3 == this.product.selected.option3
+          ) {
+            this.product.selected.variant = this.product.data.variants[variantIndex];
+            this.setProductVariantImage(this.product.data.variants[variantIndex].image_id);
+          }
+        });
+      },
+      setDefaultVariant() {
+        this.product.selected.variant = this.product.data.variants[0];
+        this.product.selected.option1 = this.product.data.variants[0].option1;
+        this.product.selected.option2 = this.product.data.variants[0].option2;
+        this.product.selected.option3 = this.product.data.variants[0].option3;
+        this.setProductVariantImage(this.product.selected.variant.image_id);
+      },
+      setProductVariantImage(variantImageID) {
+        this.product.data.images.forEach((item) => {
+          if (item.id == variantImageID ) {
+            this.product.selected.image = item.src;
+          }
+        });
+      },
+      isSelected(valueItem, optionIndex) {
+        if (valueItem == this.product.selected[`option${optionIndex + 1}`]) {
+          return true;
+        }
+        return false;
+      },
+      decreaseQuantity() {
+        if (this.product.selected.quantity == this.product.selected.variant.quantity_rule.min) {
+          this.product.selected.quantity = 1;  
+        }
+        else {
+          this.product.selected.quantity--;
+        }
+      },
+      increaseQuantity() {
+        this.product.selected.quantity++;
+      },
+      getHexColor(colorName) {
+        // console.log('getHexColor()', colorName);
+        var convertedColorValue = '';
+
+        this.colorNames.forEach((colorItem) => {
+          if (colorItem.name == colorName) {
+            convertedColorValue = colorItem.value;
+          }
+        });
+
+        return convertedColorValue;
+      },
+      setBoxShadow(colorName) {
+        if (colorName == this.product.selected.option1) {
+          return `${this.getHexColor(colorName)} 0px 0px 0px 2px`;
+        }
+        return 'none';
+      },
+      toggleSizeGuide() {
+        this.product.selected.sizeGuideToggle = !this.product.selected.sizeGuideToggle;
+
+        var element = document.querySelector('.product-size-guide-wrap');
+
+        if (this.product.selected.sizeGuideToggle) {
+          var sizeGuideHeight = element.scrollHeight;
+          element.style.height = `${sizeGuideHeight}px`;
+        }
+        else {
+          element.style.height = `0px`;
+        }
+      },
+      addThisToCart(product, event) {
+        // console.log('addThisToCart() ', product, event);
+
+        let items = [
+          {
+            id: product.variants[0].id,
+            quantity: 1,
+          }
+        ];
+
+        let self = this;
+
+        DB_Cart_App.cart.loader = true;
+
+        $.ajax({
+          type: "POST",
+          url: '/cart/add.js',
+          dataType: 'json',
+          crossDomain: true,
+          data: {
+            items: items
+          },
+          success: (data) => {
+            // console.log('Added this to Cart SUCCESS...', data);
+            self.openCart();
+            DB_Cart_App.fetchCartData();
+            DB_Cart_App.cart.loader = false;
+          },
+          error: (error) => {
+            console.error('Added this to Cart FAILED...', error);
+          }
+        });
+      },
+      addToCart() {
+        // console.log('addToCart());
+
+        let items = [
+          {
+            id: this.product.selected.variant.id,
+            quantity: this.product.selected.quantity,
+          }
+        ];
+
+        let self = this;
+
+        DB_Cart_App.cart.loader = true;
+
+        $.ajax({
+          type: "POST",
+          url: '/cart/add.js',
+          dataType: 'json',
+          crossDomain: true,
+          data: {
+            items: items
+          },
+          success: (data) => {
+            // console.log('Added this to Cart SUCCESS...', data);
+            self.openCart();
+            DB_Cart_App.fetchCartData();
+            DB_Cart_App.cart.loader = false;
+          },
+          error: (error) => {
+            console.error('Added this to Cart FAILED...', error);
+          }
+        });
+      },
+      buyItNow(product, event) {
+        // console.log('buyItNow()', product, event);
+        
+        let items = [
+          {
+            id: this.product.selected.variant.id,
+            quantity: this.product.selected.quantity,
+          }
+        ];
+
+        let self = this;
+
+        $.ajax({
+          type: "POST",
+          url: '/cart/add.js',
+          dataType: 'json',
+          crossDomain: true,
+          data: {
+            items: items
+          },
+          success: (data) => {
+            // console.log('Added this to Cart SUCCESS...', data);
+          },
+          error: (error) => {
+            console.error('Added this to Cart FAILED...', error);
+          }
+        });
+
+        setTimeout(() => {
+          window.location = '/checkout';
+        }, 1000);
+      },
+      formatPrice(price) {
+        return (price / 100).toFixed(2);
+      },
+      closeCart() {
+        document.querySelector('body').classList.remove('--show-cart');
+        document.querySelector('body').style.overflowY = 'auto';
+      },
+      openCart() {
+        document.querySelector('body').classList.add('--show-cart');
+        document.querySelector('body').style.overflowY = 'hidden';
+      },
+
+      async fetchProductRecommendation() {
+        const endpoint = `/recommendations/products.json?product_id={{ product.id }}`;
+        fetch(endpoint)
+          .then(response => response.json())
+          .then(data => {
+            // console.log(`Fetch this Product Recommendations Data from Endpoint SUCCESS`, data);
+            this.productRecommendation.products = data.products;
+          })
+          .catch(error => {
+            console.error(`Fetch this Product Recommendation Data from Endpoint FAILED`, error);
+          });
+      },
+    },
+    computed: {
+      isProductDataEmpty() {
+        return Object.keys(this.product.data).length > 0;
+      }
+    },
+    created() {
+      this.fetchThisProduct();
+      this.fetchProductRecommendation();
+    },
+    mounted() {},
+    updated() {},
+  };
+
+  Vue.createApp(DB_SF_Page_Product_Options).mount('.db-page--product-page');
+</script>

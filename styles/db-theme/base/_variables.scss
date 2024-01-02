@@ -1,0 +1,50 @@
+/*===============*/
+/*   VARIABLES   */
+/*===============*/
+:root {
+  --primary-font-family: 'Oswald', sans-serif;
+  --secondary-font-family: 'Quattrocento', serif;
+  --tertiary-font-family: 'Montserrat', sans-serif;
+
+  --black-color: #000000;
+  --white-color: #FFFFFF;
+
+  --primary-color: #AA27B1;
+  --secondary-color: #95CC0E;
+  --tertiary-color: '';
+
+  --container: 1440px;
+
+  --hover-transition-duration: 200ms;
+  --click-transition-duration: 400ms;
+}
+
+$primaryFontFamily: var(--primary-font-family);
+$secondaryFontFamily: var(--secondary-font-family);
+$tertiaryFontFamily: var(--tertiary-font-family);
+
+$primary-font-family: var(--primary-font-family);
+$secondary-font-family: var(--secondary-font-family);
+$tertiary-font-family: var(--tertiary-font-family);
+
+$blackColor: var(--black-color);
+$whiteColor: var(--white-color);
+
+$black-color: var(--black-color);
+$white-color: var(--white-color);
+
+$primaryColor: var(--primary-color);
+$secondaryColor: var(--secondary-color);
+$tertiaryColor: var(--tertiary-color);
+
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$tertiary-color: var(--tertiary-color);
+
+$container: var(--container);
+
+$hoverTransitionDuration: var(--hover-transition-duration);
+$clickTransitionDuration: var(--click-transition-duration);
+
+$hover-transition-duration: var(--hover-transition-duration);
+$click-transition-duration: var(--click-transition-duration);
