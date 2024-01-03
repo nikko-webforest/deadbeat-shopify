@@ -2,11 +2,353 @@
 
   {% assign collection = collections['all-products'] %}
 
+  <section class="db-section db-section--merch-store-search"
+    :class="{ '--on-search' : shop.products.search.active && shop.products.search.query }">
+    <div class="db-container">
+      <div class="db-row">
+        <h1>
+          UNLEASH YOUR UNDEAD FASHION
+        </h1>
+        <p>
+          Discover official and licensed of exclusive merch items and collectibles of Deadbeat
+        </p>
+        <div class="search-wrap">
+          <div class="search-bar">
+            <button class="search-clear"
+              type="button"
+              @click="searchProductClear();"
+              v-if="shop.products.search.query">
+              <svg class="svg-icon-close db-svg"
+                width="16"
+                height="18"
+                viewBox="0 0 16 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M0.666416 15.8408C0.382028 16.1495 0.382028 16.6501 0.666416 16.9588C0.950805 17.2675 1.41189 17.2675 1.69628 16.9588L7.99781 10.1183L14.4846 17.1599C14.769 17.4686 15.2301 17.4686 15.5145 17.1599C15.7988 16.8511 15.7988 16.3506 15.5145 16.0419L9.02768 9.00038L15.5145 1.95884C15.7988 1.65013 15.7988 1.14962 15.5145 0.840908C15.2301 0.532198 14.769 0.532198 14.4846 0.840908L7.99781 7.88245L1.69628 1.042C1.41189 0.73329 0.950805 0.73329 0.666416 1.042C0.382028 1.35071 0.382028 1.85123 0.666416 2.15994L6.96795 9.00038L0.666416 15.8408Z"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  fill="#A5A5A5">
+                </path>
+              </svg>
+            </button>
+            <input class="search-input"
+              type="text"
+              placeholder="Search product name"
+              autocapitalize="false"
+              autocomplete="false"
+              autofill="false"
+              v-model="shop.products.search.query"
+              @click="searchProductToggle(true);"
+              @keyup="searchProductPerform();"/>
+            <button class="search-button"
+              type="button"
+              @click="searchProductPerform();">
+              <span class="label">
+                SEARCH
+              </span>
+              <svg class="svg-icon-search db-svg"
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M24.6168 22.4906L18.9495 16.8232C20.3139 15.0068 21.0505 12.7958 21.048 10.524C21.048 4.7211 16.3269 0 10.524 0C4.7211 0 0 4.7211 0 10.524C0 16.3269 4.7211 21.048 10.524 21.048C12.7958 21.0505 15.0068 20.3139 16.8232 18.9495L22.4906 24.6168C22.7775 24.8733 23.1516 25.0102 23.5363 24.9994C23.9209 24.9886 24.2869 24.831 24.5589 24.5589C24.831 24.2869 24.9886 23.9209 24.9994 23.5363C25.0102 23.1516 24.8733 22.7775 24.6168 22.4906ZM3.00686 10.524C3.00686 9.03725 3.44773 7.58389 4.27372 6.3477C5.09972 5.11151 6.27374 4.14802 7.64731 3.57907C9.02089 3.01011 10.5323 2.86125 11.9905 3.1513C13.4487 3.44135 14.7881 4.15729 15.8394 5.20858C16.8907 6.25987 17.6067 7.59929 17.8967 9.05748C18.1868 10.5157 18.0379 12.0271 17.4689 13.4007C16.9 14.7743 15.9365 15.9483 14.7003 16.7743C13.4641 17.6003 12.0108 18.0411 10.524 18.0411C8.53106 18.0388 6.62044 17.246 5.21122 15.8368C3.802 14.4276 3.00925 12.5169 3.00686 10.524Z"
+                  fill="#FFFFFF">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <div class="search-results db-scroll-bar">
+            <ul class="product-list">
+              <template v-for="(productItem, productIndex) in shop.products.search.results">
+                <li class="product-item">
+                  <img class="product-img db-img"
+                    :alt="productItem.title"
+                    :title="productItem.title"
+                    :src="productItem.variants[0].featured_image.src"
+                    width=""
+                    height=""/>
+                  <a class="product-details"
+                    :href="'/products/'+productItem.handle">
+                    <div class="product-title"
+                      v-text="productItem.title">
+                    </div>
+                    <div class="product-prices">
+                      <div class="current-price"
+                        v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].price">
+                      </div>
+                      <div class="before-price"
+                        v-if="productItem.variants[0].compare_at_price != null"
+                        v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].compare_at_price">
+                      </div>
+                    </div>
+                  </a>
+                  <button class="db-btn--product-add-to-cart"
+                    type="button"
+                    @click="addThisToCart(productItem, $event); shop.products.search.active = false;">
+                    <svg class="svg-icon-cart db-svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                        fill="#FFFFFF">
+                      </path>
+                    </svg>
+                  </button>
+                </li>
+              </template>
+            </ul>
+            <div class="product-search-not-found"
+              v-if="!shop.products.search.results.length && shop.products.search.query != ''">
+              NO MATCHING RESULTS FOUND
+            </div>
+          </div>
+          <div class="search-overlay"
+            :class="{ '--show' : shop.products.search.active && shop.products.search.query }"
+            @click="searchProductToggle(false);">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="db-section db-section--merch-store-listing">
     <div class="db-container">
       <div class="db-row">
-        <div class="db-col"></div>
+        <div class="db-col db-scroll-bar"
+          :class="{ '--show' : shop.products.filters.toggle }">
+          <div class="db-inner-row">
+            <h3>
+              FILTER BY CATEGORY
+            </h3>
+            <button class="db-btn--clear-all"
+              type="button"
+              @click="clearAllFilter();">
+              <span class="label">
+                CLEAR ALL
+              </span>
+            </button>
+          </div>
+          <div class="product-filter --by-clothing">
+            <div class="db-inner-row">
+              <h4 class="filter-title">
+                CLOTHING
+              </h4>
+              <button class="db-btn--filter-toggle"
+                type="button"
+                :class="{ '--toggle' : shop.products.filters.category.clothing.toggle }"
+                @click="toggleProductFilterList('Clothing');">
+                <span class="label"
+                  v-text="shop.products.filters.category.clothing.toggle ? 'Hide' : 'Show'">
+                </span>
+                <svg class="svg-icon-angle-up db-svg"
+                  width="10"
+                  height="6"
+                  viewBox="0 0 10 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path id="path_01"
+                    d="M8.24127 5.28199C8.48052 5.52124 8.86842 5.52124 9.10767 5.28199C9.34692 5.04274 9.34692 4.65484 9.10767 4.41559L5.43185 0.739765C5.1926 0.500515 4.8047 0.500515 4.56545 0.739765L0.889624 4.41559C0.650373 4.65484 0.650373 5.04274 0.889624 5.28199C1.12887 5.52124 1.51677 5.52124 1.75602 5.28199L4.99865 2.03936L8.24127 5.28199Z"
+                    fill="#6B6B6B">
+                  </path>
+                </svg>
+              </button>
+            </div>
+            <ul class="filter-list">
+              <template v-for="(filterItem, filterIndex) in shop.products.filters.category.clothing.list">
+                <li class="filter-item"
+                  :class="{ '--selected' : shop.products.filters.category.clothing.selected.includes(filterItem) }"
+                  @click="productFilterByClothing(filterItem);">
+                  <div class="filter-checkbox"
+                    :id="'Clothing: '+filterItem"
+                    type="checkbox">
+                    <svg class="svg-icon-check db-svg"
+                      width="17"
+                      height="12"
+                      viewBox="0 0 17 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M6.60605 8.6838L15.0531 0.23584L16.3534 1.53524L6.60605 11.2826L0.757812 5.43437L2.05722 4.13497L6.60605 8.6838Z"
+                        fill="#D86FFF">
+                      </path>
+                    </svg>
+                  </div>
+                  <div class="filter-label"
+                    :for="'Clothing: '+filterItem"
+                    v-text="filterItem">
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </div>
+          <div class="product-filter --by-accessories">
+            <div class="db-inner-row">
+              <h4 class="filter-title">
+                ACCESSORIES
+              </h4>
+              <button class="db-btn--filter-toggle"
+                type="button"
+                :class="{ '--toggle' : shop.products.filters.category.accessories.toggle }"
+                @click="toggleProductFilterList('Accessories');">
+                <span class="label"
+                  v-text="shop.products.filters.category.accessories.toggle ? 'Hide' : 'Show'">
+                </span>
+                <svg class="svg-icon-angle-up db-svg"
+                  width="10"
+                  height="6"
+                  viewBox="0 0 10 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path id="path_01"
+                    d="M8.24127 5.28199C8.48052 5.52124 8.86842 5.52124 9.10767 5.28199C9.34692 5.04274 9.34692 4.65484 9.10767 4.41559L5.43185 0.739765C5.1926 0.500515 4.8047 0.500515 4.56545 0.739765L0.889624 4.41559C0.650373 4.65484 0.650373 5.04274 0.889624 5.28199C1.12887 5.52124 1.51677 5.52124 1.75602 5.28199L4.99865 2.03936L8.24127 5.28199Z"
+                    fill="#6B6B6B">
+                  </path>
+                </svg>
+              </button>
+            </div>
+            <ul class="filter-list">
+              <template v-for="(filterItem, filterIndex) in shop.products.filters.category.accessories.list">
+                <li class="filter-item"
+                  :class="{ '--selected' : shop.products.filters.category.accessories.selected.includes(filterItem) }"
+                  @click="productFilterByAccessories(filterItem);">
+                  <div class="filter-checkbox"
+                    :id="'Accessories: '+filterItem"
+                    type="checkbox">
+                    <svg class="svg-icon-check db-svg"
+                      width="17"
+                      height="12"
+                      viewBox="0 0 17 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M6.60605 8.6838L15.0531 0.23584L16.3534 1.53524L6.60605 11.2826L0.757812 5.43437L2.05722 4.13497L6.60605 8.6838Z"
+                        fill="#D86FFF">
+                      </path>
+                    </svg>
+                  </div>
+                  <div class="filter-label"
+                    :for="'Accessories: '+filterItem"
+                    v-text="filterItem">
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </div>
+          <button class="db-btn--view"
+            type="button"
+            @click="toggleFilterMBView();">
+            <span class="label">VIEW</span>
+          </button>
+        </div>
         <div class="db-col">
+          <div class="db-inner-row">
+            <div class="product-filter --by-gender">
+              <ul class="filter-list">
+                <template v-for="(filterItem, filterIndex) in shop.products.filters.gender.list">
+                  <li class="filter-item"
+                    :class="{ '--selected' : filterItem == shop.products.filters.gender.selected }"
+                    @click="productFilterByGender(filterItem);">
+                    <svg class="svg-icon-check db-svg"
+                      width="16"
+                      height="12"
+                      viewBox="0 0 16 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M5.84824 8.92452L14.2953 0.476562L15.5956 1.77597L5.84824 11.5233L0 5.6751L1.2994 4.37569L5.84824 8.92452Z"
+                        fill="#D86FFF">
+                      </path>
+                    </svg>
+                    <span class="label"
+                      v-text="filterItem">
+                    </span>
+                  </li>
+                </template>
+              </ul>
+            </div>
+            <button class="db-btn--toggle-filter"
+              type="button"
+              @click="toggleFilterMBView();">
+              <span class="label">
+                FILTER
+              </span>
+            </button>
+            <div class="product-sort"
+              :class="{ '--toggle' : shop.products.sort.toggle }">
+              <button class="db-btn--sort-toggle"
+                type="button"
+                @click="toggleProductSort();">
+                <span class="label">
+                  SORT
+                </span>
+                <svg class="svg-icon-arrow-up-arrow-down db-svg"
+                  width="14"
+                  height="16"
+                  viewBox="0 0 14 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path id="path_01"
+                    d="M8.35785 3.27934C8.49847 3.41979 8.6891 3.49868 8.88785 3.49868C9.0866 3.49868 9.27722 3.41979 9.41785 3.27934L10.1378 2.55934V12.7493C10.1378 12.9483 10.2169 13.139 10.3575 13.2797C10.4982 13.4203 10.6889 13.4993 10.8878 13.4993C11.0868 13.4993 11.2775 13.4203 11.4182 13.2797C11.5588 13.139 11.6378 12.9483 11.6378 12.7493V2.55934L12.3578 3.27934C12.4265 3.35303 12.5093 3.41213 12.6013 3.45312C12.6933 3.49411 12.7926 3.51615 12.8933 3.51793C12.994 3.51971 13.0941 3.50118 13.1874 3.46346C13.2808 3.42574 13.3657 3.3696 13.4369 3.29838C13.5081 3.22716 13.5643 3.14233 13.602 3.04894C13.6397 2.95555 13.6582 2.85552 13.6564 2.75482C13.6547 2.65411 13.6326 2.5548 13.5916 2.4628C13.5506 2.3708 13.4915 2.288 13.4178 2.21934L11.4178 0.21934C11.2772 0.0788894 11.0866 0 10.8878 0C10.6891 0 10.4985 0.0788894 10.3578 0.21934L8.35785 2.21934C8.2174 2.35997 8.13851 2.55059 8.13851 2.74934C8.13851 2.94809 8.2174 3.13871 8.35785 3.27934ZM3.63785 12.9393L4.35785 12.2193C4.42651 12.1457 4.50931 12.0866 4.60131 12.0456C4.69331 12.0046 4.79262 11.9825 4.89333 11.9807C4.99403 11.979 5.09406 11.9975 5.18745 12.0352C5.28083 12.0729 5.36567 12.1291 5.43689 12.2003C5.50811 12.2715 5.56425 12.3564 5.60197 12.4497C5.63969 12.5431 5.65822 12.6432 5.65644 12.7439C5.65466 12.8446 5.63262 12.9439 5.59163 13.0359C5.55064 13.1279 5.49154 13.2107 5.41785 13.2793L3.41785 15.2793C3.27722 15.4198 3.0866 15.4987 2.88785 15.4987C2.6891 15.4987 2.49847 15.4198 2.35785 15.2793L0.357849 13.2793C0.284162 13.2107 0.22506 13.1279 0.184068 13.0359C0.143076 12.9439 0.121034 12.8446 0.119257 12.7439C0.117481 12.6432 0.136005 12.5431 0.173726 12.4497C0.211447 12.3564 0.267592 12.2715 0.33881 12.2003C0.410029 12.1291 0.494863 12.0729 0.588251 12.0352C0.681639 11.9975 0.781668 11.979 0.882371 11.9807C0.983074 11.9825 1.08239 12.0046 1.17439 12.0456C1.26639 12.0866 1.34919 12.1457 1.41785 12.2193L2.13785 12.9393V2.74934C2.13785 2.55043 2.21687 2.35966 2.35752 2.21901C2.49817 2.07836 2.68894 1.99934 2.88785 1.99934C3.08676 1.99934 3.27753 2.07836 3.41818 2.21901C3.55883 2.35966 3.63785 2.55043 3.63785 2.74934V12.9393Z"
+                    fill="#FFFFFF">
+                  </path>
+                </svg>
+              </button>
+              <ul class="sort-select">
+                <template v-for="(sortItem, sortIndex) in shop.products.sort.list">
+                  <li class="sort-option"
+                    :class="{ '--selected' : sortItem == shop.products.sort.selected }"
+                    @click="selectedProductSort(sortItem);">
+                    <svg class="svg-icon-custom-radio"
+                      width="15"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle id="circle_01"
+                        cx="7.5"
+                        cy="7.5"
+                        r="4.5"
+                        fill="#6B6B6B">
+                      </circle>
+                      <circle id="circle_02"
+                        cx="7.5"
+                        cy="7.5"
+                        r="7"
+                        stroke="#6B6B6B">
+                      </circle>
+                    </svg>
+                    <label class="sort-label"
+                      :for="'Sort :'+sortItem"
+                      v-text="sortItem">
+                    </label>
+                  </li>
+                </template>
+              </ul>
+              <div class="mb-view">
+                <select class="sort-select"
+                  id=""
+                  name=""
+                  v-model="shop.products.sort.selected">
+                  <template v-for="(sortItem, sortIndex) in shop.products.sort.list">
+                    <option class="sort-otion"
+                      :value="sortItem"
+                      v-text="sortItem">
+                    </option>
+                  </template>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="product-not-found"
+            v-if="!shop.products.pagination.list.length">
+            NO PRODUCTS FOUND
+          </div>
           <div class="product-list"
             v-if="shop.products.pagination.list.length">
             <div class="product-item"
@@ -63,7 +405,8 @@
               </div>
             </div>
           </div>
-          <div class="product-pagination db-pagination">
+          <div class="product-pagination db-pagination"
+            v-if="shop.products.pagination.pages != 1">
             <div class="prev"
               v-if="shop.products.pagination.current != 1"
               @click="paginationPrevPage();">
@@ -113,8 +456,20 @@
     data() {
       return {
         shop: {
+          /* collection: {{ collection.products | json }}, */
+          products_liquid: [
+            {% for productItem in collection.products %}
+              {
+                id: {{ productItem.id }},
+                title: "{{ productItem.title }}",
+                handle: "{{ productItem.handle }}",
+                metafields: {{ productItem.metafields.custom | json }},
+              },
+            {% endfor %}
+          ],
           products: {
             count: {{ shop.products_count }},
+            categories: [],
             list: {
               all: [],
               filtered: [],
@@ -123,11 +478,73 @@
               current: 1,
               total: 0,
               pages: [],
-              perPage: 8,
+              perPage: 9,
               startIndex: 0,
               endIndex: 0,
               list: [],
-            }
+            },
+            filters: {
+              toggle: false,
+              gender: {
+                selected: 'Unisex',
+                list: [
+                  'Unisex',
+                  'Men',
+                  'Women',
+                ],
+              },
+              category: {
+                clothing: {
+                  toggle: false,
+                  list: [
+                    // 'Shirts',
+                    'Tshirts',
+                    // 'Polos',
+                    // 'Outerwear',
+                    // 'Jeans',
+                    'Pants',
+                    'Shorts',
+                    'Hoodies',
+                    'Socks',
+                    'Long Sleeves',
+                  ],
+                  selected: [],
+                },
+                accessories: {
+                  toggle: false,
+                  list: [
+                    // 'Hats',
+                    'Caps',
+                    'Beenies',
+                    // 'Wallets',
+                    // 'Belts',
+                    // 'Watches',
+                    // 'Eyewear',
+                    'Glasses',
+                    'Mugs',
+                    'Stickers',
+                  ],
+                  selected: [],
+                },
+              },
+            },
+            sort: {
+              toggle: false,
+              selected: 'Name: A - Z',
+              list: [
+                'Name: A - Z',
+                'Name: Z - A',
+                'Price: High to Low',
+                'Price: Low to High',
+                'Latest Arrival',
+                'Discounts',
+              ],
+            },
+            search: {
+              query: '',
+              active: false,
+              results: [],
+            },
           },
         },
       }
@@ -135,19 +552,26 @@
     methods: {
       async initPage() {
         // console.log('initPage()');
+
         var productsLimitPerFetch = 30;
         var productsTotalPageFetch = Math.ceil(this.shop.products.count / productsLimitPerFetch);
 
         await this.fetchShopProducts(productsTotalPageFetch);
 
+        await this.getAllProductCategories();
+
         await this.paginationSettings();
         await this.paginationPaginateList();
         await this.paginationSelectedPage(1);
+
+        await this.toggleProductFilterList('Clothing');
+        await this.toggleProductFilterList('Accessories');
 
         this.loadPage();
       },
       async fetchShopProducts(productsTotalPageFetch) {
         // console.log('fetchShopProducts()', productsTotalPageFetch);
+
         for (let page = 1; page <= productsTotalPageFetch; page++) {
           var productEndpoint = `/products.json?page=${page}`;
 
@@ -155,13 +579,31 @@
           const data = await response.json();
           // console.log('data =', data);
 
-          data.products.forEach((item) => {
-            this.shop.products.list.all.push(item);
-            this.shop.products.list.filtered.push(item);
+          data.products.forEach((itemA) => {
+            this.shop.products_liquid.forEach((itemB) => {
+              if (itemA.id == itemB.id) {
+                this.shop.products.list.all.push({ ...itemA, metafields: itemB.metafields });
+                this.shop.products.list.filtered.push({ ...itemA, metafields: itemB.metafields });
+              }
+            });
           });
         }
       },
+      getAllProductCategories() {
+        // console.log('getAllProductCategories()');
+
+        var tempCategories = [];
+        this.shop.products.list.all.forEach((item) => {
+          item.metafields.product_category.forEach((category) => {
+            tempCategories.push(category);
+          });
+        });
+        
+        this.shop.products.categories = [...new Set(tempCategories)];
+      },
       paginationSettings() {
+        // console.log('paginationSettings()');
+
         this.shop.products.pagination.current = 1;
         this.shop.products.pagination.total = Math.ceil(this.shop.products.list.filtered.length / this.shop.products.pagination.perPage);
         this.shop.products.pagination.pages = [];
@@ -171,6 +613,8 @@
         }
       },
       paginationSelectedPage(page) {
+        // console.log('paginationSelectedPage()', page);
+
         this.shop.products.pagination.current = page;
         this.shop.products.pagination.startIndex = (page * this.shop.products.pagination.perPage) - (this.shop.products.pagination.perPage);
         this.shop.products.pagination.endIndex = (page * this.shop.products.pagination.perPage);
@@ -179,14 +623,22 @@
         this.paginationScrollTop();
       },
       paginationPrevPage() {
+        // console.log('paginationPrevPage()');
+
         this.shop.products.pagination.current -= 1;
         this.paginationSelectedPage(this.shop.products.pagination.current);
       },
       paginationNextPage() {
+        // console.log('paginationNextPage()');
+
         this.shop.products.pagination.current += 1;
         this.paginationSelectedPage(this.shop.products.pagination.current);
       },
       paginationPaginateList() {
+        // console.log('paginationPaginateList()');
+        
+        this.doProductSortBy();
+
         this.shop.products.pagination.list = [];
         this.shop.products.list.filtered.slice(this.shop.products.pagination.startIndex, this.shop.products.pagination.endIndex).forEach((item, index) => {
           this.shop.products.pagination.list.push(item);
@@ -195,14 +647,20 @@
         this.productsFadeIn(500);
       },
       paginationScrollTop() {
+        // console.log('paginationScrollTop()');
+
         const scrollTo = document.querySelector('.db-section--merch-store-listing');
         scrollTo.scrollIntoView();
       },
       loadPage() {
         // console.log('loadPage()');
+
         setTimeout(() => {
           document.querySelector('.db-site-loader').classList.remove('--show');
           document.querySelector('.db-header').classList.add('--animate-now');
+
+          const scrollTo = document.querySelector('.db-section--merch-store-search');
+          scrollTo.scrollIntoView();
         }, 1000);
       },
 
@@ -273,6 +731,8 @@
         }, 1000);
       },
       productsFadeIn(delay) {
+        // console.log('productsFadeIn()', delay);
+
         document.querySelectorAll('.db-section--merch-store-listing .product-list .product-item').forEach((item, index) => {
           item.classList.remove('--fade-in');
         });
@@ -285,15 +745,266 @@
           });
         }, delay);
       },
+      calculateProductDiscount(compare_at_price, price) {
+        // console.log('calculateProductDiscount()', compare_at_price, price);
+
+        var calculate;
+        var discount;
+        if (price == 0 || price == '0.00') {
+          return '100% OFF';
+        }
+        else {
+          // divide the price to compare_at_price then times 100 then minus 100
+          calculate = 100 - ((price/compare_at_price) * 100);
+          discount = calculate < 0 ? calculate * -1 : calculate;
+          return discount.toFixed(0)+'% OFF';
+        }
+      },
 
       // cart methods
       closeCart() {
+        // console.log('closeCart()');
+
         document.querySelector('body').classList.remove('--show-cart');
         document.querySelector('body').style.overflowY = 'auto';
       },
       openCart() {
+        // console.log('openCart()');
+
         document.querySelector('body').classList.add('--show-cart');
         document.querySelector('body').style.overflowY = 'hidden';
+      },
+
+      toggleProductFilterList(filterList) {
+        // console.log('toggleProductFilterList()', filterList);
+
+        if (filterList == 'Clothing') {
+          this.shop.products.filters.category.clothing.toggle = !this.shop.products.filters.category.clothing.toggle;
+
+          var element = document.querySelector('.product-filter.--by-clothing .filter-list');
+
+          if (this.shop.products.filters.category.clothing.toggle) {
+            var filterListHeight = element.scrollHeight;
+            element.style.height = `${filterListHeight}px`;
+          }
+          else {
+            element.style.height = `0px`;
+          }
+        }
+        if (filterList == 'Accessories') {
+          this.shop.products.filters.category.accessories.toggle = !this.shop.products.filters.category.accessories.toggle;
+
+          var element = document.querySelector('.product-filter.--by-accessories .filter-list');
+
+          if (this.shop.products.filters.category.accessories.toggle) {
+            var filterListHeight = element.scrollHeight;
+            element.style.height = `${filterListHeight}px`;
+          }
+          else {
+            element.style.height = `0px`;
+          }
+        }
+      },
+      productFilterByClothing(filterItem) {
+        // console.log('productFilterByClothing()', filterItem);
+
+        if (this.shop.products.filters.category.clothing.selected.includes(filterItem)) {
+          this.shop.products.filters.category.clothing.selected = this.shop.products.filters.category.clothing.selected.filter(item => item !== filterItem);
+        }
+        else {
+          this.shop.products.filters.category.clothing.selected.push(filterItem);
+        }
+
+        this.shop.products.sort.toggle = false;
+
+        this.productFilterPerform();
+      },
+      productFilterByAccessories(filterItem) {
+        // console.log('productFilterByAccessories()', filterItem);
+
+        if (this.shop.products.filters.category.accessories.selected.includes(filterItem)) {
+          this.shop.products.filters.category.accessories.selected = this.shop.products.filters.category.accessories.selected.filter(item => item !== filterItem);
+        }
+        else {
+          this.shop.products.filters.category.accessories.selected.push(filterItem);
+        }
+
+        this.shop.products.sort.toggle = false;
+
+        this.productFilterPerform();
+      },
+      productFilterByGender(filterItem) {
+        // console.log('productFilterByGender()', filterItem);
+
+        this.shop.products.filters.gender.selected = filterItem;
+
+        this.shop.products.sort.toggle = false;
+
+        this.productFilterPerform();
+      },
+      productFilterPerform() {
+        // console.log('productFilterPerform()');
+
+        if (
+          this.shop.products.filters.gender.selected ||
+          this.shop.products.filters.category.clothing.selected.length ||
+          this.shop.products.filters.category.accessories.selected.length
+        ) {
+          this.shop.products.list.filtered = [];
+          this.shop.products.list.all.forEach((productItem, productIndex) => {
+
+            var isProductFilter = {
+              gender: true,
+              clothing: true,
+              accessories: true,
+            };
+
+            // filter by gender
+            if (this.shop.products.filters.gender.selected.toLowerCase() == 'men') {
+              productItem.tags.includes('men') ? isProductFilter.gender = true : isProductFilter = false;
+            }
+            else if (this.shop.products.filters.gender.selected.toLowerCase() == 'women') {
+              productItem.tags.includes('women') ? isProductFilter.gender = true : isProductFilter = false;
+            }
+            else {
+              isProductFilter.gender = true;
+            }
+
+            // filter by clothing
+            // if (this.shop.products.filters.category.clothing.selected.length) {
+            //   isProductFilter.clothing = this.shop.products.filters.category.clothing.selected.some(item => productItem.metafields.product_category.includes(item));
+            // }
+            // else {
+            //   isProductFilter.clothing = true;
+            // }
+
+            // // filter by accessories
+            // if (this.shop.products.filters.category.accessories.selected.length) {
+            //   isProductFilter.accessories = this.shop.products.filters.category.accessories.selected.some(item => productItem.metafields.product_category.includes(item));
+            // }
+            // else {
+            //   isProductFilter.accessories = true;
+            // }
+
+            if (this.shop.products.filters.category.clothing.selected.length || this.shop.products.filters.category.accessories.selected.length) {
+              isProductFilter.clothing = isProductFilter.accessories = this.shop.products.filters.category.clothing.selected.some(item => productItem.metafields.product_category.includes(item)) || this.shop.products.filters.category.accessories.selected.some(item => productItem.metafields.product_category.includes(item));
+              // isProductFilter.accessories = this.shop.products.filters.category.clothing.selected.some(item => productItem.metafields.product_category.includes(item)) || this.shop.products.filters.category.accessories.selected.some(item => productItem.metafields.product_category.includes(item));
+            }
+            else {
+              isProductFilter.clothing = isProductFilter.accessories = true;
+            }
+
+            if (isProductFilter.gender && isProductFilter.clothing && isProductFilter.accessories) {
+              this.shop.products.list.filtered.push(productItem);
+            }
+
+            // console.log('isProductFilter =', isProductFilter);
+          });
+
+          this.paginationSettings();
+          this.paginationPaginateList();
+          this.paginationSelectedPage(1);
+        }
+        else {
+          this.shop.products.list.filtered = this.shop.products.list.all;
+          this.paginationSettings();
+          this.paginationPaginateList();
+          this.paginationSelectedPage(1);
+        }
+      },
+      clearAllFilter() {
+        // console.log('clearAllFilter()');
+
+        this.shop.products.filters.gender.selected = this.shop.products.filters.gender.list[0];
+        this.shop.products.filters.category.clothing.selected = [];
+        this.shop.products.filters.category.accessories.selected = [];
+        this.shop.products.list.filtered = this.shop.products.list.all;
+        this.paginationSettings();
+        this.paginationPaginateList();
+        this.paginationSelectedPage(1);
+      },
+      toggleProductSort() {
+        // console.log('toggleProductSort()');
+
+        this.shop.products.sort.toggle = !this.shop.products.sort.toggle;
+      },
+      selectedProductSort(sortItem) {
+        // console.log('selectedProductSort()', sortItem);
+
+        this.shop.products.sort.selected = sortItem;
+
+        this.productsFadeIn(500);
+        this.toggleProductSort();
+        this.paginationSelectedPage(1);
+      },
+      doProductSortBy() {
+        // console.log('doProductSortBy()');
+        
+        if (this.shop.products.sort.selected == 'Name: A - Z') {
+          return this.shop.products.list.filtered.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+        }
+        if (this.shop.products.sort.selected == 'Name: Z - A') {
+          return this.shop.products.list.filtered.sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
+        }
+        if (this.shop.products.sort.selected == 'Price: High to Low') {
+          return this.shop.products.list.filtered.sort((a, b) => Number(b.variants[0].price) - Number(a.variants[0].price));
+        }
+        if (this.shop.products.sort.selected == 'Price: Low to High') {
+          return this.shop.products.list.filtered.sort((a, b) => Number(a.variants[0].price) - Number(b.variants[0].price));
+        }
+        if (this.shop.products.sort.selected == 'Latest Arrival') {
+          return this.shop.products.list.filtered.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+          // return this.shop.products.list.filtered.sort((a, b) => {
+          //   let prodA = new Date(a.created_at);
+          //   let prodB = new Date(b.created_at);
+          //   if (prodA < prodB) return -1;
+          //   if (prodA > prodB) return 1;
+          //   return 0;
+          // });
+        }
+        if (this.shop.products.sort.selected == 'Discounts') {
+          return this.shop.products.list.filtered.sort((a, b) =>
+            this.calculateProductDiscount(a.variants[0].compare_at_price, a.variants[0].price) - this.calculateProductDiscount(b.variants[0].compare_at_price, b.variants[0].price)
+          );
+          // return this.shop.products.list.filtered.sort((a, b) => {
+          //   let prodA = this.calculateProductDiscount(a.variants[0].compare_at_price, a.variants[0].price);
+          //   let prodB = this.calculateProductDiscount(b.variants[0].compare_at_price, b.variants[0].price);
+          //   if (prodA < prodB) return -1;
+          //   if (prodA > prodB) return 1;
+          //   return 0;
+          // });
+        }
+      },
+      searchProductClear() {
+        // console.log('searchProductClear()');
+        this.shop.products.search.query = '';
+      },
+      searchProductToggle(boolean) {
+        // console.log('searchProductToggle()', booelan);
+
+        this.shop.products.search.active = boolean;
+      },
+      searchProductPerform() {
+        // console.log('searchProductPerform()');
+
+        this.shop.products.search.results = [];
+        this.shop.products.list.all.forEach((productItem, productIndex) => {
+          if (productItem.title.toLowerCase().includes(this.shop.products.search.query.toLowerCase()) && this.shop.products.search.query != '') {
+            this.shop.products.search.results.push(productItem);
+          }
+        });
+      },
+      toggleFilterMBView() {
+        // console.log('toggleFilterMBView()');
+
+        this.shop.products.filters.toggle = !this.shop.products.filters.toggle;
+
+        if (this.shop.products.filters.toggle) {
+          document.querySelector('body').style.overflowY = 'hidden';
+        }
+        else {
+          document.querySelector('body').style.overflowY = 'auto';
+        }
       },
     },
     computed: {},

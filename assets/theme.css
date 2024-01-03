@@ -1408,35 +1408,47 @@ ul, ol {
 
 .db-shopping-cart {
   position: fixed;
-  z-index: 99999;
-  top: 0;
+  z-index: 9;
+  inset: 0;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden auto;
+  transition: z-index 0ms ease-in-out 500ms, visibility 0ms ease-in-out 500ms, opacity 0ms ease-in-out 500ms;
+}
+.db-shopping-cart .db-cart-overlay {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  background-color: #0C0814;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity var(--click-transition-duration) ease-in-out 0ms;
+}
+.db-shopping-cart .db-cart-wrap {
+  position: absolute;
+  z-index: 2;
   right: -585px;
-  bottom: 0;
+  --headHeight: 70px;
+  --footHeight: 395px;
   display: block;
   background-color: #0C0814;
   max-width: 585px;
   min-width: 585px;
   width: 100%;
-  height: 100%;
-  overflow: hidden auto;
   transition: right var(--click-transition-duration) ease-in-out 0ms;
-}
-@media only screen and (max-width: 768px) {
-  .db-shopping-cart {
-    right: -100%;
-    max-width: 100%;
-    min-width: unset;
-  }
-}
-.db-shopping-cart .db-cart-wrap {
-  --headHeight: 70px;
-  --footHeight: 395px;
-  width: 100%;
 }
 @media only screen and (max-width: 768px) {
   .db-shopping-cart .db-cart-wrap {
     --headHeight: 45px;
     --footHeight: 250px;
+    right: -100%;
+    max-width: 100%;
+    min-width: unset;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -1506,6 +1518,7 @@ ul, ol {
 .db-shopping-cart .db-cart-wrap .db-cart-body {
   position: relative;
   z-index: 1;
+  background-color: #0C0814;
   height: auto;
   overflow: hidden;
 }
@@ -1931,10 +1944,19 @@ ul, ol {
 }
 
 .--show-cart .db-shopping-cart {
+  z-index: 99999;
+  visibility: visible;
+  opacity: 1;
+  transition: z-index 0ms ease-in-out 0ms, visibility 0ms ease-in-out 0ms, opacity 0ms ease-in-out 0ms;
+}
+.--show-cart .db-shopping-cart .db-cart-overlay {
+  opacity: 0.5;
+}
+.--show-cart .db-shopping-cart .db-cart-wrap {
   right: 0;
 }
 @media only screen and (max-width: 768px) {
-  .--show-cart .db-shopping-cart {
+  .--show-cart .db-shopping-cart .db-cart-wrap {
     right: 0%;
   }
 }
@@ -11017,25 +11039,963 @@ ul, ol {
   line-height: 150%;
 }
 
+.db-page--merch-store .db-section--merch-store-search {
+  background-image: url("Merch-Store_Search_bg-v01-1900x461.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 460px;
+  padding: 150px 30px 60px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search {
+    height: auto;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container {
+  height: 100%;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row h1 {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.25em;
+  margin: 0 auto 24px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row h1 {
+    font-size: 40px;
+    margin: 0 auto 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row h1 {
+    font-size: 30px;
+    margin: 0 auto 15px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row p {
+  color: var(--white-color);
+  font-family: var(--secondary-font-family);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  line-height: 1.5em;
+  letter-spacing: -0.36px;
+  margin: 0 auto 40px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row p {
+    font-size: 16px;
+    margin: 0 auto 20px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap {
+  position: relative;
+  width: 100%;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar {
+  position: relative;
+  z-index: 99999;
+  max-width: 495px;
+  min-width: 495px;
+  width: 100%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar {
+    min-width: unset;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-clear {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 25px;
+  translate: 0 -50%;
+  display: block;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-clear .svg-icon-close {
+  max-width: 16px;
+  min-width: 16px;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-input {
+  color: var(--black-color);
+  font-family: var(--secondary-font-family);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25em;
+  letter-spacing: -0.64px;
+  position: relative;
+  z-index: 1;
+  display: block;
+  background-color: var(--white-color);
+  width: 100%;
+  padding: 22px 183px 22px 60px;
+  outline: transparent;
+  border-radius: 60px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-input {
+    padding: 16px 100px 16px 60px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-input::placeholder {
+  color: #838383;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-button {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 6px;
+  translate: 0 -50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  opacity: 0.8;
+  padding: 15px 47px;
+  border-radius: 46px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-button {
+    padding: 8px 20px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-button .label {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25em;
+  white-space: nowrap;
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-button .label {
+    display: none;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-button .svg-icon-search {
+  display: none;
+  max-width: 25px;
+  min-width: 25px;
+  height: auto;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-button .svg-icon-search {
+    display: block;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-bar .search-button:hover {
+  opacity: 1;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results {
+  position: absolute;
+  z-index: 99999;
+  top: 80px;
+  left: 50%;
+  translate: -50% 0;
+  background-color: #0D0C1C;
+  visibility: hidden;
+  opacity: 0;
+  max-width: 495px;
+  min-width: 495px;
+  width: 100%;
+  max-height: 210px;
+  min-height: 210px;
+  overflow: auto;
+  margin: 0 auto;
+  transition: max-width 500ms ease-in-out 0ms, max-height 500ms ease-in-out 500ms;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results {
+    top: 55px;
+    min-width: unset;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 60px;
+  background-color: transparent;
+  padding: 29px 33px;
+  transition: background-color var(--hover-transition-duration) ease-in-out 0ms;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1440px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item {
+    gap: 40px;
+    padding: 25px 30px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item {
+    gap: 30px;
+    padding: 20px 25px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item {
+    gap: 25px;
+    padding: 15px 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item {
+    gap: 20px;
+    padding: 15px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-img {
+  display: block;
+  max-width: 150px;
+  min-width: 150px;
+  height: 150px;
+}
+@media only screen and (max-width: 1440px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-img {
+    max-width: 120px;
+    min-width: 120px;
+    height: 120px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-img {
+    max-width: 100px;
+    min-width: 100px;
+    height: 100px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-img {
+    max-width: 75px;
+    min-width: 75px;
+    height: 75px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details {
+  display: block;
+  width: 100%;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details .product-title {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.3em;
+  height: auto;
+  margin-bottom: 8px;
+  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details .product-title {
+    font-size: 19px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details .product-title {
+    font-size: 17px;
+    max-height: 2.6em;
+    min-height: 1.3em;
+    overflow: hidden;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details .product-prices {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 8px;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details .product-prices .current-price {
+  color: #D86FFF;
+  font-family: var(--primary-font-family);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  font-feature-settings: "calt" off;
+  line-height: 1em;
+  letter-spacing: -0.28px;
+  white-space: nowrap;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details .product-prices .current-price {
+    font-size: 15px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details .product-prices .before-price {
+  color: #787878;
+  font-family: var(--primary-font-family);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  font-feature-settings: "calt" off;
+  text-decoration: line-through;
+  line-height: 1em;
+  letter-spacing: -0.16px;
+  width: nowrap;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details .product-prices .before-price {
+    font-size: 12px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details:hover .product-title {
+  color: var(--primary-color);
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .db-btn--product-add-to-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  max-width: 56px;
+  min-width: 56px;
+  width: 100%;
+  height: 56px;
+  margin: 0 0 0 auto;
+  border: 1px solid var(--primary-color);
+  border-radius: 50px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .db-btn--product-add-to-cart {
+    max-width: 36px;
+    min-width: 36px;
+    height: 36px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .db-btn--product-add-to-cart .svg-icon-cart {
+  max-width: 20px;
+  min-width: 20px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .db-btn--product-add-to-cart .svg-icon-cart {
+    max-width: 14px;
+    min-width: 14px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .db-btn--product-add-to-cart:hover {
+  background-color: var(--primary-color);
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item:hover {
+  background-color: #181733;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-search-not-found {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.25em;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 210px;
+  padding: 30px 20px;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-overlay {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: block;
+  background-color: rgba(4, 3, 13, 0.65);
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  transition: visibility 0ms ease-in-out 0ms, opacity 0ms ease-in-out 0ms;
+}
+.db-page--merch-store .db-section--merch-store-search .db-container .db-row .search-wrap .search-overlay.--show {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility var(--click-transition-duration) ease-in-out 0ms, opacity var(--click-transition-duration) ease-in-out 0ms;
+}
+.db-page--merch-store .db-section--merch-store-search.--on-search .db-container .db-row .search-wrap .search-results {
+  visibility: visible;
+  opacity: 1;
+  max-width: 100%;
+  max-height: 600px;
+}
+@media only screen and (max-width: 1440px) {
+  .db-page--merch-store .db-section--merch-store-search.--on-search .db-container .db-row .search-wrap .search-results {
+    max-height: 400px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-search.--on-search .db-container .db-row .search-wrap .search-results {
+    max-height: 300px;
+  }
+}
 .db-page--merch-store .db-section--merch-store-listing {
-  padding: 225px 30px 215px;
+  background-color: #04030D;
+  padding: 100px 30px 215px;
 }
 @media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing {
-    padding: 175px 30px 60px;
+    padding: 80px 30px 60px;
   }
 }
 @media only screen and (max-width: 480px) {
   .db-page--merch-store .db-section--merch-store-listing {
-    padding: 160px 30px 50px;
+    padding: 50px 30px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row {
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 70px;
+}
+@media only screen and (max-width: 1440px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row {
+    gap: 50px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row {
+    gap: 40px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row {
+    gap: 30px;
   }
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) {
-  width: unset;
+  max-width: 300px;
+  min-width: 300px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) {
+    max-width: 250px;
+    min-width: 250px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -100%;
+    display: block;
+    background-color: #2D2134;
+    max-width: 100%;
+    width: 100%;
+    overflow: auto;
+    padding: 50px 30px;
+    transition: left var(--click-transition-duration) ease-in-out 0ms;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row {
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--white-color);
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row {
+    padding-bottom: 20px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row h3 {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1em;
+  white-space: nowrap;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row h3 {
+    font-size: 18px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row .db-btn--clear-all {
+  display: block;
+  padding: 10px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  transition: border var(--hover-transition-duration) ease-in-out 0ms;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row .db-btn--clear-all {
+    padding: 10px 16px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row .db-btn--clear-all .label {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.25em;
+  letter-spacing: -0.48px;
+  white-space: nowrap;
+  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row .db-btn--clear-all .label {
+    font-size: 10px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row .db-btn--clear-all:hover {
+  border-color: var(--primary-color);
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row .db-btn--clear-all:hover .label {
+  color: var(--primary-color);
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories {
+  padding: 30px 17px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories {
+    padding: 25px 15px 20px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .filter-title, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .filter-title {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1em;
+  white-space: nowrap;
+  display: block;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .filter-title, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .filter-title {
+    font-size: 16px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle .label, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle .label {
+  color: #6B6B6B;
+  font-family: var(--primary-font-family);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1em;
+  white-space: nowrap;
+  display: block;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle .label, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle .label {
+    font-size: 10px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle .svg-icon-angle-up, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle .svg-icon-angle-up {
+  rotate: 180deg;
+  transition: rotate var(--click-transition-duration) ease-in-out 0ms;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle.--toggle .svg-icon-angle-up, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle.--toggle .svg-icon-angle-up {
+  rotate: 0deg;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: auto;
+  overflow: hidden;
+  transition: height var(--click-transition-duration) ease-in-out 0ms;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list {
+    gap: 8px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-checkbox, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #6B6B6B;
+  border-radius: 3px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-checkbox, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-checkbox {
+    width: 20px;
+    height: 20px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-checkbox .svg-icon-check, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-checkbox .svg-icon-check {
+  display: none;
+  max-width: 17px;
+  min-width: 17px;
+  height: auto;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-checkbox .svg-icon-check, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-checkbox .svg-icon-check {
+    max-width: 13px;
+    min-width: 13px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-label, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-label {
+  color: var(--white-color);
+  font-family: var(--secondary-font-family);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  font-feature-settings: "calt" off;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  line-height: 1em;
+  letter-spacing: -0.36px;
+  white-space: nowrap;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-label, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-label {
+    font-size: 14px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item.--selected .filter-checkbox, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item.--selected .filter-checkbox {
+  border-color: #D86FFF;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item.--selected .filter-checkbox .svg-icon-check, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item.--selected .filter-checkbox .svg-icon-check {
+  display: block;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .db-btn--view {
+  display: none;
+  background-color: #371C43;
+  max-width: 235px;
+  min-width: 100px;
+  width: 100%;
+  margin: 24px auto 0;
+  padding: 10px 32px;
+  border: 1px solid #D86FFF;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .db-btn--view {
+    display: block;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .db-btn--view .label {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.25em;
+  letter-spacing: -0.48px;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .db-btn--view:hover {
+  background-color: #D86FFF;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1).--show {
+  left: 0%;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) {
+  max-width: 1070px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) {
+    max-width: 100%;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
+    justify-content: flex-start;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender {
+    order: 3;
+    margin: 0 0 0 auto;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender {
+    width: 100%;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list {
+    gap: 12px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list {
+    justify-content: center;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list .filter-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 9px;
+  background-color: transparent;
+  width: max-content;
+  padding: 14px 24px;
+  border: 1px solid #D86FFF;
+  border-radius: 36px;
+  transition: background-color var(--click-transition-duration) ease-in-out 0ms;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list .filter-item {
+    padding: 10px 16px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list .filter-item .svg-icon-check {
+  display: none;
+  max-width: 16px;
+  min-width: 16px;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list .filter-item .label {
+  color: #D86FFF;
+  font-family: var(--primary-font-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.25em;
+  white-space: nowrap;
+  display: block;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list .filter-item .label {
+    font-size: 12px;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list .filter-item.--selected {
+  background-color: rgba(216, 111, 255, 0.2);
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-filter.--by-gender .filter-list .filter-item.--selected .svg-icon-check {
+  display: block;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .db-btn--toggle-filter {
+  display: none;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .db-btn--toggle-filter {
+    display: block;
+    order: 1;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .db-btn--toggle-filter {
+    width: 100%;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .db-btn--toggle-filter .label {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.25em;
+  letter-spacing: -0.999px;
+  white-space: nowrap;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort {
+  position: relative;
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort {
+    order: 2;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort {
+    width: 100%;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort .db-btn--sort-toggle {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort .db-btn--sort-toggle {
+    padding: 10px 16px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort .db-btn--sort-toggle {
+    width: 100%;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort .db-btn--sort-toggle .label {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.25em;
+  letter-spacing: -0.56px;
+  white-space: nowrap;
+  display: block;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort .db-btn--sort-toggle .svg-icon-arrow-up-arrow-down {
+  display: block;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  display: block;
+  background-color: #04030D;
+  visibility: hidden;
+  opacity: 0;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+@media only screen and (max-width: 768px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select {
+    right: unset;
+    left: 0;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select {
+    right: 0;
+    width: 100%;
+  }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 6px;
+  cursor: pointer;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option .svg-icon-custom-radio {
+  cursor: pointer;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option .svg-icon-custom-radio #circle_01 {
+  display: none;
+  fill: #6B6B6B;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option .svg-icon-custom-radio #circle_02 {
+  display: block;
+  stroke: #6B6B6B;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option .sort-label {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25em;
+  white-space: nowrap;
+  display: block;
+  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  cursor: pointer;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option.--selected .svg-icon-custom-radio, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option:hover .svg-icon-custom-radio {
+  cursor: pointer;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option.--selected .svg-icon-custom-radio #circle_01, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option:hover .svg-icon-custom-radio #circle_01 {
+  display: block;
+  fill: var(--primary-color);
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option.--selected .svg-icon-custom-radio #circle_02, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option:hover .svg-icon-custom-radio #circle_02 {
+  display: block;
+  stroke: var(--primary-color);
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option.--selected .sort-label, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort > .sort-select .sort-option:hover .sort-label {
+  color: var(--primary-color);
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort .mb-view {
+  display: none;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-inner-row .product-sort.--toggle .sort-select {
+  visibility: visible;
+  opacity: 1;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-not-found {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.25em;
+  display: block;
+  padding: 50px 0;
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
   justify-content: center;
   align-items: stretch;
   grid-gap: 50px 40px;
@@ -11044,30 +12004,21 @@ ul, ol {
 }
 @media only screen and (max-width: 1440px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list {
-    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, minmax(235px, 1fr));
     grid-gap: 40px 30px;
     gap: 40px 30px;
   }
 }
 @media only screen and (max-width: 1200px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list {
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 40px 20px;
+    gap: 40px 20px;
   }
 }
 @media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list {
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
-    grid-gap: 50px 30px;
-    gap: 50px 30px;
-    margin-bottom: 80px;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list {
-    grid-template-columns: repeat(2, minmax(144px, 1fr));
-    grid-gap: 20px 15px;
-    gap: 20px 15px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
   }
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item {
@@ -11089,12 +12040,7 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-img-link {
-    margin: 0 auto 17px;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-img-link {
-    height: 160px;
+    height: auto;
     margin: 0 auto 7px;
   }
 }
@@ -11119,11 +12065,6 @@ ul, ol {
     margin: 0 auto 16px;
   }
 }
-@media only screen and (max-width: 480px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-details {
-    margin-bottom: 7px;
-  }
-}
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-details .product-title {
   color: var(--white-color);
   font-family: var(--primary-font-family);
@@ -11133,9 +12074,9 @@ ul, ol {
   line-height: 1.25em;
   margin-bottom: 8px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-details .product-title {
-    font-size: 10px;
+    font-size: 14px;
     margin-bottom: 5px;
   }
 }
@@ -11154,8 +12095,9 @@ ul, ol {
   font-feature-settings: "calt" off;
   line-height: 1em;
   letter-spacing: -0.28px;
+  white-space: nowrap;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-details .product-price .current-price {
     font-size: 15px;
   }
@@ -11170,10 +12112,11 @@ ul, ol {
   text-decoration: line-through;
   line-height: 1em;
   letter-spacing: -0.16px;
+  width: nowrap;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-details .product-price .before-price {
-    font-size: 9px;
+    font-size: 12px;
   }
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions {
@@ -11194,13 +12137,10 @@ ul, ol {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions {
     position: relative;
     bottom: unset;
+    gap: 10px;
     visibility: visible;
     opacity: 1;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions {
-    height: 26px;
+    height: auto;
   }
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--buy-it-now {
@@ -11208,6 +12148,7 @@ ul, ol {
   justify-content: center;
   align-items: center;
   background-color: var(--secondary-color);
+  opacity: 1;
   max-width: 235px;
   width: 100%;
   padding: 17px 22px;
@@ -11218,11 +12159,7 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--buy-it-now {
     max-width: 100%;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--buy-it-now {
-    padding: 7px 12px;
+    padding: 10px 12px;
   }
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--buy-it-now .label {
@@ -11231,7 +12168,7 @@ ul, ol {
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
-  line-height: 1.25em;
+  line-height: 1em;
   white-space: nowrap;
   display: block;
   transition: all var(--hover-transition-duration) ease-in-out 0ms;
@@ -11239,18 +12176,11 @@ ul, ol {
 @media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--buy-it-now .label {
     font-size: 14px;
-  }
-}
-@media only screen and (max-width: 480px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--buy-it-now .label {
-    font-size: 8px;
+    font-weight: 500;
   }
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--buy-it-now:hover {
-  background-color: transparent;
-}
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--buy-it-now:hover .label {
-  color: var(--secondary-color);
+  opacity: 0.7;
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--add-to-cart {
   display: flex;
@@ -11264,11 +12194,11 @@ ul, ol {
   border: 1px solid var(--primary-color);
   border-radius: 50px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--add-to-cart {
-    max-width: 26px;
-    min-width: 26px;
-    height: 26px;
+    max-width: 36px;
+    min-width: 36px;
+    height: 36px;
   }
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--add-to-cart .svg-icon-cart {
@@ -11276,10 +12206,10 @@ ul, ol {
   min-width: 20px;
   width: 100%;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--add-to-cart .svg-icon-cart {
-    max-width: 10px;
-    min-width: 10px;
+    max-width: 14px;
+    min-width: 14px;
   }
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-list .product-item .product-actions .db-btn--add-to-cart:hover {
@@ -11793,10 +12723,11 @@ ul, ol {
 }
 .db-page--product-page .db-section--product-details .db-container .db-row .db-col:nth-of-type(2) .product-buttons .db-btn--buy-it-now {
   background-color: var(--secondary-color);
+  opacity: 1;
   border-color: var(--secondary-color);
 }
 .db-page--product-page .db-section--product-details .db-container .db-row .db-col:nth-of-type(2) .product-buttons .db-btn--buy-it-now:hover {
-  background-color: transparent;
+  opacity: 0.7;
 }
 .db-page--product-page .db-section--product-details .db-container .db-row .db-col:nth-of-type(2) .product-buttons .db-btn--out-of-stock {
   border-color: rgba(255, 255, 255, 0.4);
