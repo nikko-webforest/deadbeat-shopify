@@ -1,5 +1,8 @@
-<aside class="db-shopping-cart db-scroll-bar">
-  <div class="db-cart-wrap">
+<div class="db-shopping-cart db-scroll-bar">
+  <div class="db-cart-overlay"
+    @click="closeCart();">
+  </div>
+  <aside class="db-cart-wrap">
     <div class="db-cart-head">
       <h5>
         YOUR SHOPPING CART
@@ -160,8 +163,8 @@
         </span>
       </a>
     </div>
-  </div>
-</aside>
+  </aside>
+</div>
 <script>
   const DB_Cart_Options = {
     name: 'DB Cart Options',
@@ -176,6 +179,7 @@
     methods: {
       async fetchCartData() {
         // console.log('fetchCartData()');
+
         var cartEndpoint = '/cart.json';
 
         const response = await fetch(cartEndpoint);
@@ -184,29 +188,33 @@
         this.cart.data = data;
       },
       closeCart() {
+        // console.log('closeCart()');
+
         document.querySelector('body').classList.remove('--show-cart');
         document.querySelector('body').style.overflowY = 'auto';
       },
       openCart() {
+        // console.log('openCart()');
+
         document.querySelector('body').classList.add('--show-cart');
         document.querySelector('body').style.overflowY = 'hidden';
       },
       increaseQuantity(variant_id, quantity) {
-        // console.log('increaseQuantity()');
+        // console.log('increaseQuantity()', variant_id, quantity);
 
         var cartItemQuantity = quantity + 1;
 
         this.updateCartItem(variant_id, cartItemQuantity);
       },
       decreaseQuantity(variant_id, quantity) {
-        // console.log('decreaseQuantity()');
+        // console.log('decreaseQuantity()', variant_id, quantity);
 
         var cartItemQuantity = quantity - 1;
 
         this.updateCartItem(variant_id, cartItemQuantity);
       },
       deleteCartItem(variantID) {
-        // console.log('deleteCartItem()');
+        // console.log('deleteCartItem()', variantID);
         
         this.cart.loader = true;
 
@@ -236,7 +244,7 @@
           });
       },
       updateCartItem(variant_id, quantity) {
-        // console.log('updateCartItem()');
+        // console.log('updateCartItem()', variant_id, quantity);
 
         this.cart.loader = true;
 
@@ -267,6 +275,7 @@
       },
 
       formatPrice(price) {
+        // console.log('formatPrice()', price);
         return (price / 100).toFixed(2);
       },
     },
