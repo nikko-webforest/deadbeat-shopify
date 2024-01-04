@@ -7,7 +7,6 @@
   opacity: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden auto;
   transition:
     z-index 0ms ease-in-out 500ms,
     visibility 0ms ease-in-out 500ms,
@@ -37,6 +36,8 @@
     max-width: 585px;
     min-width: 585px;
     width: 100%;
+    height: 100%;
+    overflow: hidden auto;
     transition:
       right $click-transition-duration ease-in-out 0ms;
     
@@ -118,7 +119,6 @@
       z-index: 1;
       background-color: #0C0814;
       height: auto;
-      overflow: hidden;
 
       .product-list {
         position: relative;
