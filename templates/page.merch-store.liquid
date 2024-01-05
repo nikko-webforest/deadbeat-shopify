@@ -561,7 +561,7 @@
         }
       },
       getAllFilters() {
-        console.log('getAllFilters()');
+        // console.log('getAllFilters()');
 
         var tempGenders = [ 'Unisex' ];
         var tempTypes = [];
@@ -573,7 +573,7 @@
           tempTypes.push(productItem.metafields.product_type);
         });
 
-        console.log('tempGenders =', tempGenders);
+        // console.log('tempGenders =', tempGenders);
         // console.log('tempTypes =', tempTypes);
 
         this.shop.products.filters.gender.list = [ ...new Set(tempGenders) ];
@@ -662,9 +662,15 @@
       addThisToCart(product, event) {
         // console.log('addThisToCart() ', product, event);
 
+        let productVariant = this.getAvailableVariant(product);
+
+        // should have a fallback if all variants are not available/sold-out
+        
+        // console.log('productVariant =', productVariant);
+
         let items = [
           {
-            id: product.variants[0].id,
+            id: productVariant.id,
             quantity: 1,
           }
         ];
@@ -753,6 +759,23 @@
           discount = calculate < 0 ? calculate * -1 : calculate;
           return discount.toFixed(0)+'% OFF';
         }
+      },
+      getAvailableVariant(product) {
+        console.log('getAvailableVariant()', product);
+        
+        let availableVariant = null;
+
+        product.variants.some((variantItem) => {
+          if (variantItem.available) {
+            availableVariant = variantItem;
+            return true;
+          }
+          return false;
+        });
+        
+        // console.log('availableVariant =', availableVariant);
+
+        return availableVariant;
       },
 
       // cart methods
