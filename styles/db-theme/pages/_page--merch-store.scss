@@ -878,26 +878,140 @@
                   width: 100%;
                 }
                 
-                .db-btn--sort-toggle {
-                  position: relative;
-                  z-index: 1;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  gap: 10px;
-                  padding: 11px 32px;
-                  border: 1px solid rgba(255, 255, 255, 0.40);
-                  border-radius: 5px;
+                .ds-view {
+                  display: block;
 
-                  @media only screen and (max-width: 1080px) {
-                    padding: 10px 16px;
+                  @media only screen and (max-width: 768px) {
+                    display: none;
                   }
 
-                  @media only screen and (max-width: 480px) {
-                    width: 100%;
+                  .db-btn--sort-toggle {
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 11px 32px;
+                    border: 1px solid rgba(255, 255, 255, 0.40);
+                    border-radius: 5px;
+
+                    @media only screen and (max-width: 1080px) {
+                      padding: 10px 16px;
+                    }
+
+                    @media only screen and (max-width: 480px) {
+                      width: 100%;
+                    }
+
+                    .label {
+                      color: $white-color;
+                      font-family: $primary-font-family;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 500;
+                      text-transform: uppercase;
+                      line-height: 1.25em;
+                      letter-spacing: -0.56px;
+                      white-space: nowrap;
+                      display: block;
+                    }
+
+                    .svg-icon-arrow-up-arrow-down {
+                      display: block;
+                    }
                   }
 
-                  .label {
+                  > .sort-select {
+                    position: absolute;
+                    z-index: 2;
+                    right: 0;
+                    display: block;
+                    background-color: #04030D;
+                    visibility: hidden;
+                    opacity: 0;
+                    padding: 6px;
+                    border: 1px solid rgba(255, 255, 255, 0.40);
+
+                    @media only screen and (max-width: 768px) {
+                      right: unset;
+                      left: 0;
+                    }
+
+                    @media only screen and (max-width: 480px) {
+                      right: 0;
+                      width: 100%;
+                    }
+
+                    .sort-option {
+                      display: flex;
+                      justify-content: flex-start;
+                      align-items: center;
+                      gap: 12px;
+                      width: 100%;
+                      padding: 6px;
+                      cursor: pointer;
+
+                      .svg-icon-custom-radio {
+                        cursor: pointer;
+
+                        #circle_01 {
+                          display: none;
+                          fill: #6B6B6B;
+                        }
+
+                        #circle_02 {
+                          display: block;
+                          stroke: #6B6B6B;
+                        }
+                      }
+
+                      .sort-label {
+                        color: $white-color;
+                        font-family: $primary-font-family;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1.25em;
+                        white-space: nowrap;
+                        display: block;
+                        transition:
+                          color $hover-transition-duration ease-in-out 0ms;
+                        cursor: pointer;
+                      }
+
+                      &.--selected,
+                      &:hover {
+                        .svg-icon-custom-radio {
+                          cursor: pointer;
+    
+                          #circle_01 {
+                            display: block;
+                            fill: $primary-color;
+                          }
+    
+                          #circle_02 {
+                            display: block;
+                            stroke: $primary-color;
+                          }
+                        }
+
+                        .sort-label {
+                          color: $primary-color;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .mb-view {
+                  display: none;
+
+                  @media only screen and (max-width: 768px) {
+                    display: block;
+                  }
+
+                  > .sort-select {
                     color: $white-color;
                     font-family: $primary-font-family;
                     font-size: 14px;
@@ -907,97 +1021,26 @@
                     line-height: 1.25em;
                     letter-spacing: -0.56px;
                     white-space: nowrap;
-                    display: block;
-                  }
-
-                  .svg-icon-arrow-up-arrow-down {
-                    display: block;
-                  }
-                }
-
-                > .sort-select {
-                  position: absolute;
-                  z-index: 2;
-                  right: 0;
-                  display: block;
-                  background-color: #04030D;
-                  visibility: hidden;
-                  opacity: 0;
-                  padding: 6px;
-                  border: 1px solid rgba(255, 255, 255, 0.40);
-
-                  @media only screen and (max-width: 768px) {
-                    right: unset;
-                    left: 0;
-                  }
-
-                  @media only screen and (max-width: 480px) {
-                    right: 0;
+                    background-color: #04030D;
                     width: 100%;
-                  }
+                    padding: 10px;
+                    border: 1px solid rgba(255, 255, 255, 0.40);
+                    border-radius: 5px;
 
-                  .sort-option {
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    gap: 12px;
-                    width: 100%;
-                    padding: 6px;
-                    cursor: pointer;
-
-                    .svg-icon-custom-radio {
-                      cursor: pointer;
-
-                      #circle_01 {
-                        display: none;
-                        fill: #6B6B6B;
-                      }
-
-                      #circle_02 {
-                        display: block;
-                        stroke: #6B6B6B;
-                      }
-                    }
-
-                    .sort-label {
+                    .sort-option {
                       color: $white-color;
                       font-family: $primary-font-family;
                       font-size: 14px;
                       font-style: normal;
-                      font-weight: 400;
+                      font-weight: 500;
+                      text-transform: uppercase;
                       line-height: 1.25em;
+                      letter-spacing: -0.56px;
                       white-space: nowrap;
                       display: block;
-                      transition:
-                        color $hover-transition-duration ease-in-out 0ms;
-                      cursor: pointer;
-                    }
-
-                    &.--selected,
-                    &:hover {
-                      .svg-icon-custom-radio {
-                        cursor: pointer;
-  
-                        #circle_01 {
-                          display: block;
-                          fill: $primary-color;
-                        }
-  
-                        #circle_02 {
-                          display: block;
-                          stroke: $primary-color;
-                        }
-                      }
-
-                      .sort-label {
-                        color: $primary-color;
-                      }
+                      background-color: #04030D;
                     }
                   }
-                }
-
-                .mb-view {
-                  display: none;
                 }
 
                 &.--toggle {
