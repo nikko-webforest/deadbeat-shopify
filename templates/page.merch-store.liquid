@@ -357,55 +357,74 @@
             v-if="shop.products.pagination.list.length">
             <div class="product-item"
               v-for="(productItem, productIndex) in shop.products.pagination.list"
-              :data-product-id="productItem.id">
+              :data-product-id="productItem.id"
+              :data-index="productIndex">
               <a class="product-img-link"
                 :title="productItem.title"
                 :href="'/products/'+productItem.handle">
                 <img class="product-img db-img"
                   :alt="productItem.title"
                   :title="productItem.title"
-                  :src="productItem.images[0].src"
+                  :src="productItem.selected_image"
                   width=""
                   height=""
                   loading="lazy"/>
               </a>
-              <div class="product-details">
-                <div class="product-title"
-                  v-text="productItem.title">
+              <template v-for="(optionItem, optionIndex) in productItem.options">
+                <template v-if="optionItem.name == 'Color'">
+                  <div class="product-color-list">
+                    <template v-for="colorValue in optionItem.values">
+                      <div class="product-color-option"
+                        :title="colorValue"
+                        :style="{
+                          'background-color' : getHexColor(colorValue),
+                          'box-shadow' : setBoxShadow(colorValue)
+                        }"
+                        @mouseover="setOptionSelectedImg(productItem.id, colorValue, optionIndex);">
+                      </div>
+                    </template>
+                  </div>
+                </template>
+              </template>
+              <div class="hover-group">
+                <div class="product-details">
+                  <div class="product-title"
+                    v-text="productItem.title">
+                  </div>
+                  <div class="product-price">
+                    <span class="current-price"
+                      v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].price">
+                    </span>
+                    <span class="before-price"
+                      v-if="productItem.variants[0].compare_at_price != null"
+                      v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].compare_at_price">
+                    </span>
+                  </div>
                 </div>
-                <div class="product-price">
-                  <span class="current-price"
-                    v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].price">
-                  </span>
-                  <span class="before-price"
-                    v-if="productItem.variants[0].compare_at_price != null"
-                    v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].compare_at_price">
-                  </span>
+                <div class="product-actions">
+                  <button class="db-btn--buy-it-now"
+                    type="button"
+                    @click="buyItNow(productItem, $event);">
+                    <span class="label">
+                      BUY IT NOW
+                    </span>
+                  </button>
+                  <button class="db-btn--add-to-cart"
+                    type="button"
+                    @click="addThisToCart(productItem, $event);">
+                    <svg class="svg-icon-cart db-svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                        fill="#FFFFFF">
+                      </path>
+                    </svg>
+                  </button>
                 </div>
-              </div>
-              <div class="product-actions">
-                <button class="db-btn--buy-it-now"
-                  type="button"
-                  @click="buyItNow(productItem, $event);">
-                  <span class="label">
-                    BUY IT NOW
-                  </span>
-                </button>
-                <button class="db-btn--add-to-cart"
-                  type="button"
-                  @click="addThisToCart(productItem, $event);">
-                  <svg class="svg-icon-cart db-svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path id="path_01"
-                      d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
-                      fill="#FFFFFF">
-                    </path>
-                  </svg>
-                </button>
               </div>
             </div>
           </div>
@@ -459,6 +478,7 @@
     name: 'DB SF Page MerchStore Options',
     data() {
       return {
+        color_values: [],
         shop: {
           /* collection: {{ collection.products | json }}, */
           products_liquid: [
@@ -482,9 +502,9 @@
               current: 1,
               total: 0,
               pages: [],
-              perPage: 9,
-              startIndex: 0,
-              endIndex: 0,
+              per_page: 9,
+              start_index: 0,
+              end_index: 0,
               list: [],
             },
             filters: {
@@ -527,6 +547,8 @@
         var productsLimitPerFetch = 30;
         var productsTotalPageFetch = Math.ceil(this.shop.products.count / productsLimitPerFetch);
 
+        await this.fetchColorValues();
+
         await this.fetchShopProducts(productsTotalPageFetch);
 
         await this.getAllFilters();
@@ -539,6 +561,17 @@
         await this.toggleProductFilterList('Accessories');
 
         this.loadPage();
+      },
+      async fetchColorValues() {
+        fetch(`{{ 'color-values.json' | asset_url }}`)
+          .then(response => response.json())
+          .then(result => {
+            // console.log('Fetch Color Values from File SUCCESS...', result);
+            this.color_values = result;
+          })
+          .catch(error => {
+            console.error('Fetch Color Values from File FAILED...', error);
+          });
       },
       async fetchShopProducts(productsTotalPageFetch) {
         // console.log('fetchShopProducts()', productsTotalPageFetch);
@@ -553,8 +586,8 @@
           data.products.forEach((itemA) => {
             this.shop.products_liquid.forEach((itemB) => {
               if (itemA.id == itemB.id) {
-                this.shop.products.list.all.push({ ...itemA, metafields: itemB.metafields });
-                this.shop.products.list.filtered.push({ ...itemA, metafields: itemB.metafields });
+                this.shop.products.list.all.push({ ...itemA, metafields: itemB.metafields, selected_image: itemA.images[0].src });
+                this.shop.products.list.filtered.push({ ...itemA, metafields: itemB.metafields, selected_image: itemA.images[0].src });
               }
             });
           });
@@ -599,7 +632,7 @@
         // console.log('paginationSettings()');
 
         this.shop.products.pagination.current = 1;
-        this.shop.products.pagination.total = Math.ceil(this.shop.products.list.filtered.length / this.shop.products.pagination.perPage);
+        this.shop.products.pagination.total = Math.ceil(this.shop.products.list.filtered.length / this.shop.products.pagination.per_page);
         this.shop.products.pagination.pages = [];
 
         for (var n = 1; n <= this.shop.products.pagination.total; n++) {
@@ -610,8 +643,8 @@
         // console.log('paginationSelectedPage()', page);
 
         this.shop.products.pagination.current = page;
-        this.shop.products.pagination.startIndex = (page * this.shop.products.pagination.perPage) - (this.shop.products.pagination.perPage);
-        this.shop.products.pagination.endIndex = (page * this.shop.products.pagination.perPage);
+        this.shop.products.pagination.start_index = (page * this.shop.products.pagination.per_page) - (this.shop.products.pagination.per_page);
+        this.shop.products.pagination.end_index = (page * this.shop.products.pagination.per_page);
 
         this.paginationPaginateList();
         this.paginationScrollTop();
@@ -634,7 +667,7 @@
         this.doProductSortBy();
 
         this.shop.products.pagination.list = [];
-        this.shop.products.list.filtered.slice(this.shop.products.pagination.startIndex, this.shop.products.pagination.endIndex).forEach((item, index) => {
+        this.shop.products.list.filtered.slice(this.shop.products.pagination.start_index, this.shop.products.pagination.end_index).forEach((item, index) => {
           this.shop.products.pagination.list.push(item);
         });
 
@@ -761,7 +794,7 @@
         }
       },
       getAvailableVariant(product) {
-        console.log('getAvailableVariant()', product);
+        // console.log('getAvailableVariant()', product);
         
         let availableVariant = null;
 
@@ -776,6 +809,37 @@
         // console.log('availableVariant =', availableVariant);
 
         return availableVariant;
+      },
+      getHexColor(colorName) {
+        // console.log('getHexColor()', colorName);
+        var colorValue = '';
+
+        this.color_values.forEach((colorItem) => {
+          if (colorItem.name == colorName) {
+            colorValue = colorItem.value;
+          }
+        });
+
+        return colorValue;
+      },
+      setBoxShadow(colorName) {
+        // if (colorName == this.product.selected.option1) {
+        //   return `${this.getHexColor(colorName)} 0px 0px 0px 2px`;
+        // }
+        return 'none';
+      },
+      setOptionSelectedImg(productID, colorValue, optionIndex) {
+        // console.log('setOptionSelectedImg()', productID, colorValue, optionIndex);
+
+        this.shop.products.pagination.list.forEach((productItem) => {
+          if (productItem.id == productID) {
+            productItem.variants.forEach((variantItem) => {
+              if (variantItem[`option${optionIndex + 1}`] == colorValue ) {
+                productItem.selected_image = variantItem.featured_image.src;
+              }
+            });
+          }
+        });
       },
 
       // cart methods

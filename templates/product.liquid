@@ -132,7 +132,7 @@
                 <button class="db-btn--size-guide"
                   type="button"
                   title="See Size Guide Table"
-                  :class="{ '--toggled' : product.selected.sizeGuideToggle }"
+                  :class="{ '--toggled' : product.selected.size_guide_toggle }"
                   @click="toggleSizeGuide();">
                   <div class="label">
                     SIZE GUIDE
@@ -263,55 +263,73 @@
       </h2>
       <div class="product-list">
         <div class="product-item --fade-in"
-          v-for="(productItem, productIndex) in productRecommendation.products.slice(0, 4)">
+          v-for="(productItem, productIndex) in product_recommendation.products.slice(0, 4)">
           <a class="product-img-link"
             :title="productItem.title"
             :href="'/products/'+productItem.handle">
             <img class="product-img db-img"
               :alt="productItem.title"
               :title="productItem.title"
-              :src="productItem.featured_image"
+              :src="productItem.selected_image"
               width=""
               height=""
               loading="lazy"/>
           </a>
-          <div class="product-details">
-            <div class="product-title"
-              v-text="productItem.title">
+          <template v-for="(optionItem, optionIndex) in productItem.options">
+            <template v-if="optionItem.name == 'Color'">
+              <div class="product-color-list">
+                <template v-for="colorValue in optionItem.values">
+                  <div class="product-color-option"
+                    :title="colorValue"
+                    :style="{
+                      'background-color' : getHexColor(colorValue),
+                      'box-shadow' : setBoxShadow(colorValue)
+                    }"
+                    @mouseover="setOptionSelectedImg(productItem.id, colorValue, optionIndex);">
+                  </div>
+                </template>
+              </div>
+            </template>
+          </template>
+          <div class="hover-group">
+            <div class="product-details">
+              <div class="product-title"
+                v-text="productItem.title">
+              </div>
+              <div class="product-price">
+                <span class="current-price"
+                  v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].price)">
+                </span>
+                <span class="before-price"
+                  v-if="productItem.variants[0].compare_at_price != null"
+                  v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].compare_at_price)">
+                </span>
+              </div>
             </div>
-            <div class="product-price">
-              <span class="current-price"
-                v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].price)">
-              </span>
-              <span class="before-price"
-                v-if="productItem.variants[0].compare_at_price != null"
-                v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].compare_at_price)">
-              </span>
+            <div class="product-actions">
+              <button class="db-btn--buy-it-now"
+                type="button"
+                @click="buyItNow(productItem, $event);">
+                <span class="label">
+                  BUY IT NOW
+                </span>
+              </button>
+              <button class="db-btn--add-to-cart"
+                type="button"
+                @click="addThisToCart(productItem, $event);">
+                <svg class="svg-icon-cart db-svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path id="path_01"
+                    d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                    fill="#FFFFFF">
+                  </path>
+                </svg>
+              </button>
             </div>
-          </div>
-          <div class="product-actions">
-            <button class="db-btn--buy-it-now"
-              type="button"
-              @click="buyItNow(productItem, $event);">
-              <span class="label">
-                BUY IT NOW
-              </span>
-            </button>
-            <button class="db-btn--add-to-cart"
-              type="button"
-              @click="addThisToCart(productItem, $event);">
-              <svg class="svg-icon-cart db-svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path id="path_01"
-                  d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
-                  fill="#FFFFFF">
-                </path>
-              </svg>
-            </button>
           </div>
         </div>
       </div>
@@ -322,10 +340,10 @@
     <div class="db-container">
       <div class="db-row">
         <div class="db-col">
-          <a class="prev-next-btns --prev" v-if="prevProduct"
-            :title="prevProduct.title"
-            :href="'/products/'+prevProduct.handle"
-            :data-product-id="prevProduct.id">
+          <a class="prev-next-btns --prev" v-if="prev_product"
+            :title="prev_product.title"
+            :href="'/products/'+prev_product.handle"
+            :data-product-id="prev_product.id">
             <div class="prev-next-label">
               Previous
             </div>
@@ -346,22 +364,22 @@
                   Previous
                 </div>
                 <div class="product-title"
-                  v-text="prevProduct.title">
+                  v-text="prev_product.title">
                 </div>
                 <div class="product-prices">
                   <div class="before-price"
-                    v-if="prevProduct.compare_at_price"
-                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prevProduct.compare_at_price)">
+                    v-if="prev_product.compare_at_price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prev_product.compare_at_price)">
                   </div>
                   <div class="current-price"
-                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prevProduct.price)">
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prev_product.price)">
                   </div>
                 </div>
               </div>
               <img class="product-img db-img"
-                :alt="prevProduct.title"
-                :title="prevProduct.title"
-                :src="prevProduct.featured_image"
+                :alt="prev_product.title"
+                :title="prev_product.title"
+                :src="prev_product.featured_image"
                 width=""
                 height=""
                 loading="lazy"/>
@@ -369,18 +387,18 @@
           </a>
         </div>
         <div class="db-col">
-          <a class="prev-next-btns --next" v-if="nextProduct"
-            :title="nextProduct.title"
-            :href="'/products/'+nextProduct.handle"
-            :data-product-id="nextProduct.id">
+          <a class="prev-next-btns --next" v-if="next_product"
+            :title="next_product.title"
+            :href="'/products/'+next_product.handle"
+            :data-product-id="next_product.id">
             <div class="prev-next-label">
               Next
             </div>
             <div class="db-inner-row">
               <img class="product-img db-img"
-                :alt="nextProduct.title"
-                :title="nextProduct.title"
-                :src="nextProduct.featured_image"
+                :alt="next_product.title"
+                :title="next_product.title"
+                :src="next_product.featured_image"
                 width=""
                 height=""
                 loading="lazy"/>
@@ -389,15 +407,15 @@
                   Next
                 </div>
                 <div class="product-title"
-                  v-text="nextProduct.title">
+                  v-text="next_product.title">
                 </div>
                 <div class="product-prices">
                   <div class="current-price"
-                    v-text="'{{ cart.currency.symbol }}'+formatPrice(nextProduct.price)">
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(next_product.price)">
                   </div>
                   <div class="before-price"
-                    v-if="nextProduct.compare_at_price"
-                    v-text="'{{ cart.currency.symbol }}'+formatPrice(nextProduct.compare_at_price)">
+                    v-if="next_product.compare_at_price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(next_product.compare_at_price)">
                   </div>
                 </div>
               </div>
@@ -425,7 +443,7 @@
     name: 'DB SF Page Product Options',
     data() {
       return {
-        colorValues: [],
+        color_values: [],
 
         product: {
           data: {},
@@ -446,7 +464,7 @@
               },
             {% endfor %}
           ],
-          options_liquid: [],
+          /* options_liquid: [], */
           selected: {
             id: '',
             title: '',
@@ -456,26 +474,26 @@
             option3: null,
             options: {},
             images: [],
-            sizeGuideToggle: false,
+            size_guide_toggle: false,
             metafields: {{ product.metafields.custom | json }},
             variant: {},
           },
         },
 
-        productRecommendation: {
+        product_recommendation: {
           products: [],
         },
-        prevProduct: {{ prev_product | json }},
-        nextProduct: {{ next_product | json }},
+        prev_product: {{ prev_product | json }},
+        next_product: {{ next_product | json }},
       };
     },
     methods: {
-      fetchColorValues() {
+      async fetchColorValues() {
         fetch(`{{ 'color-values.json' | asset_url }}`)
           .then(response => response.json())
           .then(result => {
-            console.log('Fetch Color Values from File SUCCESS...', result);
-            this.colorValues = result;
+            // console.log('Fetch Color Values from File SUCCESS...', result);
+            this.color_values = result;
           })
           .catch(error => {
             console.error('Fetch Color Values from File FAILED...', error);
@@ -486,7 +504,7 @@
         fetch(productEndpoint)
           .then(response => response.json())
           .then(data => {
-            console.log(`Fetch this Product Data from Endpoint SUCCESS...`, data);
+            // console.log(`Fetch this Product Data from Endpoint SUCCESS...`, data);
 
             // var variants_in_liquid = {{ product.variants | json }};
             // console.log('variants_in_liquid =', variants_in_liquid);
@@ -522,7 +540,7 @@
         }, 1000);
       },
       selectedOption(optionName, optionIndex, optionValue) {
-        console.log('selectedOption() =', optionName, optionIndex, optionValue);
+        // console.log('selectedOption() =', optionName, optionIndex, optionValue);
 
         this.product.selected[`option${optionIndex + 1}`] = optionValue;
 
@@ -581,7 +599,7 @@
         // console.log('getHexColor()', colorName);
         var colorValue = '';
 
-        this.colorValues.forEach((colorItem) => {
+        this.color_values.forEach((colorItem) => {
           if (colorItem.name == colorName) {
             colorValue = colorItem.value;
           }
@@ -596,11 +614,11 @@
         return 'none';
       },
       toggleSizeGuide() {
-        this.product.selected.sizeGuideToggle = !this.product.selected.sizeGuideToggle;
+        this.product.selected.size_guide_toggle = !this.product.selected.size_guide_toggle;
 
         var element = document.querySelector('.product-size-guide-wrap');
 
-        if (this.product.selected.sizeGuideToggle) {
+        if (this.product.selected.size_guide_toggle) {
           var sizeGuideHeight = element.scrollHeight;
           element.style.height = `${sizeGuideHeight}px`;
         }
@@ -724,11 +742,27 @@
           .then(response => response.json())
           .then(data => {
             // console.log(`Fetch this Product Recommendations Data from Endpoint SUCCESS`, data);
-            this.productRecommendation.products = data.products;
+            // this.product_recommendation.products = data.products;
+            data.products.forEach((productItem) => {
+              this.product_recommendation.products.push({ ...productItem, selected_image: productItem.featured_image })
+            });
           })
           .catch(error => {
             console.error(`Fetch this Product Recommendation Data from Endpoint FAILED`, error);
           });
+      },
+      setOptionSelectedImg(productID, colorValue, optionIndex) {
+        // console.log('setOptionSelectedImg()', productID, colorValue, optionIndex);
+
+        this.product_recommendation.products.forEach((productItem) => {
+          if (productItem.id == productID) {
+            productItem.variants.forEach((variantItem) => {
+              if (variantItem[`option${optionIndex + 1}`] == colorValue ) {
+                productItem.selected_image = variantItem.featured_image.src;
+              }
+            });
+          }
+        });
       },
     },
     computed: {
