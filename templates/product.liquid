@@ -69,7 +69,18 @@
       </div>
       <div class="db-row">
         <div class="db-col">
-          <img class="product-img db-img"
+          <div class="product-img-wrap db-scroll-bar">
+            <div class="product-img-list">
+              <template v-for="productImage in product.data.images">
+                <div class="product-img-item"
+                  :class="{ '--selected' : productImage.src == product.selected.image }"
+                  :style="{ 'background-image' : 'url(' + productImage.src + ')' }"
+                  @click="setSelectedImage(productImage.src);">
+                </div>
+              </template>
+            </div>
+          </div>
+          <img class="product-selected-img db-img"
             :alt="product.data.image.alt"
             :title="product.data.image.alt"
             :src="product.selected.image"
@@ -414,124 +425,7 @@
     name: 'DB SF Page Product Options',
     data() {
       return {
-        colorNames: [
-          {
-            name: "Charcoal-Black Triblend",
-            value: 'rgb(25, 30, 28)',
-          },
-          {
-            name: "Purple Triblend",
-            value: 'rgb(120, 84, 137)',
-          },
-          {
-            name: "Blue Triblend",
-            value: 'rgb(101,119,161)',
-          },
-          {
-            name: "Mustard Triblend",
-            value: 'rgb(226, 171, 87)',
-          },
-          {
-            name: "White Fleck Triblend",
-            value: 'rgb(232,232,232)',
-          },
-          {
-            name: "Solid White Triblend",
-            value: 'rgb(255, 255, 255)',
-          },
-          {
-            name: "Black",
-            value: 'rgb(0, 0, 0)',
-          },
-          {
-            name: "Red",
-            value: 'rgb(255, 0, 0)',
-          },
-          {
-            name: "White",
-            value: 'rgb(255, 255, 255)',
-          },
-          {
-            name: "Heather Grey",
-            value: 'rgb(116, 115, 111)',
-          },
-          {
-            name: "Baby Pink",
-            value: 'rgb(233, 169, 177)',
-          },
-          {
-            name: "Red Triblend",
-            value: 'rgb(172, 61, 65)',
-          },
-          {
-            name: "Emerald Triblend",
-            value: 'rgb(14, 37, 24)',
-          },
-          {
-            name: "Navy Triblend",
-            value: 'rgb(50, 55, 92)',
-          },
-          {
-            name: "Athletic Grey Triblend",
-            value: 'rgb(111, 112, 107)',
-          },
-          {
-            name: "Brown Triblend",
-            value: 'rgb(83, 55, 44)',
-          },
-          {
-            name: "Teal Triblend",
-            value: 'rgb(20, 109, 104)',
-          },
-          {
-            name: "Heather Grey/Black",
-            value: 'rgb(31, 31, 31)',
-          },
-          {
-            name: "Heather Grey/Heather Red",
-            value: 'rgb(190, 64, 65)',
-          },
-          {
-            name: "Athletic Heather",
-            value: 'rgb(164, 164, 164)',
-          },
-          {
-            name: "Charcoal Heather",
-            value: 'rgb(37, 38, 35)',
-          },
-          {
-            name: "Purple",
-            value: 'rgb(128, 0, 128)',
-          },
-          {
-            name: "Carbon Grey",
-            value: 'rgb(144, 142, 138)',
-          },
-          {
-            name: "Navy Blazer",
-            value: 'rgb(25, 33, 44)',
-          },
-          {
-            name: "Maroon",
-            value: 'rgb(128, 0, 0)',
-          },
-          {
-            name: "Dusty Rose",
-            value: 'rgb(179, 109, 97)',
-          },
-          {
-            name: "Sky Blue",
-            value: 'rgb(135, 206, 235)',
-          },
-          {
-            name: "Forest Green",
-            value: 'rgb(48, 73, 47)',
-          },
-          {
-            name: "Military Green",
-            value: 'rgb(82, 71, 48)',
-          },
-        ],
+        colorValues: [],
 
         product: {
           data: {},
@@ -544,6 +438,7 @@
                 compare_at_price: '{{ product_variant.compare_at_price }}',
                 inventory_quantity: '{{ product_variant.inventory_quantity }}',
                 available: '{{ product_variant.available }}',
+                images: {{ product_variant.images | json }},
 
                 {% for product_option in product_variant.options %}
                   "option{{ forloop.index }}" : "{{ product_option }}",
@@ -560,7 +455,7 @@
             option2: null,
             option3: null,
             options: {},
-            image: '',
+            images: [],
             sizeGuideToggle: false,
             metafields: {{ product.metafields.custom | json }},
             variant: {},
@@ -575,6 +470,17 @@
       };
     },
     methods: {
+      fetchColorValues() {
+        fetch(`{{ 'color-values.json' | asset_url }}`)
+          .then(response => response.json())
+          .then(result => {
+            console.log('Fetch Color Values from File SUCCESS...', result);
+            this.colorValues = result;
+          })
+          .catch(error => {
+            console.error('Fetch Color Values from File FAILED...', error);
+          });
+      },
       async fetchThisProduct() {
         const productEndpoint = `/products/{{ product.handle }}.json`;
         fetch(productEndpoint)
@@ -630,6 +536,7 @@
             variantItem.option3 == this.product.selected.option3
           ) {
             this.product.selected.variant = this.product.data.variants[variantIndex];
+
             this.setProductVariantImage(this.product.data.variants[variantIndex].image_id);
           }
         });
@@ -642,11 +549,16 @@
         this.setProductVariantImage(this.product.selected.variant.image_id);
       },
       setProductVariantImage(variantImageID) {
+        // this.product.selected.images = [];
+
         this.product.data.images.forEach((item) => {
-          if (item.id == variantImageID ) {
-            this.product.selected.image = item.src;
+          if (item.id == variantImageID) {
+            this.setSelectedImage(item.src);
           }
         });
+      },
+      setSelectedImage(productImage) {
+        this.product.selected.image = productImage;
       },
       isSelected(valueItem, optionIndex) {
         if (valueItem == this.product.selected[`option${optionIndex + 1}`]) {
@@ -667,15 +579,15 @@
       },
       getHexColor(colorName) {
         // console.log('getHexColor()', colorName);
-        var convertedColorValue = '';
+        var colorValue = '';
 
-        this.colorNames.forEach((colorItem) => {
+        this.colorValues.forEach((colorItem) => {
           if (colorItem.name == colorName) {
-            convertedColorValue = colorItem.value;
+            colorValue = colorItem.value;
           }
         });
 
-        return convertedColorValue;
+        return colorValue;
       },
       setBoxShadow(colorName) {
         if (colorName == this.product.selected.option1) {
@@ -825,6 +737,7 @@
       }
     },
     created() {
+      this.fetchColorValues();
       this.fetchThisProduct();
       this.fetchProductRecommendation();
     },
