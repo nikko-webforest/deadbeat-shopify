@@ -8,8 +8,88 @@
       scale 200ms ease-in-out 0ms !important;
   }
 
+  &.--emporium {
+    .db-widget-box {
+      background-image: url('DB_Widget10_bg-v01-312x679.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      box-shadow: unset;
+      height: 680px;
+      scale: 1.0;
+      padding: 50px 40px 50px;
+      border: none;
+      border-radius: 30px;
+
+      @media only screen and (max-width: 768px) {
+        max-width: 312px;
+        margin: 0 auto;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 3px solid transparent;
+        border-radius: inherit;
+        transition:
+          all 200ms ease-in-out 0ms;
+      }
+
+      > span {
+        color: #0E003D;
+        font-family: $primaryFontFamily;
+        font-size: 27px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.25em;
+        display: block;
+        margin: 0 0 3px;
+      }
+      
+      h5 {
+        color: $whiteColor;
+        font-family: $primaryFontFamily;
+        font-size: 85px;
+        font-style: normal;
+        font-weight: 500;
+        text-shadow: 1.674121379852295px 1.674121379852295px 12.55591106414795px rgba(0, 0, 0, 0.15);
+        line-height: 1.1em;
+        letter-spacing: -3.2px;
+        word-break: keep-all;
+        display: inline-block;
+        vertical-align: middle;
+        overflow-wrap: anywhere;
+        
+        .db-svg {
+          display: inline-block;
+          vertical-align: middle;
+          margin: -15px 0 0;
+        }
+      }
+
+      &:hover {
+        scale: 1.05;
+
+        &::before {
+          box-shadow:
+            4.02237px 4.02237px 8.04474px 0px rgba(193, 255, 44, 0.30),
+            -4.02237px -4.02237px 8.04474px 0px rgba(193, 255, 44, 0.30),
+            2.01118px 2.01118px 4.02237px 0px rgba(193, 255, 44, 0.60),
+            -2.01118px -2.01118px 4.02237px 0px rgba(193, 255, 44, 0.60);
+          border: 3px solid #C1FF2C;
+        }
+      }
+    }
+  }
+
   &.--columbus {
     display: none;
+
     @media only screen and (max-width: 768px) {
       display: block;
     }
@@ -85,7 +165,6 @@
   }
 
   &.--columbus2 {
-
     display: block;
 
     @media only screen and (max-width: 768px) {
@@ -97,9 +176,8 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      max-width: 312px;
+      max-width: 100%;
       width: 100%;
-      min-width: 312px;
       height: 295px;
       scale: 1;
       position: relative;
