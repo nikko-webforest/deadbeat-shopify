@@ -2,7 +2,7 @@
   <div class="db-cart-overlay"
     @click="closeCart();">
   </div>
-  <aside class="db-cart-wrap db-scroll-bar">
+  <aside class="db-cart-wrap">
     <div class="db-cart-head">
       <h5>
         YOUR SHOPPING CART
@@ -26,109 +26,109 @@
         </span>
       </button>
     </div>
-    <div class="db-cart-body">
-      <div class="product-list"
-        v-if="isCartDataEmpty && cart.data.items.length">
-        <div class="product-item"
-          v-for="(cartItem, cartIndex) in cart.data.items"
-          :data-product-id="cartItem.product_id"
-          :data-variant-id="cartItem.variant_id">
-          <img class="product-img db-img"
-            :alt="cartItem.title"
-            :title="cartItem.title"
-            :src="cartItem.featured_image.url"
-            width=""
-            height=""
-            loading="lazy"/>
-          <div class="product-details">
-            <a class="product-title"
-              :title="cartItem.title"
-              :href="'/products/'+cartItem.handle"
-              v-text="cartItem.title">
-            </a>
-            <div class="product-variant">
-              <div class="option"
-                v-for="option in cartItem.options_with_values">
-                <template v-if="option.name != 'Title'">
-                  <span class="name"
-                    v-text="option.name+': '">
-                  </span>
-                  <span class="value"
-                    v-text="option.value">
-                  </span>
-                </template>
+    <div class="db-cart-body db-scroll-bar">
+      <template v-if="isCartDataEmpty && cart.data.items.length">
+        <div class="product-list">
+          <template v-for="(cart_item, cart_index) in cart.data.items">
+            <div class="product-item"
+              :data-product-id="cart_item.product_id"
+              :data-variant-id="cart_item.variant_id">
+              <img class="product-img db-img"
+                :alt="cart_item.title"
+                :title="cart_item.title"
+                :src="cart_item.featured_image.url"
+                width=""
+                height=""
+                loading="lazy"/>
+              <div class="product-details">
+                <a class="product-title"
+                  :title="cart_item.title"
+                  :href="'/products/'+cart_item.handle"
+                  v-text="cart_item.title">
+                </a>
+                <div class="product-variant">
+                  <template v-for="option in cart_item.options_with_values">
+                    <div class="option">
+                      <template v-if="option.name != 'Title'">
+                        <span class="name"
+                          v-text="option.name+': '">
+                        </span>
+                        <span class="value"
+                          v-text="option.value">
+                        </span>
+                      </template>
+                    </div>
+                  </template>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="product-quantity">
-            <div class="product-price"
-              v-text="'{{ cart.currency.symbol }}'+formatPrice((cartItem.final_price * cartItem.quantity))">
-            </div>
-            <div class="quantity-actions">
-              <button class="quantity-minus"
+              <div class="product-quantity">
+                <div class="product-price"
+                  v-text="'{{ cart.currency.symbol }}'+formatPrice((cart_item.final_price * cart_item.quantity))">
+                </div>
+                <div class="quantity-actions">
+                  <button class="quantity-minus"
+                    type="button"
+                    title="Decrease Quantity"
+                    @click="decreaseQuantity(cart_item.variant_id, cart_item.quantity);">
+                    <svg class="svg-icon-minus db-svg"
+                      width="5"
+                      height="2"
+                      viewBox="0 0 5 2"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M4.816 0L4.592 1.148H0L0.21 0H4.816Z"
+                        fill="#FFFFFF">
+                      </path>
+                    </svg>
+                  </button>
+                  <input class="quantity-input"
+                    type="text"
+                    :value="cart_item.quantity"
+                    readonly/>
+                  <button class="quantity-plus"
+                    type="button"
+                    title="Increase Quantity"
+                    @click="increaseQuantity(cart_item.variant_id, cart_item.quantity);">
+                    <svg class="svg-icon-plus db-svg"
+                      width="6"
+                      height="6"
+                      viewBox="0 0 6 6"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M3.402 2.058H5.53L5.39 3.206H3.402V5.404H2.114V3.206H0L0.126 2.058H2.114V0H3.402V2.058Z"
+                        fill="white">
+                      </path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <button class="product-delete"
                 type="button"
-                title="Decrease Quantity"
-                @click="decreaseQuantity(cartItem.variant_id, cartItem.quantity);">
-                <svg class="svg-icon-minus db-svg"
-                  width="5"
-                  height="2"
-                  viewBox="0 0 5 2"
+                title="Remove Item from Cart"
+                @click="deleteCartItem(cart_item.variant_id);">
+                <svg class="svg-icon-bin db-svg"
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path id="path_01"
-                    d="M4.816 0L4.592 1.148H0L0.21 0H4.816Z"
-                    fill="#FFFFFF">
-                  </path>
-                </svg>
-              </button>
-              <input class="quantity-input"
-                type="text"
-                :value="cartItem.quantity"
-                readonly/>
-              <button class="quantity-plus"
-                type="button"
-                title="Increase Quantity"
-                @click="increaseQuantity(cartItem.variant_id, cartItem.quantity);">
-                <svg class="svg-icon-plus db-svg"
-                  width="6"
-                  height="6"
-                  viewBox="0 0 6 6"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path id="path_01"
-                    d="M3.402 2.058H5.53L5.39 3.206H3.402V5.404H2.114V3.206H0L0.126 2.058H2.114V0H3.402V2.058Z"
-                    fill="white">
+                    d="M15.3333 3.05999H12.6667V1.36C12.6667 0.609879 12.0687 0 11.3333 0H4.66666C3.93125 0 3.33333 0.609879 3.33333 1.36V3.05999H0.666666C0.297917 3.05999 0 3.36386 0 3.73999V4.41999C0 4.51349 0.0750003 4.58998 0.166667 4.58998H1.425L1.93958 15.7037C1.97291 16.4283 2.56042 17 3.27082 17H12.7291C13.4416 17 14.027 16.4305 14.0604 15.7037L14.575 4.58998H15.8333C15.9249 4.58998 16 4.51349 16 4.41999V3.73999C16 3.36386 15.7021 3.05999 15.3333 3.05999ZM11.1666 3.05999H4.83333V1.53H11.1666V3.05999Z"
+                    fill="#C21E59">
                   </path>
                 </svg>
               </button>
             </div>
-          </div>
-          <button class="product-delete"
-            type="button"
-            title="Remove Item from Cart"
-            @click="deleteCartItem(cartItem.variant_id);">
-            <svg class="svg-icon-bin db-svg"
-              width="16"
-              height="17"
-              viewBox="0 0 16 17"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path id="path_01"
-                d="M15.3333 3.05999H12.6667V1.36C12.6667 0.609879 12.0687 0 11.3333 0H4.66666C3.93125 0 3.33333 0.609879 3.33333 1.36V3.05999H0.666666C0.297917 3.05999 0 3.36386 0 3.73999V4.41999C0 4.51349 0.0750003 4.58998 0.166667 4.58998H1.425L1.93958 15.7037C1.97291 16.4283 2.56042 17 3.27082 17H12.7291C13.4416 17 14.027 16.4305 14.0604 15.7037L14.575 4.58998H15.8333C15.9249 4.58998 16 4.51349 16 4.41999V3.73999C16 3.36386 15.7021 3.05999 15.3333 3.05999ZM11.1666 3.05999H4.83333V1.53H11.1666V3.05999Z"
-                fill="#C21E59">
-              </path>
-            </svg>
-          </button>
+          </template>
         </div>
-      </div>
-      <div class="cart-empty"
-        v-if="isCartDataEmpty && !cart.data.items.length">
-        YOUR CART IS EMPTY
-      </div>
-      <div class="cart-loader"
-        v-if="cart.loader">
-        <div class="loader"></div>
-      </div>
+      </template>
+      <template v-if="isCartDataEmpty && !cart.data.items.length">
+        <div class="cart-empty">
+          YOUR CART IS EMPTY
+        </div>
+      </template>
     </div>
     <div class="db-cart-foot">
       <div class="subtotal-wrap">
@@ -163,6 +163,11 @@
         </span>
       </a>
     </div>
+    <template v-if="cart.loader">
+      <div class="cart-loader">
+        <div class="loader"></div>
+      </div>
+    </template>
   </aside>
 </div>
 <script>
@@ -180,9 +185,9 @@
       async fetchCartData() {
         // console.log('fetchCartData()');
 
-        var cartEndpoint = '/cart.json';
+        var cart_endpoint = '/cart.json';
 
-        const response = await fetch(cartEndpoint);
+        const response = await fetch(cart_endpoint);
         const data = await response.json();
 
         this.cart.data = data;
@@ -202,19 +207,19 @@
       increaseQuantity(variant_id, quantity) {
         // console.log('increaseQuantity()', variant_id, quantity);
 
-        var cartItemQuantity = quantity + 1;
+        var cart_item_quantity = quantity + 1;
 
-        this.updateCartItem(variant_id, cartItemQuantity);
+        this.updateCartItem(variant_id, cart_item_quantity);
       },
       decreaseQuantity(variant_id, quantity) {
         // console.log('decreaseQuantity()', variant_id, quantity);
 
-        var cartItemQuantity = quantity - 1;
+        var cart_item_quantity = quantity - 1;
 
-        this.updateCartItem(variant_id, cartItemQuantity);
+        this.updateCartItem(variant_id, cart_item_quantity);
       },
-      deleteCartItem(variantID) {
-        // console.log('deleteCartItem()', variantID);
+      deleteCartItem(variant_id) {
+        // console.log('deleteCartItem()', variant_id);
         
         this.cart.loader = true;
 
@@ -225,7 +230,7 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            'id': variantID.toString(),
+            'id': variant_id.toString(),
             'quantity': 0,
           })
         })

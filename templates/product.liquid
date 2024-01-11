@@ -25,236 +25,242 @@
 
 <main class="db-main site-main db-page--product-page">
     
-  <section class="db-section db-section--product-details"
-    v-if="isProductDataEmpty">
-    <div class="db-container">
-      <div class="breadcrumbs">
-        <a class="breadcrumb-item"
-          title="Home"
-          href="{{ shop.url }}">
-          Home
-        </a>
-        <svg class="svg-icon-angle-right db-svg"
-          width="6"
-          height="8"
-          viewBox="0 0 6 8"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path id="path_01"
-            d="M0.726562 7.06L3.7799 4L0.726562 0.94L1.66656 0L5.66656 4L1.66656 8L0.726562 7.06Z"
-            fill="#838383">
-          </path>
-        </svg>
-        <a class="breadcrumb-item"
-          title="Merch Store"
-          href="{{ shop.url }}/pages/merch-store">
-          Merch Store
-        </a>
-        <svg class="svg-icon-angle-right db-svg"
-          width="6"
-          height="8"
-          viewBox="0 0 6 8"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path id="path_01"
-            d="M0.726562 7.06L3.7799 4L0.726562 0.94L1.66656 0L5.66656 4L1.66656 8L0.726562 7.06Z"
-            fill="#838383">
-          </path>
-        </svg>
-        <a class="breadcrumb-item --current"
-          :title="product.data.title"
-          :href="'/products/'+product.data.handle"
-          v-text="product.data.title">
-        </a>
-      </div>
-      <div class="db-row">
-        <div class="db-col">
-          <div class="product-img-wrap db-scroll-bar">
-            <div class="product-img-list">
-              <template v-for="productImage in product.data.images">
-                <div class="product-img-item"
-                  :class="{ '--selected' : productImage.src == product.selected.image }"
-                  :style="{ 'background-image' : 'url(' + productImage.src + ')' }"
-                  @click="setSelectedImage(productImage.src);">
+  <template v-if="isProductDataEmpty">
+    <section class="db-section db-section--product-details">
+      <div class="db-container">
+        <div class="breadcrumbs">
+          <a class="breadcrumb-item"
+            title="Home"
+            href="{{ shop.url }}">
+            Home
+          </a>
+          <svg class="svg-icon-angle-right db-svg"
+            width="6"
+            height="8"
+            viewBox="0 0 6 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path id="path_01"
+              d="M0.726562 7.06L3.7799 4L0.726562 0.94L1.66656 0L5.66656 4L1.66656 8L0.726562 7.06Z"
+              fill="#838383">
+            </path>
+          </svg>
+          <a class="breadcrumb-item"
+            title="Emporium"
+            href="{{ shop.url }}/pages/emporium">
+            Emporium
+          </a>
+          <svg class="svg-icon-angle-right db-svg"
+            width="6"
+            height="8"
+            viewBox="0 0 6 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path id="path_01"
+              d="M0.726562 7.06L3.7799 4L0.726562 0.94L1.66656 0L5.66656 4L1.66656 8L0.726562 7.06Z"
+              fill="#838383">
+            </path>
+          </svg>
+          <a class="breadcrumb-item --current"
+            :title="product.data.title"
+            :href="'/products/'+product.data.handle"
+            v-text="product.data.title">
+          </a>
+        </div>
+        <div class="db-row">
+          <div class="db-col">
+            <div class="product-img-wrap db-scroll-bar">
+              <div class="product-img-list">
+                <template v-for="product_image in product.data.images">
+                  <div class="product-img-item"
+                    :class="{ '--selected' : product_image.src == product.selected.image }"
+                    :style="{ 'background-image' : 'url(' + product_image.src + ')' }"
+                    @click="setSelectedImage(product_image.src);">
+                  </div>
+                </template>
+              </div>
+            </div>
+            <img class="product-selected-img db-img"
+              :alt="product.data.image.alt"
+              :title="product.data.image.alt"
+              :src="product.selected.image"
+              width=""
+              height=""
+              loading="lazy"/>
+          </div>
+          <div class="db-col">
+            <h1 class="product-title"
+              v-text="product.data.title">
+            </h1>
+            <div class="product-prices">
+              <div class="current-price"
+                v-text="'{{ cart.currency.symbol }}'+product.selected.variant.price">
+              </div>
+              <template v-if="product.selected.variant.compare_at_price != ''">
+                <div class="before-price"
+                  v-text="'{{ cart.currency.symbol }}'+product.selected.variant.compare_at_price">
                 </div>
               </template>
             </div>
-          </div>
-          <img class="product-selected-img db-img"
-            :alt="product.data.image.alt"
-            :title="product.data.image.alt"
-            :src="product.selected.image"
-            width=""
-            height=""
-            loading="lazy"/>
-        </div>
-        <div class="db-col">
-          <h1 class="product-title"
-            v-text="product.data.title">
-          </h1>
-          <div class="product-prices">
-            <div class="current-price"
-              v-text="'{{ cart.currency.symbol }}'+product.selected.variant.price">
-            </div>
-            <div class="before-price"
-              v-if="product.selected.variant.compare_at_price != ''"
-              v-text="'{{ cart.currency.symbol }}'+product.selected.variant.compare_at_price">
-            </div>
-          </div>
-          <template v-for="(optionItem, optionIndex) in product.data.options">
-            <div class="product-option --color"
-              v-if="optionItem.name == 'Color'">
+            <template v-for="(option_item, option_index) in product.data.options">
+              <template v-if="option_item.name == 'Color'">
+                <div class="product-option --color">
+                  <div class="db-inner-row">
+                    <div class="label">
+                      Color
+                    </div>
+                    <ul class="option-list">
+                      <template v-for="(value_item, value_index) in option_item.values">
+                        <li class="option-item"
+                          :title="value_item"
+                          :class="{ '--selected' : isSelected(value_item, option_index) }"
+                          :style="{
+                            'background-color' : getHexColor(value_item),
+                            'box-shadow' : setBoxShadow(value_item)
+                          }"
+                          @click="selectedOption(option_item.name, option_index, value_item);">
+                        </li>
+                      </template>
+                    </ul>
+                  </div>
+                </div>
+              </template>
+            </template>
+            <div class="product-option --size">
               <div class="db-inner-row">
                 <div class="label">
-                  Color
+                  Size
                 </div>
-                <ul class="option-list">
-                  <li class="option-item"
-                    v-for="(valueItem, valueIndex) in optionItem.values"
-                    :title="valueItem"
-                    :class="{ '--selected' : isSelected(valueItem, optionIndex) }"
-                    :style="{
-                      'background-color' : getHexColor(valueItem),
-                      'box-shadow' : setBoxShadow(valueItem)
-                    }"
-                    @click="selectedOption(optionItem.name, optionIndex, valueItem);">
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </template>
-          <div class="product-option --size">
-            <div class="db-inner-row">
-              <div class="label">
-                Size
+                <template v-if="product.selected.metafields.size_guide">
+                  <button class="db-btn--size-guide"
+                    type="button"
+                    title="See Size Guide Table"
+                    :class="{ '--toggled' : product.selected.size_guide_toggle }"
+                    @click="toggleSizeGuide();">
+                    <div class="label">
+                      SIZE GUIDE
+                    </div>
+                  </button>
+                </template>
+                <template v-for="(option_item, option_index) in product.data.options">
+                  <template v-if="option_item.name == 'Size'">
+                    <ul class="option-list">
+                      <template v-for="(value_item, value_index) in option_item.values">
+                        <li class="option-item"
+                          v-text="value_item"
+                          :class="[{ '--selected' : isSelected(value_item, option_index) }]"
+                          @click="selectedOption(option_item.name, option_index, value_item);">
+                        </li>
+                      </template>
+                    </ul>
+                  </template>
+                </template>
               </div>
               <template v-if="product.selected.metafields.size_guide">
-                <button class="db-btn--size-guide"
+                <div class="product-size-guide-wrap"
+                  v-html="product.selected.metafields.size_guide">
+                </div>
+              </template>
+            </div>
+            <div class="product-quantity-wrap">
+              <div class="label">
+                Quantity
+              </div>
+              <div class="quantity-control">
+                <button class="quantity-minus"
                   type="button"
-                  title="See Size Guide Table"
-                  :class="{ '--toggled' : product.selected.size_guide_toggle }"
-                  @click="toggleSizeGuide();">
-                  <div class="label">
-                    SIZE GUIDE
-                  </div>
+                  :disable="product.selected.quantity <= 1"
+                  @click="decreaseQuantity();">
+                  <svg class="svg-icon-circle-minus db-svg"
+                    width="19"
+                    height="19"
+                    viewBox="0 0 19 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle id="circle_01"
+                      cx="9.5"
+                      cy="9.5"
+                      r="8.5"
+                      stroke="#FFFFFF">
+                    </circle>
+                    <path id="path_01"
+                      d="M11.816 9L11.592 10.148H7L7.21 9H11.816Z"
+                      fill="#FFFFFF">
+                    </path>
+                  </svg>
+                </button>
+                <input class="quantity-input"
+                  type="text"
+                  :value="product.selected.quantity"
+                  readonly/>
+                <button class="quantity-plus"
+                  type="button"
+                  @click="increaseQuantity();">
+                  <svg class="svg-icon-circle-plus db-svg"
+                    width="19"
+                    height="19"
+                    viewBox="0 0 19 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle id="circle_01"
+                      cx="9.5"
+                      cy="9.5"
+                      r="8.5"
+                      stroke="#FFFFFF">
+                    </circle>
+                    <path id="path_01"
+                      d="M10.402 9.058H12.53L12.39 10.206H10.402V12.404H9.114V10.206H7L7.126 9.058H9.114V7H10.402V9.058Z"
+                      fill="#FFFFFF">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <hr>
+            <div class="product-buttons">
+              <template v-if="product.selected.variant.available == 'true'">
+                <button class="db-btn--add-to-cart"
+                  type="button"
+                  @click="addToCart();">
+                  <span class="label">
+                    ADD TO CART
+                  </span>
+                </button>
+                <button class="db-btn--buy-it-now"
+                  type="button"
+                  @click="buyItNow();">
+                  <span class="label">
+                    BUY IT NOW
+                  </span>
                 </button>
               </template>
-              <template v-for="(optionItem, optionIndex) in product.data.options">
-                <ul class="option-list"
-                  v-if="optionItem.name == 'Size'">
-                  <li class="option-item"
-                    v-for="(valueItem, valueIndex) in optionItem.values"
-                    v-text="valueItem"
-                    :class="[{ '--selected' : isSelected(valueItem, optionIndex) }]"
-                    @click="selectedOption(optionItem.name, optionIndex, valueItem);">
-                  </li>
-                </ul>
+              <template v-else>
+                <button class="db-btn--out-of-stock"
+                  type="button"
+                  disabled>
+                  <span class="label">
+                    Out of Stock
+                  </span>
+                </button>
               </template>
             </div>
-            <template v-if="product.selected.metafields.size_guide">
-              <div class="product-size-guide-wrap"
-                v-html="product.selected.metafields.size_guide">
-              </div>
-            </template>
-          </div>
-          <div class="product-quantity-wrap">
-            <div class="label">
-              Quantity
+            <div class="product-details">
+              <h5>
+                Product Details
+              </h5>
+              <div v-html="product.data.body_html"></div>
             </div>
-            <div class="quantity-control">
-              <button class="quantity-minus"
-                type="button"
-                :disable="product.selected.quantity <= 1"
-                @click="decreaseQuantity();">
-                <svg class="svg-icon-circle-minus db-svg"
-                  width="19"
-                  height="19"
-                  viewBox="0 0 19 19"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <circle id="circle_01"
-                    cx="9.5"
-                    cy="9.5"
-                    r="8.5"
-                    stroke="#FFFFFF">
-                  </circle>
-                  <path id="path_01"
-                    d="M11.816 9L11.592 10.148H7L7.21 9H11.816Z"
-                    fill="#FFFFFF">
-                  </path>
-                </svg>
-              </button>
-              <input class="quantity-input"
-                type="text"
-                :value="product.selected.quantity"
-                readonly/>
-              <button class="quantity-plus"
-                type="button"
-                @click="increaseQuantity();">
-                <svg class="svg-icon-circle-plus db-svg"
-                  width="19"
-                  height="19"
-                  viewBox="0 0 19 19"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <circle id="circle_01"
-                    cx="9.5"
-                    cy="9.5"
-                    r="8.5"
-                    stroke="#FFFFFF">
-                  </circle>
-                  <path id="path_01"
-                    d="M10.402 9.058H12.53L12.39 10.206H10.402V12.404H9.114V10.206H7L7.126 9.058H9.114V7H10.402V9.058Z"
-                    fill="#FFFFFF">
-                  </path>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <hr>
-          <div class="product-buttons">
-            <template v-if="product.selected.variant.available == 'true'">
-              <button class="db-btn--add-to-cart"
-                type="button"
-                @click="addToCart();">
-                <span class="label">
-                  ADD TO CART
-                </span>
-              </button>
-              <button class="db-btn--buy-it-now"
-                type="button"
-                @click="buyItNow();">
-                <span class="label">
-                  BUY IT NOW
-                </span>
-              </button>
-            </template>
-            <template v-else>
-              <button class="db-btn--out-of-stock"
-                type="button"
-                disabled>
-                <span class="label">
-                  Out of Stock
-                </span>
-              </button>
-            </template>
-          </div>
-          <div class="product-details">
-            <h5>
-              Product Details
-            </h5>
-            <div v-html="product.data.body_html"></div>
           </div>
         </div>
+        <div class="product-details">
+          <h5>
+            Product Details
+          </h5>
+          <div v-html="product.data.body_html"></div>
+        </div>
       </div>
-      <div class="product-details">
-        <h5>
-          Product Details
-        </h5>
-        <div v-html="product.data.body_html"></div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </template>
 
   <section class="db-section db-section--product-recommendation">
     <div class="db-container">
@@ -262,76 +268,80 @@
         You May Also Like
       </h2>
       <div class="product-list">
-        <div class="product-item --fade-in"
-          v-for="(productItem, productIndex) in product_recommendation.products.slice(0, 4)">
-          <a class="product-img-link"
-            :title="productItem.title"
-            :href="'/products/'+productItem.handle">
-            <img class="product-img db-img"
-              :alt="productItem.title"
-              :title="productItem.title"
-              :src="productItem.selected_image"
-              width=""
-              height=""
-              loading="lazy"/>
-          </a>
-          <template v-for="(optionItem, optionIndex) in productItem.options">
-            <template v-if="optionItem.name == 'Color'">
-              <div class="product-color-list">
-                <template v-for="colorValue in optionItem.values">
-                  <div class="product-color-option"
-                    :title="colorValue"
-                    :style="{
-                      'background-color' : getHexColor(colorValue),
-                      'box-shadow' : setBoxShadow(colorValue)
-                    }"
-                    @mouseover="setOptionSelectedImg(productItem.id, colorValue, optionIndex);">
+        <template v-for="(product_item, product_index) in product_recommendation.products.slice(0, 4)">
+          <div class="product-item --fade-in">
+            <div class="product-top-wrap">
+              <a class="product-img-link"
+                :title="product_item.title"
+                :href="'/products/'+product_item.handle">
+                <img class="product-img db-img"
+                  :alt="product_item.title"
+                  :title="product_item.title"
+                  :src="product_item.selected_image"
+                  width=""
+                  height=""
+                  loading="lazy"/>
+              </a>
+              <template v-for="(option_item, option_index) in product_item.options">
+                <template v-if="option_item.name == 'Color'">
+                  <div class="product-color-list">
+                    <template v-for="color_value in option_item.values">
+                      <div class="product-color-option"
+                        :title="color_value"
+                        :style="{
+                          'background-color' : getHexColor(color_value),
+                          'box-shadow' : setBoxShadow(color_value)
+                        }"
+                        @mouseover="setOptionSelectedImg(product_item.id, color_value, option_index);">
+                      </div>
+                    </template>
                   </div>
                 </template>
-              </div>
-            </template>
-          </template>
-          <div class="hover-group">
-            <div class="product-details">
-              <div class="product-title"
-                v-text="productItem.title">
-              </div>
-              <div class="product-price">
-                <span class="current-price"
-                  v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].price)">
-                </span>
-                <span class="before-price"
-                  v-if="productItem.variants[0].compare_at_price != null"
-                  v-text="'{{ cart.currency.symbol }}'+formatPrice(productItem.variants[0].compare_at_price)">
-                </span>
-              </div>
+              </template>
             </div>
-            <div class="product-actions">
-              <button class="db-btn--buy-it-now"
-                type="button"
-                @click="buyItNow(productItem, $event);">
-                <span class="label">
-                  BUY IT NOW
-                </span>
-              </button>
-              <button class="db-btn--add-to-cart"
-                type="button"
-                @click="addThisToCart(productItem, $event);">
-                <svg class="svg-icon-cart db-svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path id="path_01"
-                    d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
-                    fill="#FFFFFF">
-                  </path>
-                </svg>
-              </button>
+            <div class="product-bot-wrap">
+              <div class="product-details">
+                <div class="product-title"
+                  v-text="product_item.title">
+                </div>
+                <div class="product-price">
+                  <span class="current-price"
+                    v-text="'{{ cart.currency.symbol }}'+formatPrice(product_item.variants[0].price)">
+                  </span>
+                  <template v-if="product_item.variants[0].compare_at_price != null">
+                    <span class="before-price"
+                      v-text="'{{ cart.currency.symbol }}'+formatPrice(product_item.variants[0].compare_at_price)">
+                    </span>
+                  </template>
+                </div>
+              </div>
+              <div class="product-actions">
+                <button class="db-btn--buy-it-now"
+                  type="button"
+                  @click="buyItNow(product_item, $event);">
+                  <span class="label">
+                    BUY IT NOW
+                  </span>
+                </button>
+                <button class="db-btn--add-to-cart"
+                  type="button"
+                  @click="addThisToCart(product_item, $event);">
+                  <svg class="svg-icon-cart db-svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path id="path_01"
+                      d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                      fill="#FFFFFF">
+                    </path>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </template>
       </div>
     </div>
   </section>
@@ -340,98 +350,104 @@
     <div class="db-container">
       <div class="db-row">
         <div class="db-col">
-          <a class="prev-next-btns --prev" v-if="prev_product"
-            :title="prev_product.title"
-            :href="'/products/'+prev_product.handle"
-            :data-product-id="prev_product.id">
-            <div class="prev-next-label">
-              Previous
-            </div>
-            <div class="db-inner-row">
-              <svg class="svg-icon-angle-left db-svg"
-                width="19"
-                height="32"
-                viewBox="0 0 19 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path id="path_01"
-                  d="M15.9994 0L18.4883 2.66667L5.33273 16L18.4883 29.3333L15.9994 32L-0.000606537 16L15.9994 0Z"
-                  fill="#D86FFF">
-                </path>
-              </svg>
-              <div class="product-details">
-                <div class="prev-next-label">
-                  Previous
-                </div>
-                <div class="product-title"
-                  v-text="prev_product.title">
-                </div>
-                <div class="product-prices">
-                  <div class="before-price"
-                    v-if="prev_product.compare_at_price"
-                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prev_product.compare_at_price)">
-                  </div>
-                  <div class="current-price"
-                    v-text="'{{ cart.currency.symbol }}'+formatPrice(prev_product.price)">
-                  </div>
-                </div>
+          <template v-if="prev_product">
+            <a class="prev-next-btns --prev"
+              :title="prev_product.title"
+              :href="'/products/'+prev_product.handle"
+              :data-product-id="prev_product.id">
+              <div class="prev-next-label">
+                Previous
               </div>
-              <img class="product-img db-img"
-                :alt="prev_product.title"
-                :title="prev_product.title"
-                :src="prev_product.featured_image"
-                width=""
-                height=""
-                loading="lazy"/>
-            </div>
-          </a>
+              <div class="db-inner-row">
+                <svg class="svg-icon-angle-left db-svg"
+                  width="19"
+                  height="32"
+                  viewBox="0 0 19 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path id="path_01"
+                    d="M15.9994 0L18.4883 2.66667L5.33273 16L18.4883 29.3333L15.9994 32L-0.000606537 16L15.9994 0Z"
+                    fill="#D86FFF">
+                  </path>
+                </svg>
+                <div class="product-details">
+                  <div class="prev-next-label">
+                    Previous
+                  </div>
+                  <div class="product-title"
+                    v-text="prev_product.title">
+                  </div>
+                  <div class="product-prices">
+                    <template v-if="prev_product.compare_at_price">
+                      <div class="before-price"
+                        v-text="'{{ cart.currency.symbol }}'+formatPrice(prev_product.compare_at_price)">
+                      </div>
+                    </template>
+                    <div class="current-price"
+                      v-text="'{{ cart.currency.symbol }}'+formatPrice(prev_product.price)">
+                    </div>
+                  </div>
+                </div>
+                <img class="product-img db-img"
+                  :alt="prev_product.title"
+                  :title="prev_product.title"
+                  :src="prev_product.featured_image"
+                  width=""
+                  height=""
+                  loading="lazy"/>
+              </div>
+            </a>
+          </template>
         </div>
         <div class="db-col">
-          <a class="prev-next-btns --next" v-if="next_product"
-            :title="next_product.title"
-            :href="'/products/'+next_product.handle"
-            :data-product-id="next_product.id">
-            <div class="prev-next-label">
-              Next
-            </div>
-            <div class="db-inner-row">
-              <img class="product-img db-img"
-                :alt="next_product.title"
-                :title="next_product.title"
-                :src="next_product.featured_image"
-                width=""
-                height=""
-                loading="lazy"/>
-              <div class="product-details">
-                <div class="prev-next-label">
-                  Next
-                </div>
-                <div class="product-title"
-                  v-text="next_product.title">
-                </div>
-                <div class="product-prices">
-                  <div class="current-price"
-                    v-text="'{{ cart.currency.symbol }}'+formatPrice(next_product.price)">
-                  </div>
-                  <div class="before-price"
-                    v-if="next_product.compare_at_price"
-                    v-text="'{{ cart.currency.symbol }}'+formatPrice(next_product.compare_at_price)">
-                  </div>
-                </div>
+          <template v-if="next_product">
+            <a class="prev-next-btns --next"
+              :title="next_product.title"
+              :href="'/products/'+next_product.handle"
+              :data-product-id="next_product.id">
+              <div class="prev-next-label">
+                Next
               </div>
-              <svg class="svg-icon-angle-right db-svg"
-                width="19"
-                height="32"
-                viewBox="0 0 19 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path id="path_01"
-                  d="M2.48889 0L0 2.66667L13.1556 16L0 29.3333L2.48889 32L18.4889 16L2.48889 0Z" 
-                  fill="#D86FFF">
-                </path>
-              </svg>
-            </div>
-          </a>
+              <div class="db-inner-row">
+                <img class="product-img db-img"
+                  :alt="next_product.title"
+                  :title="next_product.title"
+                  :src="next_product.featured_image"
+                  width=""
+                  height=""
+                  loading="lazy"/>
+                <div class="product-details">
+                  <div class="prev-next-label">
+                    Next
+                  </div>
+                  <div class="product-title"
+                    v-text="next_product.title">
+                  </div>
+                  <div class="product-prices">
+                    <div class="current-price"
+                      v-text="'{{ cart.currency.symbol }}'+formatPrice(next_product.price)">
+                    </div>
+                    <template v-if="next_product.compare_at_price">
+                      <div class="before-price"
+                        v-text="'{{ cart.currency.symbol }}'+formatPrice(next_product.compare_at_price)">
+                      </div>
+                    </template>
+                  </div>
+                </div>
+                <svg class="svg-icon-angle-right db-svg"
+                  width="19"
+                  height="32"
+                  viewBox="0 0 19 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path id="path_01"
+                    d="M2.48889 0L0 2.66667L13.1556 16L0 29.3333L2.48889 32L18.4889 16L2.48889 0Z" 
+                    fill="#D86FFF">
+                  </path>
+                </svg>
+              </div>
+            </a>
+          </template>
         </div>
       </div>
     </div>
@@ -500,8 +516,8 @@
           });
       },
       async fetchThisProduct() {
-        const productEndpoint = `/products/{{ product.handle }}.json`;
-        fetch(productEndpoint)
+        const product_endpoint = `/products/{{ product.handle }}.json`;
+        fetch(product_endpoint)
           .then(response => response.json())
           .then(data => {
             // console.log(`Fetch this Product Data from Endpoint SUCCESS...`, data);
@@ -509,15 +525,15 @@
             // var variants_in_liquid = {{ product.variants | json }};
             // console.log('variants_in_liquid =', variants_in_liquid);
 
-            data.product.variants.forEach((variantItem, variantIndex) => {
+            data.product.variants.forEach((variant_item, variant_index) => {
               this.product.variants_liquid.forEach((item, index) => {
-                if (variantItem.id == item.id) {
-                  // console.log('variantItem.id =', variantItem.id);
+                if (variant_item.id == item.id) {
+                  // console.log('variant_item.id =', variant_item.id);
                   // console.log('item.id =', item.id);
                   // console.log('item.inventory_quantity =', item.inventory_quantity);
                   // console.log('item.option1 =', item.option1);
-                  variantItem.available = item.available;
-                  variantItem.inventory = item.inventory_quantity;
+                  variant_item.available = item.available;
+                  variant_item.inventory = item.inventory_quantity;
                 }
               });
             });
@@ -539,23 +555,23 @@
           document.querySelector('.db-header').classList.add('--animate-now');
         }, 1000);
       },
-      selectedOption(optionName, optionIndex, optionValue) {
-        // console.log('selectedOption() =', optionName, optionIndex, optionValue);
+      selectedOption(option_name, option_index, option_value) {
+        // console.log('selectedOption() =', option_name, option_index, option_value);
 
-        this.product.selected[`option${optionIndex + 1}`] = optionValue;
+        this.product.selected[`option${option_index + 1}`] = option_value;
 
         this.setProductVariant();
       },
       setProductVariant() {
-        this.product.data.variants.forEach((variantItem, variantIndex) => {
+        this.product.data.variants.forEach((variant_item, variant_index) => {
           if (
-            variantItem.option1 == this.product.selected.option1 &&
-            variantItem.option2 == this.product.selected.option2 &&
-            variantItem.option3 == this.product.selected.option3
+            variant_item.option1 == this.product.selected.option1 &&
+            variant_item.option2 == this.product.selected.option2 &&
+            variant_item.option3 == this.product.selected.option3
           ) {
-            this.product.selected.variant = this.product.data.variants[variantIndex];
+            this.product.selected.variant = this.product.data.variants[variant_index];
 
-            this.setProductVariantImage(this.product.data.variants[variantIndex].image_id);
+            this.setProductVariantImage(this.product.data.variants[variant_index].image_id);
           }
         });
       },
@@ -566,20 +582,20 @@
         this.product.selected.option3 = this.product.data.variants[0].option3;
         this.setProductVariantImage(this.product.selected.variant.image_id);
       },
-      setProductVariantImage(variantImageID) {
+      setProductVariantImage(variant_image_id) {
         // this.product.selected.images = [];
 
         this.product.data.images.forEach((item) => {
-          if (item.id == variantImageID) {
+          if (item.id == variant_image_id) {
             this.setSelectedImage(item.src);
           }
         });
       },
-      setSelectedImage(productImage) {
-        this.product.selected.image = productImage;
+      setSelectedImage(product_image) {
+        this.product.selected.image = product_image;
       },
-      isSelected(valueItem, optionIndex) {
-        if (valueItem == this.product.selected[`option${optionIndex + 1}`]) {
+      isSelected(value_item, option_index) {
+        if (value_item == this.product.selected[`option${option_index + 1}`]) {
           return true;
         }
         return false;
@@ -595,21 +611,21 @@
       increaseQuantity() {
         this.product.selected.quantity++;
       },
-      getHexColor(colorName) {
-        // console.log('getHexColor()', colorName);
-        var colorValue = '';
+      getHexColor(color_name) {
+        // console.log('getHexColor()', color_name);
+        var color_value = '';
 
-        this.color_values.forEach((colorItem) => {
-          if (colorItem.name == colorName) {
-            colorValue = colorItem.value;
+        this.color_values.forEach((color_item) => {
+          if (color_item.name == color_name) {
+            color_value = color_item.value;
           }
         });
 
-        return colorValue;
+        return color_value;
       },
-      setBoxShadow(colorName) {
-        if (colorName == this.product.selected.option1) {
-          return `${this.getHexColor(colorName)} 0px 0px 0px 2px`;
+      setBoxShadow(color_name) {
+        if (color_name == this.product.selected.option1) {
+          return `${this.getHexColor(color_name)} 0px 0px 0px 2px`;
         }
         return 'none';
       },
@@ -619,8 +635,8 @@
         var element = document.querySelector('.product-size-guide-wrap');
 
         if (this.product.selected.size_guide_toggle) {
-          var sizeGuideHeight = element.scrollHeight;
-          element.style.height = `${sizeGuideHeight}px`;
+          var size_guide_height = element.scrollHeight;
+          element.style.height = `${size_guide_height}px`;
         }
         else {
           element.style.height = `0px`;
@@ -737,28 +753,28 @@
       },
 
       async fetchProductRecommendation() {
-        const endpoint = `/recommendations/products.json?product_id={{ product.id }}`;
-        fetch(endpoint)
+        const product_recommendation_endpoint = `/recommendations/products.json?product_id={{ product.id }}`;
+        fetch(product_recommendation_endpoint)
           .then(response => response.json())
           .then(data => {
             // console.log(`Fetch this Product Recommendations Data from Endpoint SUCCESS`, data);
             // this.product_recommendation.products = data.products;
-            data.products.forEach((productItem) => {
-              this.product_recommendation.products.push({ ...productItem, selected_image: productItem.featured_image })
+            data.products.forEach((product_item) => {
+              this.product_recommendation.products.push({ ...product_item, selected_image: product_item.featured_image })
             });
           })
           .catch(error => {
             console.error(`Fetch this Product Recommendation Data from Endpoint FAILED`, error);
           });
       },
-      setOptionSelectedImg(productID, colorValue, optionIndex) {
-        // console.log('setOptionSelectedImg()', productID, colorValue, optionIndex);
+      setOptionSelectedImg(product_id, color_value, option_index) {
+        // console.log('setOptionSelectedImg()', product_id, color_value, option_index);
 
-        this.product_recommendation.products.forEach((productItem) => {
-          if (productItem.id == productID) {
-            productItem.variants.forEach((variantItem) => {
-              if (variantItem[`option${optionIndex + 1}`] == colorValue ) {
-                productItem.selected_image = variantItem.featured_image.src;
+        this.product_recommendation.products.forEach((product_item) => {
+          if (product_item.id == product_id) {
+            product_item.variants.forEach((variant_item) => {
+              if (variant_item[`option${option_index + 1}`] == color_value ) {
+                product_item.selected_image = variant_item.featured_image.src;
               }
             });
           }

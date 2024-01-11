@@ -14,24 +14,25 @@
         </p>
         <div class="search-wrap">
           <div class="search-bar">
-            <button class="search-clear"
-              type="button"
-              @click="searchProductClear();"
-              v-if="shop.products.search.query">
-              <svg class="svg-icon-close db-svg"
-                width="16"
-                height="18"
-                viewBox="0 0 16 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path id="path_01"
-                  d="M0.666416 15.8408C0.382028 16.1495 0.382028 16.6501 0.666416 16.9588C0.950805 17.2675 1.41189 17.2675 1.69628 16.9588L7.99781 10.1183L14.4846 17.1599C14.769 17.4686 15.2301 17.4686 15.5145 17.1599C15.7988 16.8511 15.7988 16.3506 15.5145 16.0419L9.02768 9.00038L15.5145 1.95884C15.7988 1.65013 15.7988 1.14962 15.5145 0.840908C15.2301 0.532198 14.769 0.532198 14.4846 0.840908L7.99781 7.88245L1.69628 1.042C1.41189 0.73329 0.950805 0.73329 0.666416 1.042C0.382028 1.35071 0.382028 1.85123 0.666416 2.15994L6.96795 9.00038L0.666416 15.8408Z"
-                  clip-rule="evenodd"
-                  fill-rule="evenodd"
-                  fill="#A5A5A5">
-                </path>
-              </svg>
-            </button>
+            <template v-if="shop.products.search.query">
+              <button class="search-clear"
+                type="button"
+                @click="searchProductClear();">
+                <svg class="svg-icon-close db-svg"
+                  width="16"
+                  height="18"
+                  viewBox="0 0 16 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path id="path_01"
+                    d="M0.666416 15.8408C0.382028 16.1495 0.382028 16.6501 0.666416 16.9588C0.950805 17.2675 1.41189 17.2675 1.69628 16.9588L7.99781 10.1183L14.4846 17.1599C14.769 17.4686 15.2301 17.4686 15.5145 17.1599C15.7988 16.8511 15.7988 16.3506 15.5145 16.0419L9.02768 9.00038L15.5145 1.95884C15.7988 1.65013 15.7988 1.14962 15.5145 0.840908C15.2301 0.532198 14.769 0.532198 14.4846 0.840908L7.99781 7.88245L1.69628 1.042C1.41189 0.73329 0.950805 0.73329 0.666416 1.042C0.382028 1.35071 0.382028 1.85123 0.666416 2.15994L6.96795 9.00038L0.666416 15.8408Z"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    fill="#A5A5A5">
+                  </path>
+                </svg>
+              </button>
+            </template>
             <input class="search-input"
               type="text"
               placeholder="Search product name"
@@ -62,32 +63,33 @@
           </div>
           <div class="search-results db-scroll-bar">
             <ul class="product-list">
-              <template v-for="(productItem, productIndex) in shop.products.search.results">
+              <template v-for="(product_item, product_index) in shop.products.search.results">
                 <li class="product-item">
                   <img class="product-img db-img"
-                    :alt="productItem.title"
-                    :title="productItem.title"
-                    :src="productItem.variants[0].featured_image.src"
+                    :alt="product_item.title"
+                    :title="product_item.title"
+                    :src="product_item.variants[0].featured_image.src"
                     width=""
                     height=""/>
                   <a class="product-details"
-                    :href="'/products/'+productItem.handle">
+                    :href="'/products/'+product_item.handle">
                     <div class="product-title"
-                      v-text="productItem.title">
+                      v-text="product_item.title">
                     </div>
                     <div class="product-prices">
                       <div class="current-price"
-                        v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].price">
+                        v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].price">
                       </div>
-                      <div class="before-price"
-                        v-if="productItem.variants[0].compare_at_price != null"
-                        v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].compare_at_price">
-                      </div>
+                      <template v-if="product_item.variants[0].compare_at_price != null">
+                        <div class="before-price"
+                          v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].compare_at_price">
+                        </div>
+                      </template>
                     </div>
                   </a>
                   <button class="db-btn--product-add-to-cart"
                     type="button"
-                    @click="addThisToCart(productItem, $event); shop.products.search.active = false;">
+                    @click="addThisToCart(product_item, $event); shop.products.search.active = false;">
                     <svg class="svg-icon-cart db-svg"
                       width="20"
                       height="20"
@@ -103,10 +105,11 @@
                 </li>
               </template>
             </ul>
-            <div class="product-search-not-found"
-              v-if="!shop.products.search.results.length && shop.products.search.query != ''">
-              NO MATCHING RESULTS FOUND
-            </div>
+            <template v-if="!shop.products.search.results.length && shop.products.search.query != ''">
+              <div class="product-search-not-found">
+                NO MATCHING RESULTS FOUND
+              </div>
+            </template>
           </div>
           <div class="search-overlay"
             :class="{ '--show' : shop.products.search.active && shop.products.search.query }"
@@ -161,12 +164,12 @@
                 </button>
               </div>
               <ul class="filter-list">
-                <template v-for="(filterItem, filterIndex) in shop.products.filters.type[0].categories">
+                <template v-for="(filter_item, filter_index) in shop.products.filters.type[0].categories">
                   <li class="filter-item"
-                    :class="{ '--selected' : shop.products.filters.type[0].selected.includes(filterItem) }"
-                    @click="productFilterByClothing(filterItem);">
+                    :class="{ '--selected' : shop.products.filters.type[0].selected.includes(filter_item) }"
+                    @click="productFilterByClothing(filter_item);">
                     <div class="filter-checkbox"
-                      :id="'Clothing: '+filterItem"
+                      :id="'Clothing: '+filter_item"
                       type="checkbox">
                       <svg class="svg-icon-check db-svg"
                         width="17"
@@ -181,8 +184,8 @@
                       </svg>
                     </div>
                     <div class="filter-label"
-                      :for="'Clothing: '+filterItem"
-                      v-text="filterItem">
+                      :for="'Clothing: '+filter_item"
+                      v-text="filter_item">
                     </div>
                   </li>
                 </template>
@@ -214,12 +217,12 @@
                 </button>
               </div>
               <ul class="filter-list">
-                <template v-for="(filterItem, filterIndex) in shop.products.filters.type[1].categories">
+                <template v-for="(filter_item, filter_index) in shop.products.filters.type[1].categories">
                   <li class="filter-item"
-                    :class="{ '--selected' : shop.products.filters.type[1].selected.includes(filterItem) }"
-                    @click="productFilterByAccessories(filterItem);">
+                    :class="{ '--selected' : shop.products.filters.type[1].selected.includes(filter_item) }"
+                    @click="productFilterByAccessories(filter_item);">
                     <div class="filter-checkbox"
-                      :id="'Accessories: '+filterItem"
+                      :id="'Accessories: '+filter_item"
                       type="checkbox">
                       <svg class="svg-icon-check db-svg"
                         width="17"
@@ -234,8 +237,8 @@
                       </svg>
                     </div>
                     <div class="filter-label"
-                      :for="'Accessories: '+filterItem"
-                      v-text="filterItem">
+                      :for="'Accessories: '+filter_item"
+                      v-text="filter_item">
                     </div>
                   </li>
                 </template>
@@ -250,30 +253,32 @@
         </template>
         <div class="db-col">
           <div class="db-inner-row">
-            <div class="product-filter --by-gender">
-              <ul class="filter-list">
-                <template v-for="(filterItem, filterIndex) in shop.products.filters.gender.list">
-                  <li class="filter-item"
-                    :class="{ '--selected' : filterItem == shop.products.filters.gender.selected }"
-                    @click="productFilterByGender(filterItem);">
-                    <svg class="svg-icon-check db-svg"
-                      width="16"
-                      height="12"
-                      viewBox="0 0 16 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path id="path_01"
-                        d="M5.84824 8.92452L14.2953 0.476562L15.5956 1.77597L5.84824 11.5233L0 5.6751L1.2994 4.37569L5.84824 8.92452Z"
-                        fill="#D86FFF">
-                      </path>
-                    </svg>
-                    <span class="label"
-                      v-text="filterItem">
-                    </span>
-                  </li>
-                </template>
-              </ul>
-            </div>
+            <template v-if="false">
+              <div class="product-filter --by-gender">
+                <ul class="filter-list">
+                  <template v-for="(filter_item, filter_index) in shop.products.filters.gender.list">
+                    <li class="filter-item"
+                      :class="{ '--selected' : filter_item == shop.products.filters.gender.selected }"
+                      @click="productFilterByGender(filter_item);">
+                      <svg class="svg-icon-check db-svg"
+                        width="16"
+                        height="12"
+                        viewBox="0 0 16 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path id="path_01"
+                          d="M5.84824 8.92452L14.2953 0.476562L15.5956 1.77597L5.84824 11.5233L0 5.6751L1.2994 4.37569L5.84824 8.92452Z"
+                          fill="#D86FFF">
+                        </path>
+                      </svg>
+                      <span class="label"
+                        v-text="filter_item">
+                      </span>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </template>
             <button class="db-btn--toggle-filter"
               type="button"
               @click="toggleFilterMBView();">
@@ -303,10 +308,10 @@
                   </svg>
                 </button>
                 <ul class="sort-select">
-                  <template v-for="(sortItem, sortIndex) in shop.products.sort.list">
+                  <template v-for="(sort_item, sort_index) in shop.products.sort.list">
                     <li class="sort-option"
-                      :class="{ '--selected' : sortItem == shop.products.sort.selected }"
-                      @click="selectedProductSort(sortItem);">
+                      :class="{ '--selected' : sort_item == shop.products.sort.selected }"
+                      @click="selectedProductSort(sort_item);">
                       <svg class="svg-icon-custom-radio"
                         width="15"
                         height="15"
@@ -327,8 +332,8 @@
                         </circle>
                       </svg>
                       <label class="sort-label"
-                        :for="'Sort :'+sortItem"
-                        v-text="sortItem">
+                        :for="'Sort :'+sort_item"
+                        v-text="sort_item">
                       </label>
                     </li>
                   </template>
@@ -339,134 +344,143 @@
                   id=""
                   name=""
                   v-model="shop.products.sort.selected">
-                  <template v-for="(sortItem, sortIndex) in shop.products.sort.list">
+                  <template v-for="(sort_item, sort_index) in shop.products.sort.list">
                     <option class="sort-option"
-                      :value="sortItem"
-                      v-text="sortItem">
+                      :value="sort_item"
+                      v-text="sort_item">
                     </option>
                   </template>
                 </select>
               </div>
             </div>
           </div>
-          <div class="product-not-found"
-            v-if="!shop.products.pagination.list.length">
-            NO PRODUCTS FOUND
-          </div>
-          <div class="product-list"
-            v-if="shop.products.pagination.list.length">
-            <div class="product-item"
-              v-for="(productItem, productIndex) in shop.products.pagination.list"
-              :data-product-id="productItem.id"
-              :data-index="productIndex">
-              <a class="product-img-link"
-                :title="productItem.title"
-                :href="'/products/'+productItem.handle">
-                <img class="product-img db-img"
-                  :alt="productItem.title"
-                  :title="productItem.title"
-                  :src="productItem.selected_image"
-                  width=""
-                  height=""
-                  loading="lazy"/>
-              </a>
-              <template v-for="(optionItem, optionIndex) in productItem.options">
-                <template v-if="optionItem.name == 'Color'">
-                  <div class="product-color-list">
-                    <template v-for="colorValue in optionItem.values">
-                      <div class="product-color-option"
-                        :title="colorValue"
-                        :style="{
-                          'background-color' : getHexColor(colorValue),
-                          'box-shadow' : setBoxShadow(colorValue)
-                        }"
-                        @mouseover="setOptionSelectedImg(productItem.id, colorValue, optionIndex);">
-                      </div>
+          <template v-if="!shop.products.pagination.list.length">
+            <div class="product-not-found">
+              NO PRODUCTS FOUND
+            </div>
+          </template>
+          <template v-if="shop.products.pagination.list.length">
+            <div class="product-list">
+              <template v-for="(product_item, product_index) in shop.products.pagination.list">
+                <div class="product-item"
+                  :data-product-id="product_item.id">
+                  <div class="product-top-wrap">
+                    <a class="product-img-link"
+                      :title="product_item.title"
+                      :href="'/products/'+product_item.handle">
+                      <img class="product-img db-img"
+                        :alt="product_item.title"
+                        :title="product_item.title"
+                        :src="product_item.selected_image"
+                        width=""
+                        height=""
+                        loading="lazy"/>
+                    </a>
+                    <template v-for="(option_item, option_index) in product_item.options">
+                      <template v-if="option_item.name == 'Color'">
+                        <div class="product-color-list">
+                          <template v-for="color_value in option_item.values">
+                            <div class="product-color-option"
+                              :title="color_value"
+                              :style="{
+                                'background-color' : getHexColor(color_value),
+                                'box-shadow' : setBoxShadow(color_value)
+                              }"
+                              @mouseover="setOptionSelectedImg(product_item.id, color_value, option_index);">
+                            </div>
+                          </template>
+                        </div>
+                      </template>
                     </template>
                   </div>
-                </template>
+                  <div class="product-bot-wrap">
+                    <div class="product-details">
+                      <div class="product-title"
+                        v-text="product_item.title">
+                      </div>
+                      <div class="product-price">
+                        <span class="current-price"
+                          v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].price">
+                        </span>
+                        <template v-if="product_item.variants[0].compare_at_price != null">
+                          <span class="before-price"
+                            v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].compare_at_price">
+                          </span>
+                        </template>
+                      </div>
+                    </div>
+                    <div class="product-actions">
+                      <button class="db-btn--buy-it-now"
+                        type="button"
+                        @click="buyItNow(product_item, $event);">
+                        <span class="label">
+                          BUY IT NOW
+                        </span>
+                      </button>
+                      <button class="db-btn--add-to-cart"
+                        type="button"
+                        @click="addThisToCart(product_item, $event);">
+                        <svg class="svg-icon-cart db-svg"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path id="path_01"
+                            d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                            fill="#FFFFFF">
+                          </path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </template>
-              <div class="hover-group">
-                <div class="product-details">
-                  <div class="product-title"
-                    v-text="productItem.title">
-                  </div>
-                  <div class="product-price">
-                    <span class="current-price"
-                      v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].price">
-                    </span>
-                    <span class="before-price"
-                      v-if="productItem.variants[0].compare_at_price != null"
-                      v-text="'{{ cart.currency.symbol }}'+productItem.variants[0].compare_at_price">
-                    </span>
-                  </div>
+            </div>
+          </template>
+          <template v-if="shop.products.pagination.pages != 1">
+            <div class="product-pagination db-pagination">
+              <template v-if="shop.products.pagination.current != 1">
+                <div class="prev"
+                  @click="paginationPrevPage();">
+                  <svg class="svg-icon-angle-left db-svg"
+                    width="8"
+                    height="14"
+                    viewBox="0 0 8 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path id="path_01"
+                      d="M2.41421 7L7.70711 1.70711C8.09763 1.31658 8.09763 0.683417 7.70711 0.292893C7.31658 -0.0976311 6.68342 -0.0976311 6.29289 0.292893L0.292893 6.29289C-0.0976311 6.68342 -0.0976311 7.31658 0.292893 7.70711L6.29289 13.7071C6.68342 14.0976 7.31658 14.0976 7.70711 13.7071C8.09763 13.3166 8.09763 12.6834 7.70711 12.2929L2.41421 7Z"
+                      fill="#4C5157">
+                    </path>
+                  </svg>
                 </div>
-                <div class="product-actions">
-                  <button class="db-btn--buy-it-now"
-                    type="button"
-                    @click="buyItNow(productItem, $event);">
-                    <span class="label">
-                      BUY IT NOW
-                    </span>
-                  </button>
-                  <button class="db-btn--add-to-cart"
-                    type="button"
-                    @click="addThisToCart(productItem, $event);">
-                    <svg class="svg-icon-cart db-svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path id="path_01"
-                        d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
-                        fill="#FFFFFF">
-                      </path>
-                    </svg>
-                  </button>
+              </template>
+              <template v-for="number in shop.products.pagination.pages">
+                <div class="pages"
+                  v-text="number"
+                  :class="{ '--current' : shop.products.pagination.current == number }"
+                  @click="paginationSelectedPage(number);">
                 </div>
-              </div>
+              </template>
+              <template v-if="shop.products.pagination.current != shop.products.pagination.total">
+                <div class="next"
+                  @click="paginationNextPage()">
+                  <svg class="svg-icon-angle-right db-svg"
+                    width="8"
+                    height="14"
+                    viewBox="0 0 8 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path id="path_01"
+                      d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
+                      fill="#4C5157">
+                    </path>
+                  </svg>
+                </div>
+              </template>
             </div>
-          </div>
-          <div class="product-pagination db-pagination"
-            v-if="shop.products.pagination.pages != 1">
-            <div class="prev"
-              v-if="shop.products.pagination.current != 1"
-              @click="paginationPrevPage();">
-              <svg class="svg-icon-angle-left db-svg"
-                width="8"
-                height="14"
-                viewBox="0 0 8 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path id="path_01"
-                  d="M2.41421 7L7.70711 1.70711C8.09763 1.31658 8.09763 0.683417 7.70711 0.292893C7.31658 -0.0976311 6.68342 -0.0976311 6.29289 0.292893L0.292893 6.29289C-0.0976311 6.68342 -0.0976311 7.31658 0.292893 7.70711L6.29289 13.7071C6.68342 14.0976 7.31658 14.0976 7.70711 13.7071C8.09763 13.3166 8.09763 12.6834 7.70711 12.2929L2.41421 7Z"
-                  fill="#4C5157">
-                </path>
-              </svg>
-            </div>
-            <div class="pages"
-              v-for="number in shop.products.pagination.pages"
-              v-text="number"
-              :class="{ '--current' : shop.products.pagination.current == number }"
-              @click="paginationSelectedPage(number);">
-            </div>
-            <div class="next"
-              v-if="shop.products.pagination.current != shop.products.pagination.total"
-              @click="paginationNextPage()">
-              <svg class="svg-icon-angle-right db-svg"
-                width="8"
-                height="14"
-                viewBox="0 0 8 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path id="path_01"
-                  d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
-                  fill="#4C5157">
-                </path>
-              </svg>
-            </div>
-          </div>
+          </template>
         </div>
       </div>
     </div>
@@ -544,12 +558,12 @@
       async initPage() {
         // console.log('initPage()');
 
-        var productsLimitPerFetch = 30;
-        var productsTotalPageFetch = Math.ceil(this.shop.products.count / productsLimitPerFetch);
+        var products_limit_per_fetch = 30;
+        var products_total_page_fetch = Math.ceil(this.shop.products.count / products_limit_per_fetch);
 
         await this.fetchColorValues();
 
-        await this.fetchShopProducts(productsTotalPageFetch);
+        await this.fetchShopProducts(products_total_page_fetch);
 
         await this.getAllFilters();
 
@@ -573,13 +587,13 @@
             console.error('Fetch Color Values from File FAILED...', error);
           });
       },
-      async fetchShopProducts(productsTotalPageFetch) {
-        // console.log('fetchShopProducts()', productsTotalPageFetch);
+      async fetchShopProducts(products_total_page_fetch) {
+        // console.log('fetchShopProducts()', products_total_page_fetch);
 
-        for (let page = 1; page <= productsTotalPageFetch; page++) {
-          var productEndpoint = `/products.json?page=${page}`;
+        for (let page = 1; page <= products_total_page_fetch; page++) {
+          var product_endpoint = `/products.json?page=${page}`;
 
-          const response = await fetch(productEndpoint);
+          const response = await fetch(product_endpoint);
           const data = await response.json();
           // console.log('data =', data);
 
@@ -596,35 +610,35 @@
       getAllFilters() {
         // console.log('getAllFilters()');
 
-        var tempGenders = [ 'Unisex' ];
-        var tempTypes = [];
+        var temp_genders = [ 'Unisex' ];
+        var temp_types = [];
 
-        this.shop.products.list.all.forEach((productItem) => {
-          productItem.metafields.product_gender.forEach((product_gender) => {
-            tempGenders.push(product_gender);
+        this.shop.products.list.all.forEach((product_item) => {
+          product_item.metafields.product_gender.forEach((product_gender) => {
+            temp_genders.push(product_gender);
           });
-          tempTypes.push(productItem.metafields.product_type);
+          temp_types.push(product_item.metafields.product_type);
         });
 
-        // console.log('tempGenders =', tempGenders);
-        // console.log('tempTypes =', tempTypes);
+        // console.log('temp_genders =', temp_genders);
+        // console.log('temp_types =', temp_types);
 
-        this.shop.products.filters.gender.list = [ ...new Set(tempGenders) ];
+        this.shop.products.filters.gender.list = [ ...new Set(temp_genders) ];
 
-        [ ...new Set(tempTypes) ].forEach((type) => {
+        [ ...new Set(temp_types) ].forEach((type) => {
           this.shop.products.filters.type.push({ name: type, toggle: false, categories: [], selected: [] });
         });
         
-        this.shop.products.filters.type.forEach((filterType) => {
-          var tempCategories = [];
-          this.shop.products.list.all.forEach((productItem) => {
-            if (productItem.metafields.product_type == filterType.name) {
-              productItem.metafields.product_category.forEach((product_category) => {
-                tempCategories.push(product_category);
+        this.shop.products.filters.type.forEach((filter_type) => {
+          var temp_categories = [];
+          this.shop.products.list.all.forEach((product_item) => {
+            if (product_item.metafields.product_type == filter_type.name) {
+              product_item.metafields.product_category.forEach((product_category) => {
+                temp_categories.push(product_category);
                 // console.log('product_category =', product_category);
               });
             }
-            filterType.categories = [ ...new Set(tempCategories) ];
+            filter_type.categories = [ ...new Set(temp_categories) ];
           });
         });
       },
@@ -676,8 +690,8 @@
       paginationScrollTop() {
         // console.log('paginationScrollTop()');
 
-        const scrollTo = document.querySelector('.db-section--merch-store-listing');
-        scrollTo.scrollIntoView();
+        const scroll_to = document.querySelector('.db-section--merch-store-listing');
+        scroll_to.scrollIntoView();
       },
       loadPage() {
         // console.log('loadPage()');
@@ -686,8 +700,8 @@
           document.querySelector('.db-site-loader').classList.remove('--show');
           document.querySelector('.db-header').classList.add('--animate-now');
 
-          const scrollTo = document.querySelector('.db-section--merch-store-search');
-          scrollTo.scrollIntoView();
+          const scroll_to = document.querySelector('.db-section--merch-store-search');
+          scroll_to.scrollIntoView();
         }, 1000);
       },
 
@@ -695,15 +709,15 @@
       addThisToCart(product, event) {
         // console.log('addThisToCart() ', product, event);
 
-        let productVariant = this.getAvailableVariant(product);
+        let product_variant = this.getAvailableVariant(product);
 
         // should have a fallback if all variants are not available/sold-out
         
-        // console.log('productVariant =', productVariant);
+        // console.log('product_variant =', product_variant);
 
         let items = [
           {
-            id: productVariant.id,
+            id: product_variant.id,
             quantity: 1,
           }
         ];
@@ -796,46 +810,46 @@
       getAvailableVariant(product) {
         // console.log('getAvailableVariant()', product);
         
-        let availableVariant = null;
+        let available_variant = null;
 
         product.variants.some((variantItem) => {
           if (variantItem.available) {
-            availableVariant = variantItem;
+            available_variant = variantItem;
             return true;
           }
           return false;
         });
         
-        // console.log('availableVariant =', availableVariant);
+        // console.log('available_variant =', available_variant);
 
-        return availableVariant;
+        return available_variant;
       },
-      getHexColor(colorName) {
-        // console.log('getHexColor()', colorName);
-        var colorValue = '';
+      getHexColor(color_name) {
+        // console.log('getHexColor()', color_name);
+        var color_value = '';
 
-        this.color_values.forEach((colorItem) => {
-          if (colorItem.name == colorName) {
-            colorValue = colorItem.value;
+        this.color_values.forEach((color_item) => {
+          if (color_item.name == color_name) {
+            color_value = color_item.value;
           }
         });
 
-        return colorValue;
+        return color_value;
       },
-      setBoxShadow(colorName) {
-        // if (colorName == this.product.selected.option1) {
-        //   return `${this.getHexColor(colorName)} 0px 0px 0px 2px`;
+      setBoxShadow(color_name) {
+        // if (color_name == this.product.selected.option1) {
+        //   return `${this.getHexColor(color_name)} 0px 0px 0px 2px`;
         // }
         return 'none';
       },
-      setOptionSelectedImg(productID, colorValue, optionIndex) {
-        // console.log('setOptionSelectedImg()', productID, colorValue, optionIndex);
+      setOptionSelectedImg(product_id, color_value, option_index) {
+        // console.log('setOptionSelectedImg()', product_id, color_value, option_index);
 
-        this.shop.products.pagination.list.forEach((productItem) => {
-          if (productItem.id == productID) {
-            productItem.variants.forEach((variantItem) => {
-              if (variantItem[`option${optionIndex + 1}`] == colorValue ) {
-                productItem.selected_image = variantItem.featured_image.src;
+        this.shop.products.pagination.list.forEach((product_item) => {
+          if (product_item.id == product_id) {
+            product_item.variants.forEach((variantItem) => {
+              if (variantItem[`option${option_index + 1}`] == color_value ) {
+                product_item.selected_image = variantItem.featured_image.src;
               }
             });
           }
@@ -856,68 +870,68 @@
         document.querySelector('body').style.overflowY = 'hidden';
       },
 
-      toggleProductFilterList(filterList) {
-        // console.log('toggleProductFilterList()', filterList);
+      toggleProductFilterList(filter_list) {
+        // console.log('toggleProductFilterList()', filter_list);
 
-        if (filterList == 'Clothing') {
+        if (filter_list == 'Clothing') {
           this.shop.products.filters.type[0].toggle = !this.shop.products.filters.type[0].toggle;
 
           var element = document.querySelector('.product-filter.--by-clothing .filter-list');
 
           if (this.shop.products.filters.type[0].toggle) {
-            var filterListHeight = element.scrollHeight;
-            element.style.height = `${filterListHeight}px`;
+            var filter_list_height = element.scrollHeight;
+            element.style.height = `${filter_list_height}px`;
           }
           else {
             element.style.height = `0px`;
           }
         }
-        if (filterList == 'Accessories') {
+        if (filter_list == 'Accessories') {
           this.shop.products.filters.type[1].toggle = !this.shop.products.filters.type[1].toggle;
 
           var element = document.querySelector('.product-filter.--by-accessories .filter-list');
 
           if (this.shop.products.filters.type[1].toggle) {
-            var filterListHeight = element.scrollHeight;
-            element.style.height = `${filterListHeight}px`;
+            var filter_list_height = element.scrollHeight;
+            element.style.height = `${filter_list_height}px`;
           }
           else {
             element.style.height = `0px`;
           }
         }
       },
-      productFilterByClothing(filterItem) {
-        // console.log('productFilterByClothing()', filterItem);
+      productFilterByClothing(filter_item) {
+        // console.log('productFilterByClothing()', filter_item);
 
-        if (this.shop.products.filters.type[0].selected.includes(filterItem)) {
-          this.shop.products.filters.type[0].selected = this.shop.products.filters.type[0].selected.filter(item => item !== filterItem);
+        if (this.shop.products.filters.type[0].selected.includes(filter_item)) {
+          this.shop.products.filters.type[0].selected = this.shop.products.filters.type[0].selected.filter(item => item !== filter_item);
         }
         else {
-          this.shop.products.filters.type[0].selected.push(filterItem);
+          this.shop.products.filters.type[0].selected.push(filter_item);
         }
 
         this.shop.products.sort.toggle = false;
 
         this.productFilterPerform();
       },
-      productFilterByAccessories(filterItem) {
-        // console.log('productFilterByAccessories()', filterItem);
+      productFilterByAccessories(filter_item) {
+        // console.log('productFilterByAccessories()', filter_item);
 
-        if (this.shop.products.filters.type[1].selected.includes(filterItem)) {
-          this.shop.products.filters.type[1].selected = this.shop.products.filters.type[1].selected.filter(item => item !== filterItem);
+        if (this.shop.products.filters.type[1].selected.includes(filter_item)) {
+          this.shop.products.filters.type[1].selected = this.shop.products.filters.type[1].selected.filter(item => item !== filter_item);
         }
         else {
-          this.shop.products.filters.type[1].selected.push(filterItem);
+          this.shop.products.filters.type[1].selected.push(filter_item);
         }
 
         this.shop.products.sort.toggle = false;
 
         this.productFilterPerform();
       },
-      productFilterByGender(filterItem) {
-        // console.log('productFilterByGender()', filterItem);
+      productFilterByGender(filter_item) {
+        // console.log('productFilterByGender()', filter_item);
 
-        this.shop.products.filters.gender.selected = filterItem;
+        this.shop.products.filters.gender.selected = filter_item;
 
         this.shop.products.sort.toggle = false;
 
@@ -932,9 +946,9 @@
           this.shop.products.filters.type[1].selected.length
         ) {
           this.shop.products.list.filtered = [];
-          this.shop.products.list.all.forEach((productItem, productIndex) => {
+          this.shop.products.list.all.forEach((product_item, product_index) => {
 
-            var isProductFilter = {
+            var is_product_filter = {
               gender: true,
               clothing: true,
               accessories: true,
@@ -942,44 +956,44 @@
 
             // filter by gender
             if (this.shop.products.filters.gender.selected.toLowerCase() == 'men') {
-              isProductFilter.gender = productItem.metafields.product_gender.some(gender => gender.toLowerCase() == 'men');
+              is_product_filter.gender = product_item.metafields.product_gender.some(gender => gender.toLowerCase() == 'men');
             }
             else if (this.shop.products.filters.gender.selected.toLowerCase() == 'women') {
-              isProductFilter.gender = productItem.metafields.product_gender.some(gender => gender.toLowerCase() == 'women');
+              is_product_filter.gender = product_item.metafields.product_gender.some(gender => gender.toLowerCase() == 'women');
             }
             else {
-              isProductFilter.gender = true;
+              is_product_filter.gender = true;
             }
 
             // filter by clothing
             // if (this.shop.products.filters.type[0].selected.length) {
-            //   isProductFilter.clothing = this.shop.products.filters.type[0].selected.some(item => productItem.metafields.product_category.includes(item));
+            //   is_product_filter.clothing = this.shop.products.filters.type[0].selected.some(item => product_item.metafields.product_category.includes(item));
             // }
             // else {
-            //   isProductFilter.clothing = true;
+            //   is_product_filter.clothing = true;
             // }
 
             // // filter by accessories
             // if (this.shop.products.filters.type[1].selected.length) {
-            //   isProductFilter.accessories = this.shop.products.filters.type[1].selected.some(item => productItem.metafields.product_category.includes(item));
+            //   is_product_filter.accessories = this.shop.products.filters.type[1].selected.some(item => product_item.metafields.product_category.includes(item));
             // }
             // else {
-            //   isProductFilter.accessories = true;
+            //   is_product_filter.accessories = true;
             // }
 
             if (this.shop.products.filters.type[0].selected.length || this.shop.products.filters.type[1].selected.length) {
-              isProductFilter.clothing = isProductFilter.accessories = this.shop.products.filters.type[0].selected.some(item => productItem.metafields.product_category.includes(item)) || this.shop.products.filters.type[1].selected.some(item => productItem.metafields.product_category.includes(item));
-              // isProductFilter.accessories = this.shop.products.filters.type[0].selected.some(item => productItem.metafields.product_category.includes(item)) || this.shop.products.filters.type[1].selected.some(item => productItem.metafields.product_category.includes(item));
+              is_product_filter.clothing = is_product_filter.accessories = this.shop.products.filters.type[0].selected.some(item => product_item.metafields.product_category.includes(item)) || this.shop.products.filters.type[1].selected.some(item => product_item.metafields.product_category.includes(item));
+              // is_product_filter.accessories = this.shop.products.filters.type[0].selected.some(item => product_item.metafields.product_category.includes(item)) || this.shop.products.filters.type[1].selected.some(item => product_item.metafields.product_category.includes(item));
             }
             else {
-              isProductFilter.clothing = isProductFilter.accessories = true;
+              is_product_filter.clothing = is_product_filter.accessories = true;
             }
 
-            if (isProductFilter.gender && isProductFilter.clothing && isProductFilter.accessories) {
-              this.shop.products.list.filtered.push(productItem);
+            if (is_product_filter.gender && is_product_filter.clothing && is_product_filter.accessories) {
+              this.shop.products.list.filtered.push(product_item);
             }
 
-            // console.log('isProductFilter =', isProductFilter);
+            // console.log('is_product_filter =', is_product_filter);
           });
 
           this.paginationSettings();
@@ -1048,25 +1062,11 @@
         }
         if (this.shop.products.sort.selected == 'Latest Arrival') {
           return this.shop.products.list.filtered.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
-          // return this.shop.products.list.filtered.sort((a, b) => {
-          //   let prodA = new Date(a.created_at);
-          //   let prodB = new Date(b.created_at);
-          //   if (prodA < prodB) return -1;
-          //   if (prodA > prodB) return 1;
-          //   return 0;
-          // });
         }
         if (this.shop.products.sort.selected == 'Discounts') {
           return this.shop.products.list.filtered.sort((a, b) =>
             this.calculateProductDiscount(a.variants[0].compare_at_price, a.variants[0].price) - this.calculateProductDiscount(b.variants[0].compare_at_price, b.variants[0].price)
           );
-          // return this.shop.products.list.filtered.sort((a, b) => {
-          //   let prodA = this.calculateProductDiscount(a.variants[0].compare_at_price, a.variants[0].price);
-          //   let prodB = this.calculateProductDiscount(b.variants[0].compare_at_price, b.variants[0].price);
-          //   if (prodA < prodB) return -1;
-          //   if (prodA > prodB) return 1;
-          //   return 0;
-          // });
         }
       },
 
@@ -1083,9 +1083,9 @@
         // console.log('searchProductPerform()');
 
         this.shop.products.search.results = [];
-        this.shop.products.list.all.forEach((productItem, productIndex) => {
-          if (productItem.title.toLowerCase().includes(this.shop.products.search.query.toLowerCase()) && this.shop.products.search.query != '') {
-            this.shop.products.search.results.push(productItem);
+        this.shop.products.list.all.forEach((product_item, _i) => {
+          if (product_item.title.toLowerCase().includes(this.shop.products.search.query.toLowerCase()) && this.shop.products.search.query != '') {
+            this.shop.products.search.results.push(product_item);
           }
         });
       },
