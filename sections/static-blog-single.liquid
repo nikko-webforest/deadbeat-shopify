@@ -1,0 +1,85 @@
+<section class="db-section db-section--blog-single">
+  <div class="db-container">
+    <template v-if="article.image">
+      <img class="blog-featured-img db-img"
+        alt=""
+        title=""
+        :src="article.image"
+        width=""
+        height=""
+        loading="lazy"/>
+    </template>
+    <template v-else>
+      <img class="blog-featured-img db-img"
+        alt=""
+        title=""
+        src="https://placehold.co/1440x620"
+        width=""
+        height=""
+        loading="lazy"/>
+    </template>
+    <div class="blog-details-wrap">
+      <div class="db-inner-container">
+        <template v-if="article.tags.length">
+          <ul class="blog-tag-list">
+            <template v-for="tag_item in article.tags">
+              <li class="blog-tag-item"
+                v-text="tag_item">
+              </li>
+            </template>
+          </ul>
+        </template>
+        <template v-if="article.title">
+          <h1 class="blog-title"
+            v-text="article.title">
+          </h1>
+        </template>
+        <div class="db-inner-row">
+          <template v-if="article.author">
+            <div class="blog-author"
+              v-text="article.author">
+            </div>
+          </template>
+          <template v-if="article.published_at">
+            <svg class="svg-icon-dash-line db-svg"
+              width="27"
+              height="1"
+              viewBox="0 0 27 1"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <line id="line_01"
+                x1="0.4375"
+                y1="0.5"
+                x2="27"
+                y2="0.5"
+                stroke="#FFFFFF">
+              </line>
+            </svg>
+            <div class="blog-date-post"
+              v-text="article.published_at">
+            </div>
+          </template>
+        </div>
+        <div class="blog-content">
+          <p>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            <br/>
+            <br/>
+            <img class="blog-featured-img db-img"
+              alt=""
+              title=""
+              src="https://placehold.co/768x420"
+              width=""
+              height=""
+              loading="lazy"/>
+            </br>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            <br/>
+            <br/>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

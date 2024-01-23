@@ -1,65 +1,72 @@
-<section class="db-section--blog-listing">
+<section class="db-section db-section--blog-listing">
   <div class="db-container">
     <div class="db-grid-list">
-      <template v-for="blog_item in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]">
-        <div class="db-grid-item">
-          <div class="top-wrap">
-            <img class="blog-img db-img"
-              alt=""
-              title=""
-              src="https://placehold.co/300x190"
-              width=""
-              height=""
-              loading="lazy"/>
-            <div class="blog-tag-list">
-              <div class="blog-tag-item">
-                Events
-              </div>
-              <div class="blog-tag-item">
-                News
-              </div>
-            </div>
-          </div>
-          <div class="bot-wrap">
-            <a class="blog-title"
-              title=""
-              href="/">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </a>
-            <div class="db-inner-row">
-              <div class="blog-author">
-                John Doe
-              </div>
-              <svg class="svg-icon-dash-line db-svg"
-                width="27"
-                height="1"
-                viewBox="0 0 27 1"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <line id="line_01"
-                  x1="0.4375"
-                  y1="0.5"
-                  x2="27"
-                  y2="0.5"
-                  stroke="#FFFFFF">
-                </line>
-              </svg>
-              <div class="blog-date-post">
-                APR 17, 2019
+      <div class="db-grid-item">
+        
+        {% assign cats = "media" | split: ',' %}
+        {% for cat in cats %}
+          {% for article in blogs[cat].articles %}
+            
+            <div class="top-wrap">
+              <img class="blog-img db-img"
+                alt=""
+                title=""
+                src="{{ article.image.src | img_url: '1024x' }}"
+                width=""
+                height=""
+                loading="lazy"/>
+              <div class="blog-tag-list">
+                <div class="blog-tag-item">
+                  Events
+                </div>
+                <div class="blog-tag-item">
+                  News
+                </div>
               </div>
             </div>
-            <div class="blog-description">
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            <div class="bot-wrap">
+              <a class="blog-title"
+                title=""
+                href="{{ article.url }}">
+                {{ article.title }}
+              </a>
+              <div class="db-inner-row">
+                <div class="blog-author">
+                  {{ article.author }}
+                </div>
+                <svg class="svg-icon-dash-line db-svg"
+                  width="27"
+                  height="1"
+                  viewBox="0 0 27 1"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <line id="line_01"
+                    x1="0.4375"
+                    y1="0.5"
+                    x2="27"
+                    y2="0.5"
+                    stroke="#FFFFFF">
+                  </line>
+                </svg>
+                <div class="blog-date-post">
+                  {{ article.created_at | date: "%b %d, %Y" }}
+                </div>
+              </div>
+              <div class="blog-description">{{ article.excerpt }}</div>
+              <a class="db-btn--read-more"
+                type="button"
+                title="Read More"
+                href="{{ article.url }}">
+                <span class="label">
+                  READ MORE
+                </span>
+              </a>
             </div>
-            <button class="db-btn--read-more"
-              type="button">
-              <span class="label">
-                READ MORE
-              </span>
-            </button>
-          </div>
-        </div>
-      </template>
+
+          {% endfor %} 
+        {% endfor %}
+
+      </div>
     </div>
   </div>
 </section>
