@@ -89,7 +89,7 @@
 
   &.--emporium-v2 {
     .db-widget-box {
-      background-image: url('DB_Widget11_bg-v01-312x679.jpg');
+      background-image: url('DB_Widget11_bg-v01-1043x2166.jpg');
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -98,7 +98,7 @@
       scale: 1.0;
       padding: 50px 40px 50px;
       border: none;
-      border-radius: 30px;
+      border-radius: 15px;
 
       @media only screen and (max-width: 768px) {
         max-width: 312px;
@@ -114,7 +114,7 @@
         width: 100%;
         height: 100%;
         border: 3px solid transparent;
-        border-radius: inherit;
+        border-radius: 15px;
         transition:
           all 200ms ease-in-out 0ms;
       }
