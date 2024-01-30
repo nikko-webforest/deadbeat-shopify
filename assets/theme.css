@@ -2049,6 +2049,72 @@ ul, ol {
   box-shadow: 4.02237px 4.02237px 8.04474px 0px rgba(193, 255, 44, 0.3), -4.02237px -4.02237px 8.04474px 0px rgba(193, 255, 44, 0.3), 2.01118px 2.01118px 4.02237px 0px rgba(193, 255, 44, 0.6), -2.01118px -2.01118px 4.02237px 0px rgba(193, 255, 44, 0.6);
   border: 3px solid #C1FF2C;
 }
+.db-widget-item.--emporium-v2 .db-widget-box {
+  background-image: url("DB_Widget11_bg-v01-312x679.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: unset;
+  height: 680px;
+  scale: 1;
+  padding: 50px 40px 50px;
+  border: none;
+  border-radius: 30px;
+}
+@media only screen and (max-width: 768px) {
+  .db-widget-item.--emporium-v2 .db-widget-box {
+    max-width: 312px;
+    margin: 0 auto;
+  }
+}
+.db-widget-item.--emporium-v2 .db-widget-box::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-radius: inherit;
+  transition: all 200ms ease-in-out 0ms;
+}
+.db-widget-item.--emporium-v2 .db-widget-box > span {
+  color: #0E003D;
+  font-family: var(--primary-font-family);
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25em;
+  display: block;
+  margin: 0 0 3px;
+}
+.db-widget-item.--emporium-v2 .db-widget-box h5 {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 85px;
+  font-style: normal;
+  font-weight: 500;
+  text-shadow: 1.6741213799px 1.6741213799px 12.5559110641px rgba(0, 0, 0, 0.15);
+  line-height: 1.1em;
+  letter-spacing: -3.2px;
+  word-break: keep-all;
+  display: inline-block;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+.db-widget-item.--emporium-v2 .db-widget-box h5 .db-svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin: -15px 0 0;
+}
+.db-widget-item.--emporium-v2 .db-widget-box:hover {
+  scale: 1.05;
+}
+.db-widget-item.--emporium-v2 .db-widget-box:hover::before {
+  box-shadow: 4.02237px 4.02237px 8.04474px 0px rgba(193, 255, 44, 0.3), -4.02237px -4.02237px 8.04474px 0px rgba(193, 255, 44, 0.3), 2.01118px 2.01118px 4.02237px 0px rgba(193, 255, 44, 0.6), -2.01118px -2.01118px 4.02237px 0px rgba(193, 255, 44, 0.6);
+  border: 3px solid #C1FF2C;
+}
 .db-widget-item.--columbus {
   display: none;
 }
@@ -11059,7 +11125,7 @@ ul, ol {
 }
 
 .db-page--merch-store .db-section--merch-store-search {
-  background-image: url("Merch-Store_Search_bg-v01-1900x461.jpg");
+  background-image: url("Emporium_Search_bg-v02-4096x994.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
