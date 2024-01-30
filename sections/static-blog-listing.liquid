@@ -1,12 +1,12 @@
 <section class="db-section db-section--blog-listing">
   <div class="db-container">
     <div class="db-grid-list">
-      <div class="db-grid-item">
         
-        {% assign cats = "media" | split: ',' %}
-        {% for cat in cats %}
-          {% for article in blogs[cat].articles %}
-            
+      {% assign cats = "media" | split: ',' %}
+      {% for cat in cats %}
+        {% for article in blogs[cat].articles %}
+          
+          <div class="db-grid-item">
             <div class="top-wrap">
               <img class="blog-img db-img"
                 alt=""
@@ -62,11 +62,11 @@
                 </span>
               </a>
             </div>
+          </div>
 
-          {% endfor %} 
-        {% endfor %}
-
-      </div>
+        {% endfor %} 
+      {% endfor %}
+      
     </div>
   </div>
 </section>
