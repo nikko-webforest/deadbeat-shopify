@@ -1,0 +1,169 @@
+.db-page--hairy-dispatch {
+  .db-section--blog-listing {
+    padding: 150px 30px 100px;
+
+    .db-container {
+      .db-grid-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(250px, 1fr));
+        justify-content: center;
+        align-items: stretch;
+        grid-gap: 27px;
+        gap: 27px;
+
+        @media only screen and (max-width: 1440px) {
+          grid-template-columns: repeat(3, minmax(250px, 1fr));
+        }
+
+        @media only screen and (max-width: 1080px) {
+          grid-template-columns: repeat(2, minmax(250px, 1fr));
+        }
+
+        @media only screen and (max-width: 768px) {
+          grid-template-columns: repeat(2, minmax(200px, 1fr));
+        }
+
+        @media only screen and (max-width: 480px) {
+          grid-template-columns: repeat(1, minmax(200px, 1fr));
+        }
+
+        .db-grid-item {
+          background-color: #0C0B0B;
+          padding: 20px;
+          width: 100%;
+
+          .top-wrap {
+            position: relative;
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+            margin-bottom: 20px;
+
+            .blog-img {
+              position: relative;
+              z-index: 1;
+              display: block;
+              object-fit: cover;
+              object-position: center;
+              width: 100%;
+              height: 100%;
+            }
+
+            .blog-tag-list {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              display: flex;
+              justify-content: flex-start;
+              align-items: stretch;
+              gap: 8px;
+
+              .blog-tag-item {
+                color: $white-color;
+                font-family: $primary-font-family;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                text-align: center;
+                line-height: 1em;
+                display: block;
+                background-color: #0C0B0B;
+                padding: 8px 10px;
+              }
+            }
+          }
+
+          .bot-wrap {
+            .blog-title {
+              color: $white-color;
+              font-family: $primary-font-family;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 1.5em;
+              display: block;
+              margin-bottom: 8px;
+
+              &:hover {
+                color: $secondary-color;
+              }
+            }
+
+            .db-inner-row {
+              justify-content: flex-start;
+              align-items: center;
+              gap: 8px;
+              margin-bottom: 8px;
+
+              .blog-author {
+                color: $white-color;
+                font-family: $primary-font-family;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.25em;
+              }
+
+              .svg-icon-dash-line {
+                display: block;
+                max-width: 27px;
+                min-width: 27px;
+              }
+
+              .blog-date-post {
+                color: $white-color;
+                font-family: $primary-font-family;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.25em;
+              }
+            }
+
+            .blog-description {
+              color: $white-color;
+              font-family: $tertiary-font-family;
+              font-size: 15px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 1.5em;
+              margin-bottom: 20px;
+            }
+
+            .db-btn--read-more {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              max-width: 170px;
+              min-width: 170px;
+              width: 100%;
+              padding: 12px 16px;
+              border: 1px solid $secondary-color;
+              border-radius: 50px;
+
+              .label {
+                color: $secondary-color;
+                font-family: $tertiary-font-family;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 700;
+                text-align: center;
+                line-height: 1.25em;
+                transition:
+                  color $hover-transition-duration ease-in-out 0ms;
+              }
+
+              &:hover {
+                background-color: $secondary-color;
+
+                .label {
+                  color: $white-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

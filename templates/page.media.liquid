@@ -1,6 +1,59 @@
 <main class="db-main site-main db-page--media">
-  
-  {% section 'static-blog-listing' %}
+
+  <section class="db-section db-section--media-article">
+    <div class="db-container">
+      <div class="article-list">
+
+        {% assign cats = "media" | split: ',' %}
+        {% for cat in cats %}
+          {% for article in blogs[cat].articles %}
+
+            {% comment %}
+              <div>article: {{ article | json }}</div>
+            {% endcomment %}
+
+            <div class="article-item"
+              data-article-id="{{ article.id }}">
+              <div class="db-row">
+                <div class="article-title">
+                  {{ article.title }}
+                </div>
+                <div class="article-date-published">
+                  {{ article.published_at | date: "%B %d, %Y" }}
+                </div>
+              </div>
+              <div class="db-row">
+                
+                {% if article.tags.size > 0 %}
+                  <div class="article-tag-list">
+
+                    {% for tag in article.tags %}
+
+                      <div class="article-tag-item">{{ tag }}</div>
+
+                    {% endfor %}
+                    
+                  </div>
+                {% endif %}
+
+                <div class="article-date-published">
+                  {{ article.published_at | date: "%b %d, %Y" }}
+                </div>
+                <div class="article-author">
+                  by <span>{{ article.author }}</span>
+                </div>
+              </div>
+              <div class="article-description">
+                {{ article.content }}
+              </div>
+            </div>
+          
+          {% endfor %}
+        {% endfor %}
+        
+      </div>
+    </div>
+  </section>
 
 </main>
 <script>
@@ -8,9 +61,6 @@
     name: 'DB SF Page Media Options',
     data() {
       return {
-        blogs: [
-          
-        ],
       }
     },
     methods: {

@@ -1,0 +1,31 @@
+<main class="db-main site-main db-page--hairy-dispatch">
+
+  {% section 'static-blog-listing' %}
+
+</main>
+<script>
+  const DB_SF_Page_HairyDispatch_Options = {
+    name: 'DB SF Page HairyDispatch Options',
+    data() {
+      return {
+      }
+    },
+    methods: {
+      loadPage() {
+        console.log('loadPage');
+        setTimeout(() => {
+          document.querySelector('.db-site-loader').classList.remove('--show');
+          // document.querySelector('.db-section--banner').classList.add('--animate-now');
+          document.querySelector('.db-header').classList.add('--animate-now');
+        }, 3000);
+      },
+    },
+    computed: {},
+    created() {
+      this.loadPage();
+    },
+    mounted() {},
+  };
+
+  Vue.createApp(DB_SF_Page_HairyDispatch_Options).mount('.db-page--hairy-dispatch');
+</script>
