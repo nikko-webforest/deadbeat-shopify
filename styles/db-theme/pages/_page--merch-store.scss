@@ -1336,6 +1336,32 @@
                         background-color: $primary-color;
                       }
                     }
+
+                    .db-btn--out-of-stock {
+                      background-color: #150E1F;
+                      width: 100%;
+                      padding: 15px 20px;
+                      border-width: 1px;
+                      border-style: solid;
+                      border-color: rgba(255, 255, 255, 0.4);
+                      border-radius: 0px;
+                      pointer-events: none;
+                      cursor: default;
+
+                      .label {
+                        color: $white-color;
+                        font-family: $primary-font-family;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 1.25em;
+                        display: block;
+    
+                        @media only screen and (max-width: 1080px) {
+                          font-size: 14px;
+                        }
+                      }
+                    }
                   }
                 }
 
