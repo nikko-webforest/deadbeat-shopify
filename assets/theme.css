@@ -11663,27 +11663,27 @@ ul, ol {
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) > .db-inner-row .db-btn--clear-all:hover .label {
   color: var(--primary-color);
 }
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter {
+  padding: 30px 17px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+@media only screen and (max-width: 1080px) {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter {
+    padding: 25px 15px 20px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter {
     min-width: 320px;
   }
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories {
-  padding: 30px 17px 25px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-}
-@media only screen and (max-width: 1080px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories {
-    padding: 25px 15px 20px;
-  }
-}
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .db-inner-row {
   justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-bottom: 25px;
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .filter-title, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .filter-title {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .db-inner-row .filter-title {
   color: var(--white-color);
   font-family: var(--primary-font-family);
   font-size: 18px;
@@ -11695,11 +11695,11 @@ ul, ol {
   display: block;
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .filter-title, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .filter-title {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .db-inner-row .filter-title {
     font-size: 16px;
   }
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .db-inner-row .db-btn--filter-toggle {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11708,7 +11708,7 @@ ul, ol {
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 3px;
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle .label, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle .label {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .db-inner-row .db-btn--filter-toggle .label {
   color: #6B6B6B;
   font-family: var(--primary-font-family);
   font-size: 12px;
@@ -11719,18 +11719,18 @@ ul, ol {
   display: block;
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle .label, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle .label {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .db-inner-row .db-btn--filter-toggle .label {
     font-size: 10px;
   }
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle .svg-icon-angle-up, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle .svg-icon-angle-up {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .db-inner-row .db-btn--filter-toggle .svg-icon-angle-up {
   rotate: 180deg;
   transition: rotate var(--click-transition-duration) ease-in-out 0ms;
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .db-inner-row .db-btn--filter-toggle.--toggle .svg-icon-angle-up, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .db-inner-row .db-btn--filter-toggle.--toggle .svg-icon-angle-up {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .db-inner-row .db-btn--filter-toggle.--toggle .svg-icon-angle-up {
   rotate: 0deg;
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -11739,11 +11739,11 @@ ul, ol {
   transition: height var(--click-transition-duration) ease-in-out 0ms;
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list {
     gap: 8px;
   }
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list .filter-item {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -11751,7 +11751,7 @@ ul, ol {
   width: 100%;
   cursor: pointer;
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-checkbox, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-checkbox {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list .filter-item .filter-checkbox {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11761,24 +11761,24 @@ ul, ol {
   border-radius: 3px;
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-checkbox, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-checkbox {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list .filter-item .filter-checkbox {
     width: 20px;
     height: 20px;
   }
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-checkbox .svg-icon-check, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-checkbox .svg-icon-check {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list .filter-item .filter-checkbox .svg-icon-check {
   display: none;
   max-width: 17px;
   min-width: 17px;
   height: auto;
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-checkbox .svg-icon-check, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-checkbox .svg-icon-check {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list .filter-item .filter-checkbox .svg-icon-check {
     max-width: 13px;
     min-width: 13px;
   }
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-label, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-label {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list .filter-item .filter-label {
   color: var(--white-color);
   font-family: var(--secondary-font-family);
   font-size: 18px;
@@ -11791,14 +11791,14 @@ ul, ol {
   white-space: nowrap;
 }
 @media only screen and (max-width: 1080px) {
-  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item .filter-label, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item .filter-label {
+  .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list .filter-item .filter-label {
     font-size: 14px;
   }
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item.--selected .filter-checkbox, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item.--selected .filter-checkbox {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list .filter-item.--selected .filter-checkbox {
   border-color: #D86FFF;
 }
-.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-clothing .filter-list .filter-item.--selected .filter-checkbox .svg-icon-check, .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter.--by-accessories .filter-list .filter-item.--selected .filter-checkbox .svg-icon-check {
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .product-filter .filter-list .filter-item.--selected .filter-checkbox .svg-icon-check {
   display: block;
 }
 .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(1) .db-btn--view {
@@ -12418,6 +12418,32 @@ ul, ol {
   .db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .product-pagination {
     margin: 0 auto;
   }
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-btn--load-more {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  transition: border var(--hover-transition-duration) ease-in-out 0ms;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-btn--load-more .label {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.25em;
+  letter-spacing: -0.48px;
+  white-space: nowrap;
+  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-btn--load-more:hover {
+  border-color: var(--primary-color);
+}
+.db-page--merch-store .db-section--merch-store-listing .db-container .db-row .db-col:nth-of-type(2) .db-btn--load-more:hover .label {
+  color: var(--primary-color);
 }
 
 .db-page--product-page .db-section--product-details {
