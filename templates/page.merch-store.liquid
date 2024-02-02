@@ -910,7 +910,7 @@
         scroll_to.scrollIntoView();
       },
 
-      // loadmore
+      // load more
       loadMoreProducts() {
         // console.log('loadMoreProducts()');
 
@@ -936,6 +936,12 @@
             }
           });
         }, delay);
+      },
+      loadMoreReset() {
+        // console.log('loadMoreReset()');
+
+        this.shop.products.load_more.start_index = 0;
+        this.shop.products.load_more.end_index = this.shop.products.load_more.per_load;
       },
 
       // product item methods
@@ -1109,6 +1115,7 @@
         document.querySelector('body').style.overflowY = 'hidden';
       },
 
+      // product filter
       toggleProductFilterList(type) {
         // console.log('toggleProductFilterList()', type);
 
@@ -1159,7 +1166,7 @@
         });
       },
       productFilterBy(type, category) {
-        console.log('productFilterBy()');
+        // console.log('productFilterBy()');
         // console.log('type =', type);
         // console.log('category =', category);
 
@@ -1175,36 +1182,7 @@
           }
         });
 
-        this.shop.products.load_more.start_index = 0;
-        this.shop.products.load_more.end_index = this.shop.products.load_more.per_load;
-
-        this.shop.products.sort.toggle = false;
-
-        this.productFilterPerform();
-      },
-      productFilterByClothing(filter_item) {
-        // console.log('productFilterByClothing()', filter_item);
-
-        if (this.shop.products.filters.type[0].selected.includes(filter_item)) {
-          this.shop.products.filters.type[0].selected = this.shop.products.filters.type[0].selected.filter(item => item !== filter_item);
-        }
-        else {
-          this.shop.products.filters.type[0].selected.push(filter_item);
-        }
-
-        this.shop.products.sort.toggle = false;
-
-        this.productFilterPerform();
-      },
-      productFilterByAccessories(filter_item) {
-        // console.log('productFilterByAccessories()', filter_item);
-
-        if (this.shop.products.filters.type[1].selected.includes(filter_item)) {
-          this.shop.products.filters.type[1].selected = this.shop.products.filters.type[1].selected.filter(item => item !== filter_item);
-        }
-        else {
-          this.shop.products.filters.type[1].selected.push(filter_item);
-        }
+        this.loadMoreReset();
 
         this.shop.products.sort.toggle = false;
 
@@ -1276,13 +1254,18 @@
             //   is_product_filter.clothing = is_product_filter.accessories = true;
             // }
 
-            if (Object.keys(product_item.metafields).length) {
-              is_product_filter.clothing = is_product_filter.accessories = is_product_filter.other = this.shop.products.filters.type.some((product_filter_item_type) => {
-                return product_filter_item_type.selected.some(item => product_item.metafields.product_category.includes(item));
-              });
+            if (this.shop.products.filters.type.some(item => item.selected.length > 0)) {
+              if (Object.keys(product_item.metafields).length) {
+                is_product_filter.clothing = is_product_filter.accessories = is_product_filter.other = this.shop.products.filters.type.some((product_filter_item_type) => {
+                  return product_filter_item_type.selected.some(item => product_item.metafields.product_category.includes(item));
+                });
+              }
+              else {
+                is_product_filter.clothing = is_product_filter.accessories = is_product_filter.other = false;
+              }
             }
             else {
-              is_product_filter.clothing = is_product_filter.accessories = is_product_filter.other = false;
+              is_product_filter.clothing = is_product_filter.accessories = is_product_filter.other = true;
             }
 
             if (is_product_filter.gender && is_product_filter.clothing && is_product_filter.accessories && is_product_filter.other) {
@@ -1306,9 +1289,12 @@
       clearAllFilter() {
         // console.log('clearAllFilter()');
 
+        this.loadMoreReset();
+
         this.shop.products.filters.gender.selected = this.shop.products.filters.gender.list[0];
-        this.shop.products.filters.type[0].selected = [];
-        this.shop.products.filters.type[1].selected = [];
+        // this.shop.products.filters.type[0].selected = [];
+        // this.shop.products.filters.type[1].selected = [];
+        this.shop.products.filters.type.every(item => item.selected = []);
         this.shop.products.list.filtered = this.shop.products.list.all;
         this.paginationSettings();
         this.paginationPaginateList();
@@ -1327,6 +1313,7 @@
         }
       },
 
+      // product sort
       toggleProductSort() {
         // console.log('toggleProductSort()');
 
@@ -1336,6 +1323,8 @@
         // console.log('selectedProductSort()', sortItem);
 
         this.shop.products.sort.selected = sortItem;
+
+        this.loadMoreReset();
 
         this.productsFadeIn(500);
         this.toggleProductSort();
@@ -1366,6 +1355,7 @@
         }
       },
 
+      // product search
       searchProductClear() {
         // console.log('searchProductClear()');
         this.shop.products.search.query = '';
@@ -1379,7 +1369,7 @@
         // console.log('searchProductPerform()');
 
         this.shop.products.search.results = [];
-        this.shop.products.list.all.forEach((product_item, _i) => {
+        this.shop.products.list.all.forEach((product_item, product_index) => {
           if (product_item.title.toLowerCase().includes(this.shop.products.search.query.toLowerCase()) && this.shop.products.search.query != '') {
             this.shop.products.search.results.push(product_item);
           }
