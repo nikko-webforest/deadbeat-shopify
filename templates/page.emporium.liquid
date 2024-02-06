@@ -801,7 +801,7 @@
 
         this.shop.products.list.all.forEach((product_item) => {
           if (Object.keys(product_item.metafields).length) {
-            if (product_item.metafields.product_gender.length) {
+            if (Object.keys(product_item.metafields.product_gender) && product_item.metafields.product_gender.length) {
               product_item.metafields.product_gender.forEach((product_gender) => {
                 temp_genders.push(product_gender);
               });
