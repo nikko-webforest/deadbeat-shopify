@@ -778,7 +778,7 @@
 
           const response = await fetch(product_endpoint);
           const data = await response.json();
-          // console.log('data =', data);
+          console.log('data =', data);
 
           data.products.forEach((itemA) => {
             this.shop.products_liquid.forEach((itemB) => {
