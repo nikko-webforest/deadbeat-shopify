@@ -1,5 +1,8 @@
 <main class="db-main site-main db-page--merch-store">
 
+  {% comment %}
+    This collection must be created "All Products"
+  {% endcomment %}
   {% assign collection = collections['all-products'] %}
 
   <section class="db-section db-section--merch-store-search"
@@ -125,7 +128,7 @@
       <div class="db-container">
         <div class="db-row">
           <template v-if="shop.products.filters.type.length">
-            <div class="db-col db-scroll-bar"
+            <div class="db-col db-col-01 db-scroll-bar"
               :class="{ '--show' : shop.products.filters.toggle }">
               <div class="db-inner-row">
                 <h3>
@@ -312,7 +315,7 @@
               </button>
             </div>
           </template>
-          <div class="db-col">
+          <div class="db-col db-col-02">
             <div class="db-inner-row">
               <template v-if="false">
                 <div class="product-filter --by-gender">
