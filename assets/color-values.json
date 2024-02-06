@@ -114,5 +114,9 @@
   {
     "name": "Military Green",
     "value": "rgb(82, 71, 48)"
+  },
+  {
+    "name": "Team Royal",
+    "value": "rgb(54,71,120)"
   }
 ]

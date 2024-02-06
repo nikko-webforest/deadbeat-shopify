@@ -315,6 +315,9 @@
               </button>
             </div>
           </template>
+          <template v-else>
+            <div class="db-col db-col-01"></div>
+          </template>
           <div class="db-col db-col-02">
             <div class="db-inner-row">
               <template v-if="false">
@@ -1089,7 +1092,8 @@
       setOptionSelectedImg(product_id, color_value, option_index) {
         // console.log('setOptionSelectedImg()', product_id, color_value, option_index);
 
-        this.shop.products.pagination.list.forEach((product_item) => {
+        // this.shop.products.pagination.list.forEach((product_item) => {
+        this.shop.products.list.filtered.forEach((product_item) => {
           if (product_item.id == product_id) {
             product_item.variants.forEach((variantItem) => {
               if (variantItem[`option${option_index + 1}`] == color_value ) {
