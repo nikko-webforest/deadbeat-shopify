@@ -119,470 +119,362 @@
       </div>
     </div>
   </section>
-
-  <template v-if="shop.products.list.all.length">
-    <section class="db-section db-section--merch-store-listing">
-      <div class="db-container">
-        <div class="db-row">
-          <template v-if="shop.products.filters.type.length">
-            <div class="db-col db-scroll-bar"
-              :class="{ '--show' : shop.products.filters.toggle }">
-              <div class="db-inner-row">
-                <h3>
-                  FILTER BY CATEGORY
-                </h3>
-                <button class="db-btn--clear-all"
-                  type="button"
-                  @click="clearAllFilter();">
-                  <span class="label">
-                    CLEAR ALL
-                  </span>
-                </button>
-              </div>
   
-              <template v-if="false">
-                <div class="product-filter --by-clothing">
-                  <div class="db-inner-row">
-                    <h4 class="filter-title"
-                      v-text="shop.products.filters.type[0].name">
-                    </h4>
-                    <button class="db-btn--filter-toggle"
-                      type="button"
-                      :class="{ '--toggle' : shop.products.filters.type[0].toggle }"
-                      @click="toggleProductFilterList('Clothing');">
-                      <span class="label"
-                        v-text="shop.products.filters.type[0].toggle ? 'Hide' : 'Show'">
-                      </span>
-                      <svg class="svg-icon-angle-up db-svg"
-                        width="10"
-                        height="6"
-                        viewBox="0 0 10 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path id="path_01"
-                          d="M8.24127 5.28199C8.48052 5.52124 8.86842 5.52124 9.10767 5.28199C9.34692 5.04274 9.34692 4.65484 9.10767 4.41559L5.43185 0.739765C5.1926 0.500515 4.8047 0.500515 4.56545 0.739765L0.889624 4.41559C0.650373 4.65484 0.650373 5.04274 0.889624 5.28199C1.12887 5.52124 1.51677 5.52124 1.75602 5.28199L4.99865 2.03936L8.24127 5.28199Z"
-                          fill="#6B6B6B">
-                        </path>
-                      </svg>
-                    </button>
-                  </div>
-                  <ul class="filter-list">
-                    <template v-for="(filter_item, filter_index) in shop.products.filters.type[0].categories">
-                      <li class="filter-item"
-                        :class="{ '--selected' : shop.products.filters.type[0].selected.includes(filter_item) }"
-                        @click="productFilterByClothing(filter_item);">
-                        <div class="filter-checkbox"
-                          :id="'Clothing: '+filter_item"
-                          type="checkbox">
-                          <svg class="svg-icon-check db-svg"
-                            width="17"
-                            height="12"
-                            viewBox="0 0 17 12"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path id="path_01"
-                              d="M6.60605 8.6838L15.0531 0.23584L16.3534 1.53524L6.60605 11.2826L0.757812 5.43437L2.05722 4.13497L6.60605 8.6838Z"
-                              fill="#D86FFF">
-                            </path>
-                          </svg>
-                        </div>
-                        <div class="filter-label"
-                          :for="'Clothing: '+filter_item"
-                          v-text="filter_item">
-                        </div>
-                      </li>
-                    </template>
-                  </ul>
-                </div>
-                <div class="product-filter --by-accessories">
-                  <div class="db-inner-row">
-                    <h4 class="filter-title"
-                      v-text="shop.products.filters.type[1].name">
-                    </h4>
-                    <button class="db-btn--filter-toggle"
-                      type="button"
-                      :class="{ '--toggle' : shop.products.filters.type[1].toggle }"
-                      @click="toggleProductFilterList('Accessories');">
-                      <span class="label"
-                        v-text="shop.products.filters.type[1].toggle ? 'Hide' : 'Show'">
-                      </span>
-                      <svg class="svg-icon-angle-up db-svg"
-                        width="10"
-                        height="6"
-                        viewBox="0 0 10 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path id="path_01"
-                          d="M8.24127 5.28199C8.48052 5.52124 8.86842 5.52124 9.10767 5.28199C9.34692 5.04274 9.34692 4.65484 9.10767 4.41559L5.43185 0.739765C5.1926 0.500515 4.8047 0.500515 4.56545 0.739765L0.889624 4.41559C0.650373 4.65484 0.650373 5.04274 0.889624 5.28199C1.12887 5.52124 1.51677 5.52124 1.75602 5.28199L4.99865 2.03936L8.24127 5.28199Z"
-                          fill="#6B6B6B">
-                        </path>
-                      </svg>
-                    </button>
-                  </div>
-                  <ul class="filter-list">
-                    <template v-for="(filter_item, filter_index) in shop.products.filters.type[1].categories">
-                      <li class="filter-item"
-                        :class="{ '--selected' : shop.products.filters.type[1].selected.includes(filter_item) }"
-                        @click="productFilterByAccessories(filter_item);">
-                        <div class="filter-checkbox"
-                          :id="'Accessories: '+filter_item"
-                          type="checkbox">
-                          <svg class="svg-icon-check db-svg"
-                            width="17"
-                            height="12"
-                            viewBox="0 0 17 12"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path id="path_01"
-                              d="M6.60605 8.6838L15.0531 0.23584L16.3534 1.53524L6.60605 11.2826L0.757812 5.43437L2.05722 4.13497L6.60605 8.6838Z"
-                              fill="#D86FFF">
-                            </path>
-                          </svg>
-                        </div>
-                        <div class="filter-label"
-                          :for="'Accessories: '+filter_item"
-                          v-text="filter_item">
-                        </div>
-                      </li>
-                    </template>
-                  </ul>
-                </div>
-              </template>
-  
-              <template v-for="(product_filter_type_item) in shop.products.filters.type">
-                <div class="product-filter"
-                  :class="'--by-'+product_filter_type_item.name.toLowerCase()">
-                  <div class="db-inner-row">
-                    <h4 class="filter-title"
-                      v-text="product_filter_type_item.name">
-                    </h4>
-                    <button class="db-btn--filter-toggle"
-                      type="button"
-                      :class="{ '--toggle' : product_filter_type_item.toggle }"
-                      @click="toggleProductFilterList(product_filter_type_item.name);">
-                      <span class="label"
-                        v-text="product_filter_type_item.toggle ? 'Hide' : 'Show'">
-                      </span>
-                      <svg class="svg-icon-angle-up db-svg"
-                        width="10"
-                        height="6"
-                        viewBox="0 0 10 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path id="path_01"
-                          d="M8.24127 5.28199C8.48052 5.52124 8.86842 5.52124 9.10767 5.28199C9.34692 5.04274 9.34692 4.65484 9.10767 4.41559L5.43185 0.739765C5.1926 0.500515 4.8047 0.500515 4.56545 0.739765L0.889624 4.41559C0.650373 4.65484 0.650373 5.04274 0.889624 5.28199C1.12887 5.52124 1.51677 5.52124 1.75602 5.28199L4.99865 2.03936L8.24127 5.28199Z"
-                          fill="#6B6B6B">
-                        </path>
-                      </svg>
-                    </button>
-                  </div>
-                  <ul class="filter-list">
-                    <template v-for="(filter_item, filter_index) in product_filter_type_item.categories">
-                      <li class="filter-item"
-                        :class="{ '--selected' : product_filter_type_item.selected.includes(filter_item) }"
-                        @click="productFilterBy(product_filter_type_item.name, filter_item);">
-                        <div class="filter-checkbox"
-                          type="checkbox"
-                          :id="product_filter_type_item.name+': '+filter_item">
-                          <svg class="svg-icon-check db-svg"
-                            width="17"
-                            height="12"
-                            viewBox="0 0 17 12"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path id="path_01"
-                              d="M6.60605 8.6838L15.0531 0.23584L16.3534 1.53524L6.60605 11.2826L0.757812 5.43437L2.05722 4.13497L6.60605 8.6838Z"
-                              fill="#D86FFF">
-                            </path>
-                          </svg>
-                        </div>
-                        <div class="filter-label"
-                          :for="product_filter_type_item.name+': '+filter_item"
-                          v-text="filter_item">
-                        </div>
-                      </li>
-                    </template>
-                  </ul>
-                </div>
-              </template>
-              <button class="db-btn--view"
-                type="button"
-                @click="toggleFilterMBView();">
-                <span class="label">VIEW</span>
-              </button>
-            </div>
-          </template>
-          <div class="db-col">
+  <section class="db-section db-section--merch-store-listing">
+    <div class="db-container">
+      <div class="db-row">
+        <template v-if="shop.products.filters.type.length">
+          <div class="db-col db-scroll-bar"
+            :class="{ '--show' : shop.products.filters.toggle }">
             <div class="db-inner-row">
-              <template v-if="false">
-                <div class="product-filter --by-gender">
-                  <ul class="filter-list">
-                    <template v-for="(filter_item, filter_index) in shop.products.filters.gender.list">
-                      <li class="filter-item"
-                        :class="{ '--selected' : filter_item == shop.products.filters.gender.selected }"
-                        @click="productFilterByGender(filter_item);">
-                        <svg class="svg-icon-check db-svg"
-                          width="16"
-                          height="12"
-                          viewBox="0 0 16 12"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path id="path_01"
-                            d="M5.84824 8.92452L14.2953 0.476562L15.5956 1.77597L5.84824 11.5233L0 5.6751L1.2994 4.37569L5.84824 8.92452Z"
-                            fill="#D86FFF">
-                          </path>
-                        </svg>
-                        <span class="label"
-                          v-text="filter_item">
-                        </span>
-                      </li>
-                    </template>
-                  </ul>
-                </div>
-              </template>
-              <button class="db-btn--toggle-filter"
+              <h3>
+                FILTER BY CATEGORY
+              </h3>
+              <button class="db-btn--clear-all"
                 type="button"
-                @click="toggleFilterMBView();">
+                @click="clearAllFilter();">
                 <span class="label">
-                  FILTER
+                  CLEAR ALL
                 </span>
               </button>
-              <div class="product-sort"
-                :class="{ '--toggle' : shop.products.sort.toggle }">
-                <div class="ds-view">
-                  <button class="db-btn--sort-toggle"
+            </div>
+
+            <template v-if="false">
+              <div class="product-filter --by-clothing">
+                <div class="db-inner-row">
+                  <h4 class="filter-title"
+                    v-text="shop.products.filters.type[0].name">
+                  </h4>
+                  <button class="db-btn--filter-toggle"
                     type="button"
-                    @click="toggleProductSort();">
-                    <span class="label">
-                      SORT
+                    :class="{ '--toggle' : shop.products.filters.type[0].toggle }"
+                    @click="toggleProductFilterList('Clothing');">
+                    <span class="label"
+                      v-text="shop.products.filters.type[0].toggle ? 'Hide' : 'Show'">
                     </span>
-                    <svg class="svg-icon-arrow-up-arrow-down db-svg"
-                      width="14"
-                      height="16"
-                      viewBox="0 0 14 16"
+                    <svg class="svg-icon-angle-up db-svg"
+                      width="10"
+                      height="6"
+                      viewBox="0 0 10 6"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <path id="path_01"
-                        d="M8.35785 3.27934C8.49847 3.41979 8.6891 3.49868 8.88785 3.49868C9.0866 3.49868 9.27722 3.41979 9.41785 3.27934L10.1378 2.55934V12.7493C10.1378 12.9483 10.2169 13.139 10.3575 13.2797C10.4982 13.4203 10.6889 13.4993 10.8878 13.4993C11.0868 13.4993 11.2775 13.4203 11.4182 13.2797C11.5588 13.139 11.6378 12.9483 11.6378 12.7493V2.55934L12.3578 3.27934C12.4265 3.35303 12.5093 3.41213 12.6013 3.45312C12.6933 3.49411 12.7926 3.51615 12.8933 3.51793C12.994 3.51971 13.0941 3.50118 13.1874 3.46346C13.2808 3.42574 13.3657 3.3696 13.4369 3.29838C13.5081 3.22716 13.5643 3.14233 13.602 3.04894C13.6397 2.95555 13.6582 2.85552 13.6564 2.75482C13.6547 2.65411 13.6326 2.5548 13.5916 2.4628C13.5506 2.3708 13.4915 2.288 13.4178 2.21934L11.4178 0.21934C11.2772 0.0788894 11.0866 0 10.8878 0C10.6891 0 10.4985 0.0788894 10.3578 0.21934L8.35785 2.21934C8.2174 2.35997 8.13851 2.55059 8.13851 2.74934C8.13851 2.94809 8.2174 3.13871 8.35785 3.27934ZM3.63785 12.9393L4.35785 12.2193C4.42651 12.1457 4.50931 12.0866 4.60131 12.0456C4.69331 12.0046 4.79262 11.9825 4.89333 11.9807C4.99403 11.979 5.09406 11.9975 5.18745 12.0352C5.28083 12.0729 5.36567 12.1291 5.43689 12.2003C5.50811 12.2715 5.56425 12.3564 5.60197 12.4497C5.63969 12.5431 5.65822 12.6432 5.65644 12.7439C5.65466 12.8446 5.63262 12.9439 5.59163 13.0359C5.55064 13.1279 5.49154 13.2107 5.41785 13.2793L3.41785 15.2793C3.27722 15.4198 3.0866 15.4987 2.88785 15.4987C2.6891 15.4987 2.49847 15.4198 2.35785 15.2793L0.357849 13.2793C0.284162 13.2107 0.22506 13.1279 0.184068 13.0359C0.143076 12.9439 0.121034 12.8446 0.119257 12.7439C0.117481 12.6432 0.136005 12.5431 0.173726 12.4497C0.211447 12.3564 0.267592 12.2715 0.33881 12.2003C0.410029 12.1291 0.494863 12.0729 0.588251 12.0352C0.681639 11.9975 0.781668 11.979 0.882371 11.9807C0.983074 11.9825 1.08239 12.0046 1.17439 12.0456C1.26639 12.0866 1.34919 12.1457 1.41785 12.2193L2.13785 12.9393V2.74934C2.13785 2.55043 2.21687 2.35966 2.35752 2.21901C2.49817 2.07836 2.68894 1.99934 2.88785 1.99934C3.08676 1.99934 3.27753 2.07836 3.41818 2.21901C3.55883 2.35966 3.63785 2.55043 3.63785 2.74934V12.9393Z"
-                        fill="#FFFFFF">
+                        d="M8.24127 5.28199C8.48052 5.52124 8.86842 5.52124 9.10767 5.28199C9.34692 5.04274 9.34692 4.65484 9.10767 4.41559L5.43185 0.739765C5.1926 0.500515 4.8047 0.500515 4.56545 0.739765L0.889624 4.41559C0.650373 4.65484 0.650373 5.04274 0.889624 5.28199C1.12887 5.52124 1.51677 5.52124 1.75602 5.28199L4.99865 2.03936L8.24127 5.28199Z"
+                        fill="#6B6B6B">
                       </path>
                     </svg>
                   </button>
-                  <ul class="sort-select">
-                    <template v-for="(sort_item, sort_index) in shop.products.sort.list">
-                      <li class="sort-option"
-                        :class="{ '--selected' : sort_item == shop.products.sort.selected }"
-                        @click="selectedProductSort(sort_item);">
-                        <svg class="svg-icon-custom-radio"
-                          width="15"
-                          height="15"
-                          viewBox="0 0 15 15"
+                </div>
+                <ul class="filter-list">
+                  <template v-for="(filter_item, filter_index) in shop.products.filters.type[0].categories">
+                    <li class="filter-item"
+                      :class="{ '--selected' : shop.products.filters.type[0].selected.includes(filter_item) }"
+                      @click="productFilterByClothing(filter_item);">
+                      <div class="filter-checkbox"
+                        :id="'Clothing: '+filter_item"
+                        type="checkbox">
+                        <svg class="svg-icon-check db-svg"
+                          width="17"
+                          height="12"
+                          viewBox="0 0 17 12"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg">
-                          <circle id="circle_01"
-                            cx="7.5"
-                            cy="7.5"
-                            r="4.5"
-                            fill="#6B6B6B">
-                          </circle>
-                          <circle id="circle_02"
-                            cx="7.5"
-                            cy="7.5"
-                            r="7"
-                            stroke="#6B6B6B">
-                          </circle>
+                          <path id="path_01"
+                            d="M6.60605 8.6838L15.0531 0.23584L16.3534 1.53524L6.60605 11.2826L0.757812 5.43437L2.05722 4.13497L6.60605 8.6838Z"
+                            fill="#D86FFF">
+                          </path>
                         </svg>
-                        <label class="sort-label"
-                          :for="'Sort :'+sort_item"
-                          v-text="sort_item">
-                        </label>
-                      </li>
-                    </template>
-                  </ul>
+                      </div>
+                      <div class="filter-label"
+                        :for="'Clothing: '+filter_item"
+                        v-text="filter_item">
+                      </div>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+              <div class="product-filter --by-accessories">
+                <div class="db-inner-row">
+                  <h4 class="filter-title"
+                    v-text="shop.products.filters.type[1].name">
+                  </h4>
+                  <button class="db-btn--filter-toggle"
+                    type="button"
+                    :class="{ '--toggle' : shop.products.filters.type[1].toggle }"
+                    @click="toggleProductFilterList('Accessories');">
+                    <span class="label"
+                      v-text="shop.products.filters.type[1].toggle ? 'Hide' : 'Show'">
+                    </span>
+                    <svg class="svg-icon-angle-up db-svg"
+                      width="10"
+                      height="6"
+                      viewBox="0 0 10 6"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M8.24127 5.28199C8.48052 5.52124 8.86842 5.52124 9.10767 5.28199C9.34692 5.04274 9.34692 4.65484 9.10767 4.41559L5.43185 0.739765C5.1926 0.500515 4.8047 0.500515 4.56545 0.739765L0.889624 4.41559C0.650373 4.65484 0.650373 5.04274 0.889624 5.28199C1.12887 5.52124 1.51677 5.52124 1.75602 5.28199L4.99865 2.03936L8.24127 5.28199Z"
+                        fill="#6B6B6B">
+                      </path>
+                    </svg>
+                  </button>
                 </div>
-                <div class="mb-view">
-                  <select class="sort-select"
-                    id=""
-                    name=""
-                    v-model="shop.products.sort.selected"
-                    @change="selectedProductSort(shop.products.sort.selected);">
-                    <template v-for="(sort_item, sort_index) in shop.products.sort.list">
-                      <option class="sort-option"
-                        :value="sort_item"
+                <ul class="filter-list">
+                  <template v-for="(filter_item, filter_index) in shop.products.filters.type[1].categories">
+                    <li class="filter-item"
+                      :class="{ '--selected' : shop.products.filters.type[1].selected.includes(filter_item) }"
+                      @click="productFilterByAccessories(filter_item);">
+                      <div class="filter-checkbox"
+                        :id="'Accessories: '+filter_item"
+                        type="checkbox">
+                        <svg class="svg-icon-check db-svg"
+                          width="17"
+                          height="12"
+                          viewBox="0 0 17 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path id="path_01"
+                            d="M6.60605 8.6838L15.0531 0.23584L16.3534 1.53524L6.60605 11.2826L0.757812 5.43437L2.05722 4.13497L6.60605 8.6838Z"
+                            fill="#D86FFF">
+                          </path>
+                        </svg>
+                      </div>
+                      <div class="filter-label"
+                        :for="'Accessories: '+filter_item"
+                        v-text="filter_item">
+                      </div>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </template>
+
+            <template v-for="(product_filter_type_item) in shop.products.filters.type">
+              <div class="product-filter"
+                :class="'--by-'+product_filter_type_item.name.toLowerCase()">
+                <div class="db-inner-row">
+                  <h4 class="filter-title"
+                    v-text="product_filter_type_item.name">
+                  </h4>
+                  <button class="db-btn--filter-toggle"
+                    type="button"
+                    :class="{ '--toggle' : product_filter_type_item.toggle }"
+                    @click="toggleProductFilterList(product_filter_type_item.name);">
+                    <span class="label"
+                      v-text="product_filter_type_item.toggle ? 'Hide' : 'Show'">
+                    </span>
+                    <svg class="svg-icon-angle-up db-svg"
+                      width="10"
+                      height="6"
+                      viewBox="0 0 10 6"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M8.24127 5.28199C8.48052 5.52124 8.86842 5.52124 9.10767 5.28199C9.34692 5.04274 9.34692 4.65484 9.10767 4.41559L5.43185 0.739765C5.1926 0.500515 4.8047 0.500515 4.56545 0.739765L0.889624 4.41559C0.650373 4.65484 0.650373 5.04274 0.889624 5.28199C1.12887 5.52124 1.51677 5.52124 1.75602 5.28199L4.99865 2.03936L8.24127 5.28199Z"
+                        fill="#6B6B6B">
+                      </path>
+                    </svg>
+                  </button>
+                </div>
+                <ul class="filter-list">
+                  <template v-for="(filter_item, filter_index) in product_filter_type_item.categories">
+                    <li class="filter-item"
+                      :class="{ '--selected' : product_filter_type_item.selected.includes(filter_item) }"
+                      @click="productFilterBy(product_filter_type_item.name, filter_item);">
+                      <div class="filter-checkbox"
+                        type="checkbox"
+                        :id="product_filter_type_item.name+': '+filter_item">
+                        <svg class="svg-icon-check db-svg"
+                          width="17"
+                          height="12"
+                          viewBox="0 0 17 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path id="path_01"
+                            d="M6.60605 8.6838L15.0531 0.23584L16.3534 1.53524L6.60605 11.2826L0.757812 5.43437L2.05722 4.13497L6.60605 8.6838Z"
+                            fill="#D86FFF">
+                          </path>
+                        </svg>
+                      </div>
+                      <div class="filter-label"
+                        :for="product_filter_type_item.name+': '+filter_item"
+                        v-text="filter_item">
+                      </div>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </template>
+            <button class="db-btn--view"
+              type="button"
+              @click="toggleFilterMBView();">
+              <span class="label">VIEW</span>
+            </button>
+          </div>
+        </template>
+        <div class="db-col">
+          <div class="db-inner-row">
+            <template v-if="false">
+              <div class="product-filter --by-gender">
+                <ul class="filter-list">
+                  <template v-for="(filter_item, filter_index) in shop.products.filters.gender.list">
+                    <li class="filter-item"
+                      :class="{ '--selected' : filter_item == shop.products.filters.gender.selected }"
+                      @click="productFilterByGender(filter_item);">
+                      <svg class="svg-icon-check db-svg"
+                        width="16"
+                        height="12"
+                        viewBox="0 0 16 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path id="path_01"
+                          d="M5.84824 8.92452L14.2953 0.476562L15.5956 1.77597L5.84824 11.5233L0 5.6751L1.2994 4.37569L5.84824 8.92452Z"
+                          fill="#D86FFF">
+                        </path>
+                      </svg>
+                      <span class="label"
+                        v-text="filter_item">
+                      </span>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </template>
+            <button class="db-btn--toggle-filter"
+              type="button"
+              @click="toggleFilterMBView();">
+              <span class="label">
+                FILTER
+              </span>
+            </button>
+            <div class="product-sort"
+              :class="{ '--toggle' : shop.products.sort.toggle }">
+              <div class="ds-view">
+                <button class="db-btn--sort-toggle"
+                  type="button"
+                  @click="toggleProductSort();">
+                  <span class="label">
+                    SORT
+                  </span>
+                  <svg class="svg-icon-arrow-up-arrow-down db-svg"
+                    width="14"
+                    height="16"
+                    viewBox="0 0 14 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path id="path_01"
+                      d="M8.35785 3.27934C8.49847 3.41979 8.6891 3.49868 8.88785 3.49868C9.0866 3.49868 9.27722 3.41979 9.41785 3.27934L10.1378 2.55934V12.7493C10.1378 12.9483 10.2169 13.139 10.3575 13.2797C10.4982 13.4203 10.6889 13.4993 10.8878 13.4993C11.0868 13.4993 11.2775 13.4203 11.4182 13.2797C11.5588 13.139 11.6378 12.9483 11.6378 12.7493V2.55934L12.3578 3.27934C12.4265 3.35303 12.5093 3.41213 12.6013 3.45312C12.6933 3.49411 12.7926 3.51615 12.8933 3.51793C12.994 3.51971 13.0941 3.50118 13.1874 3.46346C13.2808 3.42574 13.3657 3.3696 13.4369 3.29838C13.5081 3.22716 13.5643 3.14233 13.602 3.04894C13.6397 2.95555 13.6582 2.85552 13.6564 2.75482C13.6547 2.65411 13.6326 2.5548 13.5916 2.4628C13.5506 2.3708 13.4915 2.288 13.4178 2.21934L11.4178 0.21934C11.2772 0.0788894 11.0866 0 10.8878 0C10.6891 0 10.4985 0.0788894 10.3578 0.21934L8.35785 2.21934C8.2174 2.35997 8.13851 2.55059 8.13851 2.74934C8.13851 2.94809 8.2174 3.13871 8.35785 3.27934ZM3.63785 12.9393L4.35785 12.2193C4.42651 12.1457 4.50931 12.0866 4.60131 12.0456C4.69331 12.0046 4.79262 11.9825 4.89333 11.9807C4.99403 11.979 5.09406 11.9975 5.18745 12.0352C5.28083 12.0729 5.36567 12.1291 5.43689 12.2003C5.50811 12.2715 5.56425 12.3564 5.60197 12.4497C5.63969 12.5431 5.65822 12.6432 5.65644 12.7439C5.65466 12.8446 5.63262 12.9439 5.59163 13.0359C5.55064 13.1279 5.49154 13.2107 5.41785 13.2793L3.41785 15.2793C3.27722 15.4198 3.0866 15.4987 2.88785 15.4987C2.6891 15.4987 2.49847 15.4198 2.35785 15.2793L0.357849 13.2793C0.284162 13.2107 0.22506 13.1279 0.184068 13.0359C0.143076 12.9439 0.121034 12.8446 0.119257 12.7439C0.117481 12.6432 0.136005 12.5431 0.173726 12.4497C0.211447 12.3564 0.267592 12.2715 0.33881 12.2003C0.410029 12.1291 0.494863 12.0729 0.588251 12.0352C0.681639 11.9975 0.781668 11.979 0.882371 11.9807C0.983074 11.9825 1.08239 12.0046 1.17439 12.0456C1.26639 12.0866 1.34919 12.1457 1.41785 12.2193L2.13785 12.9393V2.74934C2.13785 2.55043 2.21687 2.35966 2.35752 2.21901C2.49817 2.07836 2.68894 1.99934 2.88785 1.99934C3.08676 1.99934 3.27753 2.07836 3.41818 2.21901C3.55883 2.35966 3.63785 2.55043 3.63785 2.74934V12.9393Z"
+                      fill="#FFFFFF">
+                    </path>
+                  </svg>
+                </button>
+                <ul class="sort-select">
+                  <template v-for="(sort_item, sort_index) in shop.products.sort.list">
+                    <li class="sort-option"
+                      :class="{ '--selected' : sort_item == shop.products.sort.selected }"
+                      @click="selectedProductSort(sort_item);">
+                      <svg class="svg-icon-custom-radio"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 15 15"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle id="circle_01"
+                          cx="7.5"
+                          cy="7.5"
+                          r="4.5"
+                          fill="#6B6B6B">
+                        </circle>
+                        <circle id="circle_02"
+                          cx="7.5"
+                          cy="7.5"
+                          r="7"
+                          stroke="#6B6B6B">
+                        </circle>
+                      </svg>
+                      <label class="sort-label"
+                        :for="'Sort :'+sort_item"
                         v-text="sort_item">
-                      </option>
-                    </template>
-                  </select>
-                </div>
+                      </label>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+              <div class="mb-view">
+                <select class="sort-select"
+                  id=""
+                  name=""
+                  v-model="shop.products.sort.selected"
+                  @change="selectedProductSort(shop.products.sort.selected);">
+                  <template v-for="(sort_item, sort_index) in shop.products.sort.list">
+                    <option class="sort-option"
+                      :value="sort_item"
+                      v-text="sort_item">
+                    </option>
+                  </template>
+                </select>
               </div>
             </div>
-            
-            {% comment %} Load More {% endcomment %}
-            <template v-if="true">
-              <template v-if="!shop.products.list.filtered.length">
-                <div class="product-not-found">
-                  NO PRODUCTS FOUND
-                </div>
-              </template>
-              <template v-if="shop.products.list.filtered.length">
-                <div class="product-list">
-                  <template v-for="(product_item, product_index) in shop.products.list.filtered.slice(shop.products.load_more.start_index, shop.products.load_more.end_index)">
-                    <div class="product-item"
-                      :data-product-id="product_item.id">
-                      <div class="product-top-wrap">
-                        <a class="product-img-link"
-                          :title="product_item.title"
-                          :href="'/products/'+product_item.handle">
-                          <img class="product-img db-img"
-                            :alt="product_item.title"
-                            :title="product_item.title"
-                            :src="product_item.selected_image"
-                            width=""
-                            height=""
-                            loading="lazy"/>
-                        </a>
-                        <template v-for="(option_item, option_index) in product_item.options">
-                          <template v-if="option_item.name == 'Color'">
-                            <div class="product-color-list">
-                              <template v-for="color_value in option_item.values">
-                                <div class="product-color-option"
-                                  :title="color_value"
-                                  :style="{
-                                    'background-color' : getHexColor(color_value),
-                                    'box-shadow' : setBoxShadow(color_value)
-                                  }"
-                                  @mouseover="setOptionSelectedImg(product_item.id, color_value, option_index);">
-                                </div>
-                              </template>
-                            </div>
-                          </template>
-                        </template>
-                      </div>
-                      <div class="product-bot-wrap">
-                        <div class="product-details">
-                          <div class="product-title"
-                            v-text="product_item.title">
-                          </div>
-                          <div class="product-price">
-                            <span class="current-price"
-                              v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].price">
-                            </span>
-                            <template v-if="product_item.variants[0].compare_at_price != null">
-                              <span class="before-price"
-                                v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].compare_at_price">
-                              </span>
-                            </template>
-                          </div>
-                        </div>
-                        <div class="product-actions">
-                          <template v-if="checkProductAvailability(product_item.variants)">
-                            <button class="db-btn--buy-it-now"
-                              type="button"
-                              @click="buyItNow(product_item, $event);">
-                              <span class="label">
-                                BUY IT NOW
-                              </span>
-                            </button>
-                            <button class="db-btn--add-to-cart"
-                              type="button"
-                              @click="addThisToCart(product_item, $event);">
-                              <svg class="svg-icon-cart db-svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path id="path_01"
-                                  d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
-                                  fill="#FFFFFF">
-                                </path>
-                              </svg>
-                            </button>
-                          </template>
-                          <template v-else>
-                            <button class="db-btn--out-of-stock"
-                              type="button"
-                              disabled>
-                              <span class="label">
-                                OUT OF STOCK
-                              </span>
-                            </button>
-                          </template>
-                        </div>
-                      </div>
-                    </div>
-                  </template>
-                </div>
-              </template>
-              <template v-if="shop.products.list.filtered.length > shop.products.load_more.end_index">
-                <button class="db-btn--load-more"
-                  type="button"
-                  @click="loadMoreProducts();">
-                  <span class="label">
-                    Load More
-                  </span>
-                </button>
-              </template>
+          </div>
+          
+          {% comment %} Load More {% endcomment %}
+          <template v-if="true">
+            <template v-if="!shop.products.list.filtered.length">
+              <div class="product-not-found">
+                NO PRODUCTS FOUND
+              </div>
             </template>
-            
-            {% comment %} Pagination {% endcomment %}
-            <template v-if="false">
-              <template v-if="!shop.products.pagination.list.length">
-                <div class="product-not-found">
-                  NO PRODUCTS FOUND
-                </div>
-              </template>
-              <template v-if="shop.products.pagination.list.length">
-                <div class="product-list">
-                  <template v-for="(product_item, product_index) in shop.products.pagination.list">
-                    <div class="product-item"
-                      :data-product-id="product_item.id">
-                      <div class="product-top-wrap">
-                        <a class="product-img-link"
+            <template v-if="shop.products.list.filtered.length">
+              <div class="product-list">
+                <template v-for="(product_item, product_index) in shop.products.list.filtered.slice(shop.products.load_more.start_index, shop.products.load_more.end_index)">
+                  <div class="product-item"
+                    :data-product-id="product_item.id">
+                    <div class="product-top-wrap">
+                      <a class="product-img-link"
+                        :title="product_item.title"
+                        :href="'/products/'+product_item.handle">
+                        <img class="product-img db-img"
+                          :alt="product_item.title"
                           :title="product_item.title"
-                          :href="'/products/'+product_item.handle">
-                          <img class="product-img db-img"
-                            :alt="product_item.title"
-                            :title="product_item.title"
-                            :src="product_item.selected_image"
-                            width=""
-                            height=""
-                            loading="lazy"/>
-                        </a>
-                        <template v-for="(option_item, option_index) in product_item.options">
-                          <template v-if="option_item.name == 'Color'">
-                            <div class="product-color-list">
-                              <template v-for="color_value in option_item.values">
-                                <div class="product-color-option"
-                                  :title="color_value"
-                                  :style="{
-                                    'background-color' : getHexColor(color_value),
-                                    'box-shadow' : setBoxShadow(color_value)
-                                  }"
-                                  @mouseover="setOptionSelectedImg(product_item.id, color_value, option_index);">
-                                </div>
-                              </template>
-                            </div>
-                          </template>
-                        </template>
-                      </div>
-                      <div class="product-bot-wrap">
-                        <div class="product-details">
-                          <div class="product-title"
-                            v-text="product_item.title">
-                          </div>
-                          <div class="product-price">
-                            <span class="current-price"
-                              v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].price">
-                            </span>
-                            <template v-if="product_item.variants[0].compare_at_price != null">
-                              <span class="before-price"
-                                v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].compare_at_price">
-                              </span>
+                          :src="product_item.selected_image"
+                          width=""
+                          height=""
+                          loading="lazy"/>
+                      </a>
+                      <template v-for="(option_item, option_index) in product_item.options">
+                        <template v-if="option_item.name == 'Color'">
+                          <div class="product-color-list">
+                            <template v-for="color_value in option_item.values">
+                              <div class="product-color-option"
+                                :title="color_value"
+                                :style="{
+                                  'background-color' : getHexColor(color_value),
+                                  'box-shadow' : setBoxShadow(color_value)
+                                }"
+                                @mouseover="setOptionSelectedImg(product_item.id, color_value, option_index);">
+                              </div>
                             </template>
                           </div>
+                        </template>
+                      </template>
+                    </div>
+                    <div class="product-bot-wrap">
+                      <div class="product-details">
+                        <div class="product-title"
+                          v-text="product_item.title">
                         </div>
-                        <div class="product-actions">
+                        <div class="product-price">
+                          <span class="current-price"
+                            v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].price">
+                          </span>
+                          <template v-if="product_item.variants[0].compare_at_price != null">
+                            <span class="before-price"
+                              v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].compare_at_price">
+                            </span>
+                          </template>
+                        </div>
+                      </div>
+                      <div class="product-actions">
+                        <template v-if="checkProductAvailability(product_item.variants)">
                           <button class="db-btn--buy-it-now"
                             type="button"
                             @click="buyItNow(product_item, $event);">
@@ -605,61 +497,167 @@
                               </path>
                             </svg>
                           </button>
-                        </div>
+                        </template>
+                        <template v-else>
+                          <button class="db-btn--out-of-stock"
+                            type="button"
+                            disabled>
+                            <span class="label">
+                              OUT OF STOCK
+                            </span>
+                          </button>
+                        </template>
                       </div>
                     </div>
-                  </template>
-                </div>
-              </template>
-              <template v-if="shop.products.pagination.pages != 1">
-                <div class="product-pagination db-pagination">
-                  <template v-if="shop.products.pagination.current != 1">
-                    <div class="prev"
-                      @click="paginationPrevPage();">
-                      <svg class="svg-icon-angle-left db-svg"
-                        width="8"
-                        height="14"
-                        viewBox="0 0 8 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path id="path_01"
-                          d="M2.41421 7L7.70711 1.70711C8.09763 1.31658 8.09763 0.683417 7.70711 0.292893C7.31658 -0.0976311 6.68342 -0.0976311 6.29289 0.292893L0.292893 6.29289C-0.0976311 6.68342 -0.0976311 7.31658 0.292893 7.70711L6.29289 13.7071C6.68342 14.0976 7.31658 14.0976 7.70711 13.7071C8.09763 13.3166 8.09763 12.6834 7.70711 12.2929L2.41421 7Z"
-                          fill="#4C5157">
-                        </path>
-                      </svg>
-                    </div>
-                  </template>
-                  <template v-for="number in shop.products.pagination.pages">
-                    <div class="pages"
-                      v-text="number"
-                      :class="{ '--current' : shop.products.pagination.current == number }"
-                      @click="paginationSelectedPage(number);">
-                    </div>
-                  </template>
-                  <template v-if="shop.products.pagination.current != shop.products.pagination.total">
-                    <div class="next"
-                      @click="paginationNextPage()">
-                      <svg class="svg-icon-angle-right db-svg"
-                        width="8"
-                        height="14"
-                        viewBox="0 0 8 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path id="path_01"
-                          d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
-                          fill="#4C5157">
-                        </path>
-                      </svg>
-                    </div>
-                  </template>
-                </div>
-              </template>
+                  </div>
+                </template>
+              </div>
             </template>
-          </div>
+            <template v-if="shop.products.list.filtered.length > shop.products.load_more.end_index">
+              <button class="db-btn--load-more"
+                type="button"
+                @click="loadMoreProducts();">
+                <span class="label">
+                  Load More
+                </span>
+              </button>
+            </template>
+          </template>
+          
+          {% comment %} Pagination {% endcomment %}
+          <template v-if="false">
+            <template v-if="!shop.products.pagination.list.length">
+              <div class="product-not-found">
+                NO PRODUCTS FOUND
+              </div>
+            </template>
+            <template v-if="shop.products.pagination.list.length">
+              <div class="product-list">
+                <template v-for="(product_item, product_index) in shop.products.pagination.list">
+                  <div class="product-item"
+                    :data-product-id="product_item.id">
+                    <div class="product-top-wrap">
+                      <a class="product-img-link"
+                        :title="product_item.title"
+                        :href="'/products/'+product_item.handle">
+                        <img class="product-img db-img"
+                          :alt="product_item.title"
+                          :title="product_item.title"
+                          :src="product_item.selected_image"
+                          width=""
+                          height=""
+                          loading="lazy"/>
+                      </a>
+                      <template v-for="(option_item, option_index) in product_item.options">
+                        <template v-if="option_item.name == 'Color'">
+                          <div class="product-color-list">
+                            <template v-for="color_value in option_item.values">
+                              <div class="product-color-option"
+                                :title="color_value"
+                                :style="{
+                                  'background-color' : getHexColor(color_value),
+                                  'box-shadow' : setBoxShadow(color_value)
+                                }"
+                                @mouseover="setOptionSelectedImg(product_item.id, color_value, option_index);">
+                              </div>
+                            </template>
+                          </div>
+                        </template>
+                      </template>
+                    </div>
+                    <div class="product-bot-wrap">
+                      <div class="product-details">
+                        <div class="product-title"
+                          v-text="product_item.title">
+                        </div>
+                        <div class="product-price">
+                          <span class="current-price"
+                            v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].price">
+                          </span>
+                          <template v-if="product_item.variants[0].compare_at_price != null">
+                            <span class="before-price"
+                              v-text="'{{ cart.currency.symbol }}'+product_item.variants[0].compare_at_price">
+                            </span>
+                          </template>
+                        </div>
+                      </div>
+                      <div class="product-actions">
+                        <button class="db-btn--buy-it-now"
+                          type="button"
+                          @click="buyItNow(product_item, $event);">
+                          <span class="label">
+                            BUY IT NOW
+                          </span>
+                        </button>
+                        <button class="db-btn--add-to-cart"
+                          type="button"
+                          @click="addThisToCart(product_item, $event);">
+                          <svg class="svg-icon-cart db-svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path id="path_01"
+                              d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                              fill="#FFFFFF">
+                            </path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </template>
+            <template v-if="shop.products.pagination.pages != 1">
+              <div class="product-pagination db-pagination">
+                <template v-if="shop.products.pagination.current != 1">
+                  <div class="prev"
+                    @click="paginationPrevPage();">
+                    <svg class="svg-icon-angle-left db-svg"
+                      width="8"
+                      height="14"
+                      viewBox="0 0 8 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M2.41421 7L7.70711 1.70711C8.09763 1.31658 8.09763 0.683417 7.70711 0.292893C7.31658 -0.0976311 6.68342 -0.0976311 6.29289 0.292893L0.292893 6.29289C-0.0976311 6.68342 -0.0976311 7.31658 0.292893 7.70711L6.29289 13.7071C6.68342 14.0976 7.31658 14.0976 7.70711 13.7071C8.09763 13.3166 8.09763 12.6834 7.70711 12.2929L2.41421 7Z"
+                        fill="#4C5157">
+                      </path>
+                    </svg>
+                  </div>
+                </template>
+                <template v-for="number in shop.products.pagination.pages">
+                  <div class="pages"
+                    v-text="number"
+                    :class="{ '--current' : shop.products.pagination.current == number }"
+                    @click="paginationSelectedPage(number);">
+                  </div>
+                </template>
+                <template v-if="shop.products.pagination.current != shop.products.pagination.total">
+                  <div class="next"
+                    @click="paginationNextPage()">
+                    <svg class="svg-icon-angle-right db-svg"
+                      width="8"
+                      height="14"
+                      viewBox="0 0 8 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path id="path_01"
+                        d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
+                        fill="#4C5157">
+                      </path>
+                    </svg>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </template>
         </div>
       </div>
-    </section>
-  </template>
+    </div>
+  </section>
   
 </main>
 <script>
