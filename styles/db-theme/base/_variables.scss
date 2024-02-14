@@ -17,6 +17,8 @@
 
   --hover-transition-duration: 200ms;
   --click-transition-duration: 400ms;
+
+  --transition-timing: cubic-bezier(0.86, 0, 0.07, 1);
 }
 
 $primaryFontFamily: var(--primary-font-family);
@@ -48,3 +50,5 @@ $clickTransitionDuration: var(--click-transition-duration);
 
 $hover-transition-duration: var(--hover-transition-duration);
 $click-transition-duration: var(--click-transition-duration);
+
+$transition-timing: var(--transition-timing);

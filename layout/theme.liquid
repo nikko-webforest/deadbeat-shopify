@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 
-    {% comment %} <script type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script> {% endcomment %}
     <!-- Favicon -->
     <link rel="icon" href="{{ 'DB_favicon.png' | asset_url }}" type="image/x-icon">
 
@@ -20,58 +19,71 @@
     {{ 'theme.css' | asset_url | stylesheet_tag }}
 
     <!-- jquery | JS -->
-    <script
-      type="text/javascript"
-      src="{{ 'jquery.js' | asset_url }}"
-      async></script>
-
+    <script type="text/javascript" src="{{ 'jquery.js' | asset_url }}" async></script>
 
     <!-- vue | JS -->
     <script type="text/javascript" src="{{ 'vue.js' | asset_url }}"></script>
 
+    <!-- flickity | CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <!-- flickity | JS -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
+    <!-- animate-on-scroll | CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- animate-on-scroll | JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    {% comment %} <script type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script> {% endcomment %}
     {% comment %} <script src="https://sdk.scdn.co/spotify-player.js"></script> {% endcomment %}
 
   </head>
   <body class="db-scroll-bar">
 
-    <div id="root" class="db-site">
+    {% render 'site-loader' %}
 
-      {% render 'site-loader' %}
+    {% render 'header' %}
 
-      {% render 'header' %}
+    {% if template.name == 'index' %}
+      
+      <main class="db-main site-main">
+      
+        {{ content_for_layout }}
+      
+      </main>
+    
+    {% else %}
 
       {{ content_for_layout }}
 
-      {% render 'footer' %}
+    {% endif %}
 
-      {% render 'cart' %}
+    {% render 'footer' %}
 
-    </div>
+    {% render 'cart' %}
 
-  
-
-<!-- PF EDT START -->
-<script type='text/javascript'>
-{%- if content_for_header contains 'shopify-product-customizer' -%}
-    {%- if product -%}
+    <!-- PF EDT START -->
+    <script type='text/javascript'>
+    {%- if content_for_header contains 'shopify-product-customizer' -%}
+      {%- if product -%}
         {%- if product.first_available_variant -%}
-            var pfProductId = {{ product.metafields.printful.is_synced | json }};
-            var pfEdt = {{ shop.metafields.printful.is_edt_enabled | json }};
-            var pfEdtTextColor = {{ shop.metafields.printful.edt_text_color | json }};
-            var pfEdtBackgroundColor = {{ shop.metafields.printful.edt_background_color | json }};
-            var pfEdtBorderColor = {{ shop.metafields.printful.edt_border_color | json }};  
-            var pfEdtUseDefaultStyling = {{ shop.metafields.printful.edt_default_style | json }};
-            var pfEdtTextAlignment = {{ shop.metafields.printful.edt_text_alignment | json }};
-            var pfEdtFlags = {
-                US: "{{ 'US.svg' | asset_url }}",CA: "{{ 'CA.svg' | asset_url }}",ES: "{{ 'ES.svg' | asset_url }}",LV: "{{ 'LV.svg' | asset_url }}",GB: "{{ 'GB.svg' | asset_url }}",DE: "{{ 'DE.svg' | asset_url }}",FR: "{{ 'FR.svg' | asset_url }}",AU: "{{ 'AU.svg' | asset_url }}",JP: "{{ 'JP.svg' | asset_url }}",NZ: "{{ 'NZ.svg' | asset_url }}",IT: "{{ 'IT.svg' | asset_url }}",BR: "{{ 'BR.svg' | asset_url }}",KR: "{{ 'KR.svg' | asset_url }}",NL: "{{ 'NL.svg' | asset_url }}",GB: "{{ 'GB.svg' | asset_url }}",US: "{{ 'US.svg' | asset_url }}",
-            };
+          var pfProductId = {{ product.metafields.printful.is_synced | json }};
+          var pfEdt = {{ shop.metafields.printful.is_edt_enabled | json }};
+          var pfEdtTextColor = {{ shop.metafields.printful.edt_text_color | json }};
+          var pfEdtBackgroundColor = {{ shop.metafields.printful.edt_background_color | json }};
+          var pfEdtBorderColor = {{ shop.metafields.printful.edt_border_color | json }};  
+          var pfEdtUseDefaultStyling = {{ shop.metafields.printful.edt_default_style | json }};
+          var pfEdtTextAlignment = {{ shop.metafields.printful.edt_text_alignment | json }};
+          var pfEdtFlags = {
+            US: "{{ 'US.svg' | asset_url }}",CA: "{{ 'CA.svg' | asset_url }}",ES: "{{ 'ES.svg' | asset_url }}",LV: "{{ 'LV.svg' | asset_url }}",GB: "{{ 'GB.svg' | asset_url }}",DE: "{{ 'DE.svg' | asset_url }}",FR: "{{ 'FR.svg' | asset_url }}",AU: "{{ 'AU.svg' | asset_url }}",JP: "{{ 'JP.svg' | asset_url }}",NZ: "{{ 'NZ.svg' | asset_url }}",IT: "{{ 'IT.svg' | asset_url }}",BR: "{{ 'BR.svg' | asset_url }}",KR: "{{ 'KR.svg' | asset_url }}",NL: "{{ 'NL.svg' | asset_url }}",GB: "{{ 'GB.svg' | asset_url }}",US: "{{ 'US.svg' | asset_url }}",
+          };
         {%- else -%}
-            var pfEdt = 0;
+          var pfEdt = 0;
         {%- endif -%}
+      {%- endif -%}
     {%- endif -%}
-{%- endif -%}
-</script>
-<!-- PF EDT END -->
-</body>
+    </script>
+    <!-- PF EDT END -->
+    
+  </body>
 </html>

@@ -675,7 +675,7 @@
       return {
         color_values: [],
         shop: {
-          /* collection: {{ collection.products | json }}, */
+          collection: {{ collection.products | json }},
           products_liquid: [
             {% for productItem in collection.products %}
               {

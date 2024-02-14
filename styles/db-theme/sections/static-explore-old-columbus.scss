@@ -1,0 +1,134 @@
+.db-section--static-explore-old-columbus {
+  // background-image: url('section_static-explore-old-columbus_bg-v01-1900x1090.jpg');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  padding: 225px 20px 265px;
+
+  .db-bg-wrap {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    .db-bg-video {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      display: block;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    .db-bg-overlay {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      display: block;
+      background-color: rgba(12, 7, 15, 0.60);
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .db-container {
+    position: relative;
+    z-index: 2;
+
+    .db-row {
+      justify-content: flex-end;
+
+      .db-col {
+        width: max-content;
+
+        h2 {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          align-items: flex-end;
+          gap: 35px 24px;
+          max-width: 420px;
+          width: 100%;
+          margin: 0 0 40px auto;
+
+          span {
+            font-family: $primary-font-family;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1em;
+
+            &:nth-child(1) {
+              color: #CDCDCF;
+              font-size: 50px;
+              letter-spacing: -2px;
+            }
+
+            &:nth-child(2) {
+              color: #CDCDCF;
+              font-size: 98px;
+              letter-spacing: -3.92px;
+            }
+
+            &:nth-child(3) {
+              color: #A7D422;
+              font-size: 98px;
+              letter-spacing: -3.92px;
+            }
+          }
+        }
+
+        p {
+          color: $white-color;
+          font-family: $primary-font-family;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 500;
+          text-align: left;
+          text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
+          line-height: 1.5em;
+          max-width: 530px;
+          width: 100%;
+          margin-bottom: 90px;
+        }
+
+        .db-btn--learn-more {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $secondary-color;
+          max-width: 265px;
+          min-width: 200px;
+          width: 100%;
+          margin: 0 0 0 auto;
+          padding: 16px;
+          border: 1px solid $secondary-color;
+          border-radius: 36px;
+          
+          .label {
+            color: $white-color;
+            font-family: $primary-font-family;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            text-transform: uppercase;
+            line-height: 1em;
+            transition:
+              color $hover-transition-duration ease-in-out 0ms;
+          }
+
+          &:hover {
+            background-color: transparent;
+
+            .label {
+              color: $secondary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

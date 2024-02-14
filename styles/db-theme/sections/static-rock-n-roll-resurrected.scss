@@ -1,0 +1,29 @@
+.db-section--static-rock-n-roll-resurrected {
+  background-image: url('section_static-rock-n-roll-resurrected_bg-v01-1900x1090.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 190px 20px 160px;
+
+  .db-container {
+    .db-row {
+      justify-content: flex-start;
+
+      .db-col {
+        width: 50%;
+
+        h2 {
+          color: $white-color;
+          font-family: $primary-font-family;
+          font-size: 50px;
+          font-style: normal;
+          font-weight: 700;
+          text-align: center;
+          text-transform: uppercase;
+          line-height: 1.15em;
+          margin: 0 auto 70px;
+        }
+      }
+    }
+  }
+}

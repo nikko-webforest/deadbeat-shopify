@@ -1,0 +1,338 @@
+  {% assign collection = collections['all-products'] %}
+{% comment %} {{ collection.products | json }} {% endcomment %}
+
+{% capture product_types %}
+  {% for product_item in collection.products %}
+    {{ product_item.metafields.custom.product_type | append: ',' }}
+  {% endfor %}
+{% endcapture %}
+{% assign product_types = product_types | split: ',' | uniq %}
+
+<section class="db-section db-section--static-discover-and-select"
+  id="{{ section.id }}">
+  <div class="db-container">
+    <div class="db-row">
+      <div class="db-col">
+        <img class="db-img"
+          alt=""
+          title=""
+          src="{{ 'deadbeat-emporium_logo-v02-669x510.png' | asset_url }}"
+          width=""
+          height=""
+          loading="lazy"/>
+      </div>
+      <div class="db-col">
+        <h2>
+          DISCOVER & COLLECT
+        </h2>
+        <h3>
+          Exclusive Merch Items
+        </h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
+        <a class="db-btn--view-all"
+          title=""
+          href="">
+          <span class="label">
+            VIEW ALL
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="db-row">
+      <div class="db-col">
+        <ul class="product-type-list">
+          <div class="active-indicator"></div>
+          {% for product_type in product_types %}
+            {% if product_type != blank %}
+              <li class="product-type-item">
+                {{ product_type }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="flickity-button-wrap">
+          <button class="flickity-button prev"
+            type="button">
+            <svg class="svg-icon-circle-with-angle-left db-svg"
+              width="42"
+              height="42"
+              viewBox="0 0 42 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect id="rect_01"
+                x="-0.5"
+                y="0.5"
+                width="41"
+                height="41"
+                rx="20.5"
+                transform="matrix(-1 0 0 1 41 0)"
+                stroke="#AA27B1">
+              </rect>
+              <path id="path_01"
+                d="M18 21.4125C18 21.6125 18.1 21.8125 18.2 21.9125L21.5 25.2125C21.8 25.5125 22.3 25.5125 22.6 25.2125C22.9 24.9125 22.9 24.4125 22.6 24.1125L19.9 21.4125L22.6 18.7125C22.9 18.4125 22.9 17.9125 22.6 17.6125C22.3 17.3125 21.8 17.3125 21.5 17.6125L18.3 20.8125C18.1 21.0125 18 21.2125 18 21.4125Z"
+                fill="#AA27B1">
+              </path>
+            </svg>
+          </button>
+          <button class="flickity-button next"
+            type="button">
+            <svg class="svg-icon-circle-with-angle-right"
+              width="42"
+              height="42"
+              viewBox="0 0 42 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect id="rect_01"
+                x="0.5"
+                y="0.5"
+                width="41"
+                height="41"
+                rx="20.5"
+                stroke="#AA27B1">
+              </rect>
+              <path id="path_01"
+                d="M24 21.4125C24 21.6125 23.9 21.8125 23.8 21.9125L20.5 25.2125C20.2 25.5125 19.7 25.5125 19.4 25.2125C19.1 24.9125 19.1 24.4125 19.4 24.1125L22.1 21.4125L19.4 18.7125C19.1 18.4125 19.1 17.9125 19.4 17.6125C19.7 17.3125 20.2 17.3125 20.5 17.6125L23.7 20.8125C23.9 21.0125 24 21.2125 24 21.4125Z"
+                fill="#AA27B1">
+              </path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="db-col">
+        <div class="product-slider-list">
+          {% for product_type in product_types %}
+            {% if product_type != blank %}
+              <div class="product-slider-main"
+                data-product-type="{{ product_type | replace: ' ', ' ' }}">
+                {% for product_item in collection.products %}
+                  {% if product_type contains product_item.metafields.custom.product_type %}
+                    <div class="product-slider-cell"
+                      style="background-image: url('{{ product_item.featured_image | image_url }}');"
+                      data-product-available="{{ product_item.available }}">
+                      <div class="product-details">
+                        <div class="db-inner-row">
+                          <div class="product-type">
+                            {{ product_item.metafields.custom.product_type }}
+                          </div>
+                          {% assign has_color_option = false %}
+                          {% assign color_count = 1 %}
+                          {% for option in product_item.options %}
+                            {% if option contains 'Color' %}
+                              {% assign has_color_option = true %}
+                            {% endif %}
+                            {% comment %} <strong>{{ option }}:</strong> {% endcomment %}
+                            {% assign option_values = '' %}
+                            {% for variant in product_item.variants %}
+                              {% if variant.options[forloop.index0] == option.name %}
+                                {% assign option_values = option_values | append: variant.option1 | append: ',' %}
+                                {% assign color_count = color_count | plus: 1 %}
+                              {% endif %}
+                            {% endfor %}
+                            {% comment %}
+                              {% assign option_values = option_values | split: ',' | uniq %}
+                              {% for value in option_values %}
+                                {{ value }}
+                              {% endfor %}
+                            {% endcomment %}
+                          {% endfor %}
+                          {% if has_color_option %}
+                            <div class="product-color-variant-count">
+                              {{ color_count }} Color Variants
+                            </div>
+                          {% endif %}
+                        </div>
+                        <div class="db-inner-row">
+                          <div class="product-title">
+                            {{ product_item.title }}
+                          </div>
+                          <div class="product-price">
+                            {{ product_item.price | money }}
+                          </div>
+                        </div>
+                        <div class="product-actions">
+                          {% if product_item.available %}
+                            {% assign available_variant = product_item.variants[0] %}
+
+                            {% for variant in product_item.variants %}
+                              {% if variant.avaialble and available_variant == blank %}
+                                {% assign available_variant = variant %}
+                              {% endif %}
+                            {% endfor %}
+
+                            <button class="db-btn--buy-it-now"
+                              type="button"
+                              onclick="buyItNow('{{ available_variant.id }}');">
+                              <span class="label">
+                                BUY IT NOW
+                              </span>
+                            </button>
+                            <button class="db-btn--add-to-cart"
+                              type="button"
+                              onclick="addToCart('{{ available_variant.id }}');">
+                              <svg class="svg-icon-cart db-svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="path_01"
+                                  d="M16 16C14.89 16 14 16.89 14 18C14 18.5304 14.2107 19.0391 14.5858 19.4142C14.9609 19.7893 15.4696 20 16 20C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18C18 17.4696 17.7893 16.9609 17.4142 16.5858C17.0391 16.2107 16.5304 16 16 16ZM0 0V2H2L5.6 9.59L4.24 12.04C4.09 12.32 4 12.65 4 13C4 13.5304 4.21071 14.0391 4.58579 14.4142C4.96086 14.7893 5.46957 15 6 15H18V13H6.42C6.3537 13 6.29011 12.9737 6.24322 12.9268C6.19634 12.8799 6.17 12.8163 6.17 12.75C6.17 12.7 6.18 12.66 6.2 12.63L7.1 11H14.55C15.3 11 15.96 10.58 16.3 9.97L19.88 3.5C19.95 3.34 20 3.17 20 3C20 2.73478 19.8946 2.48043 19.7071 2.29289C19.5196 2.10536 19.2652 2 19 2H4.21L3.27 0M6 16C4.89 16 4 16.89 4 18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20C6.53043 20 7.03914 19.7893 7.41421 19.4142C7.78929 19.0391 8 18.5304 8 18C8 17.4696 7.78929 16.9609 7.41421 16.5858C7.03914 16.2107 6.53043 16 6 16Z"
+                                  fill="#FFFFFF">
+                                </path>
+                              </svg>
+                            </button>
+                          {% else %}
+                            <button class="db-btn--out-of-stock"
+                              type="button"
+                              disabled>
+                              <span class="label">
+                                OUT OF STOCK
+                              </span>
+                            </button>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  console.log('loadPage');
+  setTimeout(() => {
+    document.querySelector('.db-site-loader').classList.remove('--show');
+    document.querySelector('.db-header').classList.add('--animate-now');
+  }, 3000);
+
+  let selected_product_type_index = 0;
+
+  document.querySelectorAll('#{{ section.id }} .product-type-list .product-type-item').forEach((product_type_item, product_type_index) => {
+    if (product_type_index == selected_product_type_index) {
+      product_type_item.classList.add('--active');
+      scrollToSelectedSlider(selected_product_type_index);
+    }
+
+    product_type_item.addEventListener("mouseover", () => {
+      document.querySelector('#{{ section.id }} .product-type-list .active-indicator').style.top = `${product_type_item.offsetTop}px`;
+    });
+
+    product_type_item.addEventListener("click", () => {
+      document.querySelectorAll('#{{ section.id }} .product-type-list .product-type-item').forEach(product_type_item => product_type_item.classList.remove('--active'));
+      product_type_item.classList.add('--active');
+      selected_product_type_index = product_type_index;
+      scrollToSelectedSlider(selected_product_type_index);
+    });
+  });
+
+  function scrollToSelectedSlider(index) {
+    document.querySelectorAll('#{{ section.id }} .product-slider-main').forEach((product_slider_main_item, product_slider_main_index) => {
+      product_slider_main_item.style.translate = `0px ${((product_slider_main_index - index) * 460)}px`;
+    });
+  }
+
+  const flickity = [];
+  document.querySelectorAll('#{{ section.id }} .product-slider-main').forEach((product_slider_main_item, product_slider_main_index) => {
+    flickity[product_slider_main_index] = new Flickity(product_slider_main_item, {
+      cellAlign: 'left',
+      contain: true,
+      prevNextButtons: false,
+      draggable: false
+    });
+  });
+  // console.log('flickity =', flickity);
+
+  document.querySelector('#{{ section.id }} .flickity-button-wrap .flickity-button.prev').addEventListener('click', () => {
+    flickity[selected_product_type_index].previous();
+  });
+
+  document.querySelector('#{{ section.id }} .flickity-button-wrap .flickity-button.next').addEventListener('click', () => {
+    flickity[selected_product_type_index].next();
+  });
+
+  function buyItNow(product_variant_id) {
+    console.log('buyItNow()');
+    console.log('product_variant_id =', product_variant_id);
+
+    let items = [
+      {
+        id: product_variant_id,
+        quantity: 1,
+      }
+    ];
+
+    $.ajax({
+      type: "POST",
+      url: '/cart/add.js',
+      dataType: 'json',
+      crossDomain: true,
+      data: {
+        items: items
+      },
+      success: (data) => {
+        console.log('Added this to Cart SUCCESS...', data);
+      },
+      error: (error) => {
+        console.error('Added this to Cart FAILED...', error);
+      }
+    });
+
+    setTimeout(() => {
+      window.location = '/checkout';
+    }, 1000);
+  }
+
+  function addToCart(product_variant_id) {
+    console.log('addToCart()');
+    console.log('product_variant_id =', product_variant_id);
+
+    let items = [
+      {
+        id: product_variant_id,
+        quantity: 1,
+      }
+    ];
+
+    DB_Cart_App.cart.loader = true;
+
+    $.ajax({
+      type: "POST",
+      url: '/cart/add.js',
+      dataType: 'json',
+      crossDomain: true,
+      data: {
+        items: items
+      },
+      success: (data) => {
+        console.log('Added this to Cart SUCCESS...', data);
+        openCart();
+        DB_Cart_App.fetchCartData();
+        DB_Cart_App.cart.loader = false;
+      },
+      error: (error) => {
+        console.error('Added this to Cart FAILED...', error);
+      }
+    })
+  }
+
+  function closeCart() {
+    // console.log('closeCart()');
+
+    document.querySelector('body').classList.remove('--show-cart');
+    document.querySelector('body').style.overflowY = 'auto';
+  }
+
+  function openCart() {
+    // console.log('openCart()');
+
+    document.querySelector('body').classList.add('--show-cart');
+    document.querySelector('body').style.overflowY = 'hidden';
+  }
+</script>

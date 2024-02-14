@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "static-home-hero-banner": {
+      "type": "static-home-hero-banner",
+      "settings": {
+      }
+    },
+    "static-discover-and-select": {
+      "type": "static-discover-and-select",
+      "settings": {
+      }
+    },
+    "static-rock-n-roll-resurrected": {
+      "type": "static-rock-n-roll-resurrected",
+      "settings": {
+      }
+    },
+    "static-explore-old-columbus": {
+      "type": "static-explore-old-columbus",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "static-home-hero-banner",
+    "static-discover-and-select",
+    "static-rock-n-roll-resurrected",
+    "static-explore-old-columbus"
+  ]
+}
