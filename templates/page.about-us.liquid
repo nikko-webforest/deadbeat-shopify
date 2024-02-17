@@ -1,5 +1,21 @@
-<main class="db-main site-main">
+<main class="db-main site-main db-page--{{ page.handle }}">
 
-  {% section 'page-about-us' %}
+  {% section 'static-about-us' %}
+
+  {% comment %} {% section 'static-elevate-pictures' %} {% endcomment %}
+
+  {% comment %} {% section 'static-newsletter-subscription' %} {% endcomment %}
 
 </main>
+<script>
+  const loadPage = () => {
+    console.log('loadPage');
+    setTimeout(() => {
+      document.querySelector('.db-site-loader').classList.remove('--show');
+      // document.querySelector('.db-section--banner').classList.add('--animate-now');
+      document.querySelector('.db-header').classList.add('--animate-now');
+    }, 3000);
+  };
+
+  loadPage();
+</script>

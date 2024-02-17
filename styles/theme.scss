@@ -17,18 +17,20 @@
 
 // pages
 @import './db-theme/pages/page--home';
-@import './db-theme/pages/page--about-us';
-@import './db-theme/pages/page--roadmap';
 @import './db-theme/pages/page--explore-oc';
-@import './db-theme/pages/page--privacy-policy';
-@import './db-theme/pages/page--terms-of-use';
 @import './db-theme/pages/page--emporium';
 @import './db-theme/pages/page--product';
 @import './db-theme/pages/page--media';
-@import './db-theme/pages/page--blog-single';
-@import './db-theme/pages/page--hairy-dispatch';
 
 // sections
+@import './db-theme/sections/static-main-roadmap';
+@import './db-theme/sections/static-about-us';
+@import './db-theme/sections/static-elevate-pictures';
+@import './db-theme/sections/static-newsletter-subscription';
+@import './db-theme/sections/static-terms-of-use';
+@import './db-theme/sections/static-privacy-policy';
+@import './db-theme/sections/static-blog-listing';
+@import './db-theme/sections/static-blog-single';
 @import './db-theme/sections/static-home-hero-banner';
 @import './db-theme/sections/static-discover-and-select';
 @import './db-theme/sections/static-rock-n-roll-resurrected';

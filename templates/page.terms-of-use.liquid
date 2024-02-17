@@ -1,3 +1,17 @@
-<main class="db-main site-main">
-  {% section 'page-terms-of-use' %}
+<main class="db-main site-main db-page--{{ page.handle }}">
+
+  {% section 'static-terms-of-use' %}
+
 </main>
+<script>
+  const loadPage = () => {
+    console.log('loadPage');
+    setTimeout(() => {
+      document.querySelector('.db-site-loader').classList.remove('--show');
+      // document.querySelector('.db-section--banner').classList.add('--animate-now');
+      document.querySelector('.db-header').classList.add('--animate-now');
+    }, 3000);
+  };
+
+  loadPage();
+</script>

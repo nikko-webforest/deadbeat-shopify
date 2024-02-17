@@ -1,4 +1,7 @@
-.db-shopping-cart {
+/*==========*/
+/*   CART   */
+/*==========*/
+.db-cart-drawer {
   position: fixed;
   z-index: 9;
   inset: 0;
@@ -570,7 +573,7 @@
 }
 
 .--show-cart {
-  .db-shopping-cart {
+  .db-cart-drawer {
     z-index: 99999;
     visibility: visible;
     opacity: 1;

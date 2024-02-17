@@ -1,5 +1,22 @@
-<main class="db-main site-main">
+<style>
+  .db-footer {
+    background-color: #0E0914;
+  }
+</style>
+<main class="db-main site-main db-page--{{ page.handle }}">
   
-  {% section 'page-roadmap' %}
+  {% section 'static-main-roadmap' %}
   
 </main>
+<script>
+  const loadPage = () => {
+    console.log('loadPage()');
+    setTimeout(() => {
+      document.querySelector('.db-site-loader').classList.remove('--show');
+      document.querySelector('.db-section--static-main-roadmap').classList.add('--animate-now');
+      document.querySelector('.db-header').classList.add('--animate-now');
+    }, 3000);
+  };
+
+  loadPage();
+</script>

@@ -1,4 +1,4 @@
-<main class="db-main site-main db-page--blog-single">
+<main class="db-main site-main db-page--{{ page.handle }}">
   
   {% section 'static-blog-single' %}
 
@@ -42,7 +42,8 @@
       this.loadPage();
     },
     mounted() {},
+    updated() {},
   };
 
-  Vue.createApp(DB_SF_Page_Blog_Single_Options).mount('.db-page--blog-single');
+  Vue.createApp(DB_SF_Page_Blog_Single_Options).mount('.db-page--{{ page.handle }}');
 </script>

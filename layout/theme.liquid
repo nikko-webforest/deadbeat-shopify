@@ -42,7 +42,7 @@
 
     {% render 'site-loader' %}
 
-    {% render 'header' %}
+    {% section 'site-header' %}
 
     {% if template.name == 'index' %}
       
@@ -58,9 +58,9 @@
 
     {% endif %}
 
-    {% render 'footer' %}
+    {% section 'site-footer' %}
 
-    {% render 'cart' %}
+    {% section 'site-cart' %}
 
     <!-- PF EDT START -->
     <script type='text/javascript'>

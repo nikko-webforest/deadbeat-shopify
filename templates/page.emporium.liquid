@@ -1,4 +1,4 @@
-<main class="db-main site-main db-page--merch-store">
+<main class="db-main site-main db-page--{{ page.handle }}">
 
   {% comment %}
     This collection must be created "All Products"
@@ -1393,5 +1393,5 @@
     updated() {},
   };
 
-  Vue.createApp(DB_SF_Page_MerchStore_Options).mount('.db-page--merch-store');
+  Vue.createApp(DB_SF_Page_MerchStore_Options).mount('.db-page--{{ page.handle }}');
 </script>
