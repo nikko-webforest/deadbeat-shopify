@@ -8,21 +8,47 @@
       &:nth-of-type(1) {
         justify-content: space-between;
         align-items: center;
-        gap: 0 130px;
+        gap: 20px 130px;
         margin: 0 auto 100px;
+
+        @media only screen and (max-width: 1440px) {
+          gap: 20px 100px;
+        }
+
+        @media only screen and (max-width: 1080px) {
+          gap: 20px 60px;
+        }
+
+        @media only screen and (max-width: 768px) {
+          flex-direction: column;
+        }
 
         > .db-col {
           &:nth-of-type(1) {
             width: 50%;
 
+            @media only screen and (max-width: 768px) {
+              width: 100%;
+            }
+
             .db-img {
               display: block;
               width: 100%;
+
+              @media only screen and (max-width: 768px) {
+                max-width: 375px;
+                margin: 0 auto;
+              }
             }
           }
 
           &:nth-of-type(2) {
             width: 50%;
+
+            @media only screen and (max-width: 768px) {
+              max-width: 480px;
+              width: 100%;
+            }
 
             h2 {
               color: $white-color;
@@ -31,8 +57,11 @@
               font-style: normal;
               font-weight: 700;
               line-height: 1.25em;
-              white-space: nowrap;
               margin-bottom: 8px;
+
+              @media only screen and (max-width: 768px) {
+                font-size: 50px;
+              }
             }
 
             h3 {
@@ -43,8 +72,11 @@
               font-weight: 700;
               text-shadow: 4.993px 4.993px 14.978px rgba(0, 0, 0, 0.40);
               line-height: 1.25em;
-              white-space: nowrap;
               margin-bottom: 63px;
+
+              @media only screen and (max-width: 768px) {
+                font-size: 40px;
+              }
             }
 
             p {
@@ -58,6 +90,10 @@
               max-width: 490px;
               width: 100%;
               margin: 0 0 32px 18px;
+
+              @media only screen and (max-width: 1080px) {
+                margin: 0 0 32px 0;
+              }
             }
 
             .db-btn--view-all {
@@ -71,6 +107,14 @@
               padding: 16px;
               border: 1px solid $secondary-color;
               border-radius: 36px;
+
+              @media only screen and (max-width: 1080px) {
+                margin: 0;
+              }
+
+              @media only screen and (max-width: 480px) {
+                margin: 0 auto;
+              }
 
               .label {
                 color: $white-color;
@@ -101,6 +145,11 @@
         align-items: stretch;
         gap: 46px;
 
+        @media only screen and (max-width: 768px) {
+          flex-direction: column;
+          gap: 40px;
+        }
+
         > .db-col {
           &:nth-of-type(1) {
             display: flex;
@@ -110,12 +159,25 @@
             width: max-content;
             padding: 28px 0 67px;
 
+            @media only screen and (max-width: 768px) {
+              width: 100%;
+              padding: 0;
+            }
+
             .product-type-list {
               position: relative;
               display: flex;
               flex-direction: column;
               gap: 12px;
               border-left: 1px solid #B522EB;
+
+              @media only screen and (max-width: 768px) {
+                flex-direction: row;
+                width: 100%;
+                margin: 0 auto 25px;
+                border-top: 1px solid #B522EB;
+                border-left: unset;
+              }
 
               .active-indicator {
                 position: absolute;
@@ -128,6 +190,10 @@
                 border-radius: 0px 2px 2px 0px;
                 transition:
                   top $hover-transition-duration $transition-timing 0ms;
+                
+                @media only screen and (max-width: 768px) {
+                  display: none;
+                }
               }
 
               .product-type-item {
@@ -143,6 +209,12 @@
                 transition:
                   color $hover-transition-duration $transition-timing 0ms;
                 cursor: pointer;
+
+                @media only screen and (max-width: 768px) {
+                  text-align: center;
+                  width: 33.33%;
+                  padding: 15px 6px;
+                }
 
                 &::before {
                   content: '';
@@ -160,8 +232,16 @@
                 &.--active {
                   color: #B522EB;
 
+                  @media only screen and (max-width: 768px) {
+                    border-top: 1px solid #B522EB;
+                  }
+
                   &::before {
                     display: block;
+
+                    @media only screen and (max-width: 768px) {
+                      display: none;
+                    }
                   }
                 }
               }
@@ -172,6 +252,11 @@
               justify-content: flex-start;
               align-items: stretch;
               gap: 16px;
+
+              @media only screen and (max-width: 768px) {
+                justify-content: center;
+                width: 100%;
+              }
 
               .flickity-button {
                 position: relative;
@@ -191,6 +276,10 @@
               position: relative;
               height: 420px;
               overflow: hidden;
+
+              @media only screen and (max-width: 768px) {
+                height: 340px;
+              }
               
               .product-slider-main {
                 position: absolute;
@@ -218,6 +307,13 @@
                   justify-content: center;
                   align-items: center;
 
+                  @media only screen and (max-width: 768px) {
+                    max-width: 215px;
+                    min-width: 215px;
+                    height: 250px;
+                    margin: 0 12px 0 0;
+                  }
+
                   .product-details {
                     position: absolute;
                     bottom: -100%;
@@ -227,6 +323,10 @@
                     padding: 18px 19px;
                     transition:
                       bottom $hover-transition-duration $transition-timing 0ms;
+
+                    @media only screen and (max-width: 768px) {
+                      padding: 12px;
+                    }
 
                     > .db-inner-row {
                       &:nth-of-type(1) {
@@ -245,6 +345,10 @@
                           line-height: 1em;
                           letter-spacing: -0.508px;
                           white-space: nowrap;
+
+                          @media only screen and (max-width: 768px) {
+                            font-size: 10px;
+                          }
                         }
 
                         .product-color-variant-count {
@@ -255,6 +359,10 @@
                           font-weight: 400;
                           line-height: 1em;
                           letter-spacing: -0.508px;
+
+                          @media only screen and (max-width: 768px) {
+                            font-size: 10px;
+                          }
                         }
                       }
 
@@ -273,6 +381,10 @@
                           font-weight: 500;
                           line-height: 1.25em;
                           letter-spacing: -0.762px;
+
+                          @media only screen and (max-width: 768px) {
+                            font-size: 15px;
+                          }
                         }
 
                         .product-price {
@@ -283,6 +395,10 @@
                           font-weight: 500;
                           line-height: 1.25em;
                           letter-spacing: -0.762px;
+
+                          @media only screen and (max-width: 768px) {
+                            font-size: 15px;
+                          }
                         }
                       }
                     }
@@ -318,6 +434,10 @@
                           display: block;
                           transition:
                             all $hover-transition-duration $transition-timing 0ms;
+
+                          @media only screen and (max-width: 768px) {
+                            font-size: 15px;
+                          }
                         }
   
                         &:hover {
@@ -372,6 +492,10 @@
                           font-weight: 700;
                           line-height: 1.25em;
                           display: block;
+
+                          @media only screen and (max-width: 768px) {
+                            font-size: 15px;
+                          }
                         }
                       }
                     }
@@ -396,6 +520,10 @@
                   align-items: center;
                   gap: 9px;
                   margin-bottom: 40px;
+
+                  @media only screen and (max-width: 768px) {
+                    justify-content: center;
+                  }
 
                   .dot {
                     background-color: #B522EB;

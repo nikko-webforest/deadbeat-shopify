@@ -10,7 +10,7 @@
   min-width: 380px;
   width: 100%;
   transition:
-    translate 1000ms cubic-bezier(0.86, 0, 0.07, 1) 0s;
+    translate 1000ms $transition-timing 0s;
 
   .db-header-main {
     position: static;
@@ -49,7 +49,7 @@
                 #path_02 {
                   stroke: $whiteColor;
                   transition:
-                    stroke $hoverTransitionDuration ease-in-out 0ms;
+                    stroke $hoverTransitionDuration $transition-timing 0ms;
                 }
               }
             }
@@ -188,7 +188,7 @@
     padding: 0 20px;
 
     transition:
-      top 1s ease-in-out 0ms;
+      top 1s $transition-timing 0ms;
 
     @media only screen and (max-width: 768px) {
       // top: -100%;
@@ -224,12 +224,12 @@
         .svg-icon-close {
           scale: 1.0;
           transition:
-            scale $hoverTransitionDuration ease-in-out 0ms;
+            scale $hoverTransitionDuration $transition-timing 0ms;
   
           #path_01 {
             fill: #A5A5A5;
             transition:
-              fill $hoverTransitionDuration ease-in-out 0ms;
+              fill $hoverTransitionDuration $transition-timing 0ms;
           }
         }
   
@@ -294,8 +294,8 @@
                   opacity: 0;
                   width: max-content;
                   transition:
-                    color 200ms ease-in-out 0ms,
-                    opacity 200ms ease-in-out 0ms;
+                    color 200ms $transition-timing 0ms,
+                    opacity 200ms $transition-timing 0ms;
 
                   @media only screen and (max-width: 1440px) {
                     font-size: 35px;
@@ -319,7 +319,7 @@
                     height: calc(1.1em * 1);
                     overflow: hidden;
                     transition:
-                      background-color 200ms ease-in-out 0ms;
+                      background-color 200ms $transition-timing 0ms;
                   }
   
                   &:hover {
@@ -379,8 +379,8 @@
               opacity: 0;
               translate: 0 100px;
               transition:
-                opacity 200ms ease-in-out 0ms,
-                translate 200ms ease-in-out 0ms;
+                opacity 200ms $transition-timing 0ms,
+                translate 200ms $transition-timing 0ms;
 
               @media only screen and (max-width: 768px) {
                 margin: 0 0 32px;
@@ -396,8 +396,8 @@
               opacity: 0;
               translate: 0 100px;
               transition:
-                opacity 200ms ease-in-out 0ms,
-                translate 200ms ease-in-out 0ms;
+                opacity 200ms $transition-timing 0ms,
+                translate 200ms $transition-timing 0ms;
 
               @media only screen and (max-width: 768px) {
                 gap: 16px;
@@ -409,7 +409,7 @@
                   display: block;
                   translate: 0 0;
                   transition:
-                    translate 200ms ease-in-out 0ms;
+                    translate 200ms $transition-timing 0ms;
 
                   .db-svg {}
 
@@ -427,8 +427,8 @@
               opacity: 0;
               translate: 0 100px;
               transition:
-                opacity 200ms ease-in-out 0ms,
-                translate 200ms ease-in-out 0ms;
+                opacity 200ms $transition-timing 0ms,
+                translate 200ms $transition-timing 0ms;
 
               @media only screen and (max-width: 768px) {
                 margin: 0 0 32px;
@@ -486,8 +486,8 @@
                   &:nth-child(1) {
                     .db-menu-link {
                       transition:
-                        color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 1.4s;
+                        color 200ms $transition-timing 0ms,
+                        opacity 200ms $transition-timing 1.4s;
 
                       &::before {
                         transition-delay: 1.6s;
@@ -498,8 +498,8 @@
                   &:nth-child(2) {
                     .db-menu-link {
                       transition:
-                        color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 1.6s;
+                        color 200ms $transition-timing 0ms,
+                        opacity 200ms $transition-timing 1.6s;
 
                       &::before {
                         transition-delay: 1.8s;
@@ -510,8 +510,8 @@
                   &:nth-child(3) {
                     .db-menu-link {
                       transition:
-                        color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 1.8s;
+                        color 200ms $transition-timing 0ms,
+                        opacity 200ms $transition-timing 1.8s;
 
                       &::before {
                         transition-delay: 2.0s;
@@ -522,8 +522,8 @@
                   &:nth-child(4) {
                     .db-menu-link {
                       transition:
-                        color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 2.0s;
+                        color 200ms $transition-timing 0ms,
+                        opacity 200ms $transition-timing 2.0s;
 
                       &::before {
                         transition-delay: 2.2s;
@@ -534,8 +534,8 @@
                   &:nth-child(5) {
                     .db-menu-link {
                       transition:
-                        color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 2.2s;
+                        color 200ms $transition-timing 0ms,
+                        opacity 200ms $transition-timing 2.2s;
 
                       &::before {
                         transition-delay: 2.4s;
@@ -546,8 +546,8 @@
                   &:nth-child(6) {
                     .db-menu-link {
                       transition:
-                        color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 2.4s;
+                        color 200ms $transition-timing 0ms,
+                        opacity 200ms $transition-timing 2.4s;
 
                       &::before {
                         transition-delay: 2.6s;
@@ -558,8 +558,8 @@
                   &:nth-child(7) {
                     .db-menu-link {
                       transition:
-                        color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 2.6s;
+                        color 200ms $transition-timing 0ms,
+                        opacity 200ms $transition-timing 2.6s;
 
                       &::before {
                         transition-delay: 2.8s;
@@ -570,8 +570,8 @@
                   &:nth-child(8) {
                     .db-menu-link {
                       transition:
-                        color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 2.8s;
+                        color 200ms $transition-timing 0ms,
+                        opacity 200ms $transition-timing 2.8s;
 
                       &::before {
                         transition-delay: 3.0s;
@@ -582,8 +582,8 @@
                   &:nth-child(9) {
                     .db-menu-link {
                       transition:
-                        color 200ms ease-in-out 0ms,
-                        opacity 200ms ease-in-out 3.0s;
+                        color 200ms $transition-timing 0ms,
+                        opacity 200ms $transition-timing 3.0s;
 
                       &::before {
                         transition-delay: 3.2s;

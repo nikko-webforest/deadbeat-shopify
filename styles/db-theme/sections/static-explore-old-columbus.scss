@@ -1,9 +1,14 @@
 .db-section--static-explore-old-columbus {
-  // background-image: url('section_static-explore-old-columbus_bg-v01-1900x1090.jpg');
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
+  background-image: url('section_static-explore-old-columbus_bg-v01-1900x1090.jpg');
   padding: 225px 20px 265px;
+
+  @media only screen and (max-width: 1440px) {
+    padding: 100px 20px;
+  }
+
+  @media only screen and (max-width: 1080px) {
+    padding: 80px 20px;
+  }
 
   .db-bg-wrap {
     position: absolute;
@@ -55,6 +60,10 @@
           width: 100%;
           margin: 0 0 40px auto;
 
+          @media only screen and (max-width: 1080px) {
+            gap: 25px 20px;
+          }
+
           span {
             font-family: $primary-font-family;
             font-style: normal;
@@ -65,18 +74,30 @@
               color: #CDCDCF;
               font-size: 50px;
               letter-spacing: -2px;
+
+              @media only screen and (max-width: 1440px) {
+                font-size: 40px;
+              }
             }
 
             &:nth-child(2) {
               color: #CDCDCF;
               font-size: 98px;
               letter-spacing: -3.92px;
+
+              @media only screen and (max-width: 1440px) {
+                font-size: 78px;
+              }
             }
 
             &:nth-child(3) {
               color: #A7D422;
               font-size: 98px;
               letter-spacing: -3.92px;
+
+              @media only screen and (max-width: 1440px) {
+                font-size: 78px;
+              }
             }
           }
         }
@@ -92,7 +113,13 @@
           line-height: 1.5em;
           max-width: 530px;
           width: 100%;
-          margin-bottom: 90px;
+          margin: 0 0 90px auto;
+
+          @media only screen and (max-width: 1440px) {
+            font-size: 18px;
+            max-width: 400px;
+            margin: 0 0 60px auto;
+          }
         }
 
         .db-btn--learn-more {
@@ -117,7 +144,7 @@
             text-transform: uppercase;
             line-height: 1em;
             transition:
-              color $hover-transition-duration ease-in-out 0ms;
+              color $hover-transition-duration $transition-timing 0ms;
           }
 
           &:hover {

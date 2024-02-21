@@ -281,7 +281,7 @@
                       line-height: 1em;
                       white-space: nowrap;
                       transition:
-                        color $hover-transition-duration ease-in-out 0ms;
+                        color $hover-transition-duration $transition-timing 0ms;
                     }
 
                     &.--toggled {
@@ -339,8 +339,8 @@
                       border: 1px solid transparent;
                       border-radius: 5px;
                       transition:
-                        color $hover-transition-duration ease-in-out 0ms,
-                        border-color $hover-transition-duration ease-in-out 0ms;
+                        color $hover-transition-duration $transition-timing 0ms,
+                        border-color $hover-transition-duration $transition-timing 0ms;
                       cursor: pointer;
 
                       @media only screen and (max-width: 768px) {
@@ -369,7 +369,7 @@
                   height: 0px;
                   overflow: hidden;
                   transition:
-                    height $click-transition-duration ease-in-out 0ms;
+                    height $click-transition-duration $transition-timing 0ms;
 
                   table {
                     border-collapse: collapse;
@@ -685,7 +685,7 @@
         .product-item {
           opacity: 0;
           transition:
-            opacity 0ms ease-in-out 0ms;
+            opacity 0ms $transition-timing 0ms;
           cursor: pointer;
           
           .product-top-wrap {
@@ -749,7 +749,7 @@
               opacity: 1;
               height: 60px;
               transition:
-                opacity $hover-transition-duration ease-in-out 0ms;
+                opacity $hover-transition-duration $transition-timing 0ms;
 
               @media only screen and (max-width: 768px) {
                 height: auto;
@@ -827,7 +827,7 @@
               width: 100%;
               height: 60px;
               transition:
-                opacity $hover-transition-duration ease-in-out 0ms;
+                opacity $hover-transition-duration $transition-timing 0ms;
               
               @media only screen and (max-width: 768px) {
                 position: relative;
@@ -851,7 +851,7 @@
                 border-radius: 50px;
                 border: 1px solid $secondary-color;
                 transition:
-                  all $hover-transition-duration ease-in-out 0ms;
+                  all $hover-transition-duration $transition-timing 0ms;
 
                 @media only screen and (max-width: 768px) {
                   max-width: 100%;
@@ -871,7 +871,7 @@
                   white-space: nowrap;
                   display: block;
                   transition:
-                    all $hover-transition-duration ease-in-out 0ms;
+                    all $hover-transition-duration $transition-timing 0ms;
 
                   @media only screen and (max-width: 768px) {
                     font-size: 14px;
@@ -956,7 +956,7 @@
           &.--fade-in {
             opacity: 1;
             transition:
-              opacity 500ms ease-in-out 0ms;
+              opacity 500ms $transition-timing 0ms;
           }
 
           &:hover {
@@ -1020,7 +1020,7 @@
             border: 1px solid #D86FFF;
             border-radius: 15px;
             transition:
-              box-shadow $hover-transition-duration ease-in-out 0ms;
+              box-shadow $hover-transition-duration $transition-timing 0ms;
             cursor: pointer;
 
             .prev-next-label {

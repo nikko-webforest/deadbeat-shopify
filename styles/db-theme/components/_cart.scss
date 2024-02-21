@@ -11,9 +11,9 @@
   width: 100%;
   height: 100%;
   transition:
-    z-index 0ms ease-in-out 500ms,
-    visibility 0ms ease-in-out 500ms,
-    opacity 0ms ease-in-out 500ms;
+    z-index 0ms $transition-timing 500ms,
+    visibility 0ms $transition-timing 500ms,
+    opacity 0ms $transition-timing 500ms;
 
   .db-cart-overlay {
     position: absolute;
@@ -25,7 +25,7 @@
     width: 100%;
     height: 100%;
     transition:
-      opacity $click-transition-duration ease-in-out 0ms;
+      opacity $click-transition-duration $transition-timing 0ms;
   }
 
   .db-cart-wrap {
@@ -42,7 +42,7 @@
     width: 100%;
     height: 100%;
     transition:
-      right $click-transition-duration ease-in-out 0ms;
+      right $click-transition-duration $transition-timing 0ms;
     
     @media only screen and (max-width: 768px) {
       --headHeight: 45px;
@@ -348,7 +348,7 @@
               min-width: 16px;
               width: 100%;
               transition:
-                opacity $hover-transition-duration ease-in-out 0ms;
+                opacity $hover-transition-duration $transition-timing 0ms;
 
               @media only screen and (max-width: 768px) {
                 opacity: 1;
@@ -514,7 +514,7 @@
           line-height: 1.25em;
           white-space: nowrap;
           transition:
-            color $hover-transition-duration ease-in-out 0ms;
+            color $hover-transition-duration $transition-timing 0ms;
 
           @media only screen and (max-width: 768px) {
             font-size: 12px;
@@ -578,9 +578,9 @@
     visibility: visible;
     opacity: 1;
     transition:
-      z-index 0ms ease-in-out 0ms,
-      visibility 0ms ease-in-out 0ms,
-      opacity 0ms ease-in-out 0ms;
+      z-index 0ms $transition-timing 0ms,
+      visibility 0ms $transition-timing 0ms,
+      opacity 0ms $transition-timing 0ms;
 
     .db-cart-overlay {
       opacity: 0.5;

@@ -43,11 +43,11 @@
 
             h4 {
               color: $white-color;
-              text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
               font-family: $primary-font-family;
               font-size: 48px;
               font-style: normal;
               font-weight: 700;
+              text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.40);
               line-height: 1.1em;
 
               @media only screen and (max-width: 480px) {
@@ -73,7 +73,6 @@
 
           &:nth-child(2) {
             max-width: 840px;
-
             
             @media only screen and (max-width: 1080px) {
               display: flex;
@@ -98,6 +97,7 @@
               @media only screen and (max-width: 480px) {
                 max-width: 322px;
               }
+
               img {
                 display: block;
                 object-fit: cover;
@@ -111,6 +111,7 @@
               @media only screen and (max-width: 480px) {
                 max-width: 373px;
               }
+
               p {
                 color: #CAC7D0;
                 font-family: $primary-font-family;
@@ -156,6 +157,7 @@
                   text-align: center;
                 }
               }
+
               .db-elevate-website {
                 display: inline-flex;
                 align-items: center;
@@ -190,7 +192,6 @@
                 }
               }
             }
-            
           }
         }
       }

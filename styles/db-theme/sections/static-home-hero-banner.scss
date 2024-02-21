@@ -6,6 +6,10 @@
     z-index: 1;
     padding: 325px 20px 345px;
 
+    @media only screen and (max-width: 1080px) {
+      padding: 0 0 250px;
+    }
+
     .db-bg-wrap {
       position: absolute;
       z-index: 1;
@@ -15,6 +19,13 @@
       height: 100%;
       width: 55vw;
       overflow: hidden;
+
+      @media only screen and (max-width: 1080px) {
+        position: relative;
+        width: 100%;
+        max-height: auto;
+        height: auto;
+      }
 
       .db-bg-video {
         position: absolute;
@@ -30,6 +41,14 @@
         width: 100%;
         height: 100%;
         margin: auto 100% auto auto;
+
+        @media only screen and (max-width: 1080px) {
+          position: relative;
+          inset: unset;
+          width: 100%;
+          height: auto;
+          margin: auto;
+        }
       }
 
       .db-bg-overlay {
@@ -38,6 +57,10 @@
         display: block;
         width: 100%;
         height: 100%;
+
+        @media only screen and (max-width: 1080px) {
+          display: none;
+        }
 
         .svg-bg-overlay-01 {
           position: absolute;
@@ -61,10 +84,47 @@
           left: -120px;
         }
       }
+
+      .db-btn--play-video {
+        display: none;
+        
+        @media only screen and (max-width: 1080px) {
+          position: absolute;
+          z-index: 3;
+          top: 50%;
+          left: 50%;
+          translate: -50% -50%;
+          display: block;
+          opacity: 0;
+          transition:
+            background-color $hover-transition-duration $transition-timing 0ms,
+            opacity $hover-transition-duration $transition-timing 0ms;
+        }
+
+        .svg-icon-circle-with-play,
+        .svg-icon-circle-with-pause {
+          max-width: 80px;
+          min-width: 80px;
+          width: 100%;
+          height: auto;
+        }
+
+        .svg-icon-circle-with-play {
+          display: block;
+        }
+
+        .svg-icon-circle-with-pause {
+          display: none;
+        }
+      }
     }
 
     .db-container {
       z-index: 2;
+
+      @media only screen and (max-width: 1080px) {
+        padding: 50px 20px;
+      }
 
       .db-row {
         justify-content: space-between;
@@ -133,6 +193,10 @@
           }
 
           &:nth-of-type(2) {
+            @media only screen and (max-width: 1080px) {
+              display: none;
+            }
+
             .db-btn--play-video {
               position: absolute;
               z-index: 1;
@@ -166,6 +230,12 @@
     }
 
     &:hover {
+      .db-bg-wrap {
+        .db-btn--play-video {
+          opacity: 1;
+        }
+      }
+
       .db-container {
         .db-row {
           > .db-col {
@@ -289,6 +359,20 @@
 
   &.--is-playing {
     .hero-banner {
+      .db-bg-wrap {
+        .db-btn--play-video {
+          .svg-icon-circle-with-play {
+            display: none;
+          }
+
+          .svg-icon-circle-with-pause {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .hero-banner {
       .db-container {
         .db-row {
           > .db-col {
@@ -297,7 +381,7 @@
                 .svg-icon-circle-with-play {
                   display: none;
                 }
-  
+      
                 .svg-icon-circle-with-pause {
                   display: block;
                 }

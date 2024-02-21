@@ -300,7 +300,7 @@
                     line-height: 1.1em;
                     display: block;
                     transition:
-                      color $hoverTransitionDuration ease-in-out 0ms;
+                      color $hoverTransitionDuration $transition-timing 0ms;
                   }
 
                   &:hover {
@@ -537,7 +537,7 @@
                   display: block;
                   translate: 0 0;
                   transition:
-                    translate 200ms ease-in-out 0ms;
+                    translate 200ms $transition-timing 0ms;
 
                   .db-svg {}
 

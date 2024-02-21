@@ -682,7 +682,7 @@ ul, ol {
   font-weight: 700;
   line-height: 1.1em;
   display: block;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-footer .db-section--newsletter .db-container .db-row .db-col:nth-of-type(1) .db-contact-list .db-contact-item .db-contact-link:hover .db-contact-value {
   color: var(--secondary-color);
@@ -904,7 +904,7 @@ ul, ol {
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(3) .db-socials-list .db-socials-item .db-socials-link {
   display: block;
   translate: 0 0;
-  transition: translate 200ms ease-in-out 0ms;
+  transition: translate 200ms var(--transition-timing) 0ms;
 }
 .db-footer .db-section--primary .db-container .db-row .db-col:nth-of-type(3) .db-socials-list .db-socials-item .db-socials-link:hover {
   translate: 0 -5px;
@@ -938,7 +938,7 @@ ul, ol {
   display: block;
   min-width: 380px;
   width: 100%;
-  transition: translate 1000ms cubic-bezier(0.86, 0, 0.07, 1) 0s;
+  transition: translate 1000ms var(--transition-timing) 0s;
 }
 .db-header .db-header-main {
   position: static;
@@ -975,7 +975,7 @@ ul, ol {
 .db-header .db-header-main .db-container .db-row .db-btn--nav-menu .db-btn-wrap .db-btn-icon .svg-icon-veggie-burger #path_01,
 .db-header .db-header-main .db-container .db-row .db-btn--nav-menu .db-btn-wrap .db-btn-icon .svg-icon-veggie-burger #path_02 {
   stroke: var(--white-color);
-  transition: stroke var(--hover-transition-duration) ease-in-out 0ms;
+  transition: stroke var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-header .db-header-main .db-container .db-row .db-btn--nav-menu:hover .db-btn-wrap .db-btn-icon .svg-icon-veggie-burger #path_01,
 .db-header .db-header-main .db-container .db-row .db-btn--nav-menu:hover .db-btn-wrap .db-btn-icon .svg-icon-veggie-burger #path_02 {
@@ -1086,7 +1086,7 @@ ul, ol {
   width: 100%;
   height: 100vh;
   padding: 0 20px;
-  transition: top 1s ease-in-out 0ms;
+  transition: top 1s var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu {
@@ -1122,11 +1122,11 @@ ul, ol {
 }
 .db-header .db-nav-menu .db-container .db-btn--close-menu .svg-icon-close {
   scale: 1;
-  transition: scale var(--hover-transition-duration) ease-in-out 0ms;
+  transition: scale var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-header .db-nav-menu .db-container .db-btn--close-menu .svg-icon-close #path_01 {
   fill: #A5A5A5;
-  transition: fill var(--hover-transition-duration) ease-in-out 0ms;
+  transition: fill var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-header .db-nav-menu .db-container .db-btn--close-menu:hover .svg-icon-close {
   scale: 1.1;
@@ -1184,7 +1184,7 @@ ul, ol {
   display: block;
   opacity: 0;
   width: max-content;
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 1440px) {
   .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link {
@@ -1210,7 +1210,7 @@ ul, ol {
   width: 100%;
   height: 1.1em;
   overflow: hidden;
-  transition: background-color 200ms ease-in-out 0ms;
+  transition: background-color 200ms var(--transition-timing) 0ms;
 }
 .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link:hover::before, .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item .db-menu-link:hover::after {
   content: attr(title);
@@ -1250,7 +1250,7 @@ ul, ol {
   margin: 0 0 70px;
   opacity: 0;
   translate: 0 100px;
-  transition: opacity 200ms ease-in-out 0ms, translate 200ms ease-in-out 0ms;
+  transition: opacity 200ms var(--transition-timing) 0ms, translate 200ms var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) p {
@@ -1265,7 +1265,7 @@ ul, ol {
   margin: 0 0 100px;
   opacity: 0;
   translate: 0 100px;
-  transition: opacity 200ms ease-in-out 0ms, translate 200ms ease-in-out 0ms;
+  transition: opacity 200ms var(--transition-timing) 0ms, translate 200ms var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-socials-list {
@@ -1276,7 +1276,7 @@ ul, ol {
 .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-socials-list .db-socials-item .db-socials-link {
   display: block;
   translate: 0 0;
-  transition: translate 200ms ease-in-out 0ms;
+  transition: translate 200ms var(--transition-timing) 0ms;
 }
 .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-socials-list .db-socials-item .db-socials-link:hover {
   translate: 0 -5px;
@@ -1287,7 +1287,7 @@ ul, ol {
   gap: 23px;
   opacity: 0;
   translate: 0 100px;
-  transition: opacity 200ms ease-in-out 0ms, translate 200ms ease-in-out 0ms;
+  transition: opacity 200ms var(--transition-timing) 0ms, translate 200ms var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-header .db-nav-menu .db-container .db-row .db-col:nth-of-type(2) .db-inner-row {
@@ -1325,55 +1325,55 @@ ul, ol {
   opacity: 0.5;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(1) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 1.4s;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 1.4s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(1) .db-menu-link::before {
   transition-delay: 1.6s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(2) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 1.6s;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 1.6s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(2) .db-menu-link::before {
   transition-delay: 1.8s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(3) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 1.8s;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 1.8s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(3) .db-menu-link::before {
   transition-delay: 2s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(4) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2s;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 2s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(4) .db-menu-link::before {
   transition-delay: 2.2s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(5) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.2s;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 2.2s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(5) .db-menu-link::before {
   transition-delay: 2.4s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(6) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.4s;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 2.4s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(6) .db-menu-link::before {
   transition-delay: 2.6s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(7) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.6s;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 2.6s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(7) .db-menu-link::before {
   transition-delay: 2.8s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(8) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 2.8s;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 2.8s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(8) .db-menu-link::before {
   transition-delay: 3s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(9) .db-menu-link {
-  transition: color 200ms ease-in-out 0ms, opacity 200ms ease-in-out 3s;
+  transition: color 200ms var(--transition-timing) 0ms, opacity 200ms var(--transition-timing) 3s;
 }
 .db-header .db-nav-menu.--show .db-container .db-row .db-col:nth-of-type(1) .db-menu-list .db-menu-item:nth-child(9) .db-menu-link::before {
   transition-delay: 3.2s;
@@ -1424,7 +1424,7 @@ ul, ol {
   opacity: 0;
   width: 100%;
   height: 100%;
-  transition: z-index 0ms ease-in-out 500ms, visibility 0ms ease-in-out 500ms, opacity 0ms ease-in-out 500ms;
+  transition: z-index 0ms var(--transition-timing) 500ms, visibility 0ms var(--transition-timing) 500ms, opacity 0ms var(--transition-timing) 500ms;
 }
 .db-cart-drawer .db-cart-overlay {
   position: absolute;
@@ -1435,7 +1435,7 @@ ul, ol {
   opacity: 0;
   width: 100%;
   height: 100%;
-  transition: opacity var(--click-transition-duration) ease-in-out 0ms;
+  transition: opacity var(--click-transition-duration) var(--transition-timing) 0ms;
 }
 .db-cart-drawer .db-cart-wrap {
   --headHeight: 70px;
@@ -1450,7 +1450,7 @@ ul, ol {
   min-width: var(--cartWidth);
   width: 100%;
   height: 100%;
-  transition: right var(--click-transition-duration) ease-in-out 0ms;
+  transition: right var(--click-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-cart-drawer .db-cart-wrap {
@@ -1758,7 +1758,7 @@ ul, ol {
   max-width: 16px;
   min-width: 16px;
   width: 100%;
-  transition: opacity var(--hover-transition-duration) ease-in-out 0ms;
+  transition: opacity var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-cart-drawer .db-cart-wrap .db-cart-body .product-list .product-item .product-delete .svg-icon-bin {
@@ -1917,7 +1917,7 @@ ul, ol {
   text-align: center;
   line-height: 1.25em;
   white-space: nowrap;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-cart-drawer .db-cart-wrap .db-cart-foot .db-btn--proceed-to-checkout .label {
@@ -1971,7 +1971,7 @@ ul, ol {
   z-index: 99999;
   visibility: visible;
   opacity: 1;
-  transition: z-index 0ms ease-in-out 0ms, visibility 0ms ease-in-out 0ms, opacity 0ms ease-in-out 0ms;
+  transition: z-index 0ms var(--transition-timing) 0ms, visibility 0ms var(--transition-timing) 0ms, opacity 0ms var(--transition-timing) 0ms;
 }
 .--show-cart .db-cart-drawer .db-cart-overlay {
   opacity: 0.5;
@@ -3672,18 +3672,18 @@ ul, ol {
   }
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video-widget .video-widget .db-project-trailer span:nth-child(1) {
-  text-align: right;
+  color: transparent;
   font-family: var(--primary-font-family);
   font-size: 48px;
   font-style: normal;
   font-weight: 600;
+  text-align: right;
   line-height: 1em;
   letter-spacing: -1.92px;
   background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.6) 57.21%, rgba(181, 210, 255, 0) 89.93%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
 }
 .db-page--home .db-section--banner .db-container .db-row .db-col:nth-of-type(2) > .db-inner-row > .db-inner-col:nth-of-type(1) .db-widget-container .db-widget-row .db-widget-col:nth-child(1) .db-video-widget .video-widget .db-project-trailer span:nth-child(2) {
   color: transparent;
@@ -5672,11 +5672,10 @@ ul, ol {
 }
 .db-page--explore-oc .db-section--explore-oc-the-game {
   position: relative;
-  padding-bottom: 0;
   background-color: #0D0713;
   padding-top: 256px;
-  padding-bottom: 0px;
   padding-right: 0px;
+  padding-bottom: 0px;
   padding-left: 0px;
 }
 @media only screen and (max-width: 768px) {
@@ -5785,12 +5784,12 @@ ul, ol {
   }
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) h1 span:nth-child(1) {
-  display: inline-block;
   color: #A120D2;
+  display: inline-block;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) h1 span:nth-child(2) {
-  display: inline-block;
   color: #B1FF29;
+  display: inline-block;
 }
 .db-page--explore-oc .db-section--explore-oc-the-game .explore-oc .db-container .db-row:nth-child(1) .db-col:nth-child(2) {
   color: var(--white-color);
@@ -9912,7 +9911,7 @@ ul, ol {
   min-height: 210px;
   overflow: auto;
   margin: 0 auto;
-  transition: max-width 500ms ease-in-out 0ms, max-height 500ms ease-in-out 500ms;
+  transition: max-width 500ms var(--transition-timing) 0ms, max-height 500ms var(--transition-timing) 500ms;
 }
 @media only screen and (max-width: 768px) {
   .db-page--emporium .db-section--merch-store-search .db-container .db-row .search-wrap .search-results {
@@ -9927,7 +9926,7 @@ ul, ol {
   gap: 60px;
   background-color: transparent;
   padding: 29px 33px;
-  transition: background-color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: background-color var(--hover-transition-duration) var(--transition-timing) 0ms;
   cursor: pointer;
 }
 @media only screen and (max-width: 1440px) {
@@ -9994,7 +9993,7 @@ ul, ol {
   line-height: 1.3em;
   height: auto;
   margin-bottom: 8px;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--emporium .db-section--merch-store-search .db-container .db-row .search-wrap .search-results .product-list .product-item .product-details .product-title {
@@ -10113,12 +10112,12 @@ ul, ol {
   opacity: 0;
   width: 100%;
   height: 100%;
-  transition: visibility 0ms ease-in-out 0ms, opacity 0ms ease-in-out 0ms;
+  transition: visibility 0ms var(--transition-timing) 0ms, opacity 0ms var(--transition-timing) 0ms;
 }
 .db-page--emporium .db-section--merch-store-search .db-container .db-row .search-wrap .search-overlay.--show {
   visibility: visible;
   opacity: 1;
-  transition: visibility var(--click-transition-duration) ease-in-out 0ms, opacity var(--click-transition-duration) ease-in-out 0ms;
+  transition: visibility var(--click-transition-duration) var(--transition-timing) 0ms, opacity var(--click-transition-duration) var(--transition-timing) 0ms;
 }
 .db-page--emporium .db-section--merch-store-search.--on-search .db-container .db-row .search-wrap .search-bar {
   z-index: 99999;
@@ -10199,7 +10198,7 @@ ul, ol {
     width: 100%;
     overflow: auto;
     padding: 50px 30px;
-    transition: left var(--click-transition-duration) ease-in-out 0ms;
+    transition: left var(--click-transition-duration) var(--transition-timing) 0ms;
   }
 }
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-01 > .db-inner-row {
@@ -10240,7 +10239,7 @@ ul, ol {
   padding: 10px 32px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 5px;
-  transition: border var(--hover-transition-duration) ease-in-out 0ms;
+  transition: border var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-01 > .db-inner-row .db-btn--clear-all {
@@ -10257,7 +10256,7 @@ ul, ol {
   line-height: 1.25em;
   letter-spacing: -0.48px;
   white-space: nowrap;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-01 > .db-inner-row .db-btn--clear-all .label {
@@ -10332,7 +10331,7 @@ ul, ol {
 }
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-01 .product-filter .db-inner-row .db-btn--filter-toggle .svg-icon-angle-up {
   rotate: 180deg;
-  transition: rotate var(--click-transition-duration) ease-in-out 0ms;
+  transition: rotate var(--click-transition-duration) var(--transition-timing) 0ms;
 }
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-01 .product-filter .db-inner-row .db-btn--filter-toggle.--toggle .svg-icon-angle-up {
   rotate: 0deg;
@@ -10343,7 +10342,7 @@ ul, ol {
   gap: 10px;
   height: auto;
   overflow: hidden;
-  transition: height var(--click-transition-duration) ease-in-out 0ms;
+  transition: height var(--click-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 1080px) {
   .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-01 .product-filter .filter-list {
@@ -10509,7 +10508,7 @@ ul, ol {
   padding: 14px 24px;
   border: 1px solid #D86FFF;
   border-radius: 36px;
-  transition: background-color var(--click-transition-duration) ease-in-out 0ms;
+  transition: background-color var(--click-transition-duration) var(--transition-timing) 0ms;
   cursor: pointer;
 }
 @media only screen and (max-width: 1080px) {
@@ -10681,7 +10680,7 @@ ul, ol {
   line-height: 1.25em;
   white-space: nowrap;
   display: block;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
   cursor: pointer;
 }
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .db-inner-row .product-sort .ds-view > .sort-select .sort-option.--selected .svg-icon-custom-radio, .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .db-inner-row .product-sort .ds-view > .sort-select .sort-option:hover .svg-icon-custom-radio {
@@ -10780,7 +10779,7 @@ ul, ol {
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .product-list .product-item {
   position: relative;
   opacity: 0;
-  transition: opacity 0ms ease-in-out 0ms;
+  transition: opacity 0ms var(--transition-timing) 0ms;
   cursor: pointer;
 }
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .product-list .product-item .product-top-wrap {
@@ -10841,7 +10840,7 @@ ul, ol {
   visibility: visible;
   opacity: 1;
   height: 60px;
-  transition: opacity var(--hover-transition-duration) ease-in-out 0ms;
+  transition: opacity var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .product-list .product-item .product-bot-wrap .product-details {
@@ -10915,7 +10914,7 @@ ul, ol {
   opacity: 0;
   width: 100%;
   height: 60px;
-  transition: opacity var(--hover-transition-duration) ease-in-out 0ms;
+  transition: opacity var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .product-list .product-item .product-bot-wrap .product-actions {
@@ -10938,7 +10937,7 @@ ul, ol {
   padding: 17px 22px;
   border-radius: 50px;
   border: 1px solid var(--secondary-color);
-  transition: all var(--hover-transition-duration) ease-in-out 0ms;
+  transition: all var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .product-list .product-item .product-bot-wrap .product-actions .db-btn--buy-it-now {
@@ -10955,7 +10954,7 @@ ul, ol {
   line-height: 1em;
   white-space: nowrap;
   display: block;
-  transition: all var(--hover-transition-duration) ease-in-out 0ms;
+  transition: all var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .product-list .product-item .product-bot-wrap .product-actions .db-btn--buy-it-now .label {
@@ -11026,7 +11025,7 @@ ul, ol {
 }
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .product-list .product-item.--fade-in {
   opacity: 1;
-  transition: opacity 500ms ease-in-out 0ms;
+  transition: opacity 500ms var(--transition-timing) 0ms;
 }
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .product-list .product-item:hover .product-bot-wrap .product-details {
   visibility: hidden;
@@ -11057,7 +11056,7 @@ ul, ol {
   padding: 10px 32px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 5px;
-  transition: border var(--hover-transition-duration) ease-in-out 0ms;
+  transition: border var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .db-btn--load-more .label {
   color: var(--white-color);
@@ -11069,7 +11068,7 @@ ul, ol {
   line-height: 1.25em;
   letter-spacing: -0.48px;
   white-space: nowrap;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-page--emporium .db-section--merch-store-listing .db-container .db-row .db-col.db-col-02 .db-btn--load-more:hover {
   border-color: var(--primary-color);
@@ -11347,7 +11346,7 @@ ul, ol {
   text-decoration: underline;
   line-height: 1em;
   white-space: nowrap;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-page--product-page .db-section--product-details .db-container .db-row .db-col:nth-of-type(2) .product-option.--size .db-inner-row .db-btn--size-guide.--toggled .label {
   color: #D86FFF;
@@ -11399,7 +11398,7 @@ ul, ol {
   padding: 0 10px;
   border: 1px solid transparent;
   border-radius: 5px;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms, border-color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms, border-color var(--hover-transition-duration) var(--transition-timing) 0ms;
   cursor: pointer;
 }
 @media only screen and (max-width: 768px) {
@@ -11421,7 +11420,7 @@ ul, ol {
   width: 100%;
   height: 0px;
   overflow: hidden;
-  transition: height var(--click-transition-duration) ease-in-out 0ms;
+  transition: height var(--click-transition-duration) var(--transition-timing) 0ms;
 }
 .db-page--product-page .db-section--product-details .db-container .db-row .db-col:nth-of-type(2) .product-option.--size .product-size-guide-wrap table {
   border-collapse: collapse;
@@ -11696,7 +11695,7 @@ ul, ol {
 }
 .db-page--product-page .db-section--product-recommendation .db-container .product-list .product-item {
   opacity: 0;
-  transition: opacity 0ms ease-in-out 0ms;
+  transition: opacity 0ms var(--transition-timing) 0ms;
   cursor: pointer;
 }
 .db-page--product-page .db-section--product-recommendation .db-container .product-list .product-item .product-top-wrap {
@@ -11756,7 +11755,7 @@ ul, ol {
   visibility: visible;
   opacity: 1;
   height: 60px;
-  transition: opacity var(--hover-transition-duration) ease-in-out 0ms;
+  transition: opacity var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-page--product-page .db-section--product-recommendation .db-container .product-list .product-item .product-bot-wrap .product-details {
@@ -11833,7 +11832,7 @@ ul, ol {
   opacity: 0;
   width: 100%;
   height: 60px;
-  transition: opacity var(--hover-transition-duration) ease-in-out 0ms;
+  transition: opacity var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-page--product-page .db-section--product-recommendation .db-container .product-list .product-item .product-bot-wrap .product-actions {
@@ -11858,7 +11857,7 @@ ul, ol {
   padding: 17px 22px;
   border-radius: 50px;
   border: 1px solid var(--secondary-color);
-  transition: all var(--hover-transition-duration) ease-in-out 0ms;
+  transition: all var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-page--product-page .db-section--product-recommendation .db-container .product-list .product-item .product-bot-wrap .product-actions .db-btn--buy-it-now {
@@ -11879,7 +11878,7 @@ ul, ol {
   line-height: 1.25em;
   white-space: nowrap;
   display: block;
-  transition: all var(--hover-transition-duration) ease-in-out 0ms;
+  transition: all var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 @media only screen and (max-width: 768px) {
   .db-page--product-page .db-section--product-recommendation .db-container .product-list .product-item .product-bot-wrap .product-actions .db-btn--buy-it-now .label {
@@ -11957,7 +11956,7 @@ ul, ol {
 }
 .db-page--product-page .db-section--product-recommendation .db-container .product-list .product-item.--fade-in {
   opacity: 1;
-  transition: opacity 500ms ease-in-out 0ms;
+  transition: opacity 500ms var(--transition-timing) 0ms;
 }
 .db-page--product-page .db-section--product-recommendation .db-container .product-list .product-item:hover .product-bot-wrap .product-details {
   visibility: hidden;
@@ -12012,7 +12011,7 @@ ul, ol {
   height: 100%;
   border: 1px solid #D86FFF;
   border-radius: 15px;
-  transition: box-shadow var(--hover-transition-duration) ease-in-out 0ms;
+  transition: box-shadow var(--hover-transition-duration) var(--transition-timing) 0ms;
   cursor: pointer;
 }
 .db-page--product-page .db-section--prev-next-product .db-container .db-row .db-col .prev-next-btns .prev-next-label {
@@ -12358,9 +12357,9 @@ ul, ol {
   display: block;
   object-position: center;
   object-fit: cover;
+  opacity: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
 }
 .db-section--static-main-roadmap .db-bg-wrap .db-bg-video.--ds-view {
   display: block;
@@ -12530,7 +12529,7 @@ ul, ol {
   width: max-content;
   padding: 0 0 4px;
   border-bottom: 1px solid var(--white-color);
-  transition: color var(--hover-transition-duration) ease-in-out 0ms, border var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms, border var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-section--static-main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--email-us .svg-icon-envelope,
 .db-section--static-main-roadmap .db-container .db-row .db-col:nth-of-type(2) .db-btn--talent-network .svg-icon-envelope, .db-section--static-main-roadmap .db-container .db-row .db-col:nth-of-type(3) .db-btn--email-us .svg-icon-envelope,
@@ -13189,11 +13188,11 @@ ul, ol {
 }
 .db-section--static-elevate-pictures .db-container .db-row:nth-child(1) .db-col:nth-child(1) h4 {
   color: var(--white-color);
-  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--primary-font-family);
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   line-height: 1.1em;
 }
 @media only screen and (max-width: 480px) {
@@ -13493,11 +13492,11 @@ ul, ol {
 }
 .db-section--static-newsletter-subscription .db-container .db-row .db-col:nth-of-type(2) p {
   color: var(--white-color);
-  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   font-family: var(--secondary-font-family);
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
+  text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   line-height: 1.1em;
   letter-spacing: -0.36px;
   margin-top: 24px;
@@ -13869,7 +13868,7 @@ ul, ol {
   font-weight: 700;
   text-align: center;
   line-height: 1.25em;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-section--static-blog-listing .db-container .db-grid-list .db-grid-item .bot-wrap .db-btn--read-more:hover {
   background-color: var(--secondary-color);
@@ -14018,6 +14017,11 @@ ul, ol {
   z-index: 1;
   padding: 325px 20px 345px;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--static-home-hero-banner-and-slider .hero-banner {
+    padding: 0 0 250px;
+  }
+}
 .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap {
   position: absolute;
   z-index: 1;
@@ -14026,6 +14030,14 @@ ul, ol {
   height: 100%;
   width: 55vw;
   overflow: hidden;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap {
+    position: relative;
+    width: 100%;
+    max-height: auto;
+    height: auto;
+  }
 }
 .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-bg-video {
   position: absolute;
@@ -14042,12 +14054,26 @@ ul, ol {
   height: 100%;
   margin: auto 100% auto auto;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-bg-video {
+    position: relative;
+    inset: unset;
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+}
 .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-bg-overlay {
   position: absolute;
   z-index: 2;
   display: block;
   width: 100%;
   height: 100%;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-bg-overlay {
+    display: none;
+  }
 }
 .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-bg-overlay .svg-bg-overlay-01 {
   position: absolute;
@@ -14068,8 +14094,41 @@ ul, ol {
   bottom: 0;
   left: -120px;
 }
+.db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-btn--play-video {
+  display: none;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-btn--play-video {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    display: block;
+    opacity: 0;
+    transition: background-color var(--hover-transition-duration) var(--transition-timing) 0ms, opacity var(--hover-transition-duration) var(--transition-timing) 0ms;
+  }
+}
+.db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-btn--play-video .svg-icon-circle-with-play,
+.db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-btn--play-video .svg-icon-circle-with-pause {
+  max-width: 80px;
+  min-width: 80px;
+  width: 100%;
+  height: auto;
+}
+.db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-btn--play-video .svg-icon-circle-with-play {
+  display: block;
+}
+.db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-btn--play-video .svg-icon-circle-with-pause {
+  display: none;
+}
 .db-section--static-home-hero-banner-and-slider .hero-banner .db-container {
   z-index: 2;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--static-home-hero-banner-and-slider .hero-banner .db-container {
+    padding: 50px 20px;
+  }
 }
 .db-section--static-home-hero-banner-and-slider .hero-banner .db-container .db-row {
   justify-content: space-between;
@@ -14124,6 +14183,11 @@ ul, ol {
   max-width: 595px;
   width: 100%;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--static-home-hero-banner-and-slider .hero-banner .db-container .db-row > .db-col:nth-of-type(2) {
+    display: none;
+  }
+}
 .db-section--static-home-hero-banner-and-slider .hero-banner .db-container .db-row > .db-col:nth-of-type(2) .db-btn--play-video {
   position: absolute;
   z-index: 1;
@@ -14144,6 +14208,9 @@ ul, ol {
 }
 .db-section--static-home-hero-banner-and-slider .hero-banner .db-container .db-row > .db-col:nth-of-type(2) .db-btn--play-video .svg-icon-circle-with-pause {
   display: none;
+}
+.db-section--static-home-hero-banner-and-slider .hero-banner:hover .db-bg-wrap .db-btn--play-video {
+  opacity: 1;
 }
 .db-section--static-home-hero-banner-and-slider .hero-banner:hover .db-container .db-row > .db-col:nth-of-type(2) .db-btn--play-video {
   opacity: 1;
@@ -14239,6 +14306,12 @@ ul, ol {
 .db-section--static-home-hero-banner-and-slider .hero-slider .slider-main .slider-cell:nth-child(even) {
   background-color: var(--secondary-color);
 }
+.db-section--static-home-hero-banner-and-slider.--is-playing .hero-banner .db-bg-wrap .db-btn--play-video .svg-icon-circle-with-play {
+  display: none;
+}
+.db-section--static-home-hero-banner-and-slider.--is-playing .hero-banner .db-bg-wrap .db-btn--play-video .svg-icon-circle-with-pause {
+  display: block;
+}
 .db-section--static-home-hero-banner-and-slider.--is-playing .hero-banner .db-container .db-row > .db-col:nth-of-type(2) .db-btn--play-video .svg-icon-circle-with-play {
   display: none;
 }
@@ -14253,18 +14326,50 @@ ul, ol {
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) {
   justify-content: space-between;
   align-items: center;
-  gap: 0 130px;
+  gap: 20px 130px;
   margin: 0 auto 100px;
+}
+@media only screen and (max-width: 1440px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) {
+    gap: 20px 100px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) {
+    gap: 20px 60px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) {
+    flex-direction: column;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(1) {
   width: 50%;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(1) {
+    width: 100%;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(1) .db-img {
   display: block;
   width: 100%;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(1) .db-img {
+    max-width: 375px;
+    margin: 0 auto;
+  }
+}
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) {
   width: 50%;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) {
+    max-width: 480px;
+    width: 100%;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) h2 {
   color: var(--white-color);
@@ -14273,8 +14378,12 @@ ul, ol {
   font-style: normal;
   font-weight: 700;
   line-height: 1.25em;
-  white-space: nowrap;
   margin-bottom: 8px;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) h2 {
+    font-size: 50px;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) h3 {
   color: var(--white-color);
@@ -14284,8 +14393,12 @@ ul, ol {
   font-weight: 700;
   text-shadow: 4.993px 4.993px 14.978px rgba(0, 0, 0, 0.4);
   line-height: 1.25em;
-  white-space: nowrap;
   margin-bottom: 63px;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) h3 {
+    font-size: 40px;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) p {
   color: var(--white-color);
@@ -14299,6 +14412,11 @@ ul, ol {
   width: 100%;
   margin: 0 0 32px 18px;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) p {
+    margin: 0 0 32px 0;
+  }
+}
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) .db-btn--view-all {
   display: flex;
   justify-content: center;
@@ -14310,6 +14428,16 @@ ul, ol {
   padding: 16px;
   border: 1px solid var(--secondary-color);
   border-radius: 36px;
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) .db-btn--view-all {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) .db-btn--view-all {
+    margin: 0 auto;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(1) > .db-col:nth-of-type(2) .db-btn--view-all .label {
   color: var(--white-color);
@@ -14332,6 +14460,12 @@ ul, ol {
   align-items: stretch;
   gap: 46px;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) {
   display: flex;
   flex-direction: column;
@@ -14340,12 +14474,27 @@ ul, ol {
   width: max-content;
   padding: 28px 0 67px;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) {
+    width: 100%;
+    padding: 0;
+  }
+}
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
   border-left: 1px solid #B522EB;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list {
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto 25px;
+    border-top: 1px solid #B522EB;
+    border-left: unset;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list .active-indicator {
   position: absolute;
@@ -14357,6 +14506,11 @@ ul, ol {
   height: 37px;
   border-radius: 0px 2px 2px 0px;
   transition: top var(--hover-transition-duration) var(--transition-timing) 0ms;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list .active-indicator {
+    display: none;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list .product-type-item {
   color: #CAC7D0;
@@ -14370,6 +14524,13 @@ ul, ol {
   padding: 6px 6px 6px 25px;
   transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
   cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list .product-type-item {
+    text-align: center;
+    width: 33.33%;
+    padding: 15px 6px;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list .product-type-item::before {
   content: "";
@@ -14386,14 +14547,30 @@ ul, ol {
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list .product-type-item.--active {
   color: #B522EB;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list .product-type-item.--active {
+    border-top: 1px solid #B522EB;
+  }
+}
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list .product-type-item.--active::before {
   display: block;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .product-type-list .product-type-item.--active::before {
+    display: none;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .flickity-button-wrap {
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
   gap: 16px;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .flickity-button-wrap {
+    justify-content: center;
+    width: 100%;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(1) .flickity-button-wrap .flickity-button {
   position: relative;
@@ -14405,6 +14582,11 @@ ul, ol {
   position: relative;
   height: 420px;
   overflow: hidden;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list {
+    height: 340px;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main {
   position: absolute;
@@ -14429,6 +14611,14 @@ ul, ol {
   justify-content: center;
   align-items: center;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell {
+    max-width: 215px;
+    min-width: 215px;
+    height: 250px;
+    margin: 0 12px 0 0;
+  }
+}
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details {
   position: absolute;
   bottom: -100%;
@@ -14437,6 +14627,11 @@ ul, ol {
   width: 100%;
   padding: 18px 19px;
   transition: bottom var(--hover-transition-duration) var(--transition-timing) 0ms;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details {
+    padding: 12px;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details > .db-inner-row:nth-of-type(1) {
   justify-content: space-between;
@@ -14455,6 +14650,11 @@ ul, ol {
   letter-spacing: -0.508px;
   white-space: nowrap;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details > .db-inner-row:nth-of-type(1) .product-type {
+    font-size: 10px;
+  }
+}
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details > .db-inner-row:nth-of-type(1) .product-color-variant-count {
   color: var(--white-color);
   font-family: var(--secondary-font-family);
@@ -14463,6 +14663,11 @@ ul, ol {
   font-weight: 400;
   line-height: 1em;
   letter-spacing: -0.508px;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details > .db-inner-row:nth-of-type(1) .product-color-variant-count {
+    font-size: 10px;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details > .db-inner-row:nth-of-type(2) {
   justify-content: space-between;
@@ -14480,6 +14685,11 @@ ul, ol {
   line-height: 1.25em;
   letter-spacing: -0.762px;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details > .db-inner-row:nth-of-type(2) .product-title {
+    font-size: 15px;
+  }
+}
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details > .db-inner-row:nth-of-type(2) .product-price {
   color: var(--white-color);
   font-family: var(--primary-font-family);
@@ -14488,6 +14698,11 @@ ul, ol {
   font-weight: 500;
   line-height: 1.25em;
   letter-spacing: -0.762px;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details > .db-inner-row:nth-of-type(2) .product-price {
+    font-size: 15px;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details .product-actions {
   display: flex;
@@ -14518,6 +14733,11 @@ ul, ol {
   white-space: nowrap;
   display: block;
   transition: all var(--hover-transition-duration) var(--transition-timing) 0ms;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details .product-actions .db-btn--buy-it-now .label {
+    font-size: 15px;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details .product-actions .db-btn--buy-it-now:hover {
   background-color: transparent;
@@ -14566,6 +14786,11 @@ ul, ol {
   line-height: 1.25em;
   display: block;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell .product-details .product-actions .db-btn--out-of-stock .label {
+    font-size: 15px;
+  }
+}
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .product-slider-cell:hover .product-details {
   bottom: 0;
 }
@@ -14580,6 +14805,11 @@ ul, ol {
   align-items: center;
   gap: 9px;
   margin-bottom: 40px;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .flickity-page-dots {
+    justify-content: center;
+  }
 }
 .db-section--static-discover-and-select .db-container > .db-row:nth-of-type(2) > .db-col:nth-of-type(2) .product-slider-list .product-slider-main .flickity-page-dots .dot {
   background-color: #B522EB;
@@ -14602,11 +14832,34 @@ ul, ol {
   background-size: cover;
   padding: 190px 20px 160px;
 }
+@media only screen and (max-width: 1440px) {
+  .db-section--static-rock-n-roll-resurrected {
+    padding: 100px 20px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--static-rock-n-roll-resurrected {
+    padding: 80px 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-rock-n-roll-resurrected {
+    height: 1080px;
+  }
+}
 .db-section--static-rock-n-roll-resurrected .db-container .db-row {
   justify-content: flex-start;
 }
+@media only screen and (max-width: 768px) {
+  .db-section--static-rock-n-roll-resurrected .db-container .db-row {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 .db-section--static-rock-n-roll-resurrected .db-container .db-row .db-col {
-  width: 50%;
+  max-width: 600px;
+  width: 100%;
 }
 .db-section--static-rock-n-roll-resurrected .db-container .db-row .db-col h2 {
   color: var(--white-color);
@@ -14617,11 +14870,29 @@ ul, ol {
   text-align: center;
   text-transform: uppercase;
   line-height: 1.15em;
+  white-space: nowrap;
   margin: 0 auto 70px;
+}
+@media only screen and (max-width: 768px) {
+  .db-section--static-rock-n-roll-resurrected .db-container .db-row .db-col h2 {
+    white-space: unset;
+    margin: 0 auto 40px;
+  }
 }
 
 .db-section--static-explore-old-columbus {
+  background-image: url("section_static-explore-old-columbus_bg-v01-1900x1090.jpg");
   padding: 225px 20px 265px;
+}
+@media only screen and (max-width: 1440px) {
+  .db-section--static-explore-old-columbus {
+    padding: 100px 20px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .db-section--static-explore-old-columbus {
+    padding: 80px 20px;
+  }
 }
 .db-section--static-explore-old-columbus .db-bg-wrap {
   position: absolute;
@@ -14670,6 +14941,11 @@ ul, ol {
   width: 100%;
   margin: 0 0 40px auto;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--static-explore-old-columbus .db-container .db-row .db-col h2 {
+    gap: 25px 20px;
+  }
+}
 .db-section--static-explore-old-columbus .db-container .db-row .db-col h2 span {
   font-family: var(--primary-font-family);
   font-style: normal;
@@ -14681,15 +14957,30 @@ ul, ol {
   font-size: 50px;
   letter-spacing: -2px;
 }
+@media only screen and (max-width: 1440px) {
+  .db-section--static-explore-old-columbus .db-container .db-row .db-col h2 span:nth-child(1) {
+    font-size: 40px;
+  }
+}
 .db-section--static-explore-old-columbus .db-container .db-row .db-col h2 span:nth-child(2) {
   color: #CDCDCF;
   font-size: 98px;
   letter-spacing: -3.92px;
 }
+@media only screen and (max-width: 1440px) {
+  .db-section--static-explore-old-columbus .db-container .db-row .db-col h2 span:nth-child(2) {
+    font-size: 78px;
+  }
+}
 .db-section--static-explore-old-columbus .db-container .db-row .db-col h2 span:nth-child(3) {
   color: #A7D422;
   font-size: 98px;
   letter-spacing: -3.92px;
+}
+@media only screen and (max-width: 1440px) {
+  .db-section--static-explore-old-columbus .db-container .db-row .db-col h2 span:nth-child(3) {
+    font-size: 78px;
+  }
 }
 .db-section--static-explore-old-columbus .db-container .db-row .db-col p {
   color: var(--white-color);
@@ -14702,7 +14993,14 @@ ul, ol {
   line-height: 1.5em;
   max-width: 530px;
   width: 100%;
-  margin-bottom: 90px;
+  margin: 0 0 90px auto;
+}
+@media only screen and (max-width: 1440px) {
+  .db-section--static-explore-old-columbus .db-container .db-row .db-col p {
+    font-size: 18px;
+    max-width: 400px;
+    margin: 0 0 60px auto;
+  }
 }
 .db-section--static-explore-old-columbus .db-container .db-row .db-col .db-btn--learn-more {
   display: flex;
@@ -14725,7 +15023,7 @@ ul, ol {
   font-weight: 500;
   text-transform: uppercase;
   line-height: 1em;
-  transition: color var(--hover-transition-duration) ease-in-out 0ms;
+  transition: color var(--hover-transition-duration) var(--transition-timing) 0ms;
 }
 .db-section--static-explore-old-columbus .db-container .db-row .db-col .db-btn--learn-more:hover {
   background-color: transparent;

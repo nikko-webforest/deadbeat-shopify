@@ -4,6 +4,7 @@
     position: relative;
     background-color: #0E051A;
     padding-bottom: 0;
+    
     &::before {
       content: "";
       position: absolute;
@@ -1775,11 +1776,10 @@
 
   .db-section--explore-oc-the-game {
     position: relative;
-    padding-bottom: 0;
     background-color: #0D0713;
     padding-top: 256px;
-    padding-bottom: 0px;
     padding-right: 0px;
+    padding-bottom: 0px;
     padding-left: 0px;
 
     @media only screen and (max-width: 768px) {
@@ -1882,14 +1882,13 @@
 
               span {
                 &:nth-child(1) {
-
-                  display: inline-block;
                   color: #A120D2;
+                  display: inline-block;
                 }
 
                 &:nth-child(2) {
-                  display: inline-block;
                   color: #B1FF29;
+                  display: inline-block;
                 }
               }
             }
@@ -2379,12 +2378,10 @@
                   }
 
                   &::-moz-progress-bar {
-
                     background-color: #b900ff;
                   }
 
                   &::-webkit-progress-value {
-
                     background-color: #b900ff;
                   }
 

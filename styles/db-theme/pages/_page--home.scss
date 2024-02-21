@@ -1111,18 +1111,19 @@
 
                                 span {
                                   &:nth-child(1) {
-                                    text-align: right;
-                                    font-family:$primaryFontFamily;
+                                    color: transparent;
+                                    font-family: $primaryFontFamily;
                                     font-size: 48px;
                                     font-style: normal;
                                     font-weight: 600;
+                                    text-align: right;
                                     line-height: 1em;
                                     letter-spacing: -1.92px;
-                                    background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.60) 57.21%, rgba(181, 210, 255, 0.00) 89.93%);
+                                    background:
+                                      linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.60) 57.21%, rgba(181, 210, 255, 0.00) 89.93%);
                                     background-clip: text;
                                     -webkit-background-clip: text;
                                     -webkit-text-fill-color: transparent;
-                                    color:transparent;
                                   }
 
                                   &:nth-child(2) {
@@ -1134,7 +1135,8 @@
                                     text-align: right;
                                     line-height: 1em;
                                     letter-spacing: -1.92px;
-                                    background: linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.60) 57.21%, rgba(181, 210, 255, 0.00) 89.93%);
+                                    background:
+                                      linear-gradient(180deg, #C0B7FF 5.47%, rgba(185, 200, 255, 0.60) 57.21%, rgba(181, 210, 255, 0.00) 89.93%);
                                     background-clip: text;
                                     -webkit-background-clip: text;
                                     -webkit-text-fill-color: transparent;

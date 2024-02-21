@@ -116,32 +116,24 @@
                           <div class="product-type">
                             {{ product_item.metafields.custom.product_type }}
                           </div>
-                          {% assign has_color_option = false %}
-                          {% assign color_count = 1 %}
-                          {% for option in product_item.options %}
-                            {% if option contains 'Color' %}
-                              {% assign has_color_option = true %}
+
+                          {% assign color_counts_string = '' %}
+
+                          {% for variant in product_item.variants %}
+                            {% assign color_option_value = variant.option1 %}
+                            {% if color_option_value %}
+                              {% assign color_counts_string = color_counts_string | append: color_option_value | append: ',' %}
                             {% endif %}
-                            {% comment %} <strong>{{ option }}:</strong> {% endcomment %}
-                            {% assign option_values = '' %}
-                            {% for variant in product_item.variants %}
-                              {% if variant.options[forloop.index0] == option.name %}
-                                {% assign option_values = option_values | append: variant.option1 | append: ',' %}
-                                {% assign color_count = color_count | plus: 1 %}
-                              {% endif %}
-                            {% endfor %}
-                            {% comment %}
-                              {% assign option_values = option_values | split: ',' | uniq %}
-                              {% for value in option_values %}
-                                {{ value }}
-                              {% endfor %}
-                            {% endcomment %}
                           {% endfor %}
-                          {% if has_color_option %}
+
+                          {% assign color_counts_array = color_counts_string | split: ',' | uniq %}
+
+                          {% if color_counts_array.size > 1 %}
                             <div class="product-color-variant-count">
-                              {{ color_count }} Color Variants
+                              {{ color_counts_array.size }} Color Variants
                             </div>
                           {% endif %}
+
                         </div>
                         <div class="db-inner-row">
                           <div class="product-title">
