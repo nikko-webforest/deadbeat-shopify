@@ -14116,6 +14116,13 @@ ul, ol {
   width: 100%;
   height: auto;
 }
+@media only screen and (max-width: 1080px) {
+  .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-btn--play-video .svg-icon-circle-with-play,
+  .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-btn--play-video .svg-icon-circle-with-pause {
+    max-width: 50px;
+    min-width: 50px;
+  }
+}
 .db-section--static-home-hero-banner-and-slider .hero-banner .db-bg-wrap .db-btn--play-video .svg-icon-circle-with-play {
   display: block;
 }
@@ -14844,7 +14851,8 @@ ul, ol {
 }
 @media only screen and (max-width: 768px) {
   .db-section--static-rock-n-roll-resurrected {
-    height: 1080px;
+    background-image: url("section_static-rock-n-roll-resurrected_bg-v02-768x1165.jpg");
+    height: 1165px;
   }
 }
 .db-section--static-rock-n-roll-resurrected .db-container .db-row {
