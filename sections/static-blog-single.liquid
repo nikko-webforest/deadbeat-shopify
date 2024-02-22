@@ -96,7 +96,7 @@
               </line>
             </svg>
             <div class="blog-date-post">
-              {{ article.published_at }}
+              {{ article.published_at | date: "%b %d, %Y" }}
             </div>
 
           {% endif %}
