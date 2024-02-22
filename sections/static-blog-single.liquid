@@ -1,15 +1,37 @@
-<section class="db-section db-section--static-blog-single">
+{% comment %}
+  {{ article.id }}
+  {{ article.title }}
+  {{ article.url }}
+  {{ article.handle }}
+  {{ article.image | image_url }}
+  {{ article.author }}
+  {{ article.tags | json }}
+  {{ article.excerpt }}
+  {{ article.content }}
+  {{ article.excerpt_or_content }}
+  {{ article.created_at }}
+  {{ article.updated_at }}
+  {{ article.published_at }}
+  {{ article.template_suffix }}
+  {{ article.metafields | json }}
+{% endcomment %}
+
+<section class="db-section db-section--static-blog-single"
+  data-article-id="{{ article.id }}">
   <div class="db-container">
-    <template v-if="article.image">
+
+    {% if article.image != blank %}
+      
       <img class="blog-featured-img db-img"
         alt=""
         title=""
-        :src="article.image"
+        src="{{ article.image | image_url }}"
         width=""
         height=""
         loading="lazy"/>
-    </template>
-    <template v-else>
+    
+    {% else %}
+
       <img class="blog-featured-img db-img"
         alt=""
         title=""
@@ -17,30 +39,48 @@
         width=""
         height=""
         loading="lazy"/>
-    </template>
+
+    {% endif %}
+    
     <div class="blog-details-wrap">
       <div class="db-inner-container">
-        <template v-if="article.tags.length">
+
+        {% if article.tags.size %}
+          
           <ul class="blog-tag-list">
-            <template v-for="tag_item in article.tags">
-              <li class="blog-tag-item"
-                v-text="tag_item">
+
+            {% for tag_item in article.tags %}
+              
+              <li class="blog-tag-item">
+                {{ tag_item }}
               </li>
-            </template>
+
+            {% endfor %}
+            
           </ul>
-        </template>
-        <template v-if="article.title">
-          <h1 class="blog-title"
-            v-text="article.title">
+          
+        {% endif %}
+
+        {% if article.title != blank %}
+
+          <h1 class="blog-title">
+            {{ article.title }}
           </h1>
-        </template>
+
+        {% endif %}
+        
         <div class="db-inner-row">
-          <template v-if="article.author">
-            <div class="blog-author"
-              v-text="article.author">
+
+          {% if article.author != blank %}
+
+            <div class="blog-author">
+              {{ article.author }}
             </div>
-          </template>
-          <template v-if="article.published_at">
+
+          {% endif %}
+
+          {% if article.published_at != blank %}
+
             <svg class="svg-icon-dash-line db-svg"
               width="27"
               height="1"
@@ -55,14 +95,22 @@
                 stroke="#FFFFFF">
               </line>
             </svg>
-            <div class="blog-date-post"
-              v-text="article.published_at">
+            <div class="blog-date-post">
+              {{ article.published_at }}
             </div>
-          </template>
+
+          {% endif %}
+          
         </div>
-        <div class="blog-content">
-          <div v-html="article.content"></div>
-        </div>
+
+        {% if article.content != blank %}
+
+          <div class="blog-content">
+            {{ article.content }}
+          </div>
+
+        {% endif %}
+
       </div>
     </div>
   </div>

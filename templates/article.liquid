@@ -4,46 +4,14 @@
 
 </main>
 <script>
-  const DB_SF_Page_Blog_Single_Options = {
-    name: 'DB SF Page Blog Single',
-    data() {
-      return {
-        article: {
-          id: "{{ article.id }}",
-          title: `{{ article.title }}`,
-          url: `{{ article.url }}`,
-          handle: `{{ article.handle }}`,
-          content: `{{ article.content }}`,
-          image: `{{ article.image | image_url }}`,
-          author: `{{ article.author }}`,
-          tags: {{ article.tags | json }},
-          excerpt: `{{ article.excerpt }}`,
-          excerpt_or_content: `{{ article.excerpt_or_content }}`,
-          created_at: `{{ article.created_at }}`,
-          updated_at: `{{ article.updated_at }}`,
-          published_at: `{{ article.published_at }}`,
-          template_suffix: `{{ article.template_suffix }}`,
-          metafields: {{ article.metafields | json }},
-        },
-      }
-    },
-    methods: {
-      loadPage() {
-        console.log('loadPage');
-        setTimeout(() => {
-          document.querySelector('.db-site-loader').classList.remove('--show');
-          // document.querySelector('.db-section--banner').classList.add('--animate-now');
-          document.querySelector('.db-header').classList.add('--animate-now');
-        }, 3000);
-      },
-    },
-    computed: {},
-    created() {
-      this.loadPage();
-    },
-    mounted() {},
-    updated() {},
+  const loadPage = () => {
+    console.log('loadPage');
+    setTimeout(() => {
+      document.querySelector('.db-site-loader').classList.remove('--show');
+      // document.querySelector('.db-section--banner').classList.add('--animate-now');
+      document.querySelector('.db-header').classList.add('--animate-now');
+    }, 3000);
   };
 
-  Vue.createApp(DB_SF_Page_Blog_Single_Options).mount('.db-page--{{ page.handle }}');
+  loadPage();
 </script>

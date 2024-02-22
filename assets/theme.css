@@ -13730,6 +13730,15 @@ ul, ol {
 .db-section--static-blog-listing {
   padding: 150px 30px 100px;
 }
+.db-section--static-blog-listing .db-container h1 {
+  color: var(--white-color);
+  font-family: var(--primary-font-family);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5em;
+  margin-bottom: 30px;
+}
 .db-section--static-blog-listing .db-container .db-grid-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(250px, 1fr));
