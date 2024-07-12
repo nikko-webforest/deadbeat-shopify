@@ -1,24 +1,27 @@
 .db-section--static-home-hero-banner-and-slider {
+  --hero-height: 100vh;
+  background-color: #121018;
+  height: var(--hero-height);
   padding: 0;
+
+  @media only screen and (max-width: 1440px) {
+    --hero-height: 1000px;
+  }
 
   .hero-banner {
     position: relative;
     z-index: 1;
-    padding: 325px 20px 345px;
-
-    @media only screen and (max-width: 1080px) {
-      padding: 0 0 250px;
-    }
+    height: 100%;
 
     .db-bg-wrap {
       position: absolute;
       z-index: 1;
+      top: 0;
       right: 0;
-      bottom: 0;
       // max-height: calc(100% - 125px);
+      width: 75vw;
       height: 100%;
-      width: 55vw;
-      overflow: hidden;
+      // overflow: hidden;
 
       @media only screen and (max-width: 1080px) {
         position: relative;
@@ -34,7 +37,7 @@
         right: -100%;
         bottom: -100%;
         left: -100%;
-        object-fit: fill;
+        object-fit: cover;
         vertical-align: baseline;
         background-position: center;
         background-size: cover;
@@ -62,6 +65,18 @@
           display: none;
         }
 
+        .bg-overlay-01 {
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          left: calc(-100vw + 75vw);
+          display: block;
+          background: linear-gradient(90deg, #03010E 47.67%, rgba(3, 1, 14, 0.00) 99.97%);
+          width: calc(100vw - (75vw - 25vw));
+          height: 100%;
+          // border: 1px solid red;
+        }
+
         .svg-bg-overlay-01 {
           position: absolute;
           z-index: 1;
@@ -86,20 +101,17 @@
       }
 
       .db-btn--play-video {
-        display: none;
-        
-        @media only screen and (max-width: 1080px) {
-          position: absolute;
-          z-index: 3;
-          top: 50%;
-          left: 50%;
-          translate: -50% -50%;
-          display: block;
-          opacity: 0;
-          transition:
-            background-color $hover-transition-duration $transition-timing 0ms,
-            opacity $hover-transition-duration $transition-timing 0ms;
-        }
+        // display: none;
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        display: block;
+        opacity: 0;
+        transition:
+          background-color $hover-transition-duration $transition-timing 0ms,
+          opacity $hover-transition-duration $transition-timing 0ms;
 
         .svg-icon-circle-with-play,
         .svg-icon-circle-with-pause {
@@ -125,9 +137,13 @@
     }
 
     .db-container {
+      position: relative;
       z-index: 2;
+      height: 100%;
+      padding: 125px 20px 0;
 
       @media only screen and (max-width: 1080px) {
+        height: auto;
         padding: 50px 20px;
       }
 
@@ -135,6 +151,7 @@
         justify-content: space-between;
         align-items: center;
         gap: 25px;
+        height: 100%;
 
         > .db-col {
           &:nth-of-type(1) {
@@ -196,40 +213,6 @@
               width: 100%;
             }
           }
-
-          &:nth-of-type(2) {
-            @media only screen and (max-width: 1080px) {
-              display: none;
-            }
-
-            .db-btn--play-video {
-              position: absolute;
-              z-index: 1;
-              right: calc(50vw / 2);
-              opacity: 0;
-              margin: -95px auto 0;
-              // margin: 0 auto;
-              transition:
-                background-color $hover-transition-duration $transition-timing 0ms,
-                opacity $hover-transition-duration $transition-timing 0ms;
-
-              .svg-icon-circle-with-play,
-              .svg-icon-circle-with-pause {
-                max-width: 80px;
-                min-width: 80px;
-                width: 100%;
-                height: auto;
-              }
-
-              .svg-icon-circle-with-play {
-                display: block;
-              }
-
-              .svg-icon-circle-with-pause {
-                display: none;
-              }
-            }
-          }
         }
       }
     }
@@ -240,17 +223,13 @@
           opacity: 1;
         }
       }
+    }
 
-      .db-container {
-        .db-row {
-          > .db-col {
-            &:nth-of-type(2) {
-              .db-btn--play-video {
-                opacity: 1;
-              }
-            }
-          }
-        }
+    &.--show-slider {
+      height: calc(var(--hero-height) - 250px);
+
+      @media only screen and (max-width: 1080px) {
+        height: auto;
       }
     }
   }
@@ -264,6 +243,10 @@
     background-color: $black-color;
     width: 100%;
     height: 250px;
+
+    @media only screen and (max-width: 1080px) {
+      position: relative;
+    }
 
     .slider-main {
       width: 100%;

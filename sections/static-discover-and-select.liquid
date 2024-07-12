@@ -32,8 +32,8 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
         </p>
         <a class="db-btn--view-all"
-          title=""
-          href="">
+          title="VIEW ALL"
+          href="/pages/emporium">
           <span class="label">
             VIEW ALL
           </span>
@@ -44,13 +44,17 @@
       <div class="db-col">
         <ul class="product-type-list">
           <div class="active-indicator"></div>
+
           {% for product_type in product_types %}
             {% if product_type != blank %}
+
               <li class="product-type-item">
                 {{ product_type }}
               </li>
+
             {% endif %}
           {% endfor %}
+
         </ul>
         <div class="flickity-button-wrap">
           <button class="flickity-button prev"
@@ -102,12 +106,16 @@
       </div>
       <div class="db-col">
         <div class="product-slider-list">
+
           {% for product_type in product_types %}
             {% if product_type != blank %}
+
               <div class="product-slider-main"
                 data-product-type="{{ product_type | replace: ' ', ' ' }}">
+
                 {% for product_item in collection.products %}
                   {% if product_type contains product_item.metafields.custom.product_type %}
+
                     <div class="product-slider-cell"
                       style="background-image: url('{{ product_item.featured_image | image_url }}');"
                       data-product-available="{{ product_item.available }}">
@@ -129,9 +137,11 @@
                           {% assign color_counts_array = color_counts_string | split: ',' | uniq %}
 
                           {% if color_counts_array.size > 1 %}
+
                             <div class="product-color-variant-count">
                               {{ color_counts_array.size }} Color Variants
                             </div>
+
                           {% endif %}
 
                         </div>
@@ -144,6 +154,7 @@
                           </div>
                         </div>
                         <div class="product-actions">
+
                           {% if product_item.available %}
                             {% assign available_variant = product_item.variants[0] %}
 
@@ -175,7 +186,9 @@
                                 </path>
                               </svg>
                             </button>
+
                           {% else %}
+
                             <button class="db-btn--out-of-stock"
                               type="button"
                               disabled>
@@ -183,15 +196,21 @@
                                 OUT OF STOCK
                               </span>
                             </button>
+
                           {% endif %}
+
                         </div>
                       </div>
                     </div>
+
                   {% endif %}
                 {% endfor %}
+
               </div>
+
             {% endif %}
           {% endfor %}
+          
         </div>
       </div>
     </div>
