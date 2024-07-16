@@ -1,164 +1,430 @@
 <footer class="db-footer site-footer">
-  <section class="db-section db-section--newsletter">
-    <div class="db-container">
-      <div class="db-row">
-        <div class="db-col">
-          <a class="db-site-link"
-            title="Deadbeat"
-            href="{{ shop.url }}">
-            <img class="db-site-logo db-img"
-              alt="Deadbeat"
+  <div class="db-footer-shopify" style="display: none;">
+    <section class="db-section db-section--newsletter">
+      <div class="db-container">
+        <div class="db-row">
+          <div class="db-col">
+            <a class="db-site-link"
               title="Deadbeat"
-              src="{{ 'DB_Main_logo-v02-1024x394.png' | asset_url }}"
+              href="{{ shop.url }}">
+              <img class="db-site-logo db-img"
+                alt="Deadbeat"
+                title="Deadbeat"
+                src="{{ 'DB_Main_logo-v02-1024x394.png' | asset_url }}"
+                width=""
+                height=""
+                loading="lazy">
+            </a>
+            <h4>
+              BREAKING NEWS
+            </h4>
+            <p>
+              Put your digital John Hancock here mister, or ma'am, or mister ma'am and get updates direct to your eyeballs from 2069.
+            </p>
+            <form class="db-form--newsletter db-form validate"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              method="post"
+              action="https://elevate-m.us21.list-manage.com/subscribe/post?u=c9161b1e17a490930cf29bfcd&amp;id=b779bd68b4&amp;f_id=00fbdce6f0"
+              accept-charset="UTF-8"
+              target="_blank">
+              <div class="db-form-wrap">
+                <div class="db-form-group">
+                  <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                    /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                    <input type="text" name="b_c9161b1e17a490930cf29bfcd_b779bd68b4" tabindex="-1" value="">
+                  </div>
+                </div>
+                <div class="db-form-group">
+                  <input class="db-form-input required email"
+                    id="mce-EMAIL"
+                    type="email"
+                    name="EMAIL"
+                    placeholder=""
+                    required=""
+                    value=""
+                    autocorrect="off"
+                    autocapitalize="off">
+                  <button class="db-btn--form-submit db-btn"
+                    id="mc-embedded-subscribe"
+                    type="submit"
+                    name="subscribe">
+                    SUBSCRIBE
+                  </button>
+                </div>
+              </div>
+              <div id="mce-responses" class="clear foot">
+                <div class="response" id="mce-error-response" style="display: none;"></div>
+                <div class="response" id="mce-success-response" style="display: none;"></div>
+              </div>
+            </form>
+
+            {% comment %}
+              <ul class="db-contact-list">
+                <li class="db-contact-item">
+                  <a class="db-contact-link"
+                    title="Contact Email"
+                    href="mailto:example@deadbeat2069.com">
+                    <span class="db-contact-label">EMAIL</span>
+                    <span class="db-contact-value">example@deadbeat2069.com</span>
+                  </a>
+                </li>
+                <li class="db-contact-item">
+                  <a class="db-contact-link"
+                    title="Contact Number"
+                    href="tel:44(0)2030020224">
+                    <span class="db-contact-label">CALL</span>
+                    <span class="db-contact-value">+44 (0)20 30020224</span>
+                  </a>
+                </li>
+              </ul>
+            {% endcomment %}
+
+          </div>
+          <div class="db-col">
+            <img class="db-img-figure01 db-img"
+              alt=""
+              title=""
+              src="{{ 'DB_Footer_NewsletterFigure01_v01-809x512.png' | asset_url }}"
               width=""
               height=""
               loading="lazy">
-          </a>
-          <h4>
-            BREAKING NEWS
-          </h4>
-          <p>
-            Put your digital John Hancock here mister, or ma'am, or mister ma'am and get updates direct to your eyeballs from 2069.
-          </p>
-          <form class="db-form--newsletter db-form validate"
-            id="mc-embedded-subscribe-form"
-            name="mc-embedded-subscribe-form"
-            method="post"
-            action="https://elevate-m.us21.list-manage.com/subscribe/post?u=c9161b1e17a490930cf29bfcd&amp;id=b779bd68b4&amp;f_id=00fbdce6f0"
-            accept-charset="UTF-8"
-            target="_blank">
-            <div class="db-form-wrap">
-              <div class="db-form-group">
-                <div aria-hidden="true" style="position: absolute; left: -5000px;">
-                  /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-                  <input type="text" name="b_c9161b1e17a490930cf29bfcd_b779bd68b4" tabindex="-1" value="">
-                </div>
-              </div>
-              <div class="db-form-group">
-                <input class="db-form-input required email"
-                  id="mce-EMAIL"
-                  type="email"
-                  name="EMAIL"
-                  placeholder=""
-                  required=""
-                  value=""
-                  autocorrect="off"
-                  autocapitalize="off">
-                <button class="db-btn--form-submit db-btn"
-                  id="mc-embedded-subscribe"
-                  type="submit"
-                  name="subscribe">
-                  SUBSCRIBE
-                </button>
-              </div>
-            </div>
-            <div id="mce-responses" class="clear foot">
-              <div class="response" id="mce-error-response" style="display: none;"></div>
-              <div class="response" id="mce-success-response" style="display: none;"></div>
-            </div>
-          </form>
-
-          {% comment %}
-            <ul class="db-contact-list">
-              <li class="db-contact-item">
-                <a class="db-contact-link"
-                  title="Contact Email"
-                  href="mailto:example@deadbeat2069.com">
-                  <span class="db-contact-label">EMAIL</span>
-                  <span class="db-contact-value">example@deadbeat2069.com</span>
-                </a>
-              </li>
-              <li class="db-contact-item">
-                <a class="db-contact-link"
-                  title="Contact Number"
-                  href="tel:44(0)2030020224">
-                  <span class="db-contact-label">CALL</span>
-                  <span class="db-contact-value">+44 (0)20 30020224</span>
-                </a>
-              </li>
-            </ul>
-          {% endcomment %}
-
-        </div>
-        <div class="db-col">
-          <img class="db-img-figure01 db-img"
-            alt=""
-            title=""
-            src="{{ 'DB_Footer_NewsletterFigure01_v01-809x512.png' | asset_url }}"
-            width=""
-            height=""
-            loading="lazy">
-          <div class="db-img-overlay"></div>
+            <div class="db-img-overlay"></div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="db-section db-section--primary">
-    <div class="db-container">
-      <div class="db-row">
-        <div class="db-col">
-          <div class="db-inner-row">
-            <a class="db-elevate-link"
-              title="Elevate Taleng Group"
-              href="https://www.elevatepictures.com/"
-              target="_blank">
-              <img class="db-elevate-logo db-img"
-                alt=""
-                title=""
-                src="{{ 'DB_Elevate_logo-v01-72x81.png' | asset_url }}"
+    </section>
+    <section class="db-section db-section--primary">
+      <div class="db-container">
+        <div class="db-row">
+          <div class="db-col">
+            <div class="db-inner-row">
+              <a class="db-elevate-link"
+                title="Elevate Taleng Group"
+                href="https://www.elevatepictures.com/"
+                target="_blank">
+                <img class="db-elevate-logo db-img"
+                  alt=""
+                  title=""
+                  src="{{ 'DB_Elevate_logo-v01-72x81.png' | asset_url }}"
+                  width=""
+                  height=""
+                  loading="lazy">
+              </a>
+              <p>
+                Elevate is a transmedia entertainment company chasing simple ideas that can change the world.
+              </p>
+            </div>
+            <p class="db-copyright">
+              &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
+            </p>
+          </div>
+          <div class="db-col">
+
+            {% if linklists.footer.links.size > 0 %}
+              
+              {% if linklists.footer.links.size > 4 %}
+                {% assign column_count = '--column-count-2' %}
+              {% else %}
+                {% assign column_count = '--column-count-1' %}
+              {% endif %}
+
+              <ul class="db-menu-list {{ column_count }}">
+
+                {% for menuItem in linklists.footer.links %}
+
+                  <li class="db-menu-item">
+                    <a class="db-menu-link"
+                      title="{{ menuItem.title }}"
+                      href="{{ menuItem.url }}">
+                      {{ menuItem.title }}
+                    </a>
+                  </li>
+
+                {% endfor %}
+
+              </ul>
+
+            {% endif %}
+            
+          </div>
+          <div class="db-col">
+            <h5>
+              SOCIALS
+            </h5>
+            {% render 'socials' %}
+          </div>
+        </div>
+        <p class="db-copyright">
+          &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <div class="db-footer-wordpress">
+    <section class="db-section db-section--wp-footer">
+      <div class="db-container">
+        <div class="db-row">
+          <div class="db-col">
+            <a class="db-site-link"
+              title="Deadbeat"
+              href="{{ shop.url }}">
+              <img class="db-site-logo db-img"
+                alt="Deadbeat"
+                title="Deadbeat"
+                src="{{ 'DB_Main_logo-v02-1024x394.png' | asset_url }}"
                 width=""
                 height=""
                 loading="lazy">
             </a>
             <p>
-              Elevate is a transmedia entertainment company chasing simple ideas that can change the world.
+              Are you a zombie?
+              <br/>
+              Or are you a Deadbeat?
             </p>
-          </div>
-          <p class="db-copyright">
-            &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
-          </p>
-        </div>
-        <div class="db-col">
-
-          {% if linklists.footer.links.size > 0 %}
-            
-            {% if linklists.footer.links.size > 4 %}
-              {% assign column_count = '--column-count-2' %}
-            {% else %}
-              {% assign column_count = '--column-count-1' %}
-            {% endif %}
-
-            <ul class="db-menu-list {{ column_count }}">
-
-              {% for menuItem in linklists.footer.links %}
-
-                <li class="db-menu-item">
-                  <a class="db-menu-link"
-                    title="{{ menuItem.title }}"
-                    href="{{ menuItem.url }}">
-                    {{ menuItem.title }}
-                  </a>
-                </li>
-
-              {% endfor %}
-
+            <ul class="db-contact-list">
+              <li class="db-contact-item">
+                <a class="db-contact-link"
+                  title="Email"
+                  href="mailto:deadbeat@elevate-m.com">
+                  <svg class="svg-icon-envelope db-svg"
+                    aria-hidden="true"
+                    class="e-font-icon-svg e-fas-envelope"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+                    </path>
+                  </svg>
+                  <span class="db-contact-label">
+                    deadbeat@elevate-m.com
+                  </span>
+                </a>
+              </li>
+              <li class="db-contact-item">
+                <a class="db-contact-link"
+                  title="Address"
+                  href="">
+                  <svg class="svg-icon-location db-svg"
+                    aria-hidden="true"
+                    class="e-font-icon-svg e-fas-map-marker-alt"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
+                    </path>
+                  </svg>
+                  <span class="db-contact-label">
+                    Old Columbus, the future
+                  </span>
+                </a>
+              </li>
             </ul>
-
-          {% endif %}
-          
-        </div>
-        <div class="db-col">
-          <h5>
-            SOCIALS
-          </h5>
-          {% render 'socials' %}
+          </div>
+          <div class="db-col">
+            <h5>
+              OTHER PAGES
+            </h5>
+            <ul>
+              <li>
+                <a title="Home"
+                  href="https://fttfmccy.elementor.cloud/">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a title="GroundZero News"
+                  href="https://fttfmccy.elementor.cloud/ground-zero/">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>GroundZero News</span>
+                </a>
+              </li>
+              <li>
+                <a title="DEADtv"
+                  href="https://fttfmccy.elementor.cloud/the-beat-tv/">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>DEADtv</span>
+                </a>
+              </li>
+              <li>
+                <a title="The BEATfm"
+                  href="https://fttfmccy.elementor.cloud/the-beat-radio/">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>The BEATfm</span>
+                </a>
+              </li>
+              <li>
+                <a title="Emporium"
+                  href="/pages/emporium">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>Emporium</span>
+                </a>
+              </li>
+              <li>
+                <a title="Drop Zone"
+                  href="https://fttfmccy.elementor.cloud/drop-zone/">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>Drop Zone</span>
+                </a>
+              </li>
+              <li>
+                <a title="About Us"
+                  href="https://fttfmccy.elementor.cloud/what-is-deadbeat/">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>About Us</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="db-col">
+            <h5>
+              QUICK LINKS
+            </h5>
+            <ul>
+              <li>
+                <a title="Privacy Policy"
+                  href="https://fttfmccy.elementor.cloud/privacy-policy/">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>Privacy Policy</span>
+                </a>
+              </li>
+              <li>
+                <a title="Terms Of Service"
+                  href="https://fttfmccy.elementor.cloud/terms-of-service/">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>Terms Of Service</span>
+                </a>
+              </li>
+              <li>
+                <a title="Contact"
+                  href="https://fttfmccy.elementor.cloud/contact/">
+                  <svg class="svg-icon-circle-check db-svg"
+                    aria-hidden="true"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class="path-01"
+                      d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                    </path>
+                  </svg>
+                  <span>Contact</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="db-col">
+            <h5>
+              NEWSLETTER
+            </h5>
+            <p>
+              Get to know what’s going to happen before everyone else. The undead from the future will give you the answers in all things music.
+            </p>
+            <form class="db-form--newsletter db-form validate"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              method="post"
+              action="https://elevate-m.us21.list-manage.com/subscribe/post?u=c9161b1e17a490930cf29bfcd&amp;id=b779bd68b4&amp;f_id=00fbdce6f0"
+              accept-charset="UTF-8"
+              target="_blank">
+              <div class="db-form-wrap">
+                <div class="db-form-group">
+                  <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                    /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                    <input type="text" name="b_c9161b1e17a490930cf29bfcd_b779bd68b4" tabindex="-1" value="">
+                  </div>
+                </div>
+                <div class="db-form-group">
+                  <input class="db-form-input required email"
+                    id="mce-EMAIL"
+                    type="email"
+                    name="EMAIL"
+                    placeholder="Your Email Address"
+                    required=""
+                    value=""
+                    autocorrect="off"
+                    autocapitalize="off">
+                  <button class="db-btn--form-submit db-btn"
+                    id="mc-embedded-subscribe"
+                    type="submit"
+                    name="subscribe">
+                    SUBSCRIBE
+                  </button>
+                </div>
+              </div>
+              <div id="mce-responses" class="clear foot">
+                <div class="response" id="mce-error-response" style="display: none;"></div>
+                <div class="response" id="mce-success-response" style="display: none;"></div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      <p class="db-copyright">
-        &copy; {{ "now" | date: "%Y" }} Deadbeat - All rights reserved
-      </p>
-    </div>
-  </section>
+    </section>
+  </div>
 </footer>
 <!-- MailChimp Embedd Form -->
 <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>

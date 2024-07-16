@@ -5,6 +5,7 @@
   --primary-font-family: 'Oswald', sans-serif;
   --secondary-font-family: 'Quattrocento', serif;
   --tertiary-font-family: 'Montserrat', sans-serif;
+  --quaternary-font-family: 'Heebo', sans-serif;
 
   --black-color: #000000;
   --white-color: #FFFFFF;
@@ -22,10 +23,12 @@
 $primaryFontFamily: var(--primary-font-family);
 $secondaryFontFamily: var(--secondary-font-family);
 $tertiaryFontFamily: var(--tertiary-font-family);
+$quaternaryFontFamily: var(--quaternary-font-family);
 
 $primary-font-family: var(--primary-font-family);
 $secondary-font-family: var(--secondary-font-family);
 $tertiary-font-family: var(--tertiary-font-family);
+$quaternary-font-family: var(--quaternary-font-family);
 
 $blackColor: var(--black-color);
 $whiteColor: var(--white-color);
