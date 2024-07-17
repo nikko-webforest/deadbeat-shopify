@@ -856,9 +856,10 @@
       loadPage() {
         // console.log('loadPage()');
 
+        document.querySelector('.db-header').classList.add('--animate-now');
         setTimeout(() => {
           // document.querySelector('.db-site-loader').classList.remove('--show');
-          document.querySelector('.db-header').classList.add('--animate-now');
+          // document.querySelector('.db-header').classList.add('--animate-now');
 
           const scroll_to = document.querySelector('.db-section--merch-store-search');
           scroll_to.scrollIntoView();

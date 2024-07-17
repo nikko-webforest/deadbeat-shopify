@@ -197,6 +197,8 @@
 
         document.querySelector('body').classList.remove('--show-cart');
         document.querySelector('body').style.overflowY = 'auto';
+
+        this.deleteURLParams('open-cart');
       },
       openCart() {
         // console.log('openCart()');
@@ -283,6 +285,36 @@
         // console.log('formatPrice()', price);
         return (price / 100).toFixed(2);
       },
+
+      getURLParams(variable) {
+        console.log('getURLParams()');
+
+        const url = new URL(window.location.href);
+        const parameter_list = new URLSearchParams(url.search);
+
+        const parameter_value = parameter_list.get(variable);
+
+        console.log({
+          'variable': variable,
+          'url': url,
+          'params': parameter_value
+        });
+
+        return parameter_value;
+      },
+      deleteURLParams(variable) {
+        console.log('deleteURLParams()', {
+          'variable': variable
+        });
+
+        const url = new URL(window.location.href);
+        const parameter_list = new URLSearchParams(url.search);
+
+        parameter_list.delete(variable);
+
+        url.search = parameter_list.toString();
+        window.history.replaceState({}, '', url);
+      },
     },
     computed: {
       isCartDataEmpty() {
@@ -291,6 +323,10 @@
     },
     created() {
       this.fetchCartData();
+
+      if (this.getURLParams('open-cart') == 'true') {
+        this.openCart();
+      }
     },
     mounted() {},
     updated() {},

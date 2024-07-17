@@ -203,7 +203,7 @@
         <div class="db-row">
           <a class="db-site-link"
             title="Deadbeat"
-            href="{{ shop.url }}">
+            href="https://fttfmccy.elementor.cloud">
             <img class="db-site-logo db-img"
               alt="Deadbeat"
               title="Deadbeat"
@@ -216,7 +216,10 @@
             <div class="db-nav-list">
               <template v-for="(menu_item_lvl_1) in header.wordpress_menu">
                 <div class="db-nav-item"
-                  :class="{ '--sub-menu' : menu_item_lvl_1.child_menus }">
+                  :class="{
+                    '--sub-menu' : menu_item_lvl_1.child_menus,
+                    '--current' : isCurrentPage(menu_item_lvl_1.url, header.current_handle)
+                  }">
                   <a class="db-nav-link"
                     :title="menu_item_lvl_1.title"
                     :href="menu_item_lvl_1.url">
@@ -314,7 +317,7 @@
         <div class="head-wrap">
           <a class="db-site-link"
             title="Deadbeat"
-            href="{{ shop.url }}">
+            href="https://fttfmccy.elementor.cloud">
             <img class="db-site-logo db-img"
               alt="Deadbeat"
               title="Deadbeat"
@@ -333,7 +336,10 @@
             <div class="db-nav-list">
               <template v-for="(menu_item_lvl_1) in header.wordpress_menu">
                 <div class="db-nav-item"
-                  :class="{ '--sub-menu' : menu_item_lvl_1.child_menus }">
+                  :class="{
+                    '--sub-menu' : menu_item_lvl_1.child_menus,
+                    '--current' : isCurrentPage(menu_item_lvl_1.url, header.current_handle)
+                  }">
                   <a class="db-nav-link"
                     :title="menu_item_lvl_1.title"
                     :href="menu_item_lvl_1.url">
@@ -408,7 +414,7 @@
             },
             {
               title: 'Emporium',
-              url: '/pages/emporium',
+              url: '/pages/emporium?open-cart=true',
             },
             {
               title: 'Drop Zone',
@@ -430,6 +436,7 @@
             },
           ],
           show_mobile_menu: false,
+          current_handle: '{{ page.handle }}'
         }
       }
     },
@@ -446,6 +453,8 @@
       closeCart() {
         document.querySelector('body').classList.remove('--show-cart');
         document.querySelector('body').style.overflowY = 'auto';
+
+        this.deleteURLParams('open-cart');
       },
       openCart() {
         document.querySelector('body').classList.add('--show-cart');
@@ -458,11 +467,20 @@
 
         this.header.show_mobile_menu = boolean;
       },
+      isCurrentPage(data_01, data_02) {
+        // console.log('isCurrentPage()', {
+        //   'data_01': data_01,
+        //   'data_02': data_02,
+        //   'data_01.includes(data_02)': data_01.includes(data_02)
+        // });
+
+        return data_01.includes(data_02);
+      },
     },
     created() {},
     mounted() {},
     updated() {}
   };
 
-  Vue.createApp(DB_Header_Options).mount('.db-header');
+  const DB_Header_App = Vue.createApp(DB_Header_Options).mount('.db-header');
 </script>

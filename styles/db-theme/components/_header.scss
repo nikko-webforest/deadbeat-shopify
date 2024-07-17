@@ -9,8 +9,8 @@
   display: block;
   min-width: 380px;
   width: 100%;
-  transition:
-    translate 1000ms cubic-bezier(0.86, 0, 0.07, 1) 0s;
+  // transition:
+  //   translate 1000ms cubic-bezier(0.86, 0, 0.07, 1) 0s;
 
   .db-header-shopify {
     .db-header-main {
@@ -715,6 +715,14 @@
                   }
                 }
 
+                &.--current {
+                  .db-nav-link {
+                    .db-nav-label {
+                      color: #92CC38;
+                    }
+                  }
+                }
+
                 &.--sub-menu {
                   .db-nav-link {
                     .svg-icon-angle-down {
@@ -955,6 +963,14 @@
                       .path-01 {
                         fill: $white-color;
                       }
+                    }
+                  }
+                }
+
+                &.--current {
+                  .db-nav-link {
+                    .db-nav-label {
+                      color: #92CC38;
                     }
                   }
                 }
