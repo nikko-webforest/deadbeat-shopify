@@ -2,5 +2,6 @@
   "current": "Default",
   "presets": {
     "Default": {}
-  }
+  },
+  "wordpress_url": "https://deadbeat.gg/"
 }
