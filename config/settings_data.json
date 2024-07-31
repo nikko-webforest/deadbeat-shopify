@@ -1,7 +1,8 @@
 {
   "current": "Default",
   "presets": {
-    "Default": {}
+    "Default": {
+      "wordpress_url": "https://deadbeat.gg"
+    }
   },
-  "wordpress_url": "https://deadbeat.gg/"
 }
