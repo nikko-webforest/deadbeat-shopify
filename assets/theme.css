@@ -1688,6 +1688,9 @@ ul, ol {
   width: 100%;
   height: auto;
 }
+.db-header .db-header-wordpress .db-header-main .db-container .db-row .db-nav-wrap {
+  width: 100%;
+}
 @media only screen and (max-width: 1200px) {
   .db-header .db-header-wordpress .db-header-main .db-container .db-row .db-nav-wrap {
     display: none;
